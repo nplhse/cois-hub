@@ -8,6 +8,7 @@ PHP_CONT = $(DOCKER_COMP) exec php
 PHP          = $(PHP_CONT) php
 COMPOSER     = $(PHP_CONT) composer
 SYMFONY      = $(PHP) bin/console
+PHPSTAN      = ./vendor/bin/phpstan
 PHP_CS_FIXER = ./vendor/bin/php-cs-fixer
 
 # Misc
@@ -54,7 +55,12 @@ cc: c=c:c ## Clear the cache
 cc: sf
 
 ## —— Coding standards ✨ ——————————————————————————————————————————————————————
-cs: fix-php ## Run all coding standards checks
+cs: fix-php stan ## Run all coding standards checks
+
+static-analysis: stan ## Run the static analysis (PHPStan)
+
+stan: ## Run PHPStan
+	@$(PHPSTAN) analyse --memory-limit 1G
 
 lint-php: ## Lint files with php-cs-fixer
 	@$(PHP_CS_FIXER) fix --allow-risky=yes --dry-run --config=php-cs-fixer.php
