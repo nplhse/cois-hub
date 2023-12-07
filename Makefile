@@ -5,9 +5,10 @@ DOCKER_COMP = docker compose
 PHP_CONT = $(DOCKER_COMP) exec php
 
 # Executables
-PHP      = $(PHP_CONT) php
-COMPOSER = $(PHP_CONT) composer
-SYMFONY  = $(PHP) bin/console
+PHP          = $(PHP_CONT) php
+COMPOSER     = $(PHP_CONT) composer
+SYMFONY      = $(PHP) bin/console
+PHP_CS_FIXER = ./vendor/bin/php-cs-fixer
 
 # Misc
 .DEFAULT_GOAL = help
@@ -51,3 +52,12 @@ sf: ## List all Symfony commands or pass the parameter "c=" to run a given comma
 
 cc: c=c:c ## Clear the cache
 cc: sf
+
+## —— Coding standards ✨ ——————————————————————————————————————————————————————
+cs: fix-php ## Run all coding standards checks
+
+lint-php: ## Lint files with php-cs-fixer
+	@$(PHP_CS_FIXER) fix --allow-risky=yes --dry-run --config=php-cs-fixer.php
+
+fix-php: ## Fix files with php-cs-fixer
+	@PHP_CS_FIXER_IGNORE_ENV=1 $(PHP_CS_FIXER) fix --allow-risky=yes --config=php-cs-fixer.php
