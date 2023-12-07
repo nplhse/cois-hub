@@ -10,6 +10,7 @@ COMPOSER     = $(PHP_CONT) composer
 SYMFONY      = $(PHP) bin/console
 PHPSTAN      = ./vendor/bin/phpstan
 PHP_CS_FIXER = ./vendor/bin/php-cs-fixer
+PSALM        = ./vendor/bin/psalm
 
 # Misc
 .DEFAULT_GOAL = help
@@ -55,15 +56,18 @@ cc: c=c:c ## Clear the cache
 cc: sf
 
 ## —— Coding standards ✨ ——————————————————————————————————————————————————————
-cs: fix-php stan ## Run all coding standards checks
+cs: fix-php stan psalm ## Run all coding standards checks
 
-static-analysis: stan ## Run the static analysis (PHPStan)
-
-stan: ## Run PHPStan
-	@$(PHPSTAN) analyse --memory-limit 1G
+static-analysis: stan psalm ## Run the static analysis (PHPStan)
 
 lint-php: ## Lint files with php-cs-fixer
 	@$(PHP_CS_FIXER) fix --allow-risky=yes --dry-run --config=php-cs-fixer.php
 
 fix-php: ## Fix files with php-cs-fixer
 	@PHP_CS_FIXER_IGNORE_ENV=1 $(PHP_CS_FIXER) fix --allow-risky=yes --config=php-cs-fixer.php
+
+stan: ## Run PHPStan
+	@$(PHPSTAN) analyse --memory-limit 1G
+
+psalm: ## Run PHPStan
+	@$(PSALM)
