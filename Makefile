@@ -9,6 +9,7 @@ PHP          = $(PHP_CONT) php
 COMPOSER     = $(PHP_CONT) composer
 SYMFONY      = $(PHP) bin/console
 PHPSTAN      = ./vendor/bin/phpstan
+PHPUNIT      = ./vendor/bin/phpunit
 PHP_CS_FIXER = ./vendor/bin/php-cs-fixer
 PSALM        = ./vendor/bin/psalm
 
@@ -71,3 +72,7 @@ stan: ## Run PHPStan
 
 psalm: ## Run PHPStan
 	@$(PSALM)
+
+## —— Tests ✅ —————————————————————————————————————————————————————————————————
+test: ## Run tests
+	@$(PHPUNIT) --stop-on-failure
