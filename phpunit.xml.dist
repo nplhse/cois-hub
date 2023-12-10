@@ -27,6 +27,11 @@
         <include>
             <directory suffix=".php">src</directory>
         </include>
+        <report>
+            <clover outputFile="var/coverage/logs/clover.xml"/>
+            <html outputDirectory="var/coverage/report" lowUpperBound="55" highLowerBound="90"/>
+            <text outputFile="php://stdout" showOnlySummary="true"/>
+        </report>
     </coverage>
 
     <listeners>
