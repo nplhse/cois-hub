@@ -1,6 +1,20 @@
 {
+    "name": "nplhse/cois-hub",
+    "description": "A Symfony based webapp for Data Science related to german EMS data from the 'IVENA' system.",
     "type": "project",
-    "license": "proprietary",
+    "homepage": "https://github.com/nplhse/cois-hub/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christoph Steltner",
+            "email": "mail@nplhse.com",
+            "homepage": "http://nplhse.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/nplhse/cois/issues"
+    },
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {

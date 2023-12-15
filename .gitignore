@@ -20,6 +20,7 @@
 ###< symfony/phpunit-bridge ###
 
 /.idea/
+/node_modules/
 .DS_STORE
 
 ###> friendsofphp/php-cs-fixer ###

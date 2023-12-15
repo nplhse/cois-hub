@@ -12,6 +12,7 @@ PHPSTAN      = ./vendor/bin/phpstan
 PHPUNIT      = ./vendor/bin/phpunit
 PHP_CS_FIXER = ./vendor/bin/php-cs-fixer
 PSALM        = ./vendor/bin/psalm
+YARN         = yarn
 
 # Misc
 .DEFAULT_GOAL = help
@@ -57,7 +58,7 @@ cc: c=c:c ## Clear the cache
 cc: sf
 
 ## —— Coding standards ✨ ——————————————————————————————————————————————————————
-cs: fix-php stan psalm ## Run all coding standards checks
+cs: fix-php stan psalm eslint ## Run all coding standards checks
 
 static-analysis: stan psalm ## Run the static analysis (PHPStan)
 
@@ -66,6 +67,9 @@ lint-php: ## Lint files with php-cs-fixer
 
 fix-php: ## Fix files with php-cs-fixer
 	@PHP_CS_FIXER_IGNORE_ENV=1 $(PHP_CS_FIXER) fix --allow-risky=yes --config=php-cs-fixer.php
+
+eslint: ##Run ESLint
+	@$(YARN) run eslint assets
 
 stan: ## Run PHPStan
 	@$(PHPSTAN) analyse --memory-limit 1G
