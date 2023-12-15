@@ -1,20 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HelloWorldController!{% endblock %}
+{% block title %}Hello, world! - {{ parent() }}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/nplhse/Projekte/cois-hub/src/Controller/HelloWorldController.php'|file_link(0) }}">src/Controller/HelloWorldController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/nplhse/Projekte/cois-hub/templates/hello_world/index.html.twig'|file_link(0) }}">templates/hello_world/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="page page-center">
+        <div class="container-tight py-4">
+            <div class="empty">
+                <div class="empty-img"><img src="{{ asset('images/undraw_quitting_time.svg') }}" height="128" alt="">
+                </div>
+                <h1>Hello, world!</h1>
+                <p class="empty-subtitle text-muted">
+                    Sorry for the inconvenience but at the moment that's all there is to this project.
+                </p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

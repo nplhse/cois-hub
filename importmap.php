@@ -18,9 +18,6 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
-    'bootstrap' => [
-        'version' => '5.3.2',
-    ],
     '@popperjs/core' => [
         'version' => '2.11.8',
     ],
@@ -33,5 +30,12 @@ return [
     ],
     '@symfony/stimulus-bundle' => [
         'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
+    ],
+    '@tabler/core' => [
+        'version' => '1.0.0-beta20',
+    ],
+    '@tabler/core/dist/css/tabler.min.css' => [
+        'version' => '1.0.0-beta20',
+        'type' => 'css',
     ],
 ];
