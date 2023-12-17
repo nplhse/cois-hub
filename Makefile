@@ -7,7 +7,7 @@ PHP_CONT = $(DOCKER_COMP) exec php
 # Executables
 PHP          = $(PHP_CONT) php
 COMPOSER     = $(PHP_CONT) composer
-SYMFONY      = $(PHP) bin/console
+SYMFONY      = symfony console
 PHPSTAN      = ./vendor/bin/phpstan
 PHPUNIT      = ./vendor/bin/phpunit
 PHP_CS_FIXER = ./vendor/bin/php-cs-fixer
@@ -22,14 +22,45 @@ YARN         = yarn
 help: ## Outputs this help screen
 	@grep -E '(^[a-zA-Z0-9\./_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}{printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
 
+## —— Project setup 🚀 ——————————————————————————————————————————————————————————
+setup: install setup-database ## Setup the whole project
+
+setup-dev: install setup-test-db setup-fixtures ## Setup the project in dev environment
+
+install: ## Install composer dependencies
+	@$(COMPOSER) install --no-interaction
+
+setup-database: ## Setup the database backend
+	@$(SYMFONY) doctrine:database:create --if-not-exists --no-interaction
+	@$(SYMFONY) doctrine:migrations:migrate --no-interaction
+
+setup-test-db: ## Setup the test database
+	@$(SYMFONY) doctrine:database:create --no-interaction --if-not-exists --env=test
+	@$(SYMFONY) doctrine:schema:create --env=test
+
+setup-fixtures: ## Install the fixtures
+	@$(SYMFONY) doctrine:fixtures:load --no-interaction
+
+reset-database: ## Reset the whole database (caution!)
+	@$(SYMFONY) doctrine:database:drop --force
+	@$(SYMFONY) doctrine:database:create --no-interaction
+	@$(SYMFONY) doctrine:migrations:migrate --no-interaction
+
+## —— Project pipelines 🚇 ——————————————————————————————————————————————————————
+checks: cs static-analysis ## Run check-styles and static-analysis
+
+ci: checks test ## Run CI pipeline
+
+reset: install reset-database setup-fixtures ## Reset pipeline for the whole project (caution!)
+
 ## —— Docker 🐳 ————————————————————————————————————————————————————————————————
+start: build up ## Build and start the containers
+
 build: ## Builds the Docker images
 	@$(DOCKER_COMP) build --pull --no-cache
 
 up: ## Start the docker hub in detached mode (no logs)
 	@$(DOCKER_COMP) up --detach
-
-start: build up ## Build and start the containers
 
 down: ## Stop the docker hub
 	@$(DOCKER_COMP) down --remove-orphans
@@ -60,7 +91,7 @@ cc: sf
 ## —— Coding standards ✨ ——————————————————————————————————————————————————————
 cs: fix-php stan psalm eslint ## Run all coding standards checks
 
-static-analysis: stan psalm ## Run the static analysis (PHPStan)
+static-analysis: stan psalm ## Run the static analysis
 
 lint-php: ## Lint files with php-cs-fixer
 	@$(PHP_CS_FIXER) fix --allow-risky=yes --dry-run --config=php-cs-fixer.php
@@ -68,7 +99,7 @@ lint-php: ## Lint files with php-cs-fixer
 fix-php: ## Fix files with php-cs-fixer
 	@PHP_CS_FIXER_IGNORE_ENV=1 $(PHP_CS_FIXER) fix --allow-risky=yes --config=php-cs-fixer.php
 
-eslint: ##Run ESLint
+eslint: ## Run ESLint
 	@$(YARN) run eslint assets
 
 stan: ## Run PHPStan
