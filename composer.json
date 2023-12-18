@@ -127,6 +127,7 @@
         "symfony/stopwatch": "7.0.*",
         "symfony/web-profiler-bundle": "7.0.*",
         "vimeo/psalm": "^5.17",
-        "weirdan/doctrine-psalm-plugin": "^2.9"
+        "weirdan/doctrine-psalm-plugin": "^2.9",
+        "zenstruck/foundry": "^1.36"
     }
 }
