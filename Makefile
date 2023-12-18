@@ -7,11 +7,11 @@ PHP_CONT = $(DOCKER_COMP) exec php
 # Executables
 PHP          = $(PHP_CONT) php
 COMPOSER     = $(PHP_CONT) composer
-SYMFONY      = symfony console
-PHPSTAN      = ./vendor/bin/phpstan
-PHPUNIT      = ./vendor/bin/phpunit
-PHP_CS_FIXER = ./vendor/bin/php-cs-fixer
-PSALM        = ./vendor/bin/psalm
+SYMFONY      = symfony
+PHPSTAN      = vendor/bin/phpstan
+PHPUNIT      = vendor/bin/phpunit
+PHP_CS_FIXER = vendor/bin/php-cs-fixer
+PSALM        = vendor/bin/psalm
 YARN         = yarn
 
 # Misc
@@ -31,20 +31,20 @@ install: ## Install composer dependencies
 	@$(COMPOSER) install --no-interaction
 
 setup-database: ## Setup the database backend
-	@$(SYMFONY) doctrine:database:create --if-not-exists --no-interaction
-	@$(SYMFONY) doctrine:migrations:migrate --no-interaction
+	@$(SYMFONY) console doctrine:database:create --if-not-exists --no-interaction
+	@$(SYMFONY) console doctrine:migrations:migrate --no-interaction
 
 setup-test-db: ## Setup the test database
-	@$(SYMFONY) doctrine:database:create --no-interaction --if-not-exists --env=test
-	@$(SYMFONY) doctrine:schema:create --env=test
+	@$(SYMFONY) console doctrine:database:create --no-interaction --if-not-exists --env=test
+	@$(SYMFONY) console doctrine:schema:create --env=test
 
 setup-fixtures: ## Install the fixtures
-	@$(SYMFONY) doctrine:fixtures:load --no-interaction
+	@$(SYMFONY) console doctrine:fixtures:load --no-interaction
 
 reset-database: ## Reset the whole database (caution!)
-	@$(SYMFONY) doctrine:database:drop --force
-	@$(SYMFONY) doctrine:database:create --no-interaction
-	@$(SYMFONY) doctrine:migrations:migrate --no-interaction
+	@$(SYMFONY) console doctrine:database:drop --force
+	@$(SYMFONY) console doctrine:database:create --no-interaction
+	@$(SYMFONY) console doctrine:migrations:migrate --no-interaction
 
 ## —— Project pipelines 🚇 ——————————————————————————————————————————————————————
 checks: cs static-analysis ## Run check-styles and static-analysis
@@ -103,7 +103,7 @@ eslint: ## Run ESLint
 	@$(YARN) run eslint assets
 
 stan: ## Run PHPStan
-	@$(PHPSTAN) analyse --memory-limit 1G
+	@$(SYMFONY) php $(PHPSTAN) analyse --memory-limit 1G
 
 psalm: ## Run PHPStan
 	@$(PSALM)
