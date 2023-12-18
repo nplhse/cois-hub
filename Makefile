@@ -12,6 +12,7 @@ PHPSTAN      = vendor/bin/phpstan
 PHPUNIT      = vendor/bin/phpunit
 PHP_CS_FIXER = vendor/bin/php-cs-fixer
 PSALM        = vendor/bin/psalm
+RECTOR       = vendor/bin/rector
 YARN         = yarn
 
 # Misc
@@ -89,7 +90,7 @@ cc: c=c:c ## Clear the cache
 cc: sf
 
 ## —— Coding standards ✨ ——————————————————————————————————————————————————————
-cs: fix-php stan psalm eslint ## Run all coding standards checks
+cs: rector fix-php stan psalm eslint ## Run all coding standards checks
 
 static-analysis: stan psalm ## Run the static analysis
 
@@ -102,11 +103,14 @@ fix-php: ## Fix files with php-cs-fixer
 eslint: ## Run ESLint
 	@$(YARN) run eslint assets
 
+psalm: ## Run Psalm
+	@$(PSALM)
+
 stan: ## Run PHPStan
 	@$(SYMFONY) php $(PHPSTAN) analyse --memory-limit 1G
 
-psalm: ## Run PHPStan
-	@$(PSALM)
+rector: ## Run Rector
+	@$(RECTOR)
 
 ## —— Tests ✅ —————————————————————————————————————————————————————————————————
 test: ## Run tests
