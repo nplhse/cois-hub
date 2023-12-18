@@ -88,14 +88,8 @@ jobs:
         env:
           DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
 
-      - name: Cache node_modules
-        uses: actions/cache@v3
-        id: yarn-cache-node-modules
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-yarn-cache-node-modules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-cache-node-modules-
+      - name: "Build Assets"
+        run: php bin/console importmap:install
 
       - name: Execute tests via PHPUnit
         run: vendor/bin/phpunit
