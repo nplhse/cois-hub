@@ -25,4 +25,21 @@
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin" />
         <pluginClass class="Weirdan\DoctrinePsalmPlugin\Plugin" />
     </plugins>
+    <issueHandlers>
+        <PossiblyUnusedMethod>
+            <errorLevel type="suppress">
+                <directory name="src/Repository" />
+            </errorLevel>
+        </PossiblyUnusedMethod>
+        <PossiblyUnusedParam>
+            <errorLevel type="suppress">
+                <directory name="src/Repository" />
+            </errorLevel>
+        </PossiblyUnusedParam>
+        <UnusedClass>
+            <errorLevel type="suppress">
+                <directory name="src/Entity" />
+            </errorLevel>
+        </UnusedClass>
+    </issueHandlers>
 </psalm>
