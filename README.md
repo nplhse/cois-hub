@@ -1,5 +1,7 @@
 # COIS-Hub - Collaborative IVENA statistics
 
+[![Continuous Integration](https://github.com/nplhse/cois-hub/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/nplhse/cois-hub/actions/workflows/continuous-integration.yml) [![Test Coverage](https://api.codeclimate.com/v1/badges/ddf676af0fa232a4a540/test_coverage)](https://codeclimate.com/github/nplhse/cois-hub/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/ddf676af0fa232a4a540/maintainability)](https://codeclimate.com/github/nplhse/cois-hub/maintainability)
+
 # Requirements
 -   Webserver (Apache, Nginx, LiteSpeed, IIS, etc.) with PHP 8.2 or higher and MySQL 8.0 (or MariaDB 10.0) as database.
 
