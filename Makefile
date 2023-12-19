@@ -5,15 +5,18 @@ DOCKER_COMP = docker compose
 PHP_CONT = $(DOCKER_COMP) exec php
 
 # Executables
-PHP          = $(PHP_CONT) php
-COMPOSER     = $(PHP_CONT) composer
-SYMFONY      = symfony
-PHPSTAN      = vendor/bin/phpstan
-PHPUNIT      = vendor/bin/phpunit
-PHP_CS_FIXER = vendor/bin/php-cs-fixer
-PSALM        = vendor/bin/psalm
-RECTOR       = vendor/bin/rector
-YARN         = yarn
+PHP           = $(PHP_CONT) php
+COMPOSER      = $(PHP_CONT) composer
+SYMFONY       = symfony
+YARN          = yarn
+
+CONSOLE       = $(SYMFONY) console
+PHPSTAN       = vendor/bin/phpstan
+PHPUNIT       = vendor/bin/phpunit
+PHP_CS_FIXER  = vendor/bin/php-cs-fixer
+PSALM         = vendor/bin/psalm
+RECTOR        = vendor/bin/rector
+TWIG_CS_FIXER = vendor/bin/twig-cs-fixer
 
 # Misc
 .DEFAULT_GOAL = help
@@ -32,23 +35,23 @@ install: ## Install composer dependencies
 	@$(COMPOSER) install --no-interaction
 
 setup-database: ## Setup the database backend
-	@$(SYMFONY) console doctrine:database:create --if-not-exists --no-interaction
-	@$(SYMFONY) console doctrine:migrations:migrate --no-interaction
+	@$(CONSOLE) doctrine:database:create --if-not-exists --no-interaction
+	@$(CONSOLE) doctrine:migrations:migrate --no-interaction
 
 setup-test-db: ## Setup the test database
-	@$(SYMFONY) console doctrine:database:create --no-interaction --if-not-exists --env=test
-	@$(SYMFONY) console doctrine:schema:create --env=test
+	@$(CONSOLE) doctrine:database:create --no-interaction --if-not-exists --env=test
+	@$(CONSOLE) doctrine:schema:create --env=test
 
 setup-fixtures: ## Install the fixtures
-	@$(SYMFONY) console doctrine:fixtures:load --no-interaction
+	@$(CONSOLE) doctrine:fixtures:load --no-interaction
 
 reset-database: ## Reset the whole database (caution!)
-	@$(SYMFONY) console doctrine:database:drop --force
-	@$(SYMFONY) console doctrine:database:create --no-interaction
-	@$(SYMFONY) console doctrine:migrations:migrate --no-interaction
+	@$(CONSOLE) doctrine:database:drop --force
+	@$(CONSOLE) doctrine:database:create --no-interaction
+	@$(CONSOLE) doctrine:migrations:migrate --no-interaction
 
 ## —— Project pipelines 🚇 ——————————————————————————————————————————————————————
-checks: cs static-analysis ## Run check-styles and static-analysis
+checks: cs static-analysis lint ## Run check-styles and static-analysis
 
 ci: validate checks test ## Run CI pipeline
 
@@ -96,27 +99,47 @@ cc: c=c:c ## Clear the cache
 cc: sf
 
 ## —— Coding standards ✨ ——————————————————————————————————————————————————————
-cs: rector fix-php stan psalm eslint ## Run all coding standards checks
+cs: rector fix-php fix-twig eslint phpmd ## Run all coding standards checks
 
-static-analysis: stan psalm ## Run the static analysis
+static-analysis: phpstan psalm ## Run the static analysis
 
-lint-php: ## Lint files with php-cs-fixer
-	@$(PHP_CS_FIXER) fix --allow-risky=yes --dry-run --config=php-cs-fixer.php
-
-fix-php: ## Fix files with php-cs-fixer
-	@PHP_CS_FIXER_IGNORE_ENV=1 $(PHP_CS_FIXER) fix --allow-risky=yes --config=php-cs-fixer.php
+lint: lint-php lint-container lint-yaml lint-doctrine lint-xliff lint-twig
 
 eslint: ## Run ESLint
 	@$(YARN) run eslint assets
 
+fix-php: ## Fix files with php-cs-fixer
+	@PHP_CS_FIXER_IGNORE_ENV=1 $(PHP_CS_FIXER) fix --allow-risky=yes --config=php-cs-fixer.php
+
+fix-twig: ## Fix files with php-cs-fixer
+	@$(TWIG_CS_FIXER) --fix
+
+lint-container:
+	@$(CONSOLE) lint:container --no-debug
+
+lint-doctrine:
+	@$(CONSOLE) doctrine:schema:validate --skip-sync -vvv --no-interaction
+
+lint-php: ## Lint files with php-cs-fixer
+	@$(PHP_CS_FIXER) fix --allow-risky=yes --dry-run --config=php-cs-fixer.php
+
+lint-twig: ## Lint files with php-cs-fixer
+	@$(TWIG_CS_FIXER)
+
+lint-yaml:
+	@$(CONSOLE) lint:yaml config
+
+lint-xliff:
+	@$(CONSOLE) lint:xliff translations
+
 phpmd:
 	vendor/bin/phpmd src/ html phpmd.xml --report-file var/report/phpmd.html --ignore-violations-on-exit
 
+phpstan: ## Run PHPStan
+	@$(PHP_CONT) $(PHPSTAN) analyse --memory-limit 1G
+
 psalm: ## Run Psalm
 	@$(PSALM)
-
-stan: ## Run PHPStan
-	@$(SYMFONY) php $(PHPSTAN) analyse --memory-limit 1G
 
 rector: ## Run Rector
 	@$(RECTOR)
