@@ -50,7 +50,7 @@ reset-database: ## Reset the whole database (caution!)
 ## —— Project pipelines 🚇 ——————————————————————————————————————————————————————
 checks: cs static-analysis ## Run check-styles and static-analysis
 
-ci: checks test ## Run CI pipeline
+ci: validate checks test ## Run CI pipeline
 
 reset: install reset-database setup-fixtures ## Reset pipeline for the whole project (caution!)
 
@@ -81,6 +81,12 @@ vendor: ## Install vendors according to the current composer.lock file
 vendor: c=install --prefer-dist --no-dev --no-progress --no-scripts --no-interaction
 vendor: composer
 
+audit:
+	@$(COMPOSER) audit
+
+validate:
+	@$(COMPOSER) validate
+
 ## —— Symfony 🎵 ———————————————————————————————————————————————————————————————
 sf: ## List all Symfony commands or pass the parameter "c=" to run a given command, example: make sf c=about
 	@$(eval c ?=)
@@ -102,6 +108,9 @@ fix-php: ## Fix files with php-cs-fixer
 
 eslint: ## Run ESLint
 	@$(YARN) run eslint assets
+
+phpmd:
+	vendor/bin/phpmd src/ html phpmd.xml --report-file var/report/phpmd.html --ignore-violations-on-exit
 
 psalm: ## Run Psalm
 	@$(PSALM)
