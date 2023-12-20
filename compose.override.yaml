@@ -32,7 +32,7 @@ services:
 ###< symfony/mailer ###
 
 ###> doctrine/doctrine-bundle ###
-  database:
+  db:
     ports:
       - '3306:3306'
 ###< doctrine/doctrine-bundle ###

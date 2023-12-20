@@ -39,6 +39,7 @@ setup-database: ## Setup the database backend
 	@$(CONSOLE) doctrine:migrations:migrate --no-interaction
 
 setup-test-db: ## Setup the test database
+	@$(CONSOLE) doctrine:database:drop --force --env=test
 	@$(CONSOLE) doctrine:database:create --no-interaction --if-not-exists --env=test
 	@$(CONSOLE) doctrine:schema:create --env=test
 
@@ -49,7 +50,6 @@ reset-database: ## Reset the whole database (caution!)
 	@$(CONSOLE) doctrine:database:drop --force
 	@$(CONSOLE) doctrine:database:create --no-interaction
 	@$(CONSOLE) doctrine:migrations:migrate --no-interaction
-	@$(CONSOLE) doctrine:fixtures:load --no-interaction
 
 ## —— Project pipelines 🚇 ——————————————————————————————————————————————————————
 checks: cs static-analysis lint ## Run check-styles and static-analysis
