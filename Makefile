@@ -49,6 +49,7 @@ reset-database: ## Reset the whole database (caution!)
 	@$(CONSOLE) doctrine:database:drop --force
 	@$(CONSOLE) doctrine:database:create --no-interaction
 	@$(CONSOLE) doctrine:migrations:migrate --no-interaction
+	@$(CONSOLE) doctrine:fixtures:load --no-interaction
 
 ## —— Project pipelines 🚇 ——————————————————————————————————————————————————————
 checks: cs static-analysis lint ## Run check-styles and static-analysis
