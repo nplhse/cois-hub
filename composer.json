@@ -135,6 +135,7 @@
         "vimeo/psalm": "^5.17",
         "vincentlanglet/twig-cs-fixer": "^2.0",
         "weirdan/doctrine-psalm-plugin": "^2.9",
+        "zenstruck/browser": "^1.7",
         "zenstruck/foundry": "^1.36"
     }
 }
