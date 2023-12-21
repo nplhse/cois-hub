@@ -7,7 +7,7 @@
         <div class="container container-tight py-4">
             <div class="card card-md">
                 <div class="card-body">
-                    <h2 class="h2 text-center mb-4">{{ "title.login"|trans }}</h2>
+                    <h2 class="text-center mb-4">{{ "title.login"|trans }}</h2>
 
                     {% if error %}
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -32,9 +32,11 @@
                     <div class="form-footer">
                         <button type="submit" class="btn btn-primary w-100">{{ "label.signin"|trans }}</button>
                     </div>
-
                     {{ form_end(form) }}
                 </div>
+            </div>
+            <div class="text-center text-muted mt-3">
+                {{ "label.no_account_yet"|trans }} <a href="{{ path("app_register") }}" tabindex="-1">{{ "label.click_to_register"|trans }}</a>
             </div>
         </div>
 {% endblock %}

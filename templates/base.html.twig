@@ -41,6 +41,9 @@
                             <div class="navbar-nav flex-row order-md-last">
                                 <div class="nav-item d-none d-md-flex me-3">
                                     <div class="btn-group">
+                                        <a href="{{ path('app_register') }}" class="btn">
+                                            {{ "label.register"|trans }}
+                                        </a>
                                         <a href="{{ path('app_login') }}" class="btn">
                                             {{ "label.login"|trans }}
                                         </a>
@@ -51,6 +54,10 @@
                     </div>
                 </header>
             {% endblock %}
+
+            <div class="container-xl">
+                {% include "_flash_messages.html.twig" %}
+            </div>
 
             {% block body %}{% endblock %}
 

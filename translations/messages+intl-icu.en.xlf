@@ -25,6 +25,62 @@
         <source>label.signin</source>
         <target>Sign in</target>
       </trans-unit>
+      <trans-unit id="j0i_RMV" resname="label.register">
+        <source>label.register</source>
+        <target>Register</target>
+      </trans-unit>
+      <trans-unit id="wCazS.X" resname="action.close">
+        <source>action.close</source>
+        <target>Close</target>
+      </trans-unit>
+      <trans-unit id="FHhgESp" resname="title.register">
+        <source>title.register</source>
+        <target>Create new account</target>
+      </trans-unit>
+      <trans-unit id="xo3V.yy" resname="label.create_account">
+        <source>label.create_account</source>
+        <target>Create new account</target>
+      </trans-unit>
+      <trans-unit id="BHJjbbu" resname="label.already_registered">
+        <source>label.already_registered</source>
+        <target>Already have account?</target>
+      </trans-unit>
+      <trans-unit id="BVi3272" resname="label.no_account_yet">
+        <source>label.no_account_yet</source>
+        <target>Don't have account yet?</target>
+      </trans-unit>
+      <trans-unit id="ZBGVe0s" resname="label.click_to_register">
+        <source>label.click_to_register</source>
+        <target>Click here to register</target>
+      </trans-unit>
+      <trans-unit id="v7W9vrc" resname="email.welcome_glad_to">
+        <source>email.welcome_glad_to</source>
+        <target>We're glad to have you here</target>
+      </trans-unit>
+      <trans-unit id="yXqQboW" resname="email.welcome_thanks">
+        <source>email.welcome_thanks</source>
+        <target>Thanks for registering and your willingness to participate in this project. To verify your email address, please click on below button.</target>
+      </trans-unit>
+      <trans-unit id="Qz8mHCu" resname="email.welcome_confim_address">
+        <source>email.welcome_confim_address</source>
+        <target>Please confirm your email address by clicking the following link:</target>
+      </trans-unit>
+      <trans-unit id="mBF1.Ep" resname="label.confim_email">
+        <source>label.confim_email</source>
+        <target>Confirm your email address</target>
+      </trans-unit>
+      <trans-unit id="Jb9GXNZ" resname="email.link_expiration">
+        <source>email.link_expiration</source>
+        <target>This link will expire in</target>
+      </trans-unit>
+      <trans-unit id="vvefqeb" resname="email.signature_cheers">
+        <source>email.signature_cheers</source>
+        <target>Cheers,</target>
+      </trans-unit>
+      <trans-unit id="3BWkzAn" resname="email.signature_folks">
+        <source>email.signature_folks</source>
+        <target>Your friendly folks of cois-hub</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -1,0 +1,17 @@
+{% if app.request.hasPreviousSession %}
+    <div class="messages mt-1 mb-1">
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }} alert-dismissible" role="alert">
+                    <div class="d-flex">
+                        <div>
+                            <p class="m-0">{{ message|trans }}</p>
+                        </div>
+
+                        <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endif %}
