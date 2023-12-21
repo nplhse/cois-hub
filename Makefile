@@ -27,14 +27,14 @@ help: ## Outputs this help screen
 	@grep -E '(^[a-zA-Z0-9\./_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}{printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
 
 ## —— Project setup 🚀 ——————————————————————————————————————————————————————————
-setup: install setup-database ## Setup the whole project
+setup: install setup-db ## Setup the whole project
 
 setup-dev: install setup-test-db setup-fixtures ## Setup the project in dev environment
 
 install: ## Install composer dependencies
 	@$(COMPOSER) install --no-interaction
 
-setup-database: ## Setup the database backend
+setup-db: ## Setup the database backend
 	@$(CONSOLE) doctrine:database:create --if-not-exists --no-interaction
 	@$(CONSOLE) doctrine:migrations:migrate --no-interaction
 
@@ -46,7 +46,7 @@ setup-test-db: ## Setup the test database
 setup-fixtures: ## Install the fixtures
 	@$(CONSOLE) doctrine:fixtures:load --no-interaction
 
-reset-database: ## Reset the whole database (caution!)
+reset-db: ## Reset the whole database (caution!)
 	@$(CONSOLE) doctrine:database:drop --force
 	@$(CONSOLE) doctrine:database:create --no-interaction
 	@$(CONSOLE) doctrine:migrations:migrate --no-interaction
@@ -98,6 +98,9 @@ sf: ## List all Symfony commands or pass the parameter "c=" to run a given comma
 
 cc: c=c:c ## Clear the cache
 cc: sf
+
+consume: ## Consume messages from symfony messenger
+	@$(CONSOLE) messenger:consume async -vvv
 
 ## —— Coding standards ✨ ——————————————————————————————————————————————————————
 cs: rector fix-php fix-twig eslint phpmd ## Run all coding standards checks
