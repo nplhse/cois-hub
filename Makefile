@@ -102,6 +102,9 @@ cc: sf
 consume: ## Consume messages from symfony messenger
 	@$(CONSOLE) messenger:consume async -vvv
 
+trans: ## Extract translations from symfony
+	@$(CONSOLE) translation:extract --dump-messages --force --sort=asc en
+
 ## —— Coding standards ✨ ——————————————————————————————————————————————————————
 cs: rector fix-php fix-twig eslint phpmd ## Run all coding standards checks
 
