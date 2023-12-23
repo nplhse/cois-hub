@@ -1,0 +1,15 @@
+{% extends 'settings/_base.html.twig' %}
+
+{% block title %}{{ "title.my_account"|trans }} - {{ parent() }}{% endblock %}
+
+{% block card %}
+    <div class="card-body">
+        <h2 class="mb-4">{{ "title.my_account"|trans }}</h2>
+        <h3 class="card-title mt-4">{{ "label.password"|trans }}</h3>
+        <p class="card-subtitle">{{ "help.password_set_new"|trans }}</p>
+        <div>
+            <a href="#" class="btn">
+                {{ "btn.password_set_new"|trans }}
+            </a>
+        </div>
+{% endblock %}

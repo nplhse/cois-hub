@@ -81,6 +81,38 @@
         <source>email.signature_folks</source>
         <target>Your friendly folks of cois-hub</target>
       </trans-unit>
+      <trans-unit id="bLyHJ5T" resname="title.settings">
+        <source>title.settings</source>
+        <target>Settings</target>
+      </trans-unit>
+      <trans-unit id="m3GSfDy" resname="label.settings_user">
+        <source>label.settings_user</source>
+        <target>User settings</target>
+      </trans-unit>
+      <trans-unit id="5fXPEMc" resname="label.my_account">
+        <source>label.my_account</source>
+        <target>Your account</target>
+      </trans-unit>
+      <trans-unit id="C2YETEz" resname="title.my_account">
+        <source>title.my_account</source>
+        <target>My Account</target>
+      </trans-unit>
+      <trans-unit id="9pvowqn" resname="label.password">
+        <source>label.password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="_kzdadS" resname="help.password_set_new">
+        <source>help.password_set_new</source>
+        <target>You can set a new password for your account by clicking on the button below.</target>
+      </trans-unit>
+      <trans-unit id="sr8t86R" resname="btn.password_set_new">
+        <source>btn.password_set_new</source>
+        <target>Set new password</target>
+      </trans-unit>
+      <trans-unit id=".kLhRZY" resname="label.settings">
+        <source>label.settings</source>
+        <target>Settings</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
