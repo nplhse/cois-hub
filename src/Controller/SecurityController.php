@@ -15,19 +15,11 @@ class SecurityController extends AbstractController
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        $loginFormDTO = new LoginFormDTO();
-
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
-        // last username entered by the user
-        if (!$this->getUser()) {
-            $loginFormDTO->setUsername($authenticationUtils->getLastUsername());
-        } else {
-            /** @var User $user */
-            $user = $this->getUser();
-            $loginFormDTO->setUsername($user->getUsername());
-        }
+        $loginFormDTO = new LoginFormDTO();
+        $loginFormDTO->setUsername($this->getUserName($authenticationUtils));
 
         $form = $this->createForm(LoginType::class, $loginFormDTO);
 
@@ -41,5 +33,17 @@ class SecurityController extends AbstractController
     public function logout(): never
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    private function getUsername(AuthenticationUtils $authenticationUtils): string
+    {
+        if (!$this->getUser()) {
+            return $authenticationUtils->getLastUsername();
+        }
+
+        /** @var User $user */
+        $user = $this->getUser();
+
+        return $user->getUsername();
     }
 }
