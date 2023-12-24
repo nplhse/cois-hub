@@ -8,14 +8,14 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 use Zenstruck\Foundry\Test\ResetDatabase;
 
-class UrlTest extends WebTestCase
+class AppRoutesTest extends WebTestCase
 {
     use ResetDatabase;
 
     /**
      * @dataProvider getPublicUrls
      */
-    public function testPublicUrls(string $url): void
+    public function testPublicUrlsAreReachable(string $url): void
     {
         $client = static::createClient();
         $client->request('GET', $url);
@@ -26,7 +26,7 @@ class UrlTest extends WebTestCase
     /**
      * @dataProvider getSecureUrls
      */
-    public function testSecureUrls(string $url): void
+    public function testSecureUrlsAreRestricted(string $url): void
     {
         $client = static::createClient();
         $client->request('GET', $url);

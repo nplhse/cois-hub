@@ -116,7 +116,7 @@ eslint: ## Run ESLint
 	@$(YARN) run eslint assets
 
 fix-php: ## Fix files with php-cs-fixer
-	@PHP_CS_FIXER_IGNORE_ENV=1 $(PHP_CS_FIXER) fix --allow-risky=yes --config=php-cs-fixer.php
+	@$(PHP_CS_FIXER) fix --allow-risky=yes --config=php-cs-fixer.php
 
 fix-twig: ## Fix files with php-cs-fixer
 	@$(TWIG_CS_FIXER) --fix
@@ -154,3 +154,9 @@ rector: ## Run Rector
 ## —— Tests ✅ —————————————————————————————————————————————————————————————————
 test: ## Run tests
 	@$(PHPUNIT) --stop-on-failure
+
+testdox: ## Run tests with testdox
+	@$(PHPUNIT) --testdox
+
+testcov:
+	@XDEBUG_MODE=coverage $(PHPUNIT)

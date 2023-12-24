@@ -16,7 +16,7 @@ class SecurityControllerTest extends WebTestCase
     use ResetDatabase;
     use Factories;
 
-    public function testLoginLogout(): void
+    public function testYouCanLoginAndLogout(): void
     {
         UserFactory::new(['username' => 'foo'])->create();
 
