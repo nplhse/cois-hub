@@ -113,6 +113,14 @@
         <source>label.settings</source>
         <target>Settings</target>
       </trans-unit>
+      <trans-unit id="02xL9WI" resname="label.back_to_site">
+        <source>label.back_to_site</source>
+        <target>Back to frontend</target>
+      </trans-unit>
+      <trans-unit id="WTJDbEA" resname="label.backend">
+        <source>label.backend</source>
+        <target>Administration</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
