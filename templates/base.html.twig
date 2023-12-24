@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-        <meta name="robots" content="noindex, nofollow">
+        {% include "includes/metatags.html.twig" %}
 
         <title>{% block title %}cois-hub{% endblock %}</title>
 
@@ -14,25 +11,7 @@
     </head>
     <body>
         <div class="page">
-            {% block header %}
-                <header class="navbar navbar-expand-md d-print-none" data-bs-theme="dark">
-                    <div class="container-xl">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                            <a href="{{ path('app_hello_world') }}">
-                                cois-hub
-                            </a>
-                        </h1>
-                        <div class="navbar-nav flex-row order-md-last">
-                            {% block navbar_user %}
-                                {% include "includes/navbar_user.html.twig" %}
-                            {% endblock %}
-                        </div>
-                    </div>
-                </header>
-            {% endblock %}
+            {% embed "embeds/header.html.twig" %}{% endembed %}
 
             <div class="container-xl">
                 {% include "includes/flash_messages.html.twig" %}
