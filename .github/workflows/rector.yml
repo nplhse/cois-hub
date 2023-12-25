@@ -25,7 +25,7 @@ jobs:
         
       - run: vendor/bin/php-cs-fixer fix --allow-risky=yes --config=php-cs-fixer.php
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: '[rector] Rector fixes'
           commit_author: 'GitHub Action <actions@github.com>'
