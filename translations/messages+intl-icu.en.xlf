@@ -153,6 +153,30 @@
         <source>label.next</source>
         <target>Next</target>
       </trans-unit>
+      <trans-unit id="fKgc.kW" resname="title.users">
+        <source>title.users</source>
+        <target>Users</target>
+      </trans-unit>
+      <trans-unit id="_HfESWF" resname="label.user_count">
+        <source>label.user_count</source>
+        <target>Users</target>
+      </trans-unit>
+      <trans-unit id="1uEAu_2" resname="label.user_new">
+        <source>label.user_new</source>
+        <target>Create new User</target>
+      </trans-unit>
+      <trans-unit id="hVZOx.T" resname="label.user_is_admin">
+        <source>label.user_is_admin</source>
+        <target>Admin</target>
+      </trans-unit>
+      <trans-unit id="zwRIb6v" resname="label.user_is_user">
+        <source>label.user_is_user</source>
+        <target>User</target>
+      </trans-unit>
+      <trans-unit id="jI3fm2M" resname="label.users">
+        <source>label.users</source>
+        <target>Users</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
