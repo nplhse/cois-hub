@@ -9,6 +9,7 @@ use App\Entity\User;
 use App\Enum\AuditActions;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class AuditLogger
@@ -16,7 +17,7 @@ class AuditLogger
     public function __construct(
         private readonly EntityManagerInterface $em,
         private readonly Security $security,
-        private readonly RequestStack $requestStack
+        private readonly RequestStack $requestStack,
     ) {
     }
 
@@ -29,22 +30,36 @@ class AuditLogger
         $user = $this->security->getUser();
         $request = $this->requestStack->getCurrentRequest();
 
-        if (null === $request) {
-            return;
-        }
-
         $log = new AuditLog(
             $entityType,
             $entityId,
             new \DateTimeImmutable(),
-            $request->attributes->get('_route'),
+            $this->getRouteFromRequest($request),
             $eventData,
             $action->getType(),
-            $request->getClientIp(),
+            $this->getClientIpFromRequest($request),
             $user
         );
 
         $this->em->persist($log);
         $this->em->flush();
+    }
+
+    private function getClientIpFromRequest(?Request $request): ?string
+    {
+        if (null === $request) {
+            return null;
+        }
+
+        return (string) $request->getClientIp();
+    }
+
+    private function getRouteFromRequest(?Request $request): string
+    {
+        if (null === $request) {
+            return 'console';
+        }
+
+        return (string) $request->attributes->get('_route');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\DataTransferObjects;
 
-class LoginFormDTO
+class LoginTypeDTO
 {
     private string $username;
     private string $password;

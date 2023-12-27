@@ -2,6 +2,10 @@
 
 {% block title %}{{ "title.my_account"|trans }} - {{ parent() }}{% endblock %}
 
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active" aria-current="page">{{ "title.my_account"|trans }}</li>
+{% endblock %}
+
 {% block card %}
     <div class="card-body">
         <h2 class="mb-4">{{ "title.my_account"|trans }}</h2>

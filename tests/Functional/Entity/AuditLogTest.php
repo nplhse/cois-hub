@@ -38,7 +38,7 @@ class AuditLogTest extends KernelTestCase
             $user->object()
         );
 
-        $auditLogRepository->save($auditLog, true);
+        $auditLogRepository->add($auditLog);
 
         // 3. "Assert"
         $auditLog = $auditLogRepository->findOneBy([

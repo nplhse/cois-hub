@@ -3,21 +3,24 @@
 namespace App\EventSubscriber;
 
 use App\Enum\AuditActions;
+use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Event\PostUpdateEventArgs;
+use Doctrine\ORM\Events;
 use Doctrine\ORM\PersistentCollection;
-use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+#[AsDoctrineListener(event: Events::postUpdate, priority: 500, connection: 'default')]
 class AuditUpdateSubscriber extends AuditSubscriber implements EventSubscriberInterface
 {
     public static function getSubscribedEvents(): array
     {
         return [
-            'postUpdate' => 'onPostUpdate',
+            'postUpdate' => 'postUpdate',
         ];
     }
 
-    public function onPostUpdate(LifecycleEventArgs $args): void
+    public function postUpdate(PostUpdateEventArgs $args): void
     {
         $entity = $args->getObject();
 

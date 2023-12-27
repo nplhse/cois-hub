@@ -4,7 +4,7 @@
             <div class="messages">
                 {% for type, messages in app.flashes %}
                     {% for message in messages %}
-                        <div class="alert alert-{{ type }} alert-dismissible" role="alert">
+                        <div class="alert alert-{{ type }} alert-dismissible alert-important" role="alert">
                             <div class="d-flex">
                                 <div>
                                     <p class="m-0">{{ message|trans }}</p>

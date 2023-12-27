@@ -3,9 +3,14 @@
 namespace App\EventSubscriber;
 
 use App\Enum\AuditActions;
-use Doctrine\Persistence\Event\LifecycleEventArgs;
+use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
+use Doctrine\ORM\Event\PostRemoveEventArgs;
+use Doctrine\ORM\Event\PreRemoveEventArgs;
+use Doctrine\ORM\Events;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+#[AsDoctrineListener(event: Events::preRemove, priority: 500, connection: 'default')]
+#[AsDoctrineListener(event: Events::postRemove, priority: 500, connection: 'default')]
 class AuditRemoveSubscriber extends AuditSubscriber implements EventSubscriberInterface
 {
     /**
@@ -16,19 +21,19 @@ class AuditRemoveSubscriber extends AuditSubscriber implements EventSubscriberIn
     public static function getSubscribedEvents(): array
     {
         return [
-            'preRemove' => 'onPreRemove',
-            'postRemove' => 'onPostRemove',
+            'preRemove' => 'preRemove',
+            'postRemove' => 'postRemove',
         ];
     }
 
-    public function onPreRemove(LifecycleEventArgs $args): void
+    public function preRemove(PreRemoveEventArgs $args): void
     {
         $entity = $args->getObject();
 
         $this->removals[] = $this->normalizeEntity($entity);
     }
 
-    public function onPostRemove(LifecycleEventArgs $args): void
+    public function postRemove(PostRemoveEventArgs $args): void
     {
         $entity = $args->getObject();
 

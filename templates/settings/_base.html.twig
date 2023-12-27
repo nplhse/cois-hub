@@ -9,13 +9,19 @@
             <div class="container-xl">
                 <div class="row g-2 align-items-center">
                     <div class="col">
+                        <div class="mb-1">
+                            <ol class="breadcrumb" aria-label="breadcrumbs">
+                                {% block breadcrumbs %}{% endblock %}
+                            </ol>
+                        </div>
                         <h2 class="page-title">
-                            {{ "title.settings"|trans }}
+                            <a href="{{ path("app_settings") }}">{{ "title.settings"|trans }}</a>
                         </h2>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- Page body -->
         <div class="page-body">
             <div class="container-xl">

@@ -121,6 +121,38 @@
         <source>label.backend</source>
         <target>Administration</target>
       </trans-unit>
+      <trans-unit id="2GecrqJ" resname="label.dashboard">
+        <source>label.dashboard</source>
+        <target>Dashboard</target>
+      </trans-unit>
+      <trans-unit id="GnVaEgl" resname="label.audit_log">
+        <source>label.audit_log</source>
+        <target>Audit log</target>
+      </trans-unit>
+      <trans-unit id="abnmIYj" resname="title.list_logs">
+        <source>title.list_logs</source>
+        <target>List logs</target>
+      </trans-unit>
+      <trans-unit id="GfJRF1Y" resname="title.audit_log">
+        <source>title.audit_log</source>
+        <target>Audit logs</target>
+      </trans-unit>
+      <trans-unit id="hlhocqb" resname="label.search_no_results">
+        <source>label.search_no_results</source>
+        <target>Sorry, no results found!</target>
+      </trans-unit>
+      <trans-unit id=".sLbbAr" resname="help.search_no_results">
+        <source>help.search_no_results</source>
+        <target>Try adjusting your search or filter to find what you're looking for.</target>
+      </trans-unit>
+      <trans-unit id="HuCBwC." resname="label.previous">
+        <source>label.previous</source>
+        <target>Previous</target>
+      </trans-unit>
+      <trans-unit id="wcGgGJk" resname="label.next">
+        <source>label.next</source>
+        <target>Next</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

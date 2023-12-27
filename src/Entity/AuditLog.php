@@ -31,6 +31,7 @@ class AuditLog
         #[ORM\Column(length: 255, nullable: true)]
         private ?string $ipAddress,
         #[ORM\ManyToOne]
+        #[ORM\JoinColumn(nullable: true)]
         private ?User $user = null
     ) {
     }
@@ -70,7 +71,7 @@ class AuditLog
         return $this->ipAddress;
     }
 
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }

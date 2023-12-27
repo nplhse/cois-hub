@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\DataTransferObjects\LoginFormDTO;
+use App\DataTransferObjects\LoginTypeDTO;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,7 +22,7 @@ class LoginType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => LoginFormDTO::class,
+            'data_class' => LoginTypeDTO::class,
         ]);
     }
 }

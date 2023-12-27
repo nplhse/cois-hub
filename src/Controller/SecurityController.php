@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\DataTransferObjects\LoginFormDTO;
+use App\DataTransferObjects\LoginTypeDTO;
 use App\Entity\User;
 use App\Form\LoginType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,7 +18,7 @@ class SecurityController extends AbstractController
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
-        $loginFormDTO = new LoginFormDTO();
+        $loginFormDTO = new LoginTypeDTO();
         $loginFormDTO->setUsername($this->getUserName($authenticationUtils));
 
         $form = $this->createForm(LoginType::class, $loginFormDTO);

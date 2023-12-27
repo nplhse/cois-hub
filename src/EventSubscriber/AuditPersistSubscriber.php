@@ -3,19 +3,22 @@
 namespace App\EventSubscriber;
 
 use App\Enum\AuditActions;
-use Doctrine\Persistence\Event\LifecycleEventArgs;
+use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
+use Doctrine\ORM\Event\PostPersistEventArgs;
+use Doctrine\ORM\Events;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+#[AsDoctrineListener(event: Events::postPersist, priority: 500, connection: 'default')]
 class AuditPersistSubscriber extends AuditSubscriber implements EventSubscriberInterface
 {
     public static function getSubscribedEvents(): array
     {
         return [
-            'postPersist' => 'onPostPersist',
+            'postPersist' => 'postPersist',
         ];
     }
 
-    public function onPostPersist(LifecycleEventArgs $args): void
+    public function postPersist(PostPersistEventArgs $args): void
     {
         $entity = $args->getObject();
 
