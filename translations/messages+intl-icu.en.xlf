@@ -177,6 +177,46 @@
         <source>label.users</source>
         <target>Users</target>
       </trans-unit>
+      <trans-unit id="ScuUX1R" resname="title.error">
+        <source>title.error</source>
+        <target>Oops… You just found an error page!</target>
+      </trans-unit>
+      <trans-unit id=".YJkT31" resname="label.error_description">
+        <source>label.error_description</source>
+        <target>There was an unknown error (HTTP {status_code, number}) that prevented to complete your request.</target>
+      </trans-unit>
+      <trans-unit id="IWJQb52" resname="label.error_suggestion">
+        <source>label.error_suggestion</source>
+        <target><![CDATA[Try loading this page again in some minutes or <a href="{url}">go back to the homepage</a>.]]></target>
+      </trans-unit>
+      <trans-unit id="YtTJTQq" resname="label.to_homepage">
+        <source>label.to_homepage</source>
+        <target>Take me to the homepage</target>
+      </trans-unit>
+      <trans-unit id="l4poZBZ" resname="label.error_404_description">
+        <source>label.error_404_description</source>
+        <target>We are sorry but the page you are looking for was not found</target>
+      </trans-unit>
+      <trans-unit id="YmUV1ls" resname="label.error_404_suggestion">
+        <source>label.error_404_suggestion</source>
+        <target><![CDATA[Check out any misspelling in the URL or <a href="{url}">go back to the homepage</a>.]]></target>
+      </trans-unit>
+      <trans-unit id="6kiW_BH" resname="label.error_500_description">
+        <source>label.error_500_description</source>
+        <target>We are sorry but our server encountered an internal error.</target>
+      </trans-unit>
+      <trans-unit id="yUMnePe" resname="label.error_500_suggestion">
+        <source>label.error_500_suggestion</source>
+        <target><![CDATA[Try loading this page again in some minutes or <a href="{url}">go back to the homepage</a>.]]></target>
+      </trans-unit>
+      <trans-unit id="AtR.p5h" resname="label.error_403_description">
+        <source>label.error_403_description</source>
+        <target>You don't have permission to access to this resource.</target>
+      </trans-unit>
+      <trans-unit id="WI3Y505" resname="label.error_403_suggestion">
+        <source>label.error_403_suggestion</source>
+        <target>You might ask a system administrator to grant you access to this resource.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

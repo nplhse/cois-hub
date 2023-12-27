@@ -11,7 +11,9 @@
     </head>
     <body>
         <div class="page">
-            {% embed "embeds/header.html.twig" %}{% endembed %}
+            {% block header %}
+                {% embed "embeds/header.html.twig" %}{% endembed %}
+            {% endblock %}
 
             <div class="container-xl mt-2 mb-2">
                 {% include "includes/flash_messages.html.twig" %}
