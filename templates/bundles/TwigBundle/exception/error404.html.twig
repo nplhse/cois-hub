@@ -13,10 +13,10 @@
                 <div class="empty-header">{{ status_code }}</div>
                 <p class="empty-title">{{ "title.error"|trans }}</p>
                 <p class="empty-subtitle">
-                    {{ "label.error_404_description"|trans({ 'status_code': status_code }) }}
+                    {{ "label.error_404_description"|trans({'status_code': status_code}) }}
                 </p>
                 <p class="empty-subtitle text-muted">
-                    {{ "label.error_404_suggestion"|trans({ 'url': path('app_hello_world') })|raw }}
+                    {{ "label.error_404_suggestion"|trans({'url': path('app_hello_world')})|raw }}
                 </p>
                 <div class="empty-action">
                     <a href="{{ path('app_hello_world') }}" class="btn btn-primary">
