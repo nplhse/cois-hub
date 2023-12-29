@@ -21,4 +21,5 @@ framework:
             Symfony\Component\Notifier\Message\SmsMessage: async
 
             # Route your messages to the transports
-            'App\Command\RegisterUserCommand': sync
+            'App\Command\User\RegisterUserCommand': sync
+            'App\Command\User\ToogleUserIsPublicCommand': sync

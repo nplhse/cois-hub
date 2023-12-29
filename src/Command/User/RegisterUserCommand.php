@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Command;
+namespace App\Command\User;
 
 final readonly class RegisterUserCommand
 {

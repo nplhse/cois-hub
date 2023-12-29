@@ -16,4 +16,22 @@
                 {{ "btn.password_set_new"|trans }}
             </a>
         </div>
+        {{ form_start(settingsForm) }}
+        <h3 class="card-title mt-4">Public profile</h3>
+        <p class="card-subtitle">Making your profile public means that anyone vistiting this site will be able to find
+            you.</p>
+
+        {{ form_row(settingsForm.isPublic) }}
+    </div>
+    <div class="card-footer bg-transparent mt-auto">
+        <div class="btn-list justify-content-end">
+            <a href="{{ path('app_settings_account') }}" class="btn">
+                Cancel
+            </a>
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+        </div>
+    </div>
+    {{ form_end(settingsForm) }}
 {% endblock %}

@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface, \Stringable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -182,7 +182,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function isIsPublic(): bool
+    public function isPublic(): bool
     {
         return $this->isPublic;
     }
@@ -192,5 +192,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->isPublic = $isPublic;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getUsername();
     }
 }

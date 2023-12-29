@@ -1,19 +1,23 @@
 <?php
 
-namespace App\Handler;
+namespace App\Handler\User;
 
-use App\Command\RegisterUserCommand;
+use App\Command\User\RegisterUserCommand;
 use App\Entity\User;
+use App\Event\User\UserRegistered;
+use App\Handler\DispatchEvents;
 use App\Repository\UserRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[AsMessageHandler]
-final readonly class RegisterUserCommandHandler
+final class RegisterUserCommandHandler
 {
+    use DispatchEvents;
+
     public function __construct(
-        private UserPasswordHasherInterface $userPasswordHasher,
-        private UserRepository $userRepository
+        private readonly UserPasswordHasherInterface $userPasswordHasher,
+        private readonly UserRepository $userRepository
     ) {
     }
 
@@ -38,6 +42,9 @@ final readonly class RegisterUserCommandHandler
         $user->setIsPublic(false);
 
         $this->userRepository->add($user);
+
+        $event = new UserRegistered($user->getId());
+        $this->dispatchEvent($event);
 
         return $user->getId();
     }

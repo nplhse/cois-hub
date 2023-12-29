@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Command\RegisterUserCommand;
+use App\Command\User\RegisterUserCommand;
 use App\DataTransferObjects\RegisterTypeDTO;
 use App\Entity\User;
 use App\Form\RegistrationType;
