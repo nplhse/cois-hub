@@ -61,4 +61,13 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
         return (new Paginator($query))->paginate($page, $perPage);
     }
+
+    public function getPublicPaginatedResults(int $page = 1, int $perPage = 10): Paginator
+    {
+        $query = $this->createQueryBuilder('u')
+            ->where('u.isPublic = true')
+            ->orderBy('u.username', 'ASC');
+
+        return (new Paginator($query))->paginate($page, $perPage);
+    }
 }

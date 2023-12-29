@@ -66,6 +66,7 @@ final class UserFactory extends ModelFactory
             'plainPassword' => 'password',
             'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTimeThisYear()),
             'hasCredentialsExpired' => false,
+            'isPublic' => true,
             'roles' => ['ROLE_USER'],
         ];
     }

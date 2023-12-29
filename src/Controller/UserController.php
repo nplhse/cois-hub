@@ -20,7 +20,13 @@ class UserController extends AbstractController
         #[MapQueryParameter]
         int $page = 1,
     ): Response {
-        $users = $this->userRepository->getPaginatedResults($page, 16);
+        if ($this->isGranted('ROLE_USER')) {
+            $users = $this->userRepository->getPaginatedResults($page, 16);
+        }
+
+        if (!isset($users)) {
+            $users = $this->userRepository->getPublicPaginatedResults($page, 16);
+        }
 
         return $this->render('user/index.html.twig', [
             'user_count' => $this->userRepository->getUserCount(),

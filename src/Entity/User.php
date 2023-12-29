@@ -51,6 +51,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::BOOLEAN)]
     private bool $isVerified = false;
 
+    #[ORM\Column]
+    private bool $isPublic = false;
+
     public function getId(): int
     {
         return $this->id;
@@ -175,6 +178,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function isIsPublic(): bool
+    {
+        return $this->isPublic;
+    }
+
+    public function setIsPublic(bool $isPublic): static
+    {
+        $this->isPublic = $isPublic;
 
         return $this;
     }
