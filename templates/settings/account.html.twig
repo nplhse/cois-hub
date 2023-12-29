@@ -12,26 +12,25 @@
         <h3 class="card-title mt-4">{{ "label.password"|trans }}</h3>
         <p class="card-subtitle">{{ "help.password_set_new"|trans }}</p>
         <div>
-            <a href="#" class="btn">
+            <a href="{{ path('app_settings_password') }}" class="btn">
                 {{ "btn.password_set_new"|trans }}
             </a>
         </div>
-        {{ form_start(settingsForm) }}
-        <h3 class="card-title mt-4">Public profile</h3>
-        <p class="card-subtitle">Making your profile public means that anyone vistiting this site will be able to find
-            you.</p>
+        {{ form_start(form) }}
+        <h3 class="card-title mt-4">{{ "title.public_profile"|trans }}</h3>
+        <p class="card-subtitle">{{ "help.public_profile"|trans }}</p>
 
-        {{ form_row(settingsForm.isPublic) }}
+        {{ form_row(form.isPublic) }}
     </div>
     <div class="card-footer bg-transparent mt-auto">
         <div class="btn-list justify-content-end">
             <a href="{{ path('app_settings_account') }}" class="btn">
-                Cancel
+                {{ "label.cancel"|trans }}
             </a>
             <button type="submit" class="btn btn-primary">
-                Submit
+                {{ "label.apply_changes"|trans }}
             </button>
         </div>
     </div>
-    {{ form_end(settingsForm) }}
+    {{ form_end(form) }}
 {% endblock %}

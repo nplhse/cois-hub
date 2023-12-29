@@ -53,11 +53,18 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->flush();
     }
 
-    public function getUserCount(): int
+    public function getUserCount(bool $isPublic = false): int
     {
-        return $this->createQueryBuilder('u')
-            ->select('count(u.id)')
-            ->getQuery()->getSingleScalarResult();
+        $query = $this->createQueryBuilder('u')
+            ->select('count(u.id)');
+
+        if (true === $isPublic) {
+            $query
+                ->andWhere('u.isPublic = :is_public')
+                ->setParameter('is_public', $isPublic);
+        }
+
+        return $query->getQuery()->getSingleScalarResult();
     }
 
     public function getPaginatedResults(int $page = 1, int $perPage = 10): Paginator

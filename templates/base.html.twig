@@ -15,11 +15,11 @@
                 {% embed "embeds/header.html.twig" %}{% endembed %}
             {% endblock %}
 
-            <div class="container-xl mt-2 mb-2">
-                {% include "includes/flash_messages.html.twig" %}
-            </div>
+            {% include "includes/flash_messages.html.twig" %}
 
-            {% block body %}{% endblock %}
+            <div class="page-wrapper">
+                {% block body %}{% endblock %}
+            </div>
 
             {% include "includes/footer.html.twig" %}
         </div>

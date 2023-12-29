@@ -20,13 +20,15 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
     public function __construct(
         private readonly EmailVerifier $emailVerifier,
         private readonly MessageBusInterface $messageBus,
-        private readonly UserRepository $userRepository
+        private readonly UserRepository $userRepository,
+        private readonly TranslatorInterface $translator,
     ) {
     }
 
@@ -59,7 +61,7 @@ class RegistrationController extends AbstractController
             $user = $this->userRepository->findOneBy(['id' => $userId]);
 
             $this->sendEmailConfirmation($user);
-            $this->addFlash('success', 'Your account has been created.');
+            $this->addFlash('success', $this->translator->trans('flash.user_registered'));
 
             return $userAuthenticator->authenticateUser(
                 $user,

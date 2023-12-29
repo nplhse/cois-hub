@@ -217,6 +217,62 @@
         <source>label.error_403_suggestion</source>
         <target>You might ask a system administrator to grant you access to this resource.</target>
       </trans-unit>
+      <trans-unit id="balXp1N" resname="title.password_update">
+        <source>title.password_update</source>
+        <target>Update your password</target>
+      </trans-unit>
+      <trans-unit id="8yeGT7d" resname="label.cancel">
+        <source>label.cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="QnMOLQb" resname="label.change_password">
+        <source>label.change_password</source>
+        <target>Set new Password</target>
+      </trans-unit>
+      <trans-unit id="MZ5wFOJ" resname="title.public_profile">
+        <source>title.public_profile</source>
+        <target>Public profile</target>
+      </trans-unit>
+      <trans-unit id="gXIP1Mw" resname="help.public_profile">
+        <source>help.public_profile</source>
+        <target>Making your profile public means that anyone visiting this site will be able to find you.</target>
+      </trans-unit>
+      <trans-unit id="cvSK_0f" resname="label.apply_changes">
+        <source>label.apply_changes</source>
+        <target>Apply changes</target>
+      </trans-unit>
+      <trans-unit id="uc6QOpR" resname="flash.password_updated">
+        <source>flash.password_updated</source>
+        <target>Your password has been updated.</target>
+      </trans-unit>
+      <trans-unit id="fMxqvd5" resname="flash.settings_updated">
+        <source>flash.settings_updated</source>
+        <target>Your settings have been updated.</target>
+      </trans-unit>
+      <trans-unit id=".suU4UJ" resname="flash.user_registered">
+        <source>flash.user_registered</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="aJNyO3a" resname="flash.email_verified">
+        <source>flash.email_verified</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="B3w55lp" resname="label.your_profile">
+        <source>label.your_profile</source>
+        <target>View your profile</target>
+      </trans-unit>
+      <trans-unit id="QEnBc0X" resname="title.user_profile">
+        <source>title.user_profile</source>
+        <target>User profile</target>
+      </trans-unit>
+      <trans-unit id=".W.o9F4" resname="label.basic_info">
+        <source>label.basic_info</source>
+        <target>Basic information</target>
+      </trans-unit>
+      <trans-unit id="v5SWCuI" resname="label.created_at">
+        <source>label.created_at</source>
+        <target>Created at</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
