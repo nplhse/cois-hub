@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\DataTransferObjects\RegisterTypeDTO;
+use App\Form\DataMapper\RegistrationDataMapper;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -52,6 +53,8 @@ class RegistrationType extends AbstractType
                 ],
             ])
         ;
+
+        $builder->setDataMapper(new RegistrationDataMapper());
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -35,6 +35,7 @@ final readonly class RegisterUserCommandHandler
         $user->setRoles(['ROLE_USER']);
         $user->setHasCredentialsExpired(false);
         $user->setIsVerified(false);
+        $user->setIsPublic(false);
 
         $this->userRepository->add($user);
 
