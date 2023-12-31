@@ -24,7 +24,7 @@ class AccountSettingsController extends AbstractController
     }
 
     #[Route('/settings', name: 'app_settings_account')]
-    public function index(Request $request): Response
+    public function __invoke(Request $request): Response
     {
         /** @var User $user */
         $user = $this->getUser();

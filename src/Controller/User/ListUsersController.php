@@ -16,7 +16,7 @@ class ListUsersController extends AbstractController
     }
 
     #[Route('/user/', name: 'app_user')]
-    public function index(
+    public function __invoke(
         #[MapQueryParameter]
         int $page = 1,
     ): Response {

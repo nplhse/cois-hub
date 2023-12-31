@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserProfileController extends AbstractController
 {
     #[Route('/user/profile/{id}', name: 'app_user_profile')]
-    public function index(User $user): Response
+    public function __invoke(User $user): Response
     {
         if (!$user->isPublic()) {
             $this->denyAccessUnlessGranted('ROLE_USER');
