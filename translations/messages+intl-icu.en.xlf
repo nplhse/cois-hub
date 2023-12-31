@@ -19,7 +19,7 @@
       </trans-unit>
       <trans-unit id="B0loISu" resname="label.remember_me">
         <source>label.remember_me</source>
-        <target>Remember me on this device</target>
+        <target>Remember me</target>
       </trans-unit>
       <trans-unit id="wYxvFbC" resname="label.signin">
         <source>label.signin</source>
@@ -251,11 +251,11 @@
       </trans-unit>
       <trans-unit id=".suU4UJ" resname="flash.user_registered">
         <source>flash.user_registered</source>
-        <target></target>
+        <target>Thank you for registering an account, we've emailed you a link to verify your E-Mail address.</target>
       </trans-unit>
       <trans-unit id="aJNyO3a" resname="flash.email_verified">
         <source>flash.email_verified</source>
-        <target></target>
+        <target>Your E-Mail address has successfully been verified.</target>
       </trans-unit>
       <trans-unit id="B3w55lp" resname="label.your_profile">
         <source>label.your_profile</source>
@@ -272,6 +272,63 @@
       <trans-unit id="v5SWCuI" resname="label.created_at">
         <source>label.created_at</source>
         <target>Created at</target>
+      </trans-unit>
+      <trans-unit id="ic4VdiZ" resname="label.forgot_password">
+        <source>label.forgot_password</source>
+        <target>Forgot your password?</target>
+      </trans-unit>
+      <trans-unit id="EOwSraV" resname="title.forgot_password">
+        <source>title.forgot_password</source>
+        <target>Forgot your password</target>
+      </trans-unit>
+      <trans-unit id="sU7nF1b" resname="help.forgot_password">
+        <source>help.forgot_password</source>
+        <target>Enter your email address, and we will send you a link to reset your password.</target>
+      </trans-unit>
+      <trans-unit id="ezxkTqr" resname="label.request_reset_email">
+        <source>label.request_reset_email</source>
+        <target>Request a password reset email</target>
+      </trans-unit>
+      <trans-unit id="27va.2r" resname="label.back_to_login">
+        <source>label.back_to_login</source>
+        <target><![CDATA[Forget it, <a href="{url}">send me back</a> to the sign in screen.]]></target>
+      </trans-unit>
+      <trans-unit id="QGir1JO" resname="title.password_reset_sent">
+        <source>title.password_reset_sent</source>
+        <target>Password reset email send</target>
+      </trans-unit>
+      <trans-unit id="SxbeBoo" resname="help.password_reset_sent">
+        <source>help.password_reset_sent</source>
+        <target>If an account matching your email exists, then an email was just sent that contains a link that you
+            can use to reset your password.</target>
+      </trans-unit>
+      <trans-unit id="kFAR5dp" resname="label.forgot_password_again">
+        <source>label.forgot_password_again</source>
+        <target><![CDATA[If you didn't receive an email please check your spam folder or <a href="{url}">try again</a>.]]></target>
+      </trans-unit>
+      <trans-unit id="Px2gIqN" resname="help.link_expires_in">
+        <source>help.link_expires_in</source>
+        <target>Please note that this link will expire in: </target>
+      </trans-unit>
+      <trans-unit id="mKmhgWs" resname="email.password_reset_title">
+        <source>email.password_reset_title</source>
+        <target>Reset Password Instruction</target>
+      </trans-unit>
+      <trans-unit id="h14csts" resname="email.password_reset_help">
+        <source>email.password_reset_help</source>
+        <target>You recently requested to reset a password for your account. Just click on the button below to reset it.</target>
+      </trans-unit>
+      <trans-unit id="N2c1hpK" resname="label.reset_password">
+        <source>label.reset_password</source>
+        <target>Reset Password</target>
+      </trans-unit>
+      <trans-unit id="REVBxcB" resname="email.password_reset_trouble">
+        <source>email.password_reset_trouble</source>
+        <target>Having trouble with the button above? Please copy this URL: {url} and paste it into your browser. If you didn't request a password reset, please ignore this message or contact us if you have any questions.</target>
+      </trans-unit>
+      <trans-unit id="iEmAaay" resname="title.reset_password">
+        <source>title.reset_password</source>
+        <target>Reset your password</target>
       </trans-unit>
     </body>
   </file>

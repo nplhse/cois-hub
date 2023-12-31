@@ -16,7 +16,12 @@
                     {{ form_start(form) }}
 
                     {{ form_row(form.username) }}
+
                     {{ form_row(form.password) }}
+
+                    <span class="form-label-description">
+                        <a href="{{ path('app_forgot_password_request') }}">{{ "label.forgot_password"|trans }}</a>
+                    </span>
 
                     <div class="mb-2">
                         <label class="form-check">

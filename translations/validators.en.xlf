@@ -567,19 +567,23 @@
       </trans-unit>
       <trans-unit id="YXZ26gK" resname="Please enter a password">
         <source>Please enter a password</source>
-        <target>__Please enter a password</target>
+        <target>Please enter a password</target>
       </trans-unit>
       <trans-unit id=".esazsm" resname="Your password should be at least {{ limit }} characters">
         <source>Your password should be at least {{ limit }} characters</source>
-        <target>__Your password should be at least {{ limit }} characters</target>
+        <target>Your password should be at least {{ limit }} characters</target>
       </trans-unit>
       <trans-unit id="Td7A4JK" resname="There is already an account with this username">
         <source>There is already an account with this username</source>
-        <target>__There is already an account with this username</target>
+        <target>There is already an account with this username</target>
       </trans-unit>
       <trans-unit id="4.JUaLY" resname="You have to agree to our terms.">
         <source>You have to agree to our terms.</source>
-        <target>__You have to agree to our terms.</target>
+        <target>You have to agree to our terms.</target>
+      </trans-unit>
+      <trans-unit id="Fe2zEyl" resname="Please enter your email">
+        <source>Please enter your email</source>
+        <target>Please enter your email</target>
       </trans-unit>
     </body>
   </file>
