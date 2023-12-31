@@ -15,7 +15,7 @@ class AuditLogTest extends KernelTestCase
     use ResetDatabase;
     use Factories;
 
-    public function testSomething(): void
+    public function testAuditLogIsStoringEntity(): void
     {
         // 1. "Arrange"
         $user = UserFactory::new(['username' => 'foo'])->create();
@@ -42,7 +42,7 @@ class AuditLogTest extends KernelTestCase
 
         // 3. "Assert"
         $auditLog = $auditLogRepository->findOneBy([
-            'id' => 1,
+            'id' => 2,
         ]);
 
         $this->assertSame('AuditLog', $auditLog->getEntityType());

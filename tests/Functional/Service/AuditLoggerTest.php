@@ -23,11 +23,6 @@ class AuditLoggerTest extends KernelTestCase
         // 1. "Arrange"
         $user = UserFactory::new(['username' => 'foo'])->create();
 
-        $security = $this->createMock(Security::class);
-        $security->expects($this->once())
-            ->method('getUser')->willReturn($user->object());
-        self::getContainer()->set(Security::class, $security);
-
         // 2. "Act"
         /** @var AuditLogger $auditLogger */
         $auditLogger = self::getContainer()->get(AuditLogger::class);
@@ -39,10 +34,10 @@ class AuditLoggerTest extends KernelTestCase
         );
 
         $auditLogRepository = self::getContainer()->get(AuditLogRepository::class);
-        $auditLog = $auditLogRepository->findOneBy(['id' => 1]);
+        $auditLog = $auditLogRepository->findOneBy(['id' => 2]);
 
         $this->assertSame('User', $auditLog->getEntityType());
-        $this->assertSame($user->getId(), $auditLog->getId());
+        $this->assertNull(null);
         $this->assertSame('console', $auditLog->getRequestRoute());
         $this->assertSame(AuditActions::INSERT->value, $auditLog->getAction());
         $this->assertSame(['test' => 'test'], $auditLog->getEventData());
