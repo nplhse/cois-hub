@@ -35,6 +35,8 @@ final class UpdateUserPasswordHandler
             )
         );
 
+        $user->setCredentialsExpired(false);
+
         $this->userRepository->saveAndFlush($user);
 
         $event = new UserUpdatedPassword($user->getId());

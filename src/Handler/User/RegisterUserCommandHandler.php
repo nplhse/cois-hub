@@ -37,7 +37,7 @@ final class RegisterUserCommandHandler
 
         $user->setCreatedAt(new \DateTimeImmutable('now'));
         $user->setRoles(['ROLE_USER']);
-        $user->setHasCredentialsExpired(false);
+        $user->setCredentialsExpired(false);
         $user->setIsVerified(false);
         $user->setIsPublic(false);
 

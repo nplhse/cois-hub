@@ -8,6 +8,7 @@ use App\Form\UpdateUserPasswordType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -34,7 +35,12 @@ class UpdateUserPasswordController extends AbstractController
             $data = $form->getData();
 
             $command = new UpdateUserPasswordCommand($user->getId(), $data['password']);
-            $this->messageBus->dispatch($command);
+
+            try {
+                $this->messageBus->dispatch($command);
+            } catch (HandlerFailedException) {
+                $this->addFlash('danger', 'Sorry, something went wrong. Please try again later!');
+            }
 
             $this->addFlash('success', $this->translator->trans('flash.password_updated'));
 

@@ -338,6 +338,18 @@
         <source>email.verify_title</source>
         <target>Please verify your E-Mail Address</target>
       </trans-unit>
+      <trans-unit id="hKAxkpS" resname="title.reset_credentials">
+        <source>title.reset_credentials</source>
+        <target>Please set a new password</target>
+      </trans-unit>
+      <trans-unit id="5qtUjUr" resname="help.reset_credentials">
+        <source>help.reset_credentials</source>
+        <target>We kindly ask you to set a new password for your account.</target>
+      </trans-unit>
+      <trans-unit id="vrIU536" resname="label.reset_credentials">
+        <source>label.reset_credentials</source>
+        <target>Set new Password</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

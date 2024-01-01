@@ -158,12 +158,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \String
         return $this;
     }
 
-    public function isHasCredentialsExpired(): bool
+    public function hasCredentialsExpired(): bool
     {
         return $this->hasCredentialsExpired;
     }
 
-    public function setHasCredentialsExpired(bool $hasCredentialsExpired): static
+    public function setCredentialsExpired(bool $hasCredentialsExpired): static
     {
         $this->hasCredentialsExpired = $hasCredentialsExpired;
 
