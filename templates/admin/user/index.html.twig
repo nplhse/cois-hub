@@ -1,49 +1,188 @@
 {% extends 'admin/_base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% macro sortArrow(sortName, sortBy, orderBy) %}
+    {% if sortBy == sortName %}
+        {% if orderBy == 'asc' %}
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M6 15l6 -6l6 6"></path>
+            </svg>
+        {% else %}
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M6 9l6 6l6 -6"></path>
+            </svg>
+        {% endif %}
+    {% else %}
+        <!-- up and down arrow svg -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 text-slate-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M8 9l4 -4l4 4"></path>
+            <path d="M16 15l-4 4l-4 -4"></path>
+        </svg>
+    {% endif %}
+{% endmacro %}
+
+{% block title %}{{ "title.users"|trans }} - {{ parent() }}{% endblock %}
+
+{% block admin_title %}
+    <!-- Page pre-title -->
+    <div class="page-pretitle">
+        {{ "title.overview"|trans }}
+    </div>
+    <h2 class="page-title">
+        {{ "title.users"|trans }}
+    </h2>
+{% endblock %}
+
+{% block admin_title_actions %}
+    <div class="btn-list">
+        <div class="btn-list">
+            <span class="d-none d-sm-inline">
+                <a href="{{ path('app_admin_user_new') }}" class="btn btn-primary">{{ "label.user_new"|trans }}</a>
+            </span>
+        </div>
+    </div>
+{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Username</th>
-                <th>Roles</th>
-                <th>Password</th>
-                <th>Email</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>HasCredentialsExpired</th>
-                <th>IsVerified</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ user.hasCredentialsExpired ? 'Yes' : 'No' }}</td>
-                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_admin_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_admin_user_edit', {'id': user.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_admin_user_new') }}">Create new</a>
+    <div class="card">
+        <div class="card-body">
+            <turbo-frame id="voyage-list" data-turbo-action="advance">
+                <div id="table-default" class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>
+                                <a href="{{ path('app_admin_user_index', {
+                                    ...app.request.query.all(),
+                                    sortBy: 'id',
+                                    orderBy: sortBy == 'id' and orderBy == 'asc' ? 'desc' : 'asc',
+                                }) }}">
+                                    ID {{ _self.sortArrow('id', sortBy, orderBy) }}
+                                </a>
+                            </th>
+                            <th>
+                                <a href="{{ path('app_admin_user_index', {
+                                    ...app.request.query.all(),
+                                    sortBy: 'username',
+                                    orderBy: sortBy == 'username' and orderBy == 'asc' ? 'desc' : 'asc',
+                                }) }}">
+                                    Username {{ _self.sortArrow('username', sortBy, orderBy) }}
+                                </a>
+                            </th>
+                            <th>Roles</th>
+                            <th>
+                                <a href="{{ path('app_admin_user_index', {
+                                    ...app.request.query.all(),
+                                    sortBy: 'createdAt',
+                                    orderBy: sortBy == 'createdAt' and orderBy == 'asc' ? 'desc' : 'asc',
+                                }) }}">
+                                    Created At {{ _self.sortArrow('createdAt', sortBy, orderBy) }}
+                                </a>
+                            </th>
+                            <th>
+                                <a href="{{ path('app_admin_user_index', {
+                                    ...app.request.query.all(),
+                                    sortBy: 'updatedAt',
+                                    orderBy: sortBy == 'updatedAt' and orderBy == 'asc' ? 'desc' : 'asc',
+                                }) }}">
+                                    Updated At {{ _self.sortArrow('updatedAt', sortBy, orderBy) }}
+                                </a>
+                            </th>
+                            <th>Expired</th>
+                            <th>Verified</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users.results %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>
+                                    <a href="{{ path('app_admin_user_show', {'id': user.id}) }}">{{ user.username }}</a>
+                                </td>
+                                <td>
+                                    {% for role in user.roles %}
+                                        {% if role == "ROLE_ADMIN" %}
+                                            <span class="badge bg-primary text-white">
+                                                {{ role|replace({'ROLE_': ''})|lower|capitalize }}
+                                            </span>
+                                        {% else %}
+                                            <span class="badge bg-secondary text-white">
+                                                {{ role|replace({'ROLE_': ''})|lower|capitalize }}
+                                            </span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {{ user.createdAt ? user.createdAt|date('d.m.Y H:i') : '' }}
+                                </td>
+                                <td>
+                                    {{ user.updatedAt ? user.updatedAt|date('d.m.Y H:i') : '' }}
+                                </td>
+                                <td>
+                                    {% if user.hasCredentialsExpired %}
+                                        <span class="badge bg-green text-white">Yes</span>
+                                    {% else %}
+                                        <span class="badge bg-red text-white">No</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if user.isVerified %}
+                                        <span class="badge bg-green text-white">Yes</span>
+                                    {% else %}
+                                        <span class="badge bg-red text-white">No</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7">No records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </turbo-frame>
+        </div>
+        <div class="card-footer d-flex align-items-center">
+            <p class="m-0 text-muted">Showing <span>{{ users.numResults }}</span> results, with <span>{{ users.pageSize }}</span> per page.</p>
+            {% if users.hasToPaginate %}
+                <ul class="pagination m-0 ms-auto">
+                    {% if users.hasPreviousPage %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ path('app_admin_user_index', {page: users.previousPage}) }}" tabindex="-1" aria-disabled="true">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
+                                {{ "label.previous"|trans }}
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
+                                {{ "label.previous"|trans }}
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if users.hasNextPage %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ path('app_admin_user_index', {page: users.nextPage}) }}">
+                                {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="{{ path('app_admin_user_index', {page: users.nextPage}) }}">
+                                {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

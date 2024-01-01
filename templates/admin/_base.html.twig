@@ -3,7 +3,7 @@
 <head>
     {% include "includes/metatags.html.twig" %}
 
-    <title>{% block title %}admin - cois-hub{% endblock %}</title>
+    <title>{% block title %}{{ "title.backend"|trans }} - {{ app_title }}{% endblock %}</title>
 
     {% block javascripts %}
         {{ importmap('app') }}

@@ -22,6 +22,11 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
  */
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
+    /**
+     * @var array|string[]
+     */
+    public static array $validSorts = ['id', 'createdAt', 'updatedAt', 'username'];
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
@@ -67,19 +72,33 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $query->getQuery()->getSingleScalarResult();
     }
 
-    public function getPaginatedResults(int $page = 1, int $perPage = 10): Paginator
+    public function getPaginatedResults(int $page = 1, int $perPage = 10, string $sortBy = 'username', string $orderBy = 'asc'): Paginator
     {
+        $sortBy = in_array($sortBy, self::$validSorts, true) ? $sortBy : 'username';
+        $orderBy = match ($orderBy) {
+            'desc' => 'DESC',
+            default => 'ASC',
+        };
+
         $query = $this->createQueryBuilder('u')
-            ->orderBy('u.username', 'ASC');
+            ->orderBy('u.'.$sortBy, $orderBy)
+        ;
 
         return (new Paginator($query))->paginate($page, $perPage);
     }
 
-    public function getPublicPaginatedResults(int $page = 1, int $perPage = 10): Paginator
+    public function getPublicPaginatedResults(int $page = 1, int $perPage = 10, string $sortBy = 'username', string $orderBy = 'asc'): Paginator
     {
+        $sortBy = in_array($sortBy, self::$validSorts, true) ? $sortBy : 'username';
+        $orderBy = match ($orderBy) {
+            'desc' => 'DESC',
+            default => 'ASC',
+        };
+
         $query = $this->createQueryBuilder('u')
             ->where('u.isPublic = true')
-            ->orderBy('u.username', 'ASC');
+            ->orderBy('u.'.$sortBy, $orderBy)
+        ;
 
         return (new Paginator($query))->paginate($page, $perPage);
     }

@@ -9,16 +9,34 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/admin/users')]
 class UserController extends AbstractController
 {
+    public function __construct(
+        private readonly UserRepository $userRepository,
+    ) {
+    }
+
     #[Route('/', name: 'app_admin_user_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository): Response
-    {
+    public function index(
+        #[MapQueryParameter]
+        int $page = 1,
+        #[MapQueryParameter]
+        string $sortBy = 'createdAt',
+        #[MapQueryParameter]
+        string $orderBy = 'desc',
+    ): Response {
+        $sortBy = in_array($sortBy, UserRepository::$validSorts, false) ? $sortBy : 'createdAt';
+
+        $users = $this->userRepository->getPaginatedResults($page, 16, $sortBy, $orderBy);
+
         return $this->render('admin/user/index.html.twig', [
-            'users' => $userRepository->findAll(),
+            'users' => $users,
+            'sortBy' => $sortBy,
+            'orderBy' => $orderBy,
         ]);
     }
 
