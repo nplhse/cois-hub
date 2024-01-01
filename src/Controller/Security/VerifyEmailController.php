@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Security;
 
-use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,15 +15,14 @@ class VerifyEmailController extends AbstractController
 {
     public function __construct(
         private readonly EmailVerifier $emailVerifier,
-        private readonly TranslatorInterface $translator
+        private readonly TranslatorInterface $translator,
+        private readonly UserRepository $userRepository
     ) {
     }
 
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(
         Request $request,
-        TranslatorInterface $translator,
-        UserRepository $userRepository
     ): Response {
         $id = $request->query->get('id');
 
@@ -32,7 +30,7 @@ class VerifyEmailController extends AbstractController
             return $this->redirectToRoute('app_register');
         }
 
-        $user = $userRepository->find($id);
+        $user = $this->userRepository->find($id);
 
         if (null === $user) {
             return $this->redirectToRoute('app_register');
@@ -42,7 +40,7 @@ class VerifyEmailController extends AbstractController
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $user);
         } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
+            $this->addFlash('verify_email_error', $this->translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
 
             return $this->redirectToRoute('app_register');
         }

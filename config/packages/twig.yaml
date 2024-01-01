@@ -4,6 +4,14 @@ twig:
         # point this wherever your css files live
         '%kernel.project_dir%/assets/styles': styles
     
+    date:
+        format: 'd.m.Y'
+        interval_format: '%%d days'
+        timezone: 'Europe/Berlin'
+        
+    globals:
+        'app_title': '%app.title%'
+    
     form_themes: [ 'bootstrap_5_layout.html.twig' ]
 
 when@test:

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Security;
 
 use App\DataTransferObjects\LoginTypeDTO;
 use App\Entity\User;

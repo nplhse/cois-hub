@@ -330,6 +330,14 @@
         <source>title.reset_password</source>
         <target>Reset your password</target>
       </trans-unit>
+      <trans-unit id="Uo6RYFA" resname="flash.registration_failed">
+        <source>flash.registration_failed</source>
+        <target>Something went wrong and your registration failed, we're sorry about that. Please try again later.</target>
+      </trans-unit>
+      <trans-unit id="7tVvhhX" resname="email.verify_title">
+        <source>email.verify_title</source>
+        <target>Please verify your E-Mail Address</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -1,22 +1,17 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Security;
 
 use App\Command\User\RegisterUserCommand;
 use App\DataTransferObjects\RegisterTypeDTO;
-use App\Entity\User;
 use App\Form\RegistrationType;
 use App\Repository\UserRepository;
-use App\Security\EmailVerifier;
 use App\Security\LoginFormAuthenticator;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
-use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
@@ -25,7 +20,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class RegistrationController extends AbstractController
 {
     public function __construct(
-        private readonly EmailVerifier $emailVerifier,
         private readonly MessageBusInterface $messageBus,
         private readonly UserRepository $userRepository,
         private readonly TranslatorInterface $translator,
@@ -38,7 +32,6 @@ class RegistrationController extends AbstractController
         UserPasswordHasherInterface $userPasswordHasher,
         UserAuthenticatorInterface $userAuthenticator,
         LoginFormAuthenticator $authenticator,
-        EntityManagerInterface $entityManager
     ): Response {
         $registerTypeDTO = new RegisterTypeDTO();
         $form = $this->createForm(RegistrationType::class, $registerTypeDTO);
@@ -60,7 +53,15 @@ class RegistrationController extends AbstractController
 
             $user = $this->userRepository->findOneBy(['id' => $userId]);
 
-            $this->sendEmailConfirmation($user);
+            if (null === $user) {
+                $this->addFlash('warning', $this->translator->trans('flash.registration_failed'));
+
+                return $this->render('security/register.html.twig', [
+                    'registrationForm' => $form->createView(),
+                ]);
+            }
+
+            // $this->sendEmailConfirmation($user);
             $this->addFlash('success', $this->translator->trans('flash.user_registered'));
 
             return $userAuthenticator->authenticateUser(
@@ -73,19 +74,5 @@ class RegistrationController extends AbstractController
         return $this->render('security/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
-    }
-
-    private function sendEmailConfirmation(User $user): void
-    {
-        // generate a signed url and email it to the user
-        $this->emailVerifier->sendEmailConfirmation(
-            'app_verify_email',
-            $user,
-            (new TemplatedEmail())
-                ->from(new Address('noreply@cois-hub.local', 'COIS Hub Mailer'))
-                ->to($user->getEmail())
-                ->subject('Please Confirm your Email')
-                ->htmlTemplate('emails/confirmation_email.html.twig')
-        );
     }
 }
