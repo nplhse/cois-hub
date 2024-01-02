@@ -1,54 +1,138 @@
 {% extends 'admin/_base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}{{ "title.user_details"|trans }}: {{ user.username }} - {{ parent() }}{% endblock %}
+
+{% block admin_breadcrumb %}
+    {{ parent() }}
+    <li class="breadcrumb-item"><a href="{{ path('app_admin_user_index') }}">{{ "label.users"|trans }}</a></li>
+    <li class="breadcrumb-item active"><a href="#">{{ "label.user_details"|trans }}: {{ user.username }}</a></li>
+{% endblock %}
+
+{% block admin_title %}
+    <!-- Page pre-title -->
+    <div class="page-pretitle">
+        {{ "title.user_details"|trans }}
+    </div>
+    <h2 class="page-title">
+        {{ "title.users"|trans }}
+    </h2>
+{% endblock %}
+
+{% block admin_title_actions %}
+    <div class="btn-list">
+        <div class="btn-list">
+            <span class="d-none d-sm-inline">
+                <a class="btn btn-outline-secondary" href="{{ path('app_admin_user_index') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M15 6l-6 6l6 6" />
+                    </svg>
+                    {{ "label.back_to_list"|trans }}
+                </a>
+            </span>
+        </div>
+    </div>
+{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
+    <div class="row">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{{ "label.basic_info"|trans }}</h3>
+            </div>
+            <div class="card-body">
+                <div class="datagrid">
+                    <div class="datagrid-item">
+                        <div class="datagrid-title">{{ "label.id"|trans }}</div>
+                        <div class="datagrid-content">{{ user.id }}</div>
+                    </div>
+                    <div class="datagrid-item">
+                        <div class="datagrid-title">{{ "label.username"|trans }}</div>
+                        <div class="datagrid-content">{{ user.username }}</div>
+                    </div>
+                    <div class="datagrid-item">
+                        <div class="datagrid-title">{{ "label.created_at"|trans }}</div>
+                        <div class="datagrid-content">{{ user.createdAt ? user.createdAt|date('d.m.Y H:i') : '' }}</div>
+                    </div>
+                    <div class="datagrid-item">
+                        <div class="datagrid-title">{{ "label.updated_at"|trans }}</div>
+                        <div class="datagrid-content">{{ user.updatedAt ? user.createdAt|date('d.m.Y H:i') : '-' }}</div>
+                    </div>
+                    <div class="datagrid-item">
+                        <div class="datagrid-title">{{ "label.email"|trans }}</div>
+                        <div class="datagrid-content">{{ user.email }}</div>
+                    </div>
+                    <div class="datagrid-item">
+                        <div class="datagrid-title">{{ "label.roles"|trans }}</div>
+                        <div class="datagrid-content">
+                            {% for role in user.roles %}
+                                {% if role == "ROLE_ADMIN" %}
+                                    <span class="badge bg-orange-lt text-white">
+                                        {{ role|replace({'ROLE_': ''})|lower|capitalize }}
+                                    </span>
+                                {% else %}
+                                    <span class="badge bg-blue-lt text-white">
+                                        {{ role|replace({'ROLE_': ''})|lower|capitalize }}
+                                    </span>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="datagrid-item">
+                        <div class="datagrid-title">Verified</div>
+                        <div class="datagrid-content">
+                            {% if user.verified %}
+                                <span class="status status-green">
+                                    {{ "label.yes"|trans }}
+                                </span>
+                            {% else %}
+                                <span class="status status-red">
+                                    {{ "label.no"|trans }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="datagrid-item">
+                        <div class="datagrid-title">Credentials Expired</div>
+                        <div class="datagrid-content">
+                            {% if user.credentialsExpired %}
+                                <span class="status status-green">
+                                    {{ "label.no"|trans }}
+                                </span>
+                            {% else %}
+                                <span class="status status-red">
+                                    {{ "label.yes"|trans }}
+                                </span>
+                            {% endif %}
+                          </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card">
+            <div class="card-header bg-gray-500">
+                <h3 class="card-title">{{ "label.actions"|trans }}</h3>
+            </div>
+            <div class="card-body">
+                <p>
+                    <a href="{{ path('app_admin_user_edit', {id: user.id}) }}" class="btn btn-primary w-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                            <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                            <path d="M16 5l3 3" />
+                        </svg>
+                        {{ "label.user_edit"|trans }}
+                    </a>
+                </p>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Username</th>
-                <td>{{ user.username }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>HasCredentialsExpired</th>
-                <td>{{ user.hasCredentialsExpired ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>IsVerified</th>
-                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_admin_user_index') }}">back to list</a>
-
-    <a href="{{ path('app_admin_user_edit', {'id': user.id}) }}">edit</a>
-
-    {{ include('admin/user/_delete_form.html.twig') }}
+                {{ include('admin/user/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+    </div>
 {% endblock %}

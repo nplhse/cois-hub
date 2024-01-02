@@ -1,5 +1,9 @@
 {% extends 'admin/_base.html.twig' %}
 
+{% block admin_breadcrumb %}
+    <li class="breadcrumb-item active"><a href="{{ path('app_admin_dashboard') }}">{{ "label.dashboard"|trans }}</a></li>
+{% endblock %}
+
 {% block admin_title_actions %}
 {% endblock %}
 

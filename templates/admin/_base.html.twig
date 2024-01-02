@@ -19,6 +19,17 @@
         <!-- Page header -->
         <div class="page-header d-print-none">
             <div class="container-xl">
+                <div class="row align-items-center mw-100">
+                    <div class="col">
+                        <div class="mb-1">
+                            <ol class="breadcrumb" aria-label="breadcrumbs">
+                                {% block admin_breadcrumb %}
+                                    <li class="breadcrumb-item"><a href="{{ path('app_admin_dashboard') }}">{{ "label.dashboard"|trans }}</a></li>
+                                {% endblock %}
+                            </ol>
+                        </div>
+                    </div>
+                </div>
                 <div class="row g-2 align-items-center">
                     <div class="col">
                         {% block admin_title %}

@@ -350,6 +350,70 @@
         <source>label.reset_credentials</source>
         <target>Set new Password</target>
       </trans-unit>
+      <trans-unit id="9gtQrtO" resname="title.backend">
+        <source>title.backend</source>
+        <target>Backend</target>
+      </trans-unit>
+      <trans-unit id="I4vwwju" resname="title.overview">
+        <source>title.overview</source>
+        <target>Overview</target>
+      </trans-unit>
+      <trans-unit id="mvzqhh8" resname="title.user_details">
+        <source>title.user_details</source>
+        <target>User Details</target>
+      </trans-unit>
+      <trans-unit id="QDJEfQY" resname="label.user_details">
+        <source>label.user_details</source>
+        <target>User Details</target>
+      </trans-unit>
+      <trans-unit id="GmGWJeC" resname="label.back_to_list">
+        <source>label.back_to_list</source>
+        <target>Back to list</target>
+      </trans-unit>
+      <trans-unit id="jSXGxzd" resname="label.user_edit">
+        <source>label.user_edit</source>
+        <target>Edit User</target>
+      </trans-unit>
+      <trans-unit id="txRonia" resname="label.id">
+        <source>label.id</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="LDhDPrF" resname="label.username">
+        <source>label.username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="iD6CNOO" resname="label.roles">
+        <source>label.roles</source>
+        <target>Roles</target>
+      </trans-unit>
+      <trans-unit id="YgvLzSx" resname="label.updated_at">
+        <source>label.updated_at</source>
+        <target>Updated at</target>
+      </trans-unit>
+      <trans-unit id="qKW8822" resname="label.user_expired">
+        <source>label.user_expired</source>
+        <target>Expired</target>
+      </trans-unit>
+      <trans-unit id="20E88BX" resname="label.user_verified">
+        <source>label.user_verified</source>
+        <target>Verified</target>
+      </trans-unit>
+      <trans-unit id="bdYD32t" resname="label.no">
+        <source>label.no</source>
+        <target>No</target>
+      </trans-unit>
+      <trans-unit id="S_Vw6L1" resname="label.yes">
+        <source>label.yes</source>
+        <target>Yes</target>
+      </trans-unit>
+      <trans-unit id="D2N6_cP" resname="label.email">
+        <source>label.email</source>
+        <target>E-Mail address</target>
+      </trans-unit>
+      <trans-unit id="zldXQq6" resname="label.actions">
+        <source>label.actions</source>
+        <target>Actions</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
