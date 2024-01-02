@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Query\UserListQuery;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,6 +18,7 @@ class UserController extends AbstractController
 {
     public function __construct(
         private readonly UserRepository $userRepository,
+        private readonly UserListQuery $query,
     ) {
     }
 
@@ -31,9 +33,7 @@ class UserController extends AbstractController
         #[MapQueryParameter]
         string $orderBy = 'asc',
     ): Response {
-        $sortBy = in_array($sortBy, UserRepository::$validSorts, false) ? $sortBy : 'username';
-
-        $users = $this->userRepository->getPaginatedResults($page, 16, $sortBy, $orderBy, $search);
+        $users = $this->query->getResults($page, 16, $sortBy, $orderBy, $search);
 
         return $this->render('admin/user/index.html.twig', [
             'users' => $users,

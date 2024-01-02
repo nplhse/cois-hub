@@ -10,7 +10,11 @@
                     <h2 class="page-title">
                         {{ "title.users"|trans }}
                     </h2>
-                    <div class="text-muted mt-1">{{ user_count }} {{ "label.user_count"|trans }}</div>
+                    <div id="user-count" class="text-muted mt-1">
+                        {% block user_count %}
+                            {{ user_count }} {{ "label.user_count"|trans }}
+                        {% endblock %}
+                    </div>
                 </div>
                 <!-- Page title actions -->
                 {% if is_granted('ROLE_USER') %}
@@ -87,6 +91,12 @@
                         </div>
                     {% endfor %}
                 </div>
+
+                <turbo-stream action="replace" target="user-count">
+                    <template>
+                        {{ block('user_count') }}
+                    </template>
+                </turbo-stream>
             </turbo-frame>
         </div>
     </div>
