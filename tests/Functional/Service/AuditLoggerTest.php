@@ -7,7 +7,6 @@ use App\Factory\UserFactory;
 use App\Repository\AuditLogRepository;
 use App\Service\AuditLogger;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Bundle\SecurityBundle\Security;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
 

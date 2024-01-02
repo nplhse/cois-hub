@@ -4,8 +4,6 @@ namespace App\Query;
 
 use App\Entity\User;
 use App\Pagination\Paginator;
-use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 
 class UserListQuery
@@ -18,7 +16,7 @@ class UserListQuery
     private bool $isPublic = false;
 
     public function __construct(
-        private EntityManagerInterface $entityManager,
+        private readonly EntityManagerInterface $entityManager,
     ) {
     }
 

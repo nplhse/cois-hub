@@ -3,7 +3,6 @@
 namespace App\Controller\User;
 
 use App\Query\UserListQuery;
-use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
@@ -12,7 +11,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class ListUsersController extends AbstractController
 {
     public function __construct(
-        private readonly UserRepository $userRepository,
         private readonly UserListQuery $query
     ) {
     }

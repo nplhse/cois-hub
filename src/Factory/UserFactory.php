@@ -65,7 +65,8 @@ final class UserFactory extends ModelFactory
             'email' => self::faker()->safeEmail(),
             'plainPassword' => 'password',
             'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTimeThisYear()),
-            'credentialsExpired' => false,
+            'setCredentialsExpired' => false,
+            'isVerified' => true,
             'isPublic' => true,
             'roles' => ['ROLE_USER'],
         ];
