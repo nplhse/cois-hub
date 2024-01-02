@@ -58,48 +58,81 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->flush();
     }
 
-    public function getUserCount(bool $isPublic = false): int
+    public function getUserCount(string $sortBy = 'username', string $orderBy = 'asc', string $search = ''): int
     {
-        $query = $this->createQueryBuilder('u')
-            ->select('count(u.id)');
+        $query = $this->createQueryBuilder('u');
+        $query->select($query->expr()->count('u.id'));
 
-        if (true === $isPublic) {
-            $query
-                ->andWhere('u.isPublic = :is_public')
-                ->setParameter('is_public', $isPublic);
+        if (!empty($search)) {
+            $query->andWhere($query->expr()->like('u.'.$sortBy, ':search'))
+                ->setParameter('search', '%'.$search.'%');
         }
 
         return $query->getQuery()->getSingleScalarResult();
     }
 
-    public function getPaginatedResults(int $page = 1, int $perPage = 10, string $sortBy = 'username', string $orderBy = 'asc'): Paginator
+    public function getPublicUserCount(string $sortBy = 'username', string $orderBy = 'asc', string $search = ''): int
     {
-        $sortBy = in_array($sortBy, self::$validSorts, true) ? $sortBy : 'username';
-        $orderBy = match ($orderBy) {
-            'desc' => 'DESC',
-            default => 'ASC',
-        };
+        $sortBy = $this->filterSortBy($sortBy) ? $sortBy : 'username';
+        $orderBy = $this->filterOrderBy($orderBy);
+
+        $query = $this->createQueryBuilder('u');
+        $query->select($query->expr()->count('u.id'))
+            ->andWhere($query->expr()->eq('u.isPublic', true));
+
+        if (!empty($search)) {
+            $query->andWhere($query->expr()->like('u.'.$sortBy, ':search'))
+                ->setParameter('search', '%'.$search.'%');
+        }
+
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
+    public function getPaginatedResults(int $page = 1, int $perPage = 10, string $sortBy = 'username', string $orderBy = 'asc', string $search = ''): Paginator
+    {
+        $sortBy = $this->filterSortBy($sortBy) ? $sortBy : 'username';
+        $orderBy = $this->filterOrderBy($orderBy);
 
         $query = $this->createQueryBuilder('u')
             ->orderBy('u.'.$sortBy, $orderBy)
         ;
+
+        if (!empty($search)) {
+            $query->andWhere($query->expr()->like('u.'.$sortBy, ':search'))
+                ->setParameter('search', '%'.$search.'%');
+        }
 
         return (new Paginator($query))->paginate($page, $perPage);
     }
 
-    public function getPublicPaginatedResults(int $page = 1, int $perPage = 10, string $sortBy = 'username', string $orderBy = 'asc'): Paginator
+    public function getPublicPaginatedResults(int $page = 1, int $perPage = 10, string $sortBy = 'username', string $orderBy = 'asc', string $search = ''): Paginator
     {
-        $sortBy = in_array($sortBy, self::$validSorts, true) ? $sortBy : 'username';
-        $orderBy = match ($orderBy) {
+        $sortBy = $this->filterSortBy($sortBy) ? $sortBy : 'username';
+        $orderBy = $this->filterOrderBy($orderBy);
+
+        $query = $this->createQueryBuilder('u')
+            ->orderBy('u.'.$sortBy, $orderBy);
+
+        $query->andWhere($query->expr()->eq('u.isPublic', true));
+
+        if (!empty($search)) {
+            $query->andWhere($query->expr()->like('u.'.$sortBy, ':search'))
+                ->setParameter('search', '%'.$search.'%');
+        }
+
+        return (new Paginator($query))->paginate($page, $perPage);
+    }
+
+    private function filterSortBy(string $sortBy): bool
+    {
+        return in_array($sortBy, self::$validSorts, true);
+    }
+
+    private function filterOrderBy(string $orderBy): string
+    {
+        return match ($orderBy) {
             'desc' => 'DESC',
             default => 'ASC',
         };
-
-        $query = $this->createQueryBuilder('u')
-            ->where('u.isPublic = true')
-            ->orderBy('u.'.$sortBy, $orderBy)
-        ;
-
-        return (new Paginator($query))->paginate($page, $perPage);
     }
 }

@@ -19,18 +19,20 @@ class ListUsersController extends AbstractController
     public function __invoke(
         #[MapQueryParameter]
         int $page = 1,
+        #[MapQueryParameter]
+        string $search = '',
     ): Response {
         if ($this->isGranted('ROLE_USER')) {
-            $users = $this->userRepository->getPaginatedResults($page, 16);
-            $userCount = $this->userRepository->getUserCount();
+            $users = $this->userRepository->getPaginatedResults($page, 16, 'username', 'asc', $search);
+            $userCount = $this->userRepository->getUserCount('username', 'asc', $search);
         }
 
         if (!isset($users)) {
-            $users = $this->userRepository->getPublicPaginatedResults($page, 16);
+            $users = $this->userRepository->getPublicPaginatedResults($page, 16, 'username', 'asc', $search);
         }
 
         if (!isset($userCount)) {
-            $userCount = $this->userRepository->getUserCount(true);
+            $userCount = $this->userRepository->getPublicUserCount('username', 'asc', $search);
         }
 
         return $this->render('user/list.html.twig', [

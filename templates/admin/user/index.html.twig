@@ -42,18 +42,43 @@
 
 {% block admin_title_actions %}
     <div class="btn-list">
-        <div class="btn-list">
-            <span class="d-none d-sm-inline">
-                <a href="{{ path('app_admin_user_new') }}" class="btn btn-primary">{{ "label.user_new"|trans }}</a>
-            </span>
-        </div>
+        <form
+            method="GET"
+            action="{{ path('app_admin_user_index') }}"
+            data-controller="autosubmit"
+            data-turbo-frame="user-list"
+        >
+            <div class="input-icon">
+                <input
+                    type="search"
+                    name="search"
+                    value="{{ app.request.query.get('search') }}"
+                    aria-label="Search users"
+                    placeholder="Search users"
+                    class="form-control d-inline-block w-9 me-3"
+                    data-action="autosubmit#debouncedSubmit"
+                    autofocus
+                >
+                <span class="input-icon-addon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <circle cx="10" cy="10" r="7" />
+                                <line x1="21" y1="21" x2="15" y2="15" />
+                            </svg>
+                </span>
+            </div>
+        </form>
+
+        <span class="d-none d-sm-inline">
+            <a href="{{ path('app_admin_user_new') }}" class="btn btn-primary">{{ "label.user_new"|trans }}</a>
+        </span>
     </div>
 {% endblock %}
 
 {% block body %}
     <div class="card">
         <div class="card-body">
-            <turbo-frame id="user-list" data-turbo-action="advance">
+            <turbo-frame id="user-list" data-turbo-action="advance" target="_top">
                 <div id="table-default" class="table-responsive">
                     <table class="table">
                         <thead>

@@ -25,13 +25,15 @@ class UserController extends AbstractController
         #[MapQueryParameter]
         int $page = 1,
         #[MapQueryParameter]
-        string $sortBy = 'createdAt',
+        string $search = '',
         #[MapQueryParameter]
-        string $orderBy = 'desc',
+        string $sortBy = 'username',
+        #[MapQueryParameter]
+        string $orderBy = 'asc',
     ): Response {
-        $sortBy = in_array($sortBy, UserRepository::$validSorts, false) ? $sortBy : 'createdAt';
+        $sortBy = in_array($sortBy, UserRepository::$validSorts, false) ? $sortBy : 'username';
 
-        $users = $this->userRepository->getPaginatedResults($page, 16, $sortBy, $orderBy);
+        $users = $this->userRepository->getPaginatedResults($page, 16, $sortBy, $orderBy, $search);
 
         return $this->render('admin/user/index.html.twig', [
             'users' => $users,
