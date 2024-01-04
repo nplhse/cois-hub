@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
-use Symfony\Component\Messenger\Stamp\HandledStamp;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
@@ -49,12 +48,11 @@ class RegistrationController extends AbstractController
 
             try {
                 $this->messageBus->dispatch($command);
-                $envelope = $this->messageBus->dispatch($command);
 
-                $handledStamp = $envelope->last(HandledStamp::class);
-                $userId = $handledStamp->getResult();
-
-                $user = $this->userRepository->findOneBy(['id' => $userId]);
+                $user = $this->userRepository->findOneBy([
+                    'username' => $registerTypeDTO->getUsername(),
+                    'email' => $registerTypeDTO->getEmail(),
+                ]);
 
                 if (null === $user) {
                     $this->addFlash('warning', $this->translator->trans('flash.registration_failed'));
