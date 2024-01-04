@@ -39,7 +39,8 @@ class UserListQuery
         $qb->orderBy('u.'.$sortBy, $orderBy);
 
         if (!empty($search)) {
-            $qb->andWhere($qb->expr()->like('u.'.$sortBy, ':search'))
+            $qb->andWhere($qb->expr()->like('u.username', ':search'))
+                ->orWhere($qb->expr()->like('u.email', ':search'))
                 ->setParameter('search', '%'.$search.'%');
         }
 

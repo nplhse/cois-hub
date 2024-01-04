@@ -101,6 +101,7 @@
                                         {{ "label.username"|trans }} {{ _self.sortArrow('username', sortBy, orderBy) }}
                                     </a>
                                 </th>
+                                <th>{{ "label.email"|trans }}</th>
                                 <th>{{ "label.roles"|trans }}</th>
                                 <th>
                                     <a href="{{ path('app_admin_user_index', {
@@ -130,6 +131,9 @@
                                     <td>{{ user.id }}</td>
                                     <td>
                                         <a href="{{ path('app_admin_user_show', {'id': user.id}) }}">{{ user.username }}</a>
+                                    </td>
+                                    <td>
+                                        {{ user.email }}
                                     </td>
                                     <td>
                                         {% for role in user.roles %}
