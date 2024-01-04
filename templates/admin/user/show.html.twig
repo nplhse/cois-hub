@@ -96,13 +96,13 @@
                     <div class="datagrid-item">
                         <div class="datagrid-title">{{ "label.credentials_expired"|trans }}</div>
                         <div class="datagrid-content">
-                            {% if user.credentialsExpired %}
-                                <span class="status status-green">
-                                    {{ "label.no"|trans }}
-                                </span>
-                            {% else %}
+                            {% if user.hasCredentialsExpired %}
                                 <span class="status status-red">
                                     {{ "label.yes"|trans }}
+                                </span>
+                            {% else %}
+                                <span class="status status-green">
+                                    {{ "label.no"|trans }}
                                 </span>
                             {% endif %}
                           </span>
