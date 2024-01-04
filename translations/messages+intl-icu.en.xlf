@@ -414,6 +414,46 @@
         <source>label.actions</source>
         <target>Actions</target>
       </trans-unit>
+      <trans-unit id="Hrygjs8" resname="flash.user_created">
+        <source>flash.user_created</source>
+        <target>Success! New User has been created.</target>
+      </trans-unit>
+      <trans-unit id="1gvSlBS" resname="flash.user_creation_failed">
+        <source>flash.user_creation_failed</source>
+        <target>Sorry, something went wrong and the user has not been created</target>
+      </trans-unit>
+      <trans-unit id="QP3gDQV" resname="flash.user_edit_failed">
+        <source>flash.user_edit_failed</source>
+        <target>Sorry, something went wrong and the user has not been edited</target>
+      </trans-unit>
+      <trans-unit id="nd1n54M" resname="title.user_edit">
+        <source>title.user_edit</source>
+        <target>Edit User</target>
+      </trans-unit>
+      <trans-unit id="O2X4xZH" resname="label.user">
+        <source>label.user</source>
+        <target>User</target>
+      </trans-unit>
+      <trans-unit id="y5MnPUo" resname="label.save_changes">
+        <source>label.save_changes</source>
+        <target>Save changes</target>
+      </trans-unit>
+      <trans-unit id="_q2IMtR" resname="title.user_create">
+        <source>title.user_create</source>
+        <target>Create new User</target>
+      </trans-unit>
+      <trans-unit id="iLJoFkq" resname="label.user_create">
+        <source>label.user_create</source>
+        <target>Create User</target>
+      </trans-unit>
+      <trans-unit id="XgpNBL." resname="label.credentials_expired">
+        <source>label.credentials_expired</source>
+        <target>Credentials expired</target>
+      </trans-unit>
+      <trans-unit id="ltyg2Hb" resname="label.is_public">
+        <source>label.is_public</source>
+        <target>Is public</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

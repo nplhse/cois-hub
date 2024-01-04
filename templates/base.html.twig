@@ -9,7 +9,7 @@
             {{ importmap('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body data-turbo="false">
         <div class="page">
             {% block header %}
                 {% embed "embeds/header.html.twig" %}{% endembed %}

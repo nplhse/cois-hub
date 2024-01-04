@@ -80,7 +80,7 @@
                         </div>
                     </div>
                     <div class="datagrid-item">
-                        <div class="datagrid-title">Verified</div>
+                        <div class="datagrid-title">{{ "label.user_verified"|trans }}</div>
                         <div class="datagrid-content">
                             {% if user.verified %}
                                 <span class="status status-green">
@@ -94,7 +94,7 @@
                         </div>
                     </div>
                     <div class="datagrid-item">
-                        <div class="datagrid-title">Credentials Expired</div>
+                        <div class="datagrid-title">{{ "label.credentials_expired"|trans }}</div>
                         <div class="datagrid-content">
                             {% if user.credentialsExpired %}
                                 <span class="status status-green">
@@ -106,6 +106,21 @@
                                 </span>
                             {% endif %}
                           </span>
+                        </div>
+                    </div>
+                    <div class="datagrid-item">
+                        <div class="datagrid-title">{{ "label.is_public"|trans }}</div>
+                        <div class="datagrid-content">
+                            {% if user.public %}
+                                <span class="status status-green">
+                                    {{ "label.yes"|trans }}
+                                </span>
+                            {% else %}
+                                <span class="status status-red">
+                                    {{ "label.no"|trans }}
+                                </span>
+                            {% endif %}
+                            </span>
                         </div>
                     </div>
                 </div>
