@@ -21,7 +21,7 @@ final class RegisterUserCommandHandler
     ) {
     }
 
-    public function __invoke(RegisterUserCommand $command): int
+    public function __invoke(RegisterUserCommand $command): void
     {
         $user = new User();
 
@@ -45,7 +45,5 @@ final class RegisterUserCommandHandler
 
         $event = new UserRegistered($user->getId());
         $this->dispatchEvent($event);
-
-        return $user->getId();
     }
 }

@@ -59,11 +59,9 @@
                 </div>
                 <!-- Page body -->
                 <div class="page-body">
-                    <div class="container-xl">
-                        <div class="container-xl">
-                            {% include "includes/flash_messages.html.twig" %}
-                        </div>
+                    {% include "includes/flash_messages.html.twig" %}
 
+                    <div class="container-xl">
                         {% block body %}{% endblock %}
                     </div>
                 </div>

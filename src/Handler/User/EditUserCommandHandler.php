@@ -20,7 +20,7 @@ final class EditUserCommandHandler
     ) {
     }
 
-    public function __invoke(EditUserCommand $command): int
+    public function __invoke(EditUserCommand $command): void
     {
         $user = $this->userRepository->findOneBy(['id' => $command->getUserId()]);
 
@@ -52,7 +52,5 @@ final class EditUserCommandHandler
 
         $event = new UserEdited($user->getId());
         $this->dispatchEvent($event);
-
-        return $user->getId();
     }
 }

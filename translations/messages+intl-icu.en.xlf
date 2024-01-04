@@ -454,6 +454,14 @@
         <source>label.is_public</source>
         <target>Is public</target>
       </trans-unit>
+      <trans-unit id="HTQ6tMn" resname="flash.user_deletion_success">
+        <source>flash.user_deletion_success</source>
+        <target>Successfully deleted User account</target>
+      </trans-unit>
+      <trans-unit id="6gd9pru" resname="flash.user_deletion_failed">
+        <source>flash.user_deletion_failed</source>
+        <target>Sorry, something went wrong and the user has not been deleted.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
