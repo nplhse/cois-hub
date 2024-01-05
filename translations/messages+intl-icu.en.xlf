@@ -462,6 +462,14 @@
         <source>flash.user_deletion_failed</source>
         <target>Sorry, something went wrong and the user has not been deleted.</target>
       </trans-unit>
+      <trans-unit id="PMgigwp" resname="title.dashboard">
+        <source>title.dashboard</source>
+        <target>Dashboard</target>
+      </trans-unit>
+      <trans-unit id="S_76FF7" resname="label.newest_users">
+        <source>label.newest_users</source>
+        <target>Newest Users</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
