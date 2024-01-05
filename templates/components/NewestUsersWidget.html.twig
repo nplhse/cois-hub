@@ -1,0 +1,33 @@
+<div{{ attributes }}>
+    <div class="card">
+        <div class="card-header border-0">
+            <div class="card-title">10 {{ "label.newest_users"|trans }}</div>
+        </div>
+        <div class="card-table table-responsive">
+            <table class="table table-vcenter">
+                <thead>
+                <tr>
+                    <th>{{ "label.username"|trans }}</th>
+                    <th>{{ "label.email"|trans }}</th>
+                    <th>{{ "label.created_at"|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in this.users.results %}
+                    <tr>
+                        <td class="w-25">
+                            <a href="{{ path('app_admin_user_show', {'id': user.id}) }}">{{ user.username }}</a>
+                        </td>
+                        <td class="td-truncate">
+                            <div class="text-truncate">
+                                {{ user.email }}
+                            </div>
+                        </td>
+                        <td class="text-nowrap text-muted">{{ user.createdAt ? user.createdAt|date('d.m.Y H:i') : '' }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
