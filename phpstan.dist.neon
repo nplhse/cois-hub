@@ -1,12 +1,17 @@
 parameters:
     level: 6
+
     paths:
         - bin/
         - config/
         - public/
         - src/
         - tests/
+
     symfony:
         containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
     doctrine:
     	objectManagerLoader: tests/object-manager.php
+
+    checkGenericClassInNonGenericObjectType: false
+    treatPhpDocTypesAsCertain: false

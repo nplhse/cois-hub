@@ -38,4 +38,10 @@ return [
         'version' => '1.0.0-beta20',
         'type' => 'css',
     ],
+    '@hotwired/turbo' => [
+        'version' => '7.3.0',
+    ],
+    'debounce' => [
+        'version' => '2.0.0',
+    ],
 ];

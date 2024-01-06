@@ -1,0 +1,80 @@
+{% extends 'admin/_base.html.twig' %}
+
+{% block title %}{{ "title.user_create"|trans }} - {{ "title.users"|trans }} - {{ parent() }}{% endblock %}
+
+{% block admin_breadcrumb %}
+    {{ parent() }}
+    <li class="breadcrumb-item"><a href="{{ path('app_admin_user_index') }}">{{ "label.users"|trans }}</a></li>
+    <li class="breadcrumb-item active"><a>{{ "label.user_create"|trans }}</a></li>
+{% endblock %}
+
+{% block admin_title %}
+    <!-- Page pre-title -->
+    <div class="page-pretitle">
+        {{ "title.user_create"|trans }}
+    </div>
+    <h2 class="page-title">
+        {{ "title.users"|trans }}
+    </h2>
+{% endblock %}
+
+{% block admin_title_actions %}
+    <div class="btn-list">
+        <div class="btn-list">
+            <span class="d-none d-sm-inline">
+                <a class="btn btn-outline-secondary" href="{{ path('app_admin_user_index') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M15 6l-6 6l6 6" />
+                    </svg>
+                    {{ "label.back_to_list"|trans }}
+                </a>
+            </span>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{{ "title.user_create"|trans }}</h3>
+            </div>
+            <div class="card-body">
+                {{ form_start(form) }}
+
+                {{ form_row(form.username) }}
+
+                {{ form_row(form.password) }}
+
+                {{ form_row(form.email) }}
+
+                {{ form_row(form.roles) }}
+
+                {{ form_row(form.credentialsExpired) }}
+
+                {{ form_row(form.isVerified) }}
+
+                {{ form_row(form.isPublic) }}
+            </div>
+            <div class="card-footer">
+                <div class="btn-list justify-content-end">
+                    <a href="{{ path('app_admin_user_index') }}" class="btn">
+                        {{ "label.cancel"|trans }}
+                    </a>
+                    <button class="btn btn-primary" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                            <path d="M9 12h6" />
+                            <path d="M12 9v6" />
+                        </svg>
+                        {{ "label.create_account"|trans }}
+                    </button>
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'admin/_base.html.twig' %}
+
+{% block title %}{{ "title.audit_log"|trans }} - {{ parent() }}{% endblock %}
+
+{% block admin_title %}
+    <!-- Page pre-title -->
+    <div class="page-pretitle">
+        {{ "title.list_logs"|trans }}
+    </div>
+    <h2 class="page-title">
+        {{ "title.audit_log"|trans }}
+    </h2>
+{% endblock %}
+
+{% block admin_title_actions %}
+{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="divide-y">
+                    {% for auditlog in audit_logs.getResults %}
+                        <div>
+                            <div class="row">
+                                <div class="col-auto">
+                                    <span class="avatar"></span>
+                                </div>
+                                <div class="col">
+                                    <div class="text-truncate">
+                                        {% if auditlog.user is null %}
+                                            <strong>{{ auditlog.entityType }} ({{ auditlog.entityId }})</strong> was <strong>{{ auditlog.action }}</strong>.
+                                        {% else %}{{ auditlog.user }}
+                                            <strong>{{ auditlog.entityType }} ({{ auditlog.entityId }})</strong> was <strong>{{ auditlog.action }}</strong> by {{ auditlog.user }}.
+                                        {% endif %}
+                                    </div>
+                                    <div class="text-muted">{{ auditlog.createdAt|date('d.m.Y H:i') }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="empty">
+                            <div class="empty-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <circle cx="12" cy="12" r="9" />
+                                    <line x1="9" y1="10" x2="9.01" y2="10" />
+                                    <line x1="15" y1="10" x2="15.01" y2="10" />
+                                    <path d="M9.5 15.25a3.5 3.5 0 0 1 5 0" />
+                                </svg>
+                            </div>
+                            <p class="empty-title">{{ "label.search_no_results"|trans }}</p>
+                            <p class="empty-subtitle text-secondary">
+                                {{ "help.search_no_results"|trans }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+                <div class="card-footer d-flex align-items-center">
+                    <p class="m-0 text-muted">Showing <span>{{ audit_logs.numResults }}</span> results, with <span>{{ audit_logs.pageSize }}</span> per page.</p>
+                    {% if audit_logs.hasToPaginate %}
+                    <ul class="pagination m-0 ms-auto">
+                        {% if audit_logs.hasPreviousPage %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ path('app_admin_auditlog_index', {page: audit_logs.previousPage}) }}" tabindex="-1" aria-disabled="true">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
+                                    {{ "label.previous"|trans }}
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
+                                    {{ "label.previous"|trans }}
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if audit_logs.hasNextPage %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ path('app_admin_auditlog_index', {page: audit_logs.nextPage}) }}">
+                                    {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="{{ path('app_admin_auditlog_index', {page: audit_logs.nextPage}) }}">
+                                    {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    {% endif %}
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

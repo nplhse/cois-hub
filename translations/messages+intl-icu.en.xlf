@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="II4DGnv" resname="label.logout">
+        <source>label.logout</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="ZAtrhtu" resname="label.login">
+        <source>label.login</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="80JoLd0" resname="title.login">
+        <source>title.login</source>
+        <target>Login to your account</target>
+      </trans-unit>
+      <trans-unit id="B0loISu" resname="label.remember_me">
+        <source>label.remember_me</source>
+        <target>Remember me</target>
+      </trans-unit>
+      <trans-unit id="wYxvFbC" resname="label.signin">
+        <source>label.signin</source>
+        <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="j0i_RMV" resname="label.register">
+        <source>label.register</source>
+        <target>Register</target>
+      </trans-unit>
+      <trans-unit id="wCazS.X" resname="action.close">
+        <source>action.close</source>
+        <target>Close</target>
+      </trans-unit>
+      <trans-unit id="FHhgESp" resname="title.register">
+        <source>title.register</source>
+        <target>Create new account</target>
+      </trans-unit>
+      <trans-unit id="xo3V.yy" resname="label.create_account">
+        <source>label.create_account</source>
+        <target>Create new account</target>
+      </trans-unit>
+      <trans-unit id="BHJjbbu" resname="label.already_registered">
+        <source>label.already_registered</source>
+        <target>Already have account?</target>
+      </trans-unit>
+      <trans-unit id="BVi3272" resname="label.no_account_yet">
+        <source>label.no_account_yet</source>
+        <target>Don't have account yet?</target>
+      </trans-unit>
+      <trans-unit id="ZBGVe0s" resname="label.click_to_register">
+        <source>label.click_to_register</source>
+        <target>Click here to register</target>
+      </trans-unit>
+      <trans-unit id="v7W9vrc" resname="email.welcome_glad_to">
+        <source>email.welcome_glad_to</source>
+        <target>We're glad to have you here</target>
+      </trans-unit>
+      <trans-unit id="yXqQboW" resname="email.welcome_thanks">
+        <source>email.welcome_thanks</source>
+        <target>Thanks for registering and your willingness to participate in this project. To verify your email address, please click on below button.</target>
+      </trans-unit>
+      <trans-unit id="Qz8mHCu" resname="email.welcome_confim_address">
+        <source>email.welcome_confim_address</source>
+        <target>Please confirm your email address by clicking the following link:</target>
+      </trans-unit>
+      <trans-unit id="mBF1.Ep" resname="label.confim_email">
+        <source>label.confim_email</source>
+        <target>Confirm your email address</target>
+      </trans-unit>
+      <trans-unit id="Jb9GXNZ" resname="email.link_expiration">
+        <source>email.link_expiration</source>
+        <target>This link will expire in</target>
+      </trans-unit>
+      <trans-unit id="vvefqeb" resname="email.signature_cheers">
+        <source>email.signature_cheers</source>
+        <target>Cheers,</target>
+      </trans-unit>
+      <trans-unit id="3BWkzAn" resname="email.signature_folks">
+        <source>email.signature_folks</source>
+        <target>Your friendly folks of cois-hub</target>
+      </trans-unit>
+      <trans-unit id="bLyHJ5T" resname="title.settings">
+        <source>title.settings</source>
+        <target>Settings</target>
+      </trans-unit>
+      <trans-unit id="m3GSfDy" resname="label.settings_user">
+        <source>label.settings_user</source>
+        <target>User settings</target>
+      </trans-unit>
+      <trans-unit id="5fXPEMc" resname="label.my_account">
+        <source>label.my_account</source>
+        <target>Your account</target>
+      </trans-unit>
+      <trans-unit id="C2YETEz" resname="title.my_account">
+        <source>title.my_account</source>
+        <target>My Account</target>
+      </trans-unit>
+      <trans-unit id="9pvowqn" resname="label.password">
+        <source>label.password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="_kzdadS" resname="help.password_set_new">
+        <source>help.password_set_new</source>
+        <target>You can set a new password for your account by clicking on the button below.</target>
+      </trans-unit>
+      <trans-unit id="sr8t86R" resname="btn.password_set_new">
+        <source>btn.password_set_new</source>
+        <target>Set new password</target>
+      </trans-unit>
+      <trans-unit id=".kLhRZY" resname="label.settings">
+        <source>label.settings</source>
+        <target>Settings</target>
+      </trans-unit>
+      <trans-unit id="02xL9WI" resname="label.back_to_site">
+        <source>label.back_to_site</source>
+        <target>Back to frontend</target>
+      </trans-unit>
+      <trans-unit id="WTJDbEA" resname="label.backend">
+        <source>label.backend</source>
+        <target>Administration</target>
+      </trans-unit>
+      <trans-unit id="2GecrqJ" resname="label.dashboard">
+        <source>label.dashboard</source>
+        <target>Dashboard</target>
+      </trans-unit>
+      <trans-unit id="GnVaEgl" resname="label.audit_log">
+        <source>label.audit_log</source>
+        <target>Audit log</target>
+      </trans-unit>
+      <trans-unit id="abnmIYj" resname="title.list_logs">
+        <source>title.list_logs</source>
+        <target>List logs</target>
+      </trans-unit>
+      <trans-unit id="GfJRF1Y" resname="title.audit_log">
+        <source>title.audit_log</source>
+        <target>Audit logs</target>
+      </trans-unit>
+      <trans-unit id="hlhocqb" resname="label.search_no_results">
+        <source>label.search_no_results</source>
+        <target>Sorry, no results found!</target>
+      </trans-unit>
+      <trans-unit id=".sLbbAr" resname="help.search_no_results">
+        <source>help.search_no_results</source>
+        <target>Try adjusting your search or filter to find what you're looking for.</target>
+      </trans-unit>
+      <trans-unit id="HuCBwC." resname="label.previous">
+        <source>label.previous</source>
+        <target>Previous</target>
+      </trans-unit>
+      <trans-unit id="wcGgGJk" resname="label.next">
+        <source>label.next</source>
+        <target>Next</target>
+      </trans-unit>
+      <trans-unit id="fKgc.kW" resname="title.users">
+        <source>title.users</source>
+        <target>Users</target>
+      </trans-unit>
+      <trans-unit id="_HfESWF" resname="label.user_count">
+        <source>label.user_count</source>
+        <target>Users</target>
+      </trans-unit>
+      <trans-unit id="1uEAu_2" resname="label.user_new">
+        <source>label.user_new</source>
+        <target>Create new User</target>
+      </trans-unit>
+      <trans-unit id="hVZOx.T" resname="label.user_is_admin">
+        <source>label.user_is_admin</source>
+        <target>Admin</target>
+      </trans-unit>
+      <trans-unit id="zwRIb6v" resname="label.user_is_user">
+        <source>label.user_is_user</source>
+        <target>User</target>
+      </trans-unit>
+      <trans-unit id="jI3fm2M" resname="label.users">
+        <source>label.users</source>
+        <target>Users</target>
+      </trans-unit>
+      <trans-unit id="ScuUX1R" resname="title.error">
+        <source>title.error</source>
+        <target>Oops… You just found an error page!</target>
+      </trans-unit>
+      <trans-unit id=".YJkT31" resname="label.error_description">
+        <source>label.error_description</source>
+        <target>There was an unknown error (HTTP {status_code, number}) that prevented to complete your request.</target>
+      </trans-unit>
+      <trans-unit id="IWJQb52" resname="label.error_suggestion">
+        <source>label.error_suggestion</source>
+        <target><![CDATA[Try loading this page again in some minutes or <a href="{url}">go back to the homepage</a>.]]></target>
+      </trans-unit>
+      <trans-unit id="YtTJTQq" resname="label.to_homepage">
+        <source>label.to_homepage</source>
+        <target>Take me to the homepage</target>
+      </trans-unit>
+      <trans-unit id="l4poZBZ" resname="label.error_404_description">
+        <source>label.error_404_description</source>
+        <target>We are sorry but the page you are looking for was not found</target>
+      </trans-unit>
+      <trans-unit id="YmUV1ls" resname="label.error_404_suggestion">
+        <source>label.error_404_suggestion</source>
+        <target><![CDATA[Check out any misspelling in the URL or <a href="{url}">go back to the homepage</a>.]]></target>
+      </trans-unit>
+      <trans-unit id="6kiW_BH" resname="label.error_500_description">
+        <source>label.error_500_description</source>
+        <target>We are sorry but our server encountered an internal error.</target>
+      </trans-unit>
+      <trans-unit id="yUMnePe" resname="label.error_500_suggestion">
+        <source>label.error_500_suggestion</source>
+        <target><![CDATA[Try loading this page again in some minutes or <a href="{url}">go back to the homepage</a>.]]></target>
+      </trans-unit>
+      <trans-unit id="AtR.p5h" resname="label.error_403_description">
+        <source>label.error_403_description</source>
+        <target>You don't have permission to access to this resource.</target>
+      </trans-unit>
+      <trans-unit id="WI3Y505" resname="label.error_403_suggestion">
+        <source>label.error_403_suggestion</source>
+        <target>You might ask a system administrator to grant you access to this resource.</target>
+      </trans-unit>
+      <trans-unit id="balXp1N" resname="title.password_update">
+        <source>title.password_update</source>
+        <target>Update your password</target>
+      </trans-unit>
+      <trans-unit id="8yeGT7d" resname="label.cancel">
+        <source>label.cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="QnMOLQb" resname="label.change_password">
+        <source>label.change_password</source>
+        <target>Set new Password</target>
+      </trans-unit>
+      <trans-unit id="MZ5wFOJ" resname="title.public_profile">
+        <source>title.public_profile</source>
+        <target>Public profile</target>
+      </trans-unit>
+      <trans-unit id="gXIP1Mw" resname="help.public_profile">
+        <source>help.public_profile</source>
+        <target>Making your profile public means that anyone visiting this site will be able to find you.</target>
+      </trans-unit>
+      <trans-unit id="cvSK_0f" resname="label.apply_changes">
+        <source>label.apply_changes</source>
+        <target>Apply changes</target>
+      </trans-unit>
+      <trans-unit id="uc6QOpR" resname="flash.password_updated">
+        <source>flash.password_updated</source>
+        <target>Your password has been updated.</target>
+      </trans-unit>
+      <trans-unit id="fMxqvd5" resname="flash.settings_updated">
+        <source>flash.settings_updated</source>
+        <target>Your settings have been updated.</target>
+      </trans-unit>
+      <trans-unit id=".suU4UJ" resname="flash.user_registered">
+        <source>flash.user_registered</source>
+        <target>Thank you for registering an account, we've emailed you a link to verify your E-Mail address.</target>
+      </trans-unit>
+      <trans-unit id="aJNyO3a" resname="flash.email_verified">
+        <source>flash.email_verified</source>
+        <target>Your E-Mail address has successfully been verified.</target>
+      </trans-unit>
+      <trans-unit id="B3w55lp" resname="label.your_profile">
+        <source>label.your_profile</source>
+        <target>View your profile</target>
+      </trans-unit>
+      <trans-unit id="QEnBc0X" resname="title.user_profile">
+        <source>title.user_profile</source>
+        <target>User profile</target>
+      </trans-unit>
+      <trans-unit id=".W.o9F4" resname="label.basic_info">
+        <source>label.basic_info</source>
+        <target>Basic information</target>
+      </trans-unit>
+      <trans-unit id="v5SWCuI" resname="label.created_at">
+        <source>label.created_at</source>
+        <target>Created at</target>
+      </trans-unit>
+      <trans-unit id="ic4VdiZ" resname="label.forgot_password">
+        <source>label.forgot_password</source>
+        <target>Forgot your password?</target>
+      </trans-unit>
+      <trans-unit id="EOwSraV" resname="title.forgot_password">
+        <source>title.forgot_password</source>
+        <target>Forgot your password</target>
+      </trans-unit>
+      <trans-unit id="sU7nF1b" resname="help.forgot_password">
+        <source>help.forgot_password</source>
+        <target>Enter your email address, and we will send you a link to reset your password.</target>
+      </trans-unit>
+      <trans-unit id="ezxkTqr" resname="label.request_reset_email">
+        <source>label.request_reset_email</source>
+        <target>Request a password reset email</target>
+      </trans-unit>
+      <trans-unit id="27va.2r" resname="label.back_to_login">
+        <source>label.back_to_login</source>
+        <target><![CDATA[Forget it, <a href="{url}">send me back</a> to the sign in screen.]]></target>
+      </trans-unit>
+      <trans-unit id="QGir1JO" resname="title.password_reset_sent">
+        <source>title.password_reset_sent</source>
+        <target>Password reset email send</target>
+      </trans-unit>
+      <trans-unit id="SxbeBoo" resname="help.password_reset_sent">
+        <source>help.password_reset_sent</source>
+        <target>If an account matching your email exists, then an email was just sent that contains a link that you
+            can use to reset your password.</target>
+      </trans-unit>
+      <trans-unit id="kFAR5dp" resname="label.forgot_password_again">
+        <source>label.forgot_password_again</source>
+        <target><![CDATA[If you didn't receive an email please check your spam folder or <a href="{url}">try again</a>.]]></target>
+      </trans-unit>
+      <trans-unit id="Px2gIqN" resname="help.link_expires_in">
+        <source>help.link_expires_in</source>
+        <target>Please note that this link will expire in: </target>
+      </trans-unit>
+      <trans-unit id="mKmhgWs" resname="email.password_reset_title">
+        <source>email.password_reset_title</source>
+        <target>Reset Password Instruction</target>
+      </trans-unit>
+      <trans-unit id="h14csts" resname="email.password_reset_help">
+        <source>email.password_reset_help</source>
+        <target>You recently requested to reset a password for your account. Just click on the button below to reset it.</target>
+      </trans-unit>
+      <trans-unit id="N2c1hpK" resname="label.reset_password">
+        <source>label.reset_password</source>
+        <target>Reset Password</target>
+      </trans-unit>
+      <trans-unit id="REVBxcB" resname="email.password_reset_trouble">
+        <source>email.password_reset_trouble</source>
+        <target>Having trouble with the button above? Please copy this URL: {url} and paste it into your browser. If you didn't request a password reset, please ignore this message or contact us if you have any questions.</target>
+      </trans-unit>
+      <trans-unit id="iEmAaay" resname="title.reset_password">
+        <source>title.reset_password</source>
+        <target>Reset your password</target>
+      </trans-unit>
+      <trans-unit id="Uo6RYFA" resname="flash.registration_failed">
+        <source>flash.registration_failed</source>
+        <target>Something went wrong and your registration failed, we're sorry about that. Please try again later.</target>
+      </trans-unit>
+      <trans-unit id="7tVvhhX" resname="email.verify_title">
+        <source>email.verify_title</source>
+        <target>Please verify your E-Mail Address</target>
+      </trans-unit>
+      <trans-unit id="hKAxkpS" resname="title.reset_credentials">
+        <source>title.reset_credentials</source>
+        <target>Please set a new password</target>
+      </trans-unit>
+      <trans-unit id="5qtUjUr" resname="help.reset_credentials">
+        <source>help.reset_credentials</source>
+        <target>We kindly ask you to set a new password for your account.</target>
+      </trans-unit>
+      <trans-unit id="vrIU536" resname="label.reset_credentials">
+        <source>label.reset_credentials</source>
+        <target>Set new Password</target>
+      </trans-unit>
+      <trans-unit id="9gtQrtO" resname="title.backend">
+        <source>title.backend</source>
+        <target>Backend</target>
+      </trans-unit>
+      <trans-unit id="I4vwwju" resname="title.overview">
+        <source>title.overview</source>
+        <target>Overview</target>
+      </trans-unit>
+      <trans-unit id="mvzqhh8" resname="title.user_details">
+        <source>title.user_details</source>
+        <target>User Details</target>
+      </trans-unit>
+      <trans-unit id="QDJEfQY" resname="label.user_details">
+        <source>label.user_details</source>
+        <target>User Details</target>
+      </trans-unit>
+      <trans-unit id="GmGWJeC" resname="label.back_to_list">
+        <source>label.back_to_list</source>
+        <target>Back to list</target>
+      </trans-unit>
+      <trans-unit id="jSXGxzd" resname="label.user_edit">
+        <source>label.user_edit</source>
+        <target>Edit User</target>
+      </trans-unit>
+      <trans-unit id="txRonia" resname="label.id">
+        <source>label.id</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="LDhDPrF" resname="label.username">
+        <source>label.username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="iD6CNOO" resname="label.roles">
+        <source>label.roles</source>
+        <target>Roles</target>
+      </trans-unit>
+      <trans-unit id="YgvLzSx" resname="label.updated_at">
+        <source>label.updated_at</source>
+        <target>Updated at</target>
+      </trans-unit>
+      <trans-unit id="qKW8822" resname="label.user_expired">
+        <source>label.user_expired</source>
+        <target>Expired</target>
+      </trans-unit>
+      <trans-unit id="20E88BX" resname="label.user_verified">
+        <source>label.user_verified</source>
+        <target>Verified</target>
+      </trans-unit>
+      <trans-unit id="bdYD32t" resname="label.no">
+        <source>label.no</source>
+        <target>No</target>
+      </trans-unit>
+      <trans-unit id="S_Vw6L1" resname="label.yes">
+        <source>label.yes</source>
+        <target>Yes</target>
+      </trans-unit>
+      <trans-unit id="D2N6_cP" resname="label.email">
+        <source>label.email</source>
+        <target>E-Mail address</target>
+      </trans-unit>
+      <trans-unit id="zldXQq6" resname="label.actions">
+        <source>label.actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="Hrygjs8" resname="flash.user_created">
+        <source>flash.user_created</source>
+        <target>Success! New User has been created.</target>
+      </trans-unit>
+      <trans-unit id="1gvSlBS" resname="flash.user_creation_failed">
+        <source>flash.user_creation_failed</source>
+        <target>Sorry, something went wrong and the user has not been created</target>
+      </trans-unit>
+      <trans-unit id="QP3gDQV" resname="flash.user_edit_failed">
+        <source>flash.user_edit_failed</source>
+        <target>Sorry, something went wrong and the user has not been edited</target>
+      </trans-unit>
+      <trans-unit id="nd1n54M" resname="title.user_edit">
+        <source>title.user_edit</source>
+        <target>Edit User</target>
+      </trans-unit>
+      <trans-unit id="O2X4xZH" resname="label.user">
+        <source>label.user</source>
+        <target>User</target>
+      </trans-unit>
+      <trans-unit id="y5MnPUo" resname="label.save_changes">
+        <source>label.save_changes</source>
+        <target>Save changes</target>
+      </trans-unit>
+      <trans-unit id="_q2IMtR" resname="title.user_create">
+        <source>title.user_create</source>
+        <target>Create new User</target>
+      </trans-unit>
+      <trans-unit id="iLJoFkq" resname="label.user_create">
+        <source>label.user_create</source>
+        <target>Create User</target>
+      </trans-unit>
+      <trans-unit id="XgpNBL." resname="label.credentials_expired">
+        <source>label.credentials_expired</source>
+        <target>Credentials expired</target>
+      </trans-unit>
+      <trans-unit id="ltyg2Hb" resname="label.is_public">
+        <source>label.is_public</source>
+        <target>Is public</target>
+      </trans-unit>
+      <trans-unit id="HTQ6tMn" resname="flash.user_deletion_success">
+        <source>flash.user_deletion_success</source>
+        <target>Successfully deleted User account</target>
+      </trans-unit>
+      <trans-unit id="6gd9pru" resname="flash.user_deletion_failed">
+        <source>flash.user_deletion_failed</source>
+        <target>Sorry, something went wrong and the user has not been deleted.</target>
+      </trans-unit>
+      <trans-unit id="PMgigwp" resname="title.dashboard">
+        <source>title.dashboard</source>
+        <target>Dashboard</target>
+      </trans-unit>
+      <trans-unit id="S_76FF7" resname="label.newest_users">
+        <source>label.newest_users</source>
+        <target>Newest Users</target>
+      </trans-unit>
+      <trans-unit id="uFtpojr" resname="label.system">
+        <source>label.system</source>
+        <target>System</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

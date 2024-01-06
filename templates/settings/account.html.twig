@@ -1,0 +1,36 @@
+{% extends 'settings/_base.html.twig' %}
+
+{% block title %}{{ "title.my_account"|trans }} - {{ parent() }}{% endblock %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active" aria-current="page">{{ "title.my_account"|trans }}</li>
+{% endblock %}
+
+{% block card %}
+    <div class="card-body">
+        <h2 class="mb-4">{{ "title.my_account"|trans }}</h2>
+        <h3 class="card-title mt-4">{{ "label.password"|trans }}</h3>
+        <p class="card-subtitle">{{ "help.password_set_new"|trans }}</p>
+        <div>
+            <a href="{{ path('app_settings_password') }}" class="btn">
+                {{ "btn.password_set_new"|trans }}
+            </a>
+        </div>
+        {{ form_start(form) }}
+        <h3 class="card-title mt-4">{{ "title.public_profile"|trans }}</h3>
+        <p class="card-subtitle">{{ "help.public_profile"|trans }}</p>
+
+        {{ form_row(form.isPublic) }}
+    </div>
+    <div class="card-footer bg-transparent mt-auto">
+        <div class="btn-list justify-content-end">
+            <a href="{{ path('app_settings_account') }}" class="btn">
+                {{ "label.cancel"|trans }}
+            </a>
+            <button type="submit" class="btn btn-primary">
+                {{ "label.apply_changes"|trans }}
+            </button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

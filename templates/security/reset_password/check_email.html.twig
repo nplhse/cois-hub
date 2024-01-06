@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ "title.password_reset_sent"|trans }} - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="page page-center">
+        <div class="container container-tight py-4">
+            <div class="card card-md" >
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">{{ "title.password_reset_sent"|trans }}</h2>
+                    <p class="text-muted text-center mb-2">{{ "help.password_reset_sent"|trans }}</p>
+                    <p class="text-muted text-center mb-2">{{ "help.link_expires_in"|trans }} {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+                </div>
+            </div>
+            <div class="">
+                <div class="text-center text-muted mt-3">
+                    <p class="align-content-center w-75 mx-auto">
+                        {{ "label.forgot_password_again"|trans({'url': path('app_forgot_password_request')})|raw }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

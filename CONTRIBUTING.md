@@ -39,7 +39,7 @@ When using these fixtures there are always several pre-configured Users by defau
 | Username    | Password   | Description                         |
 | ----------- |------------| ----------------------------------- |
 | admin       | _password_ | **Admin** user with full privileges |
-| foo         | _bar_      | Default user                        |
+| foo         | _password_ | Default user                        |
 
 ## Available make commands
 | Command           | Description                                                                                                   |

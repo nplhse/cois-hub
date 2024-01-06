@@ -51,10 +51,15 @@
         "symfony/string": "7.0.*",
         "symfony/translation": "7.0.*",
         "symfony/twig-bundle": "7.0.*",
+        "symfony/ux-turbo": "^2.13",
+        "symfony/ux-twig-component": "^2.13",
         "symfony/validator": "7.0.*",
         "symfony/web-link": "7.0.*",
         "symfony/yaml": "7.0.*",
-        "twig/extra-bundle": "^2.12|^3.0",
+        "symfonycasts/reset-password-bundle": "^1.20",
+        "symfonycasts/verify-email-bundle": "^1.16",
+        "twig/cssinliner-extra": "^3.8",
+        "twig/extra-bundle": "^3.8",
         "twig/twig": "^2.12|^3.0"
     },
     "config": {
@@ -92,7 +97,8 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "importmap:install": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"
@@ -134,6 +140,7 @@
         "vimeo/psalm": "^5.17",
         "vincentlanglet/twig-cs-fixer": "^2.0",
         "weirdan/doctrine-psalm-plugin": "^2.9",
+        "zenstruck/browser": "^1.7",
         "zenstruck/foundry": "^1.36"
     }
 }

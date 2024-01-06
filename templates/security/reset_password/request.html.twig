@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ "title.forgot_password"|trans }} - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="page page-center">
+        <div class="container container-tight py-4">
+            <div class="card card-md" >
+                <div class="card-body">
+                    {% for flash_error in app.flashes('reset_password_error') %}
+                        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                    {% endfor %}
+
+                    <h2 class="card-title text-center mb-4">{{ "title.forgot_password"|trans }}</h2>
+                    <p class="text-muted mb-4">{{ "help.forgot_password"|trans }}</p>
+
+                    {{ form_start(requestForm) }}
+                    {{ form_row(requestForm.email) }}
+
+                    <div class="form-footer">
+                        <button class="btn btn-primary w-100" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+                            {{ "label.request_reset_email"|trans }}
+                        </button>
+                    </div>
+
+                    {{ form_end(requestForm) }}
+                </div>
+            </div>
+            <div class="text-center text-muted mt-3">
+                {{ "label.back_to_login"|trans({'url': path('app_login')})|raw }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

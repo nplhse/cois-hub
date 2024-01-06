@@ -38,14 +38,14 @@ jobs:
 
       - name: Validate main `composer.json` and `composer.lock` files
         run: composer validate --no-check-version
-        
+
       - name: Check if any dependencies are compromised
         if: always() && steps.install.outcome == 'success'
         run: composer audit
 
       - name: Composer Dependencies
         uses: "ramsey/composer-install@v2"
-        
+
       - name: Lint YAML files
         if: always() && steps.install.outcome == 'success'
         run: ./bin/console lint:yaml config --parse-tags
@@ -73,6 +73,8 @@ jobs:
         
       - name: Analyse PHP Code (PHPStan)
         run: vendor/bin/phpstan analyse
+        env:
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
 
       - name: Analyse PHP Code (Psalm)
         run: vendor/bin/psalm

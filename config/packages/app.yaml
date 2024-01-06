@@ -1,0 +1,6 @@
+app:
+    title: 'cois-hub'
+    default_locale: 'en'
+    mailer:
+        from_address: 'noreply@cois.dev'
+        from_sender: 'Collaborative IVENA Statistics'

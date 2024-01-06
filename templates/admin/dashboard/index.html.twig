@@ -1,0 +1,32 @@
+{% extends 'admin/_base.html.twig' %}
+
+{% block title %}{{ "title.dashboard"|trans }} - {{ parent() }}{% endblock %}
+
+{% block admin_title %}
+    <!-- Page pre-title -->
+    <div class="page-pretitle">
+
+    </div>
+    <h2 class="page-title">
+        {{ "title.dashboard"|trans }}
+    </h2>
+{% endblock %}
+
+{% block admin_breadcrumb %}
+    <li class="breadcrumb-item active"><a href="{{ path('app_admin_dashboard') }}">{{ "label.backend"|trans }}</a></li>
+{% endblock %}
+
+{% block admin_title_actions %}
+{% endblock %}
+
+{% block body %}
+    <div class="row row-deck row-cards">
+        <div class="col-12">
+            <div class="row row-cards">
+                <twig:UserCountWidget class="col-sm-6 col-lg-3" />
+            </div>
+        </div>
+        <twig:AuditLogWidget class="col-lg-6"></twig:AuditLogWidget>
+        <twig:NewestUsersWidget class="col-lg-6" />
+    </div>
+{% endblock %}

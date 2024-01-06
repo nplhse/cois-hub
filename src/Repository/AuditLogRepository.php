@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\AuditLog;
+use App\Pagination\Paginator;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -21,12 +22,17 @@ class AuditLogRepository extends ServiceEntityRepository
         parent::__construct($registry, AuditLog::class);
     }
 
-    public function save(AuditLog $entity, bool $flush = false): void
+    public function add(AuditLog $auditLog): void
     {
-        $this->getEntityManager()->persist($entity);
+        $this->getEntityManager()->persist($auditLog);
+        $this->getEntityManager()->flush();
+    }
 
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+    public function getPaginatedResults(int $page = 1, int $perPage = 25): Paginator
+    {
+        $query = $this->createQueryBuilder('al')
+            ->orderBy('al.createdAt', 'DESC');
+
+        return (new Paginator($query))->paginate($page, $perPage);
     }
 }

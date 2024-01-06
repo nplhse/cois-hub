@@ -1,0 +1,56 @@
+{% extends 'emails/base_email.html.twig' %}
+
+{% block body %}
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <td class="content pb-0" align="center">
+                <table class="icon icon-lg bg-green" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td valign="middle" align="center">
+                            <img src="{{ absolute_url(asset('images/icons-white-check.png')) }}" class="va-middle" width="40" height="40" alt="check" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="content text-center">
+                <p class="h1">{{ "email.welcome_glad_to"|trans }}, {{ username }}</p>
+                <p>{{ "email.welcome_thanks"|trans }}</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="content text-center pt-0 pb-xl">
+                <table cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="center">
+                            <p>
+                                {{ "email.welcome_confim_address"|trans }}
+                            </p>
+                            <table cellpadding="0" cellspacing="0" border="0" class="bg-green rounded w-auto">
+                                <tr>
+                                    <td align="center" valign="top" class="lh-1">
+                                        <a href="{{ signedUrl|raw }}" class="btn bg-green border-green">
+                                            <span class="btn-span">{{ "label.confim_email"|trans }}</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <p>
+                                <i>{{ "email.link_expiration"|trans }}: {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.</i>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="content text-center border-top">
+                <p>
+                    {{ "email.signature_cheers"|trans }}<br>
+                    {{ "email.signature_folks"|trans }}
+                </p>
+            </td>
+        </tr>
+    </table>
+{% endblock %}
