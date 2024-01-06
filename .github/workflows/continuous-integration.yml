@@ -65,12 +65,12 @@ jobs:
       - name: Lint Doctrine entities
         if: always() && steps.install.outcome == 'success'
         run: ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
-
+        
       - name: Run Migration
         run: php bin/console doctrine:schema:create || echo "No schema found or schema failed"
         env:
           DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
-
+        
       - name: Analyse PHP Code (PHPStan)
         run: vendor/bin/phpstan analyse
         env:
