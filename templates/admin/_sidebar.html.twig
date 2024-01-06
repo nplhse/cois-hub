@@ -1,3 +1,5 @@
+{% set route = app.request.attributes.get('_route') %}
+
 <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -5,7 +7,7 @@
         </button>
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
             <a href="{{ path('app_hello_world') }}">
-                cois-hub
+                {{ app_title }}
             </a>
         </h1>
         <div class="collapse navbar-collapse" id="sidebar-menu">
@@ -23,11 +25,7 @@
                         </span>
                     </a>
                 </li>
-                {% if app.request.attributes.get('_route') starts with 'app_admin_dashboard' %}
-                    <li class="nav-item active">
-                {% else %}
-                    <li class="nav-item">
-                {% endif %}
+                <li class="nav-item {{ route starts with 'app_admin_dashboard' ? 'active' : '' }}">
                     <a class="nav-link" href="{{ path("app_admin_dashboard") }}" >
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dashboard" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -42,11 +40,7 @@
                         </span>
                     </a>
                 </li>
-                {% if app.request.attributes.get('_route') starts with 'app_admin_user' %}
-                <li class="nav-item active">
-                    {% else %}
-                <li class="nav-item">
-                    {% endif %}
+                <li class="nav-item {{ route starts with 'app_admin_user' ? 'active' : '' }}">
                     <a class="nav-link" href="{{ path("app_admin_user_index") }}" >
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -62,24 +56,34 @@
                         </span>
                     </a>
                 </li>
-                {% if app.request.attributes.get('_route') starts with 'app_admin_audit' %}
-                <li class="nav-item active">
-                    {% else %}
-                <li class="nav-item">
-                    {% endif %}
-                    <a class="nav-link" href="{{ path("app_admin_auditlog_index") }}" >
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-notebook" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <li class="nav-item dropdown {{ route starts with 'app_admin_system' ? 'active' : '' }}">
+                    <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true" >
+                        <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-11a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1m3 0v18" />
-                                <path d="M13 8l2 0" />
-                                <path d="M13 12l2 0" />
+                                <path d="M4 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                                <path d="M4 13m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                                <path d="M14 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                                <path d="M14 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
                             </svg>
                         </span>
                         <span class="nav-link-title">
-                            {{ "label.audit_log"|trans }}
+                            {{ "label.system"|trans }}
                         </span>
                     </a>
+                    <div class="dropdown-menu show">
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item {{ route starts with 'app_admin_system_audit' ? 'active' : '' }}"
+                                   href="{{ path("app_admin_system_auditlog") }}"
+                                >
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                        {{ "label.audit_log"|trans }}
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>

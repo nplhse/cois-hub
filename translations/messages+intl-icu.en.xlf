@@ -470,6 +470,10 @@
         <source>label.newest_users</source>
         <target>Newest Users</target>
       </trans-unit>
+      <trans-unit id="uFtpojr" resname="label.system">
+        <source>label.system</source>
+        <target>System</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

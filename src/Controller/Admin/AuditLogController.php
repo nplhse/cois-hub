@@ -18,7 +18,7 @@ class AuditLogController extends AbstractController
     ) {
     }
 
-    #[Route('/admin/auditlog', name: 'app_admin_auditlog_index')]
+    #[Route('/admin/system/auditlog', name: 'app_admin_system_auditlog')]
     public function index(
         #[MapQueryParameter]
         int $page = 1
