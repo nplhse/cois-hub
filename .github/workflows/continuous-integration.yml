@@ -13,6 +13,16 @@ jobs:
   static-analysis:
     name: Static Analysis (PHP ${{ matrix.php-versions }})
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:latest
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: false
+          MYSQL_ROOT_PASSWORD: symfony
+          MYSQL_DATABASE: symfony
+        ports:
+          - 3306/tcp
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     strategy:
       fail-fast: true
       matrix:
@@ -55,6 +65,11 @@ jobs:
       - name: Lint Doctrine entities
         if: always() && steps.install.outcome == 'success'
         run: ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
+        
+      - name: Run Migration
+        run: php bin/console doctrine:schema:create || echo "No schema found or schema failed"
+        env:
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
         
       - name: Analyse PHP Code (PHPStan)
         run: vendor/bin/phpstan analyse
