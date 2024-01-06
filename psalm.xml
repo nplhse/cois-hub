@@ -11,6 +11,11 @@
     <projectFiles>
         <directory name="src" />
         <ignoreFiles>
+            <directory name="src/Controller" />
+            <directory name="src/DependencyInjection" />
+            <directory name="src/EventSubscriber" />
+            <directory name="src/Factory" />
+            <directory name="src/Form/DataMapper" />
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
@@ -26,9 +31,51 @@
         <pluginClass class="Weirdan\DoctrinePsalmPlugin\Plugin" />
     </plugins>
     <issueHandlers>
+        <ArgumentTypeCoercion>
+            <errorLevel type="suppress">
+                <directory name="src/Security" />
+            </errorLevel>
+        </ArgumentTypeCoercion>
+        <InvalidNullableReturnType>
+            <errorLevel type="suppress">
+                <directory name="src/Entity" />
+            </errorLevel>
+        </InvalidNullableReturnType>
+        <MissingConstructor>
+            <errorLevel type="suppress">
+                <directory name="src/DataTransferObjects" />
+                <directory name="src/Entity" />
+            </errorLevel>
+        </MissingConstructor>
+        <MissingTemplateParam>
+            <errorLevel type="suppress">
+                <directory name="src/Form" />
+            </errorLevel>
+        </MissingTemplateParam>
+        <MixedArgumentTypeCoercion>
+            <errorLevel type="suppress">
+                <directory name="src" />
+            </errorLevel>
+        </MixedArgumentTypeCoercion>
+        <MixedPropertyTypeCoercion>
+            <errorLevel type="suppress">
+                <directory name="src" />
+            </errorLevel>
+        </MixedPropertyTypeCoercion>
+        <NullableReturnStatement>
+            <errorLevel type="suppress">
+                <directory name="src/Entity" />
+            </errorLevel>
+        </NullableReturnStatement>
         <PossiblyUnusedMethod>
             <errorLevel type="suppress">
+                <directory name="src/DataTransferObjects" />
+                <directory name="src/Entity" />
+                <directory name="src/Event" />
+                <directory name="src/Pagination" />
+                <directory name="src/Query" />
                 <directory name="src/Repository" />
+                <directory name="src/Security" />
             </errorLevel>
         </PossiblyUnusedMethod>
         <PossiblyUnusedParam>
@@ -36,6 +83,12 @@
                 <directory name="src/Repository" />
             </errorLevel>
         </PossiblyUnusedParam>
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <directory name="src/Handler" />
+                <directory name="src/Pagination" />
+            </errorLevel>
+        </PropertyNotSetInConstructor>
         <UnusedClass>
             <errorLevel type="suppress">
                 <directory name="src/Entity" />

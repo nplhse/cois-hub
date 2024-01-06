@@ -26,22 +26,24 @@ final class Paginator
 {
     final public const PAGE_SIZE = 10;
 
-    private int $currentPage;
-    private int $numResults;
+    private int $currentPage = 1;
+    private int $numResults = 0;
 
     /**
-     * @var \Traversable<array-key, object>
+     * @var \Traversable<int, object>
      */
     private \Traversable $results;
 
     public function __construct(
         private readonly DoctrineQueryBuilder $queryBuilder,
-        private readonly int $pageSize = self::PAGE_SIZE
+        private int $pageSize = self::PAGE_SIZE
     ) {
     }
 
-    public function paginate(int $page = 1, int $perPage = self::PAGE_SIZE): self
+    public function paginate(int $page = 1, int $perPage = null): self
     {
+        $this->pageSize = ($perPage ?? self::PAGE_SIZE);
+
         $this->currentPage = max(1, $page);
         $firstResult = ($this->currentPage - 1) * $this->pageSize;
 

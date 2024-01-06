@@ -13,8 +13,8 @@ final readonly class UserCountWidget
     ) {
     }
 
-    public function getAllUsers(): int
+    public function getAllUsers(): ?int
     {
-        return $this->query->countAllUsers();
+        return (int) $this->query->countAllUsers();
     }
 }

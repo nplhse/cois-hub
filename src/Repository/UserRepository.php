@@ -21,11 +21,6 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
  */
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
-    /**
-     * @var array|string[]
-     */
-    public static array $validSorts = ['id', 'createdAt', 'updatedAt', 'username'];
-
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);

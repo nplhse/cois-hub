@@ -34,7 +34,7 @@ class UpdateUserPasswordController extends AbstractController
             $user = $this->getUser();
             $data = $form->getData();
 
-            $command = new UpdateUserPasswordCommand($user->getId(), $data['password']);
+            $command = new UpdateUserPasswordCommand($user->getId(), (string) $data['password']);
 
             try {
                 $this->messageBus->dispatch($command);

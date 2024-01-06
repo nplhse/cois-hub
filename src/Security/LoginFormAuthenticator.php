@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use App\DataTransferObjects\LoginTypeDTO;
 use App\Form\LoginType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -35,6 +36,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         $form = $this->formFactory->create(LoginType::class);
         $form->handleRequest($request);
 
+        /** @var LoginTypeDTO $loginFormDTO */
         $loginFormDTO = $form->getData();
 
         $request->getSession()->set(SecurityRequestAttributes::LAST_USERNAME, $loginFormDTO->getUsername());

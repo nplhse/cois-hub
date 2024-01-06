@@ -51,7 +51,7 @@ class UserListQuery
         return (new Paginator($qb))->paginate($page, $perPage);
     }
 
-    public function countResults(string $sortBy = 'username', string $search = ''): int
+    public function countResults(string $sortBy = 'username', string $search = ''): ?int
     {
         $qb = $this->entityManager->createQueryBuilder()->from(User::class, 'u');
 
@@ -64,7 +64,7 @@ class UserListQuery
                 ->setParameter('search', '%'.$search.'%');
         }
 
-        return $qb->getQuery()->getSingleScalarResult();
+        return (int) $qb->getQuery()->getSingleScalarResult();
     }
 
     private function filterSortBy(string $sortBy): bool

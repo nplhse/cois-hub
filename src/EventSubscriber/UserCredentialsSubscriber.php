@@ -35,7 +35,7 @@ class UserCredentialsSubscriber implements \Symfony\Component\EventDispatcher\Ev
 
     public function onKernelRequest(RequestEvent $event): void
     {
-        $currentRoute = $event->getRequest()->attributes->get('_route');
+        $currentRoute = (string) $event->getRequest()->attributes->get('_route');
         $token = $this->security->getToken();
 
         if (false === $event->isMainRequest()) {

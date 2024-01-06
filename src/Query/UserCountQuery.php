@@ -12,11 +12,11 @@ class UserCountQuery
     ) {
     }
 
-    public function countAllUsers(): int
+    public function countAllUsers(): ?int
     {
         $qb = $this->entityManager->createQueryBuilder()->from(User::class, 'u');
         $qb->select($qb->expr()->count('u.id'));
 
-        return $qb->getQuery()->getSingleScalarResult();
+        return (int) $qb->getQuery()->getSingleScalarResult();
     }
 }
