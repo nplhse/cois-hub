@@ -73,6 +73,8 @@ jobs:
 
       - name: Analyse PHP Code (PHPStan)
         run: vendor/bin/phpstan analyse
+        env:
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
 
       - name: Analyse PHP Code (Psalm)
         run: vendor/bin/psalm
