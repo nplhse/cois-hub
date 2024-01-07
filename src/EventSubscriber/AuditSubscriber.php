@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use App\Entity\AuditLog;
+use App\Entity\CookieConsent;
 use App\Enum\AuditActions;
 use App\Service\AuditLogger;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -18,6 +19,7 @@ abstract class AuditSubscriber
      */
     protected array $excludedEntities = [
         AuditLog::class,
+        CookieConsent::class,
     ];
 
     /**
