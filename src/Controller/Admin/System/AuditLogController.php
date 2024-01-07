@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Admin\System;
 
 use App\Pagination\Paginator;
 use App\Query\AuditLogQuery;
@@ -18,7 +18,7 @@ class AuditLogController extends AbstractController
     ) {
     }
 
-    #[Route('/admin/system/auditlog', name: 'app_admin_system_auditlog')]
+    #[Route('/admin/system/audit_log', name: 'app_admin_system_auditlog')]
     public function index(
         #[MapQueryParameter]
         int $page = 1
@@ -26,7 +26,7 @@ class AuditLogController extends AbstractController
         /** @var Paginator $auditLogs */
         $auditLogs = $this->query->execute($page);
 
-        return $this->render('admin/auditlog/index.html.twig', [
+        return $this->render('admin/system/audit_log/list.html.twig', [
             'audit_logs' => $auditLogs,
         ]);
     }

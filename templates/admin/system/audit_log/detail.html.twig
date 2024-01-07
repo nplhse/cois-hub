@@ -1,0 +1,61 @@
+{% extends 'admin/_base.html.twig' %}
+
+{% block title %}{{ "title.audit_log"|trans }} - {{ parent() }}{% endblock %}
+
+{% block admin_breadcrumb %}
+    {{ parent() }}
+    <li class="breadcrumb-item"><a href="{{ path('app_admin_system_auditlog') }}">{{ "label.audit_log"|trans }}</a></li>
+    <li class="breadcrumb-item active">{{ "label.audit_log_detail"|trans }}</li>
+{% endblock %}
+
+{% block admin_title %}
+    <!-- Page pre-title -->
+    <div class="page-pretitle">
+        {{ "title.audit_log_detail"|trans }}
+    </div>
+    <h2 class="page-title">
+        {{ "title.audit_log"|trans }}
+    </h2>
+{% endblock %}
+
+{% block admin_title_actions %}
+    <div class="btn-list">
+        <div class="btn-list">
+            <span class="d-none d-sm-inline">
+                <a class="btn btn-outline-secondary" href="{{ path('app_admin_system_auditlog') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M15 6l-6 6l6 6" />
+                    </svg>
+                    {{ "label.back_to_list"|trans }}
+                </a>
+            </span>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            #{{ audit_log.id }}
+        </div>
+        <div class="card-body">
+            <h4>
+                {{ "label.entity"|trans }}
+            </h4>
+            <div>
+                <pre>Entity Id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ audit_log.entityId }}<br />Entity Type&nbsp;&nbsp;&nbsp;{{ audit_log.entityType }}</pre>
+            </div>
+            <h4>{{ "label.request"|trans }}</h4>
+            <div>
+                <pre>Action&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ audit_log.action }}<br>Route&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ audit_log.requestRoute }}<br>Timestamp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ audit_log.createdAt|date('d.m.Y H:i') }}<br>Ip Address&nbsp;&nbsp;&nbsp;&nbsp;{{ audit_log.ipAddress ?? 'unknown' }}</pre>
+            </div>
+            {% if audit_log.action == 'update' %}
+                <h4>{{ "label.event_data"|trans }}</h4>
+                <div>
+                    <pre>{% for key, row in audit_log.eventData %}{{ key }}:<br>{{ get_diff(row.from|boolean, row.to|boolean) }}<br>{% endfor %}</pre>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
