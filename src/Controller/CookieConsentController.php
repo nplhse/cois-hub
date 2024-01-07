@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Enum\CookieConsentOptions;
 use App\Service\CookieConsentService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -26,6 +27,13 @@ class CookieConsentController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+
+            $categories[] = $form->get('allowAll')->isClicked()
+                ? CookieConsentOptions::ALL->value
+                : CookieConsentOptions::ESSENTIAL->value;
+
+            $data['categories'] = $categories;
+
             $response = new RedirectResponse($data['target']);
             $this->consentService->handleFormSubmit($data, $request, $response);
         } else {
