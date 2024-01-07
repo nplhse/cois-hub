@@ -474,6 +474,22 @@
         <source>label.system</source>
         <target>System</target>
       </trans-unit>
+      <trans-unit id="r7dKNeo" resname="title.cookie_consent">
+        <source>title.cookie_consent</source>
+        <target>What do you think about Cookies?</target>
+      </trans-unit>
+      <trans-unit id="IZg8jBb" resname="help.cookie_consent">
+        <source>help.cookie_consent</source>
+        <target>We have to use essential cookies to ensure the functionality of this website.</target>
+      </trans-unit>
+      <trans-unit id="3mhYoMM" resname="label.cookie_allow_all">
+        <source>label.cookie_allow_all</source>
+        <target>Allow All Cookies</target>
+      </trans-unit>
+      <trans-unit id="m2p5qAR" resname="label.cookie_allow_essential">
+        <source>label.cookie_allow_essential</source>
+        <target>Essential Cookies Only</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

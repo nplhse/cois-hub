@@ -1,0 +1,22 @@
+<div class="offcanvas offcanvas-bottom h-auto show" tabindex="-1" id="offcanvasBottom" aria-modal="true" role="dialog">
+    {{ form_start(consentForm) }}
+        <div class="offcanvas-body">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    {{ form_widget(consentForm.target, {value: app.request.pathInfo}) }}
+
+                    <div class="col">
+                        <strong>{{ "title.cookie_consent"|trans }} 🍪</strong> {{ "help.cookie_consent"|trans }}
+                    </div>
+                    <div class="col-auto">
+                        {{ form_widget(consentForm.allowAll) }}
+                    </div>
+                    <div class="col-auto">
+                        {{ form_widget(consentForm.allowEssential) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{ form_end(consentForm) }}
+</div>
