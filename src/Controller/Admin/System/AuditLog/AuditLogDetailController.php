@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin\System;
+namespace App\Controller\Admin\System\AuditLog;
 
 use App\Entity\AuditLog;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

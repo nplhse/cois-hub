@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin\System;
+namespace App\Controller\Admin\System\AuditLog;
 
 use App\Pagination\Paginator;
 use App\Query\AuditLogQuery;

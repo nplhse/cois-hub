@@ -23,7 +23,9 @@
 
             {% include "includes/footer.html.twig" %}
 
-            {{ cookie_consent_render() }}
+            {% if not has_cookie_consent(app.request) %}
+                {{ cookie_consent_render() }}
+            {% endif %}
         </div>
     </body>
 </html>

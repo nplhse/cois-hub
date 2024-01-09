@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Enum\CookieConsentOptions;
 use App\Service\CookieConsentService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,15 +23,19 @@ class CookieConsentController extends AbstractController
 
     public function __invoke(Request $request): Response
     {
+        /** @var Form $form */
         $form = $this->consentService->createForm();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
-            $categories[] = $form->get('allowAll')->isClicked()
-                ? CookieConsentOptions::ALL->value
-                : CookieConsentOptions::ESSENTIAL->value;
+            $button = $form->getClickedButton();
+
+            $categories = match ($button->getConfig()->getName()) {
+                'allowAll' => CookieConsentOptions::getAll(),
+                default => [CookieConsentOptions::ESSENTIAL->value],
+            };
 
             $data['categories'] = $categories;
 

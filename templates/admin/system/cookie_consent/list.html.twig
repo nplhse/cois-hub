@@ -1,0 +1,141 @@
+{% extends 'admin/_base.html.twig' %}
+
+{% block title %}{{ "title.cookie_consent_admin"|trans }} - {{ parent() }}{% endblock %}
+
+{% block admin_breadcrumb %}
+    {{ parent() }}
+    <li class="breadcrumb-item active">{{ "label.cookie_consent"|trans }}</li>
+{% endblock %}
+
+{% block admin_title %}
+    <!-- Page pre-title -->
+    <div class="page-pretitle">
+        {{ "title.list_cookie_consent"|trans }}
+    </div>
+    <h2 class="page-title">
+        {{ "title.cookie_consent_admin"|trans }}
+    </h2>
+{% endblock %}
+
+{% block admin_title_actions %}
+{% endblock %}
+
+{% block body %}
+    <turbo-frame id="consent-list" data-turbo-action="advance" target="_top">
+        <div class="card">
+            <div class="card-body">
+                <div id="table-default" class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>{{ "label.id"|trans }}</th>
+                            <th>{{ "label.lookup_key"|trans }}</th>
+                            <th>{{ "label.ip_address"|trans }}</th>
+                            <th>{{ "label.categories"|trans }}</th>
+                            <th>{{ "label.created_at"|trans }}</th>
+                            <th>{{ "label.updated_at"|trans }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for cookieConsent in cookieConsents.results %}
+                            <tr>
+                                <td>{{ cookieConsent.id }}</td>
+                                <td>
+                                    <code>{{ cookieConsent.lookupKey }}</code>
+                                </td>
+                                <td>
+                                    <code>{{ cookieConsent.ipAddress }}</code>
+                                </td>
+                                <td>
+                                    {% for category in cookieConsent.categories %}
+                                        <span class="badge">
+                                            {{ category|upper }}
+                                        </span>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {{ cookieConsent.createdAt ? cookieConsent.createdAt|date('d.m.Y H:i') : '' }}
+                                </td>
+                                <td>
+                                    {{ cookieConsent.updatedAt ? cookieConsent.updatedAt|date('d.m.Y H:i') : '' }}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7">
+                                    <div class="empty">
+                                        <div class="empty-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <circle cx="12" cy="12" r="9" />
+                                                <line x1="9" y1="10" x2="9.01" y2="10" />
+                                                <line x1="15" y1="10" x2="15.01" y2="10" />
+                                                <path d="M9.5 15.25a3.5 3.5 0 0 1 5 0" />
+                                            </svg>
+                                        </div>
+                                        <p class="empty-title">{{ "label.search_no_results"|trans }}</p>
+                                        <p class="empty-subtitle text-secondary">
+                                            {{ "help.search_no_results"|trans }}
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center">
+                <p class="m-0 text-muted">Showing <span>{{ cookieConsents.numResults }}</span> results, with <span>{{ cookieConsents.pageSize }}</span> per page.</p>
+                {% if cookieConsents.hasToPaginate %}
+                    <ul class="pagination m-0 ms-auto">
+                        {% if cookieConsents.hasPreviousPage %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ path('app_admin_system_cookie_consent', {page: cookieConsents.previousPage}) }}" tabindex="-1" aria-disabled="true">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M15 6l-6 6l6 6" />
+                                    </svg>
+                                    {{ "label.previous"|trans }}
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M15 6l-6 6l6 6" />
+                                    </svg>
+                                    {{ "label.previous"|trans }}
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if cookieConsents.hasNextPage %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ path('app_admin_system_cookie_consent', {page: cookieConsents.nextPage}) }}">
+                                    {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M9 6l6 6l-6 6" />
+                                    </svg>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">
+                                    {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M9 6l6 6l-6 6" />
+                                    </svg>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </turbo-frame>
+{% endblock %}

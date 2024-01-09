@@ -75,6 +75,11 @@
                 <directory name="src/Entity" />
             </errorLevel>
         </NullableReturnStatement>
+        <PossiblyInvalidArgument>
+            <errorLevel type="suppress">
+                <file name="src/Service/CookieConsentService.php" />
+            </errorLevel>
+        </PossiblyInvalidArgument>
         <PossiblyNullArgument>
             <errorLevel type="suppress">
                 <file name="src/Service/CookieConsentService.php" />

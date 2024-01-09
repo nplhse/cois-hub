@@ -58,18 +58,13 @@ class CookieConsentService
     }
 
     /**
-     * @param array<array-key, string|array> $formData
+     * @param array<array-key, string|mixed> $formData
      *
      * @throws RandomException
      */
     public function handleFormSubmit(array $formData, Request $request, Response $response): void
     {
         $lookupKey = bin2hex(random_bytes(16));
-
-        if (in_array(CookieConsentOptions::ALL->value, $formData['categories'], true)) {
-            $this->saveCookie(self::COOKIE_CONSENT, $lookupKey, $response);
-            $this->saveConsent($lookupKey, $formData['categories'], $this->anonymizeIp($request->getClientIp()));
-        }
 
         if (in_array(CookieConsentOptions::ESSENTIAL->value, $formData['categories'], true)) {
             $this->saveCookie(self::COOKIE_CONSENT, $lookupKey, $response);
@@ -79,8 +74,8 @@ class CookieConsentService
 
     public function saveCookie(string $name, string $value, Response $response): void
     {
-        $expirationDate = new \DateTime();
-        $expirationDate->add(new \DateInterval('P1Y'));
+        $today = new \DateTimeImmutable();
+        $expirationDate = $today->add(new \DateInterval('P1Y'));
 
         $response->headers->setCookie(
             Cookie::create($name, $value)
