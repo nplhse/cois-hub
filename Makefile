@@ -52,7 +52,7 @@ reset-db: ## Reset the whole database (caution!)
 	@$(CONSOLE) doctrine:migrations:migrate --no-interaction
 
 ## —— Project pipelines 🚇 ——————————————————————————————————————————————————————
-checks: cs static-analysis lint ## Run check-styles and static-analysis
+checks: lint cs static-analysis ## Run check-styles and static-analysis
 
 ci: validate checks test ## Run CI pipeline
 

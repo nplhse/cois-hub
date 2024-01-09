@@ -16,6 +16,8 @@
             <directory name="src/EventSubscriber" />
             <directory name="src/Factory" />
             <directory name="src/Form/DataMapper" />
+            <directory name="src/Twig/Extension" />
+            <directory name="src/Twig/Runtime" />
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
@@ -34,6 +36,7 @@
         <ArgumentTypeCoercion>
             <errorLevel type="suppress">
                 <directory name="src/Security" />
+                <file name="src/Service/CookieConsentService.php" />
             </errorLevel>
         </ArgumentTypeCoercion>
         <InvalidNullableReturnType>
@@ -52,6 +55,11 @@
                 <directory name="src/Form" />
             </errorLevel>
         </MissingTemplateParam>
+        <MixedArgument>
+            <errorLevel type="suppress">
+                <file name="src/Service/CookieConsentService.php" />
+            </errorLevel>
+        </MixedArgument>
         <MixedArgumentTypeCoercion>
             <errorLevel type="suppress">
                 <directory name="src" />
@@ -67,10 +75,21 @@
                 <directory name="src/Entity" />
             </errorLevel>
         </NullableReturnStatement>
+        <PossiblyInvalidArgument>
+            <errorLevel type="suppress">
+                <file name="src/Service/CookieConsentService.php" />
+            </errorLevel>
+        </PossiblyInvalidArgument>
+        <PossiblyNullArgument>
+            <errorLevel type="suppress">
+                <file name="src/Service/CookieConsentService.php" />
+            </errorLevel>
+        </PossiblyNullArgument>
         <PossiblyUnusedMethod>
             <errorLevel type="suppress">
                 <directory name="src/DataTransferObjects" />
                 <directory name="src/Entity" />
+                <directory name="src/Enum" />
                 <directory name="src/Event" />
                 <directory name="src/Pagination" />
                 <directory name="src/Query" />

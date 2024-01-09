@@ -474,6 +474,66 @@
         <source>label.system</source>
         <target>System</target>
       </trans-unit>
+      <trans-unit id="r7dKNeo" resname="title.cookie_consent">
+        <source>title.cookie_consent</source>
+        <target>What do you think about Cookies?</target>
+      </trans-unit>
+      <trans-unit id="IZg8jBb" resname="help.cookie_consent">
+        <source>help.cookie_consent</source>
+        <target>We have to use essential cookies to ensure the functionality of this website.</target>
+      </trans-unit>
+      <trans-unit id="3mhYoMM" resname="label.cookie_allow_all">
+        <source>label.cookie_allow_all</source>
+        <target>Allow All Cookies</target>
+      </trans-unit>
+      <trans-unit id="m2p5qAR" resname="label.cookie_allow_essential">
+        <source>label.cookie_allow_essential</source>
+        <target>Essential Cookies Only</target>
+      </trans-unit>
+      <trans-unit id="50tVKko" resname="label.audit_log_detail">
+        <source>label.audit_log_detail</source>
+        <target>Audit Log detail</target>
+      </trans-unit>
+      <trans-unit id="mCqX7MM" resname="title.audit_log_detail">
+        <source>title.audit_log_detail</source>
+        <target>Audit Log detail</target>
+      </trans-unit>
+      <trans-unit id="adfdond" resname="label.entity">
+        <source>label.entity</source>
+        <target>Entity</target>
+      </trans-unit>
+      <trans-unit id="FlGE3qB" resname="label.request">
+        <source>label.request</source>
+        <target>Request</target>
+      </trans-unit>
+      <trans-unit id="RWRlQMs" resname="label.event_data">
+        <source>label.event_data</source>
+        <target>Event Data</target>
+      </trans-unit>
+      <trans-unit id="lBuo1Vm" resname="title.cookie_consent_admin">
+        <source>title.cookie_consent_admin</source>
+        <target>Cookie Consent</target>
+      </trans-unit>
+      <trans-unit id="wMti9jN" resname="label.cookie_consent">
+        <source>label.cookie_consent</source>
+        <target>Cookie Consent</target>
+      </trans-unit>
+      <trans-unit id="L1u4t14" resname="title.list_cookie_consent">
+        <source>title.list_cookie_consent</source>
+        <target>List all Consents</target>
+      </trans-unit>
+      <trans-unit id="WYr.4KI" resname="label.lookup_key">
+        <source>label.lookup_key</source>
+        <target>Lookup Key</target>
+      </trans-unit>
+      <trans-unit id="uZyRdCp" resname="label.ip_address">
+        <source>label.ip_address</source>
+        <target>Ip-Address</target>
+      </trans-unit>
+      <trans-unit id="eH8yxtn" resname="label.categories">
+        <source>label.categories</source>
+        <target>Categories</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

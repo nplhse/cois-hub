@@ -2,6 +2,11 @@
 
 {% block title %}{{ "title.audit_log"|trans }} - {{ parent() }}{% endblock %}
 
+{% block admin_breadcrumb %}
+    {{ parent() }}
+    <li class="breadcrumb-item active">{{ "label.audit_log"|trans }}</li>
+{% endblock %}
+
 {% block admin_title %}
     <!-- Page pre-title -->
     <div class="page-pretitle">
@@ -16,8 +21,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="row justify-content-center">
-    <div class="col-8">
+    <div class="row justify-content-center">
         <div class="card">
             <div class="card-body">
                 <div class="divide-y">
@@ -25,7 +29,7 @@
                         <div>
                             <div class="row">
                                 <div class="col-auto">
-                                    <span class="avatar"></span>
+                                    <span class="avatar small"><a href="{{ path('app_admin_system_auditlog_detail', {id: auditlog.id}) }}">#{{ auditlog.id }}</a></span>
                                 </div>
                                 <div class="col">
                                     <div class="text-truncate">
@@ -58,9 +62,9 @@
                     {% endfor %}
                 </div>
             </div>
-                <div class="card-footer d-flex align-items-center">
-                    <p class="m-0 text-muted">Showing <span>{{ audit_logs.numResults }}</span> results, with <span>{{ audit_logs.pageSize }}</span> per page.</p>
-                    {% if audit_logs.hasToPaginate %}
+            <div class="card-footer d-flex align-items-center">
+                <p class="m-0 text-muted">Showing <span>{{ audit_logs.numResults }}</span> results, with <span>{{ audit_logs.pageSize }}</span> per page.</p>
+                {% if audit_logs.hasToPaginate %}
                     <ul class="pagination m-0 ms-auto">
                         {% if audit_logs.hasPreviousPage %}
                             <li class="page-item">
@@ -95,9 +99,8 @@
                             </li>
                         {% endif %}
                     </ul>
-                    {% endif %}
-                </div>
+                {% endif %}
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}

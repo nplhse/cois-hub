@@ -12,7 +12,7 @@
         </h1>
         <div class="collapse navbar-collapse" id="sidebar-menu">
             <ul class="navbar-nav pt-lg-3">
-                <li class="nav-item">
+                <li class="nav-item mb-2">
                     <a class="nav-link" href="{{ path("app_hello_world") }}" >
                         <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -79,6 +79,13 @@
                                 >
                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
                                         {{ "label.audit_log"|trans }}
+                                    </span>
+                                </a>
+                                <a class="dropdown-item {{ route starts with 'app_admin_system_cookie' ? 'active' : '' }}"
+                                   href="{{ path("app_admin_system_cookie_consent") }}"
+                                >
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                        {{ "label.cookie_consent"|trans }}
                                     </span>
                                 </a>
                             </div>
