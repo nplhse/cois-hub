@@ -53,8 +53,8 @@
                     type="search"
                     name="search"
                     value="{{ app.request.query.get('search') }}"
-                    aria-label="Search users"
-                    placeholder="Search users"
+                    aria-label="{{ "label.search"|trans }}"
+                    placeholder="{{ "label.search"|trans }}"
                     class="form-control d-inline-block w-9 me-3"
                     data-action="autosubmit#debouncedSubmit"
                     autofocus

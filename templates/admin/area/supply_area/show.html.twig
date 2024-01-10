@@ -20,17 +20,17 @@
 
 {% block admin_title_actions %}
     <div class="btn-list">
-        <div class="btn-list">
-            <span class="d-none d-sm-inline">
-                <a class="btn btn-outline-secondary" href="{{ path('app_admin_area_supply_index') }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M15 6l-6 6l6 6" />
-                    </svg>
-                    {{ "label.back_to_list"|trans }}
-                </a>
-            </span>
-        </div>
+        {{ include('admin/area/supply_area/_delete_form.html.twig') }}
+
+        <a href="{{ path('app_admin_area_supply_edit', {id: supply_area.id}) }}" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                <path d="M16 5l3 3" />
+            </svg>
+            {{ "label.area_edit_supply"|trans }}
+        </a>
     </div>
 {% endblock %}
 
@@ -58,36 +58,41 @@
                     <div class="card-body">
                         <table class="table">
                             <tbody>
-                            <tr>
-                                <th class="col-4">{{ "label.id"|trans }}</th>
-                                <td class="col-8">{{ supply_area.id }}</td>
-                            </tr>
-                            <tr>
-                                <th>{{ "label.dispatchAreas"|trans }}</th>
-                                <td>
-                                    <ul>
-                                        {% for area in supply_area.dispatchArea %}
-                                            <li>{{ area.name }}</li>
-                                        {% else %}
-                                            <li>No areas linked</li>
-                                        {% endfor %}
-                                    </ul>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <th class="col-4">{{ "label.id"|trans }}</th>
+                                    <td class="col-8">{{ supply_area.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{{ "label.dispatchAreas"|trans }}</th>
+                                    <td>
+                                        <ul>
+                                            {% for area in supply_area.dispatchArea %}
+                                                <li><a href="{{ path('app_admin_area_dispatch_show', {id: area.id}) }}">{{ area.name }}</a></li>
+                                            {% else %}
+                                                <li>{{ "label.no_areas_linked"|trans }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>{{ "label.created_at"|trans }}</th>
+                                    <td>{{ supply_area.createdAt ? supply_area.createdAt|date('d.m.Y H:i') : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{{ "label.updated_at"|trans }}</th>
+                                    <td>{{ supply_area.updatedAt ? supply_area.updatedAt|date('d.m.Y H:i') : '' }}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="card-footer mt-auto">
-                        <div class="btn-list justify-content-end">
-                            {{ include('admin/area/supply_area/_delete_form.html.twig') }}
-                            <a href="{{ path('app_admin_area_supply_edit', {id: supply_area.id}) }}" class="btn btn-primary">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <div class="btn-list">
+                            <a class="btn btn-outline-secondary" href="{{ path('app_admin_area_supply_index') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                    <path d="M16 5l3 3" />
+                                    <path d="M15 6l-6 6l6 6" />
                                 </svg>
-                                {{ "label.area_edit_supply"|trans }}
+                                {{ "label.back_to_list"|trans }}
                             </a>
                         </div>
                     </div>

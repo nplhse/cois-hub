@@ -682,6 +682,18 @@
         <source>label.show</source>
         <target>Show</target>
       </trans-unit>
+      <trans-unit id="BNjUIYA" resname="label.search">
+        <source>label.search</source>
+        <target>Search...</target>
+      </trans-unit>
+      <trans-unit id="Y_GQc.O" resname="label.no_supply_area">
+        <source>label.no_supply_area</source>
+        <target>No Supply Area linked</target>
+      </trans-unit>
+      <trans-unit id="3xEKhTY" resname="label.no_areas_linked">
+        <source>label.no_areas_linked</source>
+        <target>No Areas linked</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
