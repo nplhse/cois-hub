@@ -4,7 +4,7 @@
 
 {% block admin_breadcrumb %}
     {{ parent() }}
-    <li class="breadcrumb-item">{{ "label.areas"|trans }}</li>
+    <li class="breadcrumb-item"><a href="{{ path('app_admin_area') }}">{{ "label.areas"|trans }}</a></li>
     <li class="breadcrumb-item active">{{ "label.area_supply"|trans }}</li>
 {% endblock %}
 
