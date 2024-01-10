@@ -21,28 +21,21 @@ class SupplyAreaRepository extends ServiceEntityRepository
         parent::__construct($registry, SupplyArea::class);
     }
 
-    //    /**
-    //     * @return SupplyArea[] Returns an array of SupplyArea objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('s.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function add(SupplyArea $supplyArea): void
+    {
+        $this->getEntityManager()->persist($supplyArea);
+        $this->getEntityManager()->flush();
+    }
 
-    //    public function findOneBySomeField($value): ?SupplyArea
-    //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function saveAndFlush(SupplyArea $supplyArea): void
+    {
+        $this->getEntityManager()->persist($supplyArea);
+        $this->getEntityManager()->flush();
+    }
+
+    public function remove(SupplyArea $supplyArea): void
+    {
+        $this->getEntityManager()->remove($supplyArea);
+        $this->getEntityManager()->flush();
+    }
 }

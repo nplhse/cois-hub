@@ -21,28 +21,21 @@ class DispatchAreaRepository extends ServiceEntityRepository
         parent::__construct($registry, DispatchArea::class);
     }
 
-    //    /**
-    //     * @return DispatchArea[] Returns an array of DispatchArea objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('d')
-    //            ->andWhere('d.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('d.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function add(DispatchArea $dispatchArea): void
+    {
+        $this->getEntityManager()->persist($dispatchArea);
+        $this->getEntityManager()->flush();
+    }
 
-    //    public function findOneBySomeField($value): ?DispatchArea
-    //    {
-    //        return $this->createQueryBuilder('d')
-    //            ->andWhere('d.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function saveAndFlush(DispatchArea $dispatchArea): void
+    {
+        $this->getEntityManager()->persist($dispatchArea);
+        $this->getEntityManager()->flush();
+    }
+
+    public function remove(DispatchArea $dispatchArea): void
+    {
+        $this->getEntityManager()->remove($dispatchArea);
+        $this->getEntityManager()->flush();
+    }
 }
