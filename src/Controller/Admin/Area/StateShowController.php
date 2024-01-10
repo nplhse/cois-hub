@@ -12,7 +12,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class StateShowController extends AbstractController
 {
     #[Route('/admin/area/state/{id}', name: 'app_admin_area_state_show', methods: ['GET'])]
-    public function show(State $state): Response
+    public function __invoke(State $state): Response
     {
         return $this->render('admin/area/state/show.html.twig', [
             'state' => $state,

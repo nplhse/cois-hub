@@ -18,7 +18,7 @@ class DispatchAreaListController extends AbstractController
     }
 
     #[Route('/admin/area/dispatch', name: 'app_admin_area_dispatch_index', methods: ['GET'])]
-    public function index(
+    public function __invoke(
         #[MapQueryParameter]
         int $page = 1,
         #[MapQueryParameter]

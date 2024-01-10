@@ -15,7 +15,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class DispatchAreaNewController extends AbstractController
 {
     #[Route('/admin/area/dispatch/new', name: 'app_admin_area_dispatch_new', priority: 100, methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function __invoke(Request $request, EntityManagerInterface $entityManager): Response
     {
         $dispatchArea = new DispatchArea();
         $form = $this->createForm(DispatchAreaType::class, $dispatchArea);

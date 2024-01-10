@@ -12,7 +12,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class DispatchAreaShowController extends AbstractController
 {
     #[Route('/admin/area/dispatch/{id}', name: 'app_admin_area_dispatch_show', methods: ['GET'])]
-    public function show(DispatchArea $dispatchArea): Response
+    public function __invoke(DispatchArea $dispatchArea): Response
     {
         return $this->render('admin/area/dispatch_area/show.html.twig', [
             'dispatch_area' => $dispatchArea,

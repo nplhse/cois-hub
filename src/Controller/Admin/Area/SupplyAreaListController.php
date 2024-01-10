@@ -18,7 +18,7 @@ class SupplyAreaListController extends AbstractController
     }
 
     #[Route('/admin/area/supply/', name: 'app_admin_area_supply_index', methods: ['GET'])]
-    public function index(
+    public function __invoke(
         #[MapQueryParameter]
         int $page = 1,
         #[MapQueryParameter]
@@ -29,8 +29,6 @@ class SupplyAreaListController extends AbstractController
         string $orderBy = 'asc',
     ): Response {
         $supplyAreas = $this->query->getResults($page, 10, $sortBy, $orderBy, $search);
-
-        dump($supplyAreas);
 
         return $this->render('admin/area/supply_area/list.html.twig', [
             'supply_areas' => $supplyAreas,

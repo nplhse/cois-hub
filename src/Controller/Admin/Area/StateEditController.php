@@ -15,7 +15,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class StateEditController extends AbstractController
 {
     #[Route('/admin/area/state/{id}/edit', name: 'app_admin_area_state_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, State $state, EntityManagerInterface $entityManager): Response
+    public function __invoke(Request $request, State $state, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(StateType::class, $state);
         $form->handleRequest($request);

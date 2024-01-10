@@ -12,7 +12,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class SupplyAreaShowController extends AbstractController
 {
     #[Route('/admin/area/supply/{id}', name: 'app_admin_area_supply_show', methods: ['GET'])]
-    public function show(SupplyArea $supplyArea): Response
+    public function __invoke(SupplyArea $supplyArea): Response
     {
         return $this->render('admin/area/supply_area/show.html.twig', [
             'supply_area' => $supplyArea,

@@ -15,7 +15,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class DispatchAreaEditController extends AbstractController
 {
     #[Route('/admin/area/dispatch/{id}/edit', name: 'app_admin_area_dispatch_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, DispatchArea $dispatchArea, EntityManagerInterface $entityManager): Response
+    public function __invoke(Request $request, DispatchArea $dispatchArea, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(DispatchAreaType::class, $dispatchArea);
         $form->handleRequest($request);

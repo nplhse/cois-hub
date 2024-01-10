@@ -14,7 +14,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class DispatchAreaDeleteController extends AbstractController
 {
     #[Route('/admin/area/dispatch/{id}', name: 'app_admin_area_dispatch_delete', methods: ['POST'])]
-    public function delete(Request $request, DispatchArea $dispatchArea, EntityManagerInterface $entityManager): Response
+    public function __invoke(Request $request, DispatchArea $dispatchArea, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$dispatchArea->getId(), $request->request->get('_token'))) {
             $entityManager->remove($dispatchArea);

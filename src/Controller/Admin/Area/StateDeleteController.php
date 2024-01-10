@@ -14,7 +14,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class StateDeleteController extends AbstractController
 {
     #[Route('/admin/area/state/{id}', name: 'app_admin_area_state_delete', methods: ['POST'])]
-    public function delete(Request $request, State $state, EntityManagerInterface $entityManager): Response
+    public function __invoke(Request $request, State $state, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$state->getId(), $request->request->get('_token'))) {
             $entityManager->remove($state);

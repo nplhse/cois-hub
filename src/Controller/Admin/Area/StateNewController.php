@@ -15,7 +15,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class StateNewController extends AbstractController
 {
     #[Route('/admin/area/state/new', name: 'app_admin_area_state_new', priority: 100, methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function __invoke(Request $request, EntityManagerInterface $entityManager): Response
     {
         $state = new State();
         $form = $this->createForm(StateType::class, $state);

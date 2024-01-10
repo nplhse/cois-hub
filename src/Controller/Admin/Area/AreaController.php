@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AreaController extends AbstractController
 {
     #[Route('/admin/area/', name: 'app_admin_area')]
-    public function index(): Response
+    public function __invoke(): Response
     {
         return $this->redirectToRoute('app_admin_area_dispatch_index');
     }

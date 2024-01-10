@@ -18,7 +18,7 @@ class StateListController extends AbstractController
     }
 
     #[Route('/admin/area/state', name: 'app_admin_area_state_index', methods: ['GET'])]
-    public function index(
+    public function __invoke(
         #[MapQueryParameter]
         int $page = 1,
         #[MapQueryParameter]

@@ -14,7 +14,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class SupplyAreaDeleteController extends AbstractController
 {
     #[Route('/admin/area/supply/{id}', name: 'app_admin_area_supply_delete', methods: ['POST'])]
-    public function delete(Request $request, SupplyArea $supplyArea, EntityManagerInterface $entityManager): Response
+    public function __invoke(Request $request, SupplyArea $supplyArea, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$supplyArea->getId(), $request->request->get('_token'))) {
             $entityManager->remove($supplyArea);

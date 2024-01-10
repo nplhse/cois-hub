@@ -15,7 +15,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class SupplyAreaNewController extends AbstractController
 {
     #[Route('/admin/area/supply/new', name: 'app_admin_area_supply_new', priority: 100, methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function __invoke(Request $request, EntityManagerInterface $entityManager): Response
     {
         $supplyArea = new SupplyArea();
         $form = $this->createForm(SupplyAreaType::class, $supplyArea);
