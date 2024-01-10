@@ -1,0 +1,116 @@
+{% extends 'admin/_base.html.twig' %}
+
+{% block title %}{{ "title.area_dispatch"|trans }} - {{ parent() }}{% endblock %}
+
+{% block admin_breadcrumb %}
+    {{ parent() }}
+    <li class="breadcrumb-item">{{ "label.areas"|trans }}</li>
+    <li class="breadcrumb-item active">{{ "label.area_dispatch"|trans }}</li>
+{% endblock %}
+
+{% block admin_title %}
+    <!-- Page pre-title -->
+    <div class="page-pretitle">
+        {{ "title.list_areas"|trans }}
+    </div>
+    <h2 class="page-title">
+        {{ "title.area_dispatch"|trans }}
+    </h2>
+{% endblock %}
+
+{% block admin_title_actions %}
+    <div class="btn-list">
+        <div class="btn-list">
+            <span class="d-none d-sm-inline">
+                <a class="btn btn-primary" href="{{ path('app_admin_area_dispatch_new') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                        <path d="M9 12h6" />
+                        <path d="M12 9v6" />
+                    </svg>
+                    {{ "label.area_dispatch_new"|trans }}
+                </a>
+            </span>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs nav-fill">
+                <li class="nav-item">
+                    <a href="{{ path('app_admin_area_state_index') }}" class="nav-link">{{ "label.area_state"|trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('app_admin_area_dispatch_index') }}" class="nav-link active">{{ "label.area_dispatch"|trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('app_admin_area_supply_index') }}" class="nav-link">{{ "label.area_supply"|trans }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="col-1">{{ "label.id"|trans }}</th>
+                        <th class="col-4">{{ "label.name"|trans }}</th>
+                        <th class="col-4">{{ "label.state"|trans }}</th>
+                        <th class="col-3">{{ "label.actions"|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for dispatch_area in dispatch_areas %}
+                        <tr>
+                            <td>{{ dispatch_area.id }}</td>
+                            <td><a href="{{ path('app_admin_area_dispatch_show', {id: dispatch_area.id}) }}">{{ dispatch_area.name }}</a></td>
+                            <td><a href="{{ path('app_admin_area_state_show', {id: dispatch_area.state.id}) }}">{{ dispatch_area.state }}</a></td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" href="{{ path('app_admin_area_dispatch_show', {'id': dispatch_area.id}) }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-filled" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M12 4c4.29 0 7.863 2.429 10.665 7.154l.22 .379l.045 .1l.03 .083l.014 .055l.014 .082l.011 .1v.11l-.014 .111a.992 .992 0 0 1 -.026 .11l-.039 .108l-.036 .075l-.016 .03c-2.764 4.836 -6.3 7.38 -10.555 7.499l-.313 .004c-4.396 0 -8.037 -2.549 -10.868 -7.504a1 1 0 0 1 0 -.992c2.831 -4.955 6.472 -7.504 10.868 -7.504zm0 5a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" stroke-width="0" fill="currentColor" />
+                                    </svg>
+                                    &nbsp;{{ "label.show"|trans }}
+                                </a>
+                                <a class="btn btn-sm btn-secondary" href="{{ path('app_admin_area_dispatch_edit', {'id': dispatch_area.id}) }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                        <path d="M16 5l3 3" />
+                                    </svg>
+                                    &nbsp;{{ "label.edit"|trans }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">
+                                <div class="empty">
+                                    <div class="empty-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <circle cx="12" cy="12" r="9" />
+                                            <line x1="9" y1="10" x2="9.01" y2="10" />
+                                            <line x1="15" y1="10" x2="15.01" y2="10" />
+                                            <path d="M9.5 15.25a3.5 3.5 0 0 1 5 0" />
+                                        </svg>
+                                    </div>
+                                    <p class="empty-title">{{ "label.search_no_results"|trans }}</p>
+                                    <p class="empty-subtitle text-secondary">
+                                        {{ "help.search_no_results"|trans }}
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
