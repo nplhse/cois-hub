@@ -18,6 +18,9 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
+    '@symfony/stimulus-bundle' => [
+        'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
+    ],
     '@popperjs/core' => [
         'version' => '2.11.8',
     ],
@@ -28,9 +31,6 @@ return [
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],
-    '@symfony/stimulus-bundle' => [
-        'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
-    ],
     '@tabler/core' => [
         'version' => '1.0.0-beta20',
     ],
@@ -39,7 +39,7 @@ return [
         'type' => 'css',
     ],
     '@hotwired/turbo' => [
-        'version' => '7.3.0',
+        'version' => '8.0.0-beta.2',
     ],
     'debounce' => [
         'version' => '2.0.0',
