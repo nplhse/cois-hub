@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: StateRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-class State
+class State implements \Stringable
 {
     use Timestampable;
 

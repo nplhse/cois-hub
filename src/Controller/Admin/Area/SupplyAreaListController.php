@@ -13,7 +13,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class SupplyAreaListController extends AbstractController
 {
     public function __construct(
-        private AreaSupplyListQuery $query
+        private readonly AreaSupplyListQuery $query
     ) {
     }
 

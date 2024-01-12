@@ -13,7 +13,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class StateListController extends AbstractController
 {
     public function __construct(
-        private AreaStateListQuery $query
+        private readonly AreaStateListQuery $query
     ) {
     }
 

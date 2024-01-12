@@ -49,7 +49,7 @@ class DispatchAreaNewController extends AbstractController
                 $this->addFlash('success', $this->translator->trans('flash.area_dispatch_created'));
 
                 return $this->redirectToRoute('app_admin_area_dispatch_show', ['id' => $dispatchArea->getId()], Response::HTTP_SEE_OTHER);
-            } catch (HandlerFailedException $exception) {
+            } catch (HandlerFailedException) {
                 $this->addFlash('danger', $this->translator->trans('flash.area_dispatch_creation_failed'));
             }
 

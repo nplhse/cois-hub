@@ -13,7 +13,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class DispatchAreaListController extends AbstractController
 {
     public function __construct(
-        private AreaDispatchListQuery $query
+        private readonly AreaDispatchListQuery $query
     ) {
     }
 
