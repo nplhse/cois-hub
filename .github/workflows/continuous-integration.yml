@@ -65,7 +65,10 @@ jobs:
       - name: Lint Doctrine entities
         if: always() && steps.install.outcome == 'success'
         run: ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
-        
+
+      - name: Lint PHP Code (PHP-CS-Fixer)
+        run: vendor/bin/php-cs-fixer fix --allow-risky=yes --dry-run --config=php-cs-fixer.php
+      
       - name: Run Migration
         run: php bin/console doctrine:schema:create || echo "No schema found or schema failed"
         env:
