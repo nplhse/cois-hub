@@ -82,6 +82,7 @@
         </PossiblyInvalidArgument>
         <PossiblyNullArgument>
             <errorLevel type="suppress">
+                <directory name="src/Handler/Area" />
                 <file name="src/Service/CookieConsentService.php" />
             </errorLevel>
         </PossiblyNullArgument>

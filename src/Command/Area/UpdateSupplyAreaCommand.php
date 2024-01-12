@@ -2,8 +2,6 @@
 
 namespace App\Command\Area;
 
-use App\Entity\DispatchArea;
-
 final readonly class UpdateSupplyAreaCommand
 {
     public function __construct(

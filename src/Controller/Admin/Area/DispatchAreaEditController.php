@@ -2,18 +2,28 @@
 
 namespace App\Controller\Admin\Area;
 
+use App\Command\Area\UpdateDispatchAreaCommand;
 use App\Entity\DispatchArea;
 use App\Form\DispatchAreaType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\Exception\HandlerFailedException;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[IsGranted('ROLE_ADMIN')]
 class DispatchAreaEditController extends AbstractController
 {
+    public function __construct(
+        private readonly MessageBusInterface $messageBus,
+        private readonly TranslatorInterface $translator,
+    ) {
+    }
+
     #[Route('/admin/area/dispatch/{id}/edit', name: 'app_admin_area_dispatch_edit', methods: ['GET', 'POST'])]
     public function __invoke(Request $request, DispatchArea $dispatchArea, EntityManagerInterface $entityManager): Response
     {
@@ -21,7 +31,22 @@ class DispatchAreaEditController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $command = new UpdateDispatchAreaCommand(
+                $dispatchArea->getId(),
+                $dispatchArea->getName(),
+                $dispatchArea->getState(),
+                $dispatchArea->getSupplyArea(),
+            );
+
+            try {
+                $this->messageBus->dispatch($command);
+
+                $this->addFlash('success', $this->translator->trans('flash.area_dispatch_updated'));
+
+                return $this->redirectToRoute('app_admin_area_dispatch_show', ['id' => $dispatchArea->getId()], Response::HTTP_SEE_OTHER);
+            } catch (HandlerFailedException) {
+                $this->addFlash('danger', $this->translator->trans('flash.area_dispatch_update_failed'));
+            }
 
             return $this->redirectToRoute('app_admin_area_dispatch_index', [], Response::HTTP_SEE_OTHER);
         }

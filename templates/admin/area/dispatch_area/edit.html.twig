@@ -63,7 +63,7 @@
                             </a>
                         </div>
                         <div class="btn-list justify-content-end">
-                            <a href="{{ path('app_admin_area_dispatch_index') }}" class="btn">
+                            <a href="{{ path('app_admin_area_dispatch_show', {id: dispatch_area.id}) }}" class="btn">
                                 {{ "label.cancel"|trans }}
                             </a>
                             <button class="btn btn-primary" type="submit">
