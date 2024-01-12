@@ -105,6 +105,12 @@ cc: sf
 consume: ## Consume messages from symfony messenger
 	@$(CONSOLE) messenger:consume async -vvv
 
+deploy: ## Execute some tasks before deployment
+	rm -rf public/assets/*
+	@$(CONSOLE) asset-map:compile
+	@$(CONSOLE) cache:clear --env=prod
+	@$(CONSOLE) cache:warmup --env=prod
+
 trans: ## Extract translations from symfony
 	@$(CONSOLE) translation:extract --dump-messages --force --sort=asc en
 
