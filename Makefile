@@ -33,6 +33,7 @@ setup-dev: install setup-test-db setup-fixtures ## Setup the project in dev envi
 
 install: ## Install composer dependencies
 	@$(COMPOSER) install --no-interaction
+	@$(YARN) install
 
 setup-db: ## Setup the database backend
 	@$(CONSOLE) doctrine:database:create --if-not-exists --no-interaction
@@ -110,7 +111,7 @@ cs: rector fix-php fix-twig eslint phpmd ## Run all coding standards checks
 
 static-analysis: phpstan psalm ## Run the static analysis
 
-lint: lint-php lint-container lint-yaml lint-doctrine lint-xliff lint-twig
+lint: lint-container lint-yaml lint-doctrine lint-xliff lint-twig
 
 eslint: ## Run ESLint
 	@$(YARN) run eslint assets

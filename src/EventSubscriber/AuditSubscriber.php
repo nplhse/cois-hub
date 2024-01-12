@@ -31,6 +31,15 @@ abstract class AuditSubscriber
         'password',
     ];
 
+    /** @var array <array-key, mixed> */
+    protected array $includedAttributes = [
+        'id',
+        'name',
+        'dispatchArea' => ['id', 'name'],
+        'state' => ['id', 'name'],
+        'supplyArea' => ['id', 'name'],
+    ];
+
     public function __construct(
         private readonly AuditLogger $auditLogger,
     ) {
@@ -61,7 +70,8 @@ abstract class AuditSubscriber
 
         return (new Serializer($normalizers, $encoders))->normalize(
             $entity,
-            null
+            null,
+            [AbstractNormalizer::ATTRIBUTES => $this->includedAttributes]
         );
     }
 

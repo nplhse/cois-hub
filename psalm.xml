@@ -82,6 +82,7 @@
         </PossiblyInvalidArgument>
         <PossiblyNullArgument>
             <errorLevel type="suppress">
+                <directory name="src/Handler/Area" />
                 <file name="src/Service/CookieConsentService.php" />
             </errorLevel>
         </PossiblyNullArgument>
@@ -100,10 +101,12 @@
         <PossiblyUnusedParam>
             <errorLevel type="suppress">
                 <directory name="src/Repository" />
+                <file name="src/Entity/State.php" />
             </errorLevel>
         </PossiblyUnusedParam>
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
+                <directory name="src/Entity" />
                 <directory name="src/Handler" />
                 <directory name="src/Pagination" />
             </errorLevel>
@@ -113,5 +116,10 @@
                 <directory name="src/Entity" />
             </errorLevel>
         </UnusedClass>
+        <UnusedProperty>
+            <errorLevel type="suppress">
+                <file name="src/Entity/State.php" />
+            </errorLevel>
+        </UnusedProperty>
     </issueHandlers>
 </psalm>

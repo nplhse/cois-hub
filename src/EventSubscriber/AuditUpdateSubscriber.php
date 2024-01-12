@@ -64,15 +64,6 @@ class AuditUpdateSubscriber extends AuditSubscriber implements EventSubscriberIn
                 continue;
             }
 
-            if ('content' === $field) {
-                $entityData[$field] = [
-                    'from' => (strlen((string) $change[0]) > 53) ? substr((string) $change[0], 0, 50).'...' : $change[0],
-                    'to' => (strlen((string) $change[1]) > 53) ? substr((string) $change[1], 0, 50).'...' : $change[1],
-                ];
-
-                continue;
-            }
-
             $entityData[$field] = [
                 'from' => $change[0],
                 'to' => $change[1],

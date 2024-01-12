@@ -1,0 +1,82 @@
+{% extends 'admin/_base.html.twig' %}
+
+{% block title %}{{ "title.area_state_edit"|trans }}: {{ state.name }} - {{ parent() }}{% endblock %}
+
+{% block admin_breadcrumb %}
+    {{ parent() }}
+    <li class="breadcrumb-item"><a href="{{ path('app_admin_area') }}">{{ "label.areas"|trans }}</a></li>
+    <li class="breadcrumb-item" href="{{ path('app_admin_area_state_index') }}">{{ "label.area_state"|trans }}</li>
+    <li class="breadcrumb-item active">{{ "label.edit"|trans }}: {{ state.name }}</li>
+{% endblock %}
+
+{% block admin_title %}
+    <!-- Page pre-title -->
+    <div class="page-pretitle">
+        {{ "title.area_state_edit"|trans }}
+    </div>
+    <h2 class="page-title">
+        {{ "title.area_state"|trans }}
+    </h2>
+{% endblock %}
+
+{% block admin_title_actions %}
+    <div class="btn-list">
+        {{ include('admin/area/state/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs nav-fill">
+                <li class="nav-item">
+                    <a href="{{ path('app_admin_area_state_index') }}" class="nav-link active">{{ "label.area_state"|trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('app_admin_area_dispatch_index') }}" class="nav-link">{{ "label.area_dispatch"|trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('app_admin_area_supply_index') }}" class="nav-link">{{ "label.area_supply"|trans }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content">
+                <div class="card">
+                    <div class="card-body">
+                        {{ form_start(form) }}
+
+                        {{ form_row(form.name) }}
+                    </div>
+                    <div class="card-footer">
+                        <div class="float-start">
+                            <a class="btn btn-outline-secondary" href="{{ path('app_admin_area_state_index') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M15 6l-6 6l6 6" />
+                                </svg>
+                                {{ "label.back_to_list"|trans }}
+                            </a>
+                        </div>
+                        <div class="btn-list justify-content-end">
+                            <a href="{{ path('app_admin_area_state_show', {id: state.id}) }}" class="btn">
+                                {{ "label.cancel"|trans }}
+                            </a>
+                            <button class="btn btn-primary" type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+                                    <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                                    <path d="M14 4l0 4l-6 0l0 -4" />
+                                </svg>
+                                {{ "label.save_changes"|trans }}
+                            </button>
+                        </div>
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

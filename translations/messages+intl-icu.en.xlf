@@ -534,6 +534,166 @@
         <source>label.categories</source>
         <target>Categories</target>
       </trans-unit>
+      <trans-unit id="KDJX2tp" resname="title.area_state_edit">
+        <source>title.area_state_edit</source>
+        <target>Edit State</target>
+      </trans-unit>
+      <trans-unit id="qJJJWzJ" resname="label.areas">
+        <source>label.areas</source>
+        <target>Areas</target>
+      </trans-unit>
+      <trans-unit id="XBfTDA0" resname="label.area_state">
+        <source>label.area_state</source>
+        <target>States</target>
+      </trans-unit>
+      <trans-unit id="DXNFV9R" resname="label.edit">
+        <source>label.edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="n97xpEm" resname="title.area_state">
+        <source>title.area_state</source>
+        <target>State</target>
+      </trans-unit>
+      <trans-unit id="ahsHUhP" resname="label.area_dispatch">
+        <source>label.area_dispatch</source>
+        <target>Dispatch Areas</target>
+      </trans-unit>
+      <trans-unit id="uObb0wC" resname="label.area_supply">
+        <source>label.area_supply</source>
+        <target>Supply Areas</target>
+      </trans-unit>
+      <trans-unit id="v78YmFJ" resname="title.area_state_new">
+        <source>title.area_state_new</source>
+        <target>Create new State</target>
+      </trans-unit>
+      <trans-unit id="ezgmJe." resname="title.area_create_state">
+        <source>title.area_create_state</source>
+        <target>Create new State</target>
+      </trans-unit>
+      <trans-unit id="4JAset." resname="label.create_area_state">
+        <source>label.create_area_state</source>
+        <target>Create State</target>
+      </trans-unit>
+      <trans-unit id="DuVpIb3" resname="title.list_areas">
+        <source>title.list_areas</source>
+        <target>List Areas</target>
+      </trans-unit>
+      <trans-unit id="eWfi5Mf" resname="label.area_state_new">
+        <source>label.area_state_new</source>
+        <target>Create new State</target>
+      </trans-unit>
+      <trans-unit id="1FpJTWo" resname="title.area_state_show">
+        <source>title.area_state_show</source>
+        <target>Show State</target>
+      </trans-unit>
+      <trans-unit id="uyOF5Az" resname="title.area_show">
+        <source>title.area_show</source>
+        <target>State Details</target>
+      </trans-unit>
+      <trans-unit id="DZEkTZW" resname="label.area_edit_state">
+        <source>label.area_edit_state</source>
+        <target>Edit State</target>
+      </trans-unit>
+      <trans-unit id="YWi8lft" resname="title.area_dispatch_edit">
+        <source>title.area_dispatch_edit</source>
+        <target>Edit Dispatch Area</target>
+      </trans-unit>
+      <trans-unit id="Zv1T.ZC" resname="title.area_dispatch">
+        <source>title.area_dispatch</source>
+        <target>Dispatch Areas</target>
+      </trans-unit>
+      <trans-unit id="OO7JYOQ" resname="title.area_dispatch_new">
+        <source>title.area_dispatch_new</source>
+        <target>New Dispatch Area</target>
+      </trans-unit>
+      <trans-unit id="6KYxp4P" resname="title.create_area">
+        <source>title.create_area</source>
+        <target>Create Area</target>
+      </trans-unit>
+      <trans-unit id="f68cz.r" resname="label.create_area_dispatch">
+        <source>label.create_area_dispatch</source>
+        <target>Create new Dispatch Area</target>
+      </trans-unit>
+      <trans-unit id="gkfx8IR" resname="label.area_dispatch_new">
+        <source>label.area_dispatch_new</source>
+        <target>Create Dispatch Area</target>
+      </trans-unit>
+      <trans-unit id="igb..t." resname="title.area_dispatch_show">
+        <source>title.area_dispatch_show</source>
+        <target>Dispatch Area details</target>
+      </trans-unit>
+      <trans-unit id="VPVHTmh" resname="label.state">
+        <source>label.state</source>
+        <target>State</target>
+      </trans-unit>
+      <trans-unit id="RpxwqUg" resname="label.supply_area">
+        <source>label.supply_area</source>
+        <target>Supply Area</target>
+      </trans-unit>
+      <trans-unit id="7zZYjdl" resname="label.area_edit_dispatch">
+        <source>label.area_edit_dispatch</source>
+        <target>Edit Dispatch Area</target>
+      </trans-unit>
+      <trans-unit id="xgdN5OF" resname="title.area_supply_edit">
+        <source>title.area_supply_edit</source>
+        <target>Edit Supply Area</target>
+      </trans-unit>
+      <trans-unit id="R5gNOsH" resname="title.area_supply">
+        <source>title.area_supply</source>
+        <target>Supply Area</target>
+      </trans-unit>
+      <trans-unit id="EjYZuKg" resname="title.area_supply_new">
+        <source>title.area_supply_new</source>
+        <target>Create new Supply Area</target>
+      </trans-unit>
+      <trans-unit id="54JQoRP" resname="title.area_create_supply">
+        <source>title.area_create_supply</source>
+        <target>Create new Supply Area</target>
+      </trans-unit>
+      <trans-unit id="UUp5CgP" resname="label.create_area_supply">
+        <source>label.create_area_supply</source>
+        <target>Create Supply Area</target>
+      </trans-unit>
+      <trans-unit id="hEhmpx2" resname="label.area_supply_new">
+        <source>label.area_supply_new</source>
+        <target>Create Supply Area</target>
+      </trans-unit>
+      <trans-unit id="cF2l3jM" resname="title.area_supply_show">
+        <source>title.area_supply_show</source>
+        <target>Supply Area details</target>
+      </trans-unit>
+      <trans-unit id="q0tSDL9" resname="label.dispatchAreas">
+        <source>label.dispatchAreas</source>
+        <target>Dispatch Areas</target>
+      </trans-unit>
+      <trans-unit id="_Psa_oW" resname="label.area_edit_supply">
+        <source>label.area_edit_supply</source>
+        <target>Edit Supply Area</target>
+      </trans-unit>
+      <trans-unit id="BiPY0TX" resname="label.delete">
+        <source>label.delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="ysOvPSq" resname="label.name">
+        <source>label.name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="G8S7NQo" resname="label.show">
+        <source>label.show</source>
+        <target>Show</target>
+      </trans-unit>
+      <trans-unit id="BNjUIYA" resname="label.search">
+        <source>label.search</source>
+        <target>Search...</target>
+      </trans-unit>
+      <trans-unit id="Y_GQc.O" resname="label.no_supply_area">
+        <source>label.no_supply_area</source>
+        <target>No Supply Area linked</target>
+      </trans-unit>
+      <trans-unit id="3xEKhTY" resname="label.no_areas_linked">
+        <source>label.no_areas_linked</source>
+        <target>No Areas linked</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
