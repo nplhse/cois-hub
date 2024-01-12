@@ -29,10 +29,12 @@ help: ## Outputs this help screen
 ## —— Project setup 🚀 ——————————————————————————————————————————————————————————
 setup: install setup-db ## Setup the whole project
 
-setup-dev: install setup-test-db setup-fixtures ## Setup the project in dev environment
+setup-dev: install install-yarn setup-test-db fixtures ## Setup the project in dev environment
 
 install: ## Install composer dependencies
 	@$(COMPOSER) install --no-interaction
+
+install-yarn: ## Install yarn dependencies
 	@$(YARN) install
 
 setup-db: ## Setup the database backend
@@ -44,7 +46,7 @@ setup-test-db: ## Setup the test database
 	@$(CONSOLE) doctrine:database:create --no-interaction --if-not-exists --env=test
 	@$(CONSOLE) doctrine:schema:create --env=test
 
-setup-fixtures: ## Install the fixtures
+fixtures: ## Install the fixtures
 	@$(CONSOLE) doctrine:fixtures:load --no-interaction
 
 reset-db: ## Reset the whole database (caution!)
@@ -57,7 +59,7 @@ checks: lint cs static-analysis ## Run check-styles and static-analysis
 
 ci: validate checks test ## Run CI pipeline
 
-reset: install reset-database setup-fixtures ## Reset pipeline for the whole project (caution!)
+reset: install reset-db fixtures ## Reset pipeline for the whole project (caution!)
 
 ## —— Docker 🐳 ————————————————————————————————————————————————————————————————
 start: build up ## Build and start the containers
