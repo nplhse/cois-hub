@@ -694,6 +694,82 @@
         <source>label.no_areas_linked</source>
         <target>No Areas linked</target>
       </trans-unit>
+      <trans-unit id="UMJy2IX" resname="flash.area_dispatch_deleted">
+        <source>flash.area_dispatch_deleted</source>
+        <target>Success! Dispatch Area has been deleted.</target>
+      </trans-unit>
+      <trans-unit id="M_jOIx_" resname="flash.area_dispatch_deletion_failed">
+        <source>flash.area_dispatch_deletion_failed</source>
+        <target>Sorry! The Dispatch Area could not be deleted.</target>
+      </trans-unit>
+      <trans-unit id="LMSkFUX" resname="flash.area_dispatch_updated">
+        <source>flash.area_dispatch_updated</source>
+        <target>Success! Dispatch Area has been updated.</target>
+      </trans-unit>
+      <trans-unit id="SOSZsPT" resname="flash.area_dispatch_update_failed">
+        <source>flash.area_dispatch_update_failed</source>
+        <target>Sorry! The Dispatch Area could not be updated.</target>
+      </trans-unit>
+      <trans-unit id="hzmbECn" resname="flash.area_dispatch_created">
+        <source>flash.area_dispatch_created</source>
+        <target>Success! Dispatch Area has been created.</target>
+      </trans-unit>
+      <trans-unit id="2dOo2VH" resname="flash.area_dispatch_creation_failed">
+        <source>flash.area_dispatch_creation_failed</source>
+        <target>Sorry! The Dispatch Area could not be created.</target>
+      </trans-unit>
+      <trans-unit id="2xUx1zL" resname="flash.area_state_updated">
+        <source>flash.area_state_updated</source>
+        <target>Success! State has been updated.</target>
+      </trans-unit>
+      <trans-unit id="s.Ds35V" resname="flash.area_state_creation_failed">
+        <source>flash.area_state_creation_failed</source>
+        <target>Sorry! The State could not be created.</target>
+      </trans-unit>
+      <trans-unit id="r7G.Waa" resname="flash.area_supply_created">
+        <source>flash.area_supply_created</source>
+        <target>Success! Supply Area has been created.</target>
+      </trans-unit>
+      <trans-unit id="OGTaRNY" resname="flash.area_supply_creation_failed">
+        <source>flash.area_supply_creation_failed</source>
+        <target>Sorry! The Supply Area could not be created.</target>
+      </trans-unit>
+      <trans-unit id="ziHeNgZ" resname="flash.area_supply_deletion_success">
+        <source>flash.area_supply_deletion_success</source>
+        <target>Sorry! The Supply Area has been deleted.</target>
+      </trans-unit>
+      <trans-unit id="58id.ov" resname="flash.area_supply_deletion_failed">
+        <source>flash.area_supply_deletion_failed</source>
+        <target>Sorry! The Supply Area could not be created.</target>
+      </trans-unit>
+      <trans-unit id="YdIHKl2" resname="flash.area_state_deleted">
+        <source>flash.area_state_deleted</source>
+        <target>Success! The State has been deleted.</target>
+      </trans-unit>
+      <trans-unit id="L9IWB2H" resname="flash.area_state_deletion_failed">
+        <source>flash.area_state_deletion_failed</source>
+        <target>Sorry! The State could not be created.</target>
+      </trans-unit>
+      <trans-unit id="dyU04_7" resname="flash.area_supply_updated">
+        <source>flash.area_supply_updated</source>
+        <target>Sorry! The Supply Area has been updated.</target>
+      </trans-unit>
+      <trans-unit id=".UPlq4Q" resname="flash.area_supply_update_failed">
+        <source>flash.area_supply_update_failed</source>
+        <target>Sorry! The Supply Area could not be updated.</target>
+      </trans-unit>
+      <trans-unit id="iEQVsCe" resname="flash.area_state_created">
+        <source>flash.area_state_created</source>
+        <target>Success! The State has been created.</target>
+      </trans-unit>
+      <trans-unit id="zl2VIvL" resname="label.data">
+        <source>label.data</source>
+        <target>Data</target>
+      </trans-unit>
+      <trans-unit id="uJUJ6Ir" resname="title.data">
+        <source>title.data</source>
+        <target>Data</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
