@@ -65,14 +65,25 @@
                 <directory name="src" />
             </errorLevel>
         </MixedArgumentTypeCoercion>
+        <MixedInferredReturnType>
+            <errorLevel type="suppress">
+                <directory name="src/Faker/Provider" />
+            </errorLevel>
+        </MixedInferredReturnType>
         <MixedPropertyTypeCoercion>
             <errorLevel type="suppress">
                 <directory name="src" />
             </errorLevel>
         </MixedPropertyTypeCoercion>
+        <MixedReturnStatement>
+            <errorLevel type="suppress">
+                <directory name="src/Faker/Provider" />
+            </errorLevel>
+        </MixedReturnStatement>
         <NullableReturnStatement>
             <errorLevel type="suppress">
                 <directory name="src/Entity" />
+                <directory name="src/Faker/Provider" />
             </errorLevel>
         </NullableReturnStatement>
         <PossiblyInvalidArgument>
@@ -106,6 +117,7 @@
         </PossiblyUnusedParam>
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
+                <directory name="src/Faker/Provider" />
                 <directory name="src/Entity" />
                 <directory name="src/Handler" />
                 <directory name="src/Pagination" />
