@@ -2,10 +2,10 @@
 
 namespace App\Controller\Admin\User;
 
-use App\Command\User\EditUserCommand;
 use App\DataTransferObjects\UserAdminDTO;
 use App\Entity\User;
 use App\Form\EditUserType;
+use App\Message\Command\User\EditUser;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,7 +42,7 @@ class EditUserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $userDto = $form->getData();
 
-            $command = new EditUserCommand(
+            $command = new EditUser(
                 $userDto->getId(),
                 $userDto->getUsername(),
                 $userDto->getPassword(),

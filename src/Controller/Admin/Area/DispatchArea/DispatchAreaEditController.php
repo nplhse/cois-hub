@@ -2,9 +2,9 @@
 
 namespace App\Controller\Admin\Area\DispatchArea;
 
-use App\Command\Area\UpdateDispatchAreaCommand;
 use App\Entity\DispatchArea;
 use App\Form\DispatchAreaType;
+use App\Message\Command\Area\DispatchArea\UpdateDispatchArea;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class DispatchAreaEditController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $command = new UpdateDispatchAreaCommand(
+            $command = new UpdateDispatchArea(
                 $dispatchArea->getId(),
                 $dispatchArea->getName(),
                 $dispatchArea->getState(),

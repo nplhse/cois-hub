@@ -2,9 +2,9 @@
 
 namespace App\Controller\Admin\Area\State;
 
-use App\Command\Area\CreateStateCommand;
 use App\Entity\State;
 use App\Form\StateType;
+use App\Message\Command\Area\State\CreateState;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,7 +33,7 @@ class StateNewController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $command = new CreateStateCommand($state->getName());
+            $command = new CreateState($state->getName());
 
             try {
                 $envelope = $this->messageBus->dispatch($command);

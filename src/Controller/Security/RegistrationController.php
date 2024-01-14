@@ -2,9 +2,9 @@
 
 namespace App\Controller\Security;
 
-use App\Command\User\RegisterUserCommand;
 use App\DataTransferObjects\RegisterTypeDTO;
 use App\Form\RegistrationType;
+use App\Message\Command\User\RegisterUser;
 use App\Repository\UserRepository;
 use App\Security\LoginFormAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,7 +40,7 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $registerTypeDTO = $form->getData();
 
-            $command = new RegisterUserCommand(
+            $command = new RegisterUser(
                 $registerTypeDTO->getUsername(),
                 $registerTypeDTO->getEmail(),
                 $registerTypeDTO->getPassword()

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Enum\CookieConsentOptions;
-use App\Service\CookieConsentService;
+use App\Service\CookieConsent;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CookieConsentController extends AbstractController
 {
     public function __construct(
-        private readonly CookieConsentService $consentService
+        private readonly CookieConsent $consentService
     ) {
     }
 

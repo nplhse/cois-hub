@@ -2,9 +2,9 @@
 
 namespace App\Controller\Admin\Area\State;
 
-use App\Command\Area\UpdateStateCommand;
 use App\Entity\State;
 use App\Form\StateType;
+use App\Message\Command\Area\State\UpdateState;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class StateEditController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $command = new UpdateStateCommand(
+            $command = new UpdateState(
                 $state->getId(),
                 $state->getName()
             );

@@ -2,9 +2,9 @@
 
 namespace App\Controller\Admin\Area\SupplyArea;
 
-use App\Command\Area\CreateSupplyAreaCommand;
 use App\Entity\SupplyArea;
 use App\Form\SupplyAreaType;
+use App\Message\Command\Area\SupplyArea\CreateSupplyArea;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,7 +33,7 @@ class SupplyAreaNewController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $command = new CreateSupplyAreaCommand(
+            $command = new CreateSupplyArea(
                 $supplyArea->getName(),
             );
 
