@@ -25,7 +25,7 @@ class SupplyAreaShowControllerTest extends AppWebTestCase
 
         $supplyArea = SupplyAreaFactory::random();
 
-            $this->browser()
+        $this->browser()
             ->loginAs('admin', 'password')
             ->visit('/admin/area/supply/'.$supplyArea->getId())
             ->assertSuccessful()
