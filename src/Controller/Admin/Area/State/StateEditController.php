@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller\Admin\Area;
+namespace App\Controller\Admin\Area\State;
 
-use App\Command\Area\CreateStateCommand;
+use App\Command\Area\UpdateStateCommand;
 use App\Entity\State;
 use App\Form\StateType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -11,13 +11,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
-use Symfony\Component\Messenger\Stamp\HandledStamp;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[IsGranted('ROLE_ADMIN')]
-class StateNewController extends AbstractController
+class StateEditController extends AbstractController
 {
     public function __construct(
         private readonly MessageBusInterface $messageBus,
@@ -25,24 +24,22 @@ class StateNewController extends AbstractController
     ) {
     }
 
-    #[Route('/admin/area/state/new', name: 'app_admin_area_state_new', methods: ['GET', 'POST'], priority: 100)]
-    public function __invoke(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/admin/area/state/{id}/edit', name: 'app_admin_area_state_edit', methods: ['GET', 'POST'])]
+    public function __invoke(Request $request, State $state, EntityManagerInterface $entityManager): Response
     {
-        $state = new State();
         $form = $this->createForm(StateType::class, $state);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $command = new CreateStateCommand($state->getName());
+            $command = new UpdateStateCommand(
+                $state->getId(),
+                $state->getName()
+            );
 
             try {
-                $envelope = $this->messageBus->dispatch($command);
-                $handledStamp = $envelope->last(HandledStamp::class);
+                $this->messageBus->dispatch($command);
 
-                /** @var State $state */
-                $state = $handledStamp->getResult();
-
-                $this->addFlash('success', $this->translator->trans('flash.area_state_created'));
+                $this->addFlash('success', $this->translator->trans('flash.area_state_updated'));
 
                 return $this->redirectToRoute('app_admin_area_state_show', ['id' => $state->getId()], Response::HTTP_SEE_OTHER);
             } catch (HandlerFailedException) {
@@ -52,7 +49,7 @@ class StateNewController extends AbstractController
             return $this->redirectToRoute('app_admin_area_state_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/area/state/new.html.twig', [
+        return $this->render('admin/area/state/edit.html.twig', [
             'state' => $state,
             'form' => $form,
         ]);

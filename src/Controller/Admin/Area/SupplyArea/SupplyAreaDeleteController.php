@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin\Area;
+namespace App\Controller\Admin\Area\SupplyArea;
 
 use App\Command\Area\DeleteSupplyAreaCommand;
 use App\Entity\SupplyArea;
