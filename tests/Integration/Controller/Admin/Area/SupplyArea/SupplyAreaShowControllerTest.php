@@ -20,10 +20,12 @@ class SupplyAreaShowControllerTest extends AppWebTestCase
         UserFactory::new(['username' => 'admin'])->asAdmin()->create();
 
         StateFactory::createOne();
+        SupplyAreaFactory::createOne();
         DispatchAreaFactory::createOne();
-        $supplyArea = SupplyAreaFactory::createOne();
 
-        $this->browser()
+        $supplyArea = SupplyAreaFactory::random();
+
+            $this->browser()
             ->loginAs('admin', 'password')
             ->visit('/admin/area/supply/'.$supplyArea->getId())
             ->assertSuccessful()

@@ -4,6 +4,7 @@ namespace App\Tests\Integration\Controller\Admin\Area\DispatchArea;
 
 use App\Factory\DispatchAreaFactory;
 use App\Factory\StateFactory;
+use App\Factory\SupplyAreaFactory;
 use App\Factory\UserFactory;
 use App\Tests\AppWebTestCase;
 use Zenstruck\Foundry\Test\Factories;
@@ -17,9 +18,12 @@ class DispatchAreaEditControllerTest extends AppWebTestCase
     public function testAdminsCanEditADispatchArea(): void
     {
         UserFactory::new(['username' => 'admin'])->asAdmin()->create();
-        StateFactory::createOne();
 
-        $dispatchArea = DispatchAreaFactory::createOne();
+        StateFactory::createOne();
+        SupplyAreaFactory::createOne();
+        DispatchAreaFactory::createOne();
+
+        $dispatchArea = DispatchAreaFactory::random();
 
         $this->browser()
             ->loginAs('admin', 'password')
