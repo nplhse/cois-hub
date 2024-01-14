@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller\Admin\Area;
+namespace App\Controller\Admin\Area\DispatchArea;
 
-use App\Command\Area\CreateDispatchAreaCommand;
+use App\Command\Area\UpdateDispatchAreaCommand;
 use App\Entity\DispatchArea;
 use App\Form\DispatchAreaType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -11,13 +11,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
-use Symfony\Component\Messenger\Stamp\HandledStamp;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[IsGranted('ROLE_ADMIN')]
-class DispatchAreaNewController extends AbstractController
+class DispatchAreaEditController extends AbstractController
 {
     public function __construct(
         private readonly MessageBusInterface $messageBus,
@@ -25,38 +24,34 @@ class DispatchAreaNewController extends AbstractController
     ) {
     }
 
-    #[Route('/admin/area/dispatch/new', name: 'app_admin_area_dispatch_new', methods: ['GET', 'POST'], priority: 100)]
-    public function __invoke(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/admin/area/dispatch/{id}/edit', name: 'app_admin_area_dispatch_edit', methods: ['GET', 'POST'])]
+    public function __invoke(Request $request, DispatchArea $dispatchArea, EntityManagerInterface $entityManager): Response
     {
-        $dispatchArea = new DispatchArea();
         $form = $this->createForm(DispatchAreaType::class, $dispatchArea);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $command = new CreateDispatchAreaCommand(
+            $command = new UpdateDispatchAreaCommand(
+                $dispatchArea->getId(),
                 $dispatchArea->getName(),
                 $dispatchArea->getState(),
                 $dispatchArea->getSupplyArea(),
             );
 
             try {
-                $envelope = $this->messageBus->dispatch($command);
-                $handledStamp = $envelope->last(HandledStamp::class);
+                $this->messageBus->dispatch($command);
 
-                /** @var DispatchArea $dispatchArea */
-                $dispatchArea = $handledStamp->getResult();
-
-                $this->addFlash('success', $this->translator->trans('flash.area_dispatch_created'));
+                $this->addFlash('success', $this->translator->trans('flash.area_dispatch_updated'));
 
                 return $this->redirectToRoute('app_admin_area_dispatch_show', ['id' => $dispatchArea->getId()], Response::HTTP_SEE_OTHER);
             } catch (HandlerFailedException) {
-                $this->addFlash('danger', $this->translator->trans('flash.area_dispatch_creation_failed'));
+                $this->addFlash('danger', $this->translator->trans('flash.area_dispatch_update_failed'));
             }
 
             return $this->redirectToRoute('app_admin_area_dispatch_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/area/dispatch_area/new.html.twig', [
+        return $this->render('admin/area/dispatch_area/edit.html.twig', [
             'dispatch_area' => $dispatchArea,
             'form' => $form,
         ]);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin\Area;
+namespace App\Controller\Admin\Area\State;
 
 use App\Entity\State;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

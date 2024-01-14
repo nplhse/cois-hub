@@ -18,7 +18,7 @@ class AreaController extends AbstractController
     ) {
     }
 
-    #[Route('/data/area', name: 'app_data_area')]
+    #[Route('/data/areas', name: 'app_data_area')]
     public function __invoke(
         #[MapQueryParameter]
         int $page = 1,

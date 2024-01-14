@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin\Area;
+namespace App\Controller\Admin\Area\DispatchArea;
 
 use App\Entity\DispatchArea;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

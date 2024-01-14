@@ -752,7 +752,7 @@
       </trans-unit>
       <trans-unit id="dyU04_7" resname="flash.area_supply_updated">
         <source>flash.area_supply_updated</source>
-        <target>Sorry! The Supply Area has been updated.</target>
+        <target>Success! The Supply Area has been updated.</target>
       </trans-unit>
       <trans-unit id=".UPlq4Q" resname="flash.area_supply_update_failed">
         <source>flash.area_supply_update_failed</source>

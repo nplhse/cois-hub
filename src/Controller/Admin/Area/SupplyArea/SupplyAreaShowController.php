@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin\Area;
+namespace App\Controller\Admin\Area\SupplyArea;
 
 use App\Entity\SupplyArea;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

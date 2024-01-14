@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller\Admin\Area;
+namespace App\Controller\Admin\Area\DispatchArea;
 
-use App\Query\AreaSupplyListQuery;
+use App\Query\AreaDispatchListQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
@@ -10,14 +10,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('ROLE_ADMIN')]
-class SupplyAreaListController extends AbstractController
+class DispatchAreaListController extends AbstractController
 {
     public function __construct(
-        private readonly AreaSupplyListQuery $query
+        private readonly AreaDispatchListQuery $query
     ) {
     }
 
-    #[Route('/admin/area/supply/', name: 'app_admin_area_supply_index', methods: ['GET'])]
+    #[Route('/admin/area/dispatch', name: 'app_admin_area_dispatch_index', methods: ['GET'])]
     public function __invoke(
         #[MapQueryParameter]
         int $page = 1,
@@ -28,10 +28,10 @@ class SupplyAreaListController extends AbstractController
         #[MapQueryParameter]
         string $orderBy = 'asc',
     ): Response {
-        $supplyAreas = $this->query->getResults($page, 10, $sortBy, $orderBy, $search);
+        $dispatchArea = $this->query->getResults($page, 10, $sortBy, $orderBy, $search);
 
-        return $this->render('admin/area/supply_area/list.html.twig', [
-            'supply_areas' => $supplyAreas,
+        return $this->render('admin/area/dispatch_area/list.html.twig', [
+            'dispatch_areas' => $dispatchArea,
             'sortBy' => $sortBy,
             'orderBy' => $orderBy,
         ]);

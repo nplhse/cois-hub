@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin\Area;
+namespace App\Controller\Admin\Area\State;
 
 use App\Command\Area\DeleteStateCommand;
 use App\Entity\State;
