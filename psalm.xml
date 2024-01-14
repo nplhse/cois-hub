@@ -36,7 +36,7 @@
         <ArgumentTypeCoercion>
             <errorLevel type="suppress">
                 <directory name="src/Security" />
-                <file name="src/Service/CookieConsentService.php" />
+                <file name="src/Service/CookieConsent.php" />
             </errorLevel>
         </ArgumentTypeCoercion>
         <InvalidNullableReturnType>
@@ -57,7 +57,7 @@
         </MissingTemplateParam>
         <MixedArgument>
             <errorLevel type="suppress">
-                <file name="src/Service/CookieConsentService.php" />
+                <file name="src/Service/CookieConsent.php" />
             </errorLevel>
         </MixedArgument>
         <MixedArgumentTypeCoercion>
@@ -88,13 +88,13 @@
         </NullableReturnStatement>
         <PossiblyInvalidArgument>
             <errorLevel type="suppress">
-                <file name="src/Service/CookieConsentService.php" />
+                <file name="src/Service/CookieConsent.php" />
             </errorLevel>
         </PossiblyInvalidArgument>
         <PossiblyNullArgument>
             <errorLevel type="suppress">
-                <directory name="src/Handler/Area" />
-                <file name="src/Service/CookieConsentService.php" />
+                <directory name="src/MessageHandler/Command/Area" />
+                <file name="src/Service/CookieConsent.php" />
             </errorLevel>
         </PossiblyNullArgument>
         <PossiblyUnusedMethod>
@@ -119,7 +119,7 @@
             <errorLevel type="suppress">
                 <directory name="src/Faker/Provider" />
                 <directory name="src/Entity" />
-                <directory name="src/Handler" />
+                <directory name="src/MessageHandler/Command/" />
                 <directory name="src/Pagination" />
             </errorLevel>
         </PropertyNotSetInConstructor>
