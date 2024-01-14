@@ -1,5 +1,19 @@
 framework:
     messenger:
+        default_bus: command.bus
+        
+        buses:
+            command.bus:
+                middleware:
+                    - doctrine_transaction
+            query.bus:
+                
+            event.bus:
+                default_middleware:
+                    enabled: true
+                    allow_no_handlers: true
+                    allow_no_senders: true
+        
         failure_transport: failed
 
         transports:
@@ -20,9 +34,5 @@ framework:
             Symfony\Component\Notifier\Message\ChatMessage: async
             Symfony\Component\Notifier\Message\SmsMessage: async
 
-            # Route your messages to the transports
-            'App\Command\User\CreateUserCommand': sync
-            'App\Command\User\EditUserCommand': sync
-            'App\Command\User\RegisterUserCommand': sync
-            'App\Command\User\ToogleUserIsPublicCommand': sync
-            'App\Command\User\UpdateUserPasswordCommand': sync
+            'App\Message\Command\*': sync
+            'App\Message\Query\*': sync
