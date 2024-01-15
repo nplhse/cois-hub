@@ -43,7 +43,8 @@ security:
         - { path: ^/register, allow_if: "!is_authenticated()" }
     
     role_hierarchy:
-        ROLE_ADMIN: ROLE_USER
+        ROLE_ADMIN: [ROLE_USER, ROLE_PARTICIPANT]
+        ROLE_PARTICIPANT: ROLE_USER
 
 when@test:
     security:

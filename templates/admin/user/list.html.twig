@@ -91,7 +91,7 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>
+                                <th class="col-1">
                                     <a href="{{ path('app_admin_user_index', {
                                         ...app.request.query.all(),
                                         sortBy: 'id',
@@ -100,7 +100,7 @@
                                         {{ "label.id"|trans }} {{ _self.sortArrow('id', sortBy, orderBy) }}
                                     </a>
                                 </th>
-                                <th>
+                                <th class="col-2">
                                     <a href="{{ path('app_admin_user_index', {
                                         ...app.request.query.all(),
                                         sortBy: 'username',
@@ -109,8 +109,12 @@
                                         {{ "label.username"|trans }} {{ _self.sortArrow('username', sortBy, orderBy) }}
                                     </a>
                                 </th>
-                                <th>{{ "label.email"|trans }}</th>
-                                <th>{{ "label.roles"|trans }}</th>
+                                <th class="col-2">
+                                    {{ "label.email"|trans }}
+                                </th>
+                                <th class="col-1">
+                                    {{ "label.roles"|trans }}
+                                </th>
                                 <th>
                                     <a href="{{ path('app_admin_user_index', {
                                         ...app.request.query.all(),
@@ -129,14 +133,20 @@
                                         {{ "label.updated_at"|trans }} {{ _self.sortArrow('updatedAt', sortBy, orderBy) }}
                                     </a>
                                 </th>
-                                <th>{{ "label.user_expired"|trans }}</th>
-                                <th>{{ "label.user_verified"|trans }}</th>
+                                <th class="col-1">
+                                    {{ "label.user_verified"|trans }}
+                                </th>
+                                <th class="col-2">
+                                    {{ "label.actions"|trans }}
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for user in users.results %}
                                 <tr>
-                                    <td>{{ user.id }}</td>
+                                    <td>
+                                        {{ user.id }}
+                                    </td>
                                     <td>
                                         <a href="{{ path('app_admin_user_show', {'id': user.id}) }}">{{ user.username }}</a>
                                     </td>
@@ -149,8 +159,12 @@
                                                 <span class="badge bg-orange-lt text-white">
                                                     {{ role|replace({'ROLE_': ''})|lower|capitalize }}
                                                 </span>
-                                            {% else %}
+                                            {% elseif role == "ROLE_PARTICIPANT" %}
                                                 <span class="badge bg-blue-lt text-white">
+                                                    {{ role|replace({'ROLE_': ''})|lower|capitalize }}
+                                                </span>
+                                            {% else %}
+                                                <span class="badge bg-azure-lt text-white">
                                                     {{ role|replace({'ROLE_': ''})|lower|capitalize }}
                                                 </span>
                                             {% endif %}
@@ -163,17 +177,6 @@
                                         {{ user.updatedAt ? user.updatedAt|date('d.m.Y H:i') : '' }}
                                     </td>
                                     <td>
-                                        {% if user.hasCredentialsExpired %}
-                                            <span class="status status-red">
-                                                {{ "label.yes"|trans }}
-                                            </span>
-                                        {% else %}
-                                            <span class="status status-green">
-                                                {{ "label.no"|trans }}
-                                            </span>
-                                        {% endif %}
-                                    </td>
-                                    <td>
                                         {% if user.isVerified %}
                                             <span class="status status-green">
                                                 {{ "label.yes"|trans }}
@@ -183,6 +186,24 @@
                                                 {{ "label.no"|trans }}
                                             </span>
                                         {% endif %}
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-sm btn-primary" href="{{ path('app_admin_user_show', {'id': user.id}) }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-filled" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <path d="M12 4c4.29 0 7.863 2.429 10.665 7.154l.22 .379l.045 .1l.03 .083l.014 .055l.014 .082l.011 .1v.11l-.014 .111a.992 .992 0 0 1 -.026 .11l-.039 .108l-.036 .075l-.016 .03c-2.764 4.836 -6.3 7.38 -10.555 7.499l-.313 .004c-4.396 0 -8.037 -2.549 -10.868 -7.504a1 1 0 0 1 0 -.992c2.831 -4.955 6.472 -7.504 10.868 -7.504zm0 5a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" stroke-width="0" fill="currentColor" />
+                                            </svg>
+                                            &nbsp;{{ "label.show"|trans }}
+                                        </a>
+                                        <a class="btn btn-sm btn-secondary" href="{{ path('app_admin_user_edit', {'id': user.id}) }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                                <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                                <path d="M16 5l3 3" />
+                                            </svg>
+                                            &nbsp;{{ "label.edit"|trans }}
+                                        </a>
                                     </td>
                                 </tr>
                             {% else %}
