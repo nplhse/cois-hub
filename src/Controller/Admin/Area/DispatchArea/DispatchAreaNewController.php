@@ -3,7 +3,7 @@
 namespace App\Controller\Admin\Area\DispatchArea;
 
 use App\Entity\DispatchArea;
-use App\Form\DispatchAreaType;
+use App\Form\Areas\DispatchAreaType;
 use App\Message\Command\Area\DispatchArea\CreateDispatchArea;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

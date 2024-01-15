@@ -3,7 +3,7 @@
 namespace App\Controller\Security;
 
 use App\DataTransferObjects\RegisterTypeDTO;
-use App\Form\RegistrationType;
+use App\Form\Security\RegistrationType;
 use App\Message\Command\User\RegisterUser;
 use App\Repository\UserRepository;
 use App\Security\LoginFormAuthenticator;

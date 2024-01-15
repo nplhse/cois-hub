@@ -4,7 +4,7 @@ namespace App\Controller\Settings;
 
 use App\DataTransferObjects\AccountSettingsTypeDTO;
 use App\Entity\User;
-use App\Form\AccountSettingsType;
+use App\Form\User\AccountSettingsType;
 use App\Message\Command\User\ToogleUserIsPublic;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

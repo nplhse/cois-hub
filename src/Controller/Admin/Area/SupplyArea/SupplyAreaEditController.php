@@ -3,7 +3,7 @@
 namespace App\Controller\Admin\Area\SupplyArea;
 
 use App\Entity\SupplyArea;
-use App\Form\SupplyAreaType;
+use App\Form\Areas\SupplyAreaType;
 use App\Message\Command\Area\SupplyArea\UpdateSupplyArea;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

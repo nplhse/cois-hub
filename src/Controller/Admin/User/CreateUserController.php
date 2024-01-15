@@ -3,7 +3,7 @@
 namespace App\Controller\Admin\User;
 
 use App\DataTransferObjects\UserAdminDTO;
-use App\Form\CreateUserType;
+use App\Form\User\CreateUserType;
 use App\Message\Command\User\CreateUser;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

@@ -3,7 +3,7 @@
 namespace App\Controller\Admin\Area\State;
 
 use App\Entity\State;
-use App\Form\StateType;
+use App\Form\Areas\StateType;
 use App\Message\Command\Area\State\CreateState;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

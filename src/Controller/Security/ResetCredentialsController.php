@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Security;
 
 use App\Entity\User;
-use App\Form\ChangePasswordFormType;
+use App\Form\Security\ChangePasswordFormType;
 use App\Message\Command\User\UpdateUserPassword;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
