@@ -2,8 +2,8 @@
 
 namespace App\Controller\Admin\Area\SupplyArea;
 
-use App\Command\Area\DeleteSupplyAreaCommand;
 use App\Entity\SupplyArea;
+use App\Message\Command\Area\SupplyArea\DeleteSupplyArea;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,7 +27,7 @@ class SupplyAreaDeleteController extends AbstractController
     public function __invoke(Request $request, SupplyArea $supplyArea, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$supplyArea->getId(), $request->request->get('_token'))) {
-            $command = new DeleteSupplyAreaCommand($supplyArea->getId());
+            $command = new DeleteSupplyArea($supplyArea->getId());
 
             try {
                 $this->messageBus->dispatch($command);

@@ -2,8 +2,8 @@
 
 namespace App\Controller\Admin\Area\DispatchArea;
 
-use App\Command\Area\DeleteDispatchAreaCommand;
 use App\Entity\DispatchArea;
+use App\Message\Command\Area\DispatchArea\DeleteDispatchArea;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,7 +27,7 @@ class DispatchAreaDeleteController extends AbstractController
     public function __invoke(Request $request, DispatchArea $dispatchArea, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$dispatchArea->getId(), $request->request->get('_token'))) {
-            $command = new DeleteDispatchAreaCommand($dispatchArea->getId());
+            $command = new DeleteDispatchArea($dispatchArea->getId());
 
             try {
                 $this->messageBus->dispatch($command);

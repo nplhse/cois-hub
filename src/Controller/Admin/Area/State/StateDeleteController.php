@@ -2,8 +2,8 @@
 
 namespace App\Controller\Admin\Area\State;
 
-use App\Command\Area\DeleteStateCommand;
 use App\Entity\State;
+use App\Message\Command\Area\State\DeleteState;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,7 +26,7 @@ class StateDeleteController extends AbstractController
     public function __invoke(Request $request, State $state): Response
     {
         if ($this->isCsrfTokenValid('delete'.$state->getId(), $request->request->get('_token'))) {
-            $command = new DeleteStateCommand($state->getId());
+            $command = new DeleteState($state->getId());
 
             try {
                 $this->messageBus->dispatch($command);

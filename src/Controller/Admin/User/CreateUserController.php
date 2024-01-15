@@ -2,9 +2,9 @@
 
 namespace App\Controller\Admin\User;
 
-use App\Command\User\CreateUserCommand;
 use App\DataTransferObjects\UserAdminDTO;
 use App\Form\CreateUserType;
+use App\Message\Command\User\CreateUser;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,7 +36,7 @@ class CreateUserController extends AbstractController
             /** @var UserAdminDTO $userDto */
             $userDto = $form->getData();
 
-            $command = new CreateUserCommand(
+            $command = new CreateUser(
                 $userDto->getUsername(),
                 $userDto->getPassword(),
                 $userDto->getEmail(),

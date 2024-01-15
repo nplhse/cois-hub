@@ -2,9 +2,9 @@
 
 namespace App\Controller\Admin\Area\SupplyArea;
 
-use App\Command\Area\UpdateSupplyAreaCommand;
 use App\Entity\SupplyArea;
 use App\Form\SupplyAreaType;
+use App\Message\Command\Area\SupplyArea\UpdateSupplyArea;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class SupplyAreaEditController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $command = new UpdateSupplyAreaCommand(
+            $command = new UpdateSupplyArea(
                 $supplyArea->getId(),
                 $supplyArea->getName(),
             );

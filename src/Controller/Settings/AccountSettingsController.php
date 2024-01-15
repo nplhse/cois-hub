@@ -2,10 +2,10 @@
 
 namespace App\Controller\Settings;
 
-use App\Command\User\ToogleUserIsPublicCommand;
 use App\DataTransferObjects\AccountSettingsTypeDTO;
 use App\Entity\User;
 use App\Form\AccountSettingsType;
+use App\Message\Command\User\ToogleUserIsPublic;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,7 +37,7 @@ class AccountSettingsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($accountSettingsTypeDto->getIsPublic() !== $user->isPublic()) {
-                $command = new ToogleUserIsPublicCommand($user->getId(), $accountSettingsTypeDto->getIsPublic());
+                $command = new ToogleUserIsPublic($user->getId(), $accountSettingsTypeDto->getIsPublic());
                 $this->messageBus->dispatch($command);
 
                 $this->addFlash('success', $this->translator->trans('flash.settings_updated'));

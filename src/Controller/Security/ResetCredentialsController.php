@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller\Security;
 
-use App\Command\User\UpdateUserPasswordCommand;
 use App\Entity\User;
 use App\Form\ChangePasswordFormType;
+use App\Message\Command\User\UpdateUserPassword;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,7 +37,7 @@ class ResetCredentialsController extends AbstractController
             /** @var User $user */
             $user = $this->getUser();
 
-            $command = new UpdateUserPasswordCommand($user->getId(), $form->get('plainPassword')->getData());
+            $command = new UpdateUserPassword($user->getId(), $form->get('plainPassword')->getData());
 
             try {
                 $this->messageBus->dispatch($command);

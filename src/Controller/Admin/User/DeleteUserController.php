@@ -2,8 +2,8 @@
 
 namespace App\Controller\Admin\User;
 
-use App\Command\User\DeleteUserCommand;
 use App\Entity\User;
+use App\Message\Command\User\DeleteUser;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,7 +27,7 @@ class DeleteUserController extends AbstractController
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
-            $command = new DeleteUserCommand($user->getId());
+            $command = new DeleteUser($user->getId());
 
             try {
                 $this->messageBus->dispatch($command);

@@ -2,6 +2,7 @@
 
 namespace App\Tests\Integration\Controller\Admin\Area\DispatchArea;
 
+use App\Factory\DispatchAreaFactory;
 use App\Factory\StateFactory;
 use App\Factory\UserFactory;
 use App\Tests\AppWebTestCase;
@@ -18,6 +19,7 @@ class DispatchAreaNewControllerTest extends AppWebTestCase
         UserFactory::new(['username' => 'admin'])->asAdmin()->create();
 
         $state = StateFactory::createOne();
+        DispatchAreaFactory::createOne();
 
         $this->browser()
             ->loginAs('admin', 'password')

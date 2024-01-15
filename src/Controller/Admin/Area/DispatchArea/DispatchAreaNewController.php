@@ -2,9 +2,9 @@
 
 namespace App\Controller\Admin\Area\DispatchArea;
 
-use App\Command\Area\CreateDispatchAreaCommand;
 use App\Entity\DispatchArea;
 use App\Form\DispatchAreaType;
+use App\Message\Command\Area\DispatchArea\CreateDispatchArea;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,7 +33,7 @@ class DispatchAreaNewController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $command = new CreateDispatchAreaCommand(
+            $command = new CreateDispatchArea(
                 $dispatchArea->getName(),
                 $dispatchArea->getState(),
                 $dispatchArea->getSupplyArea(),
