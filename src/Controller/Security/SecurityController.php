@@ -4,7 +4,7 @@ namespace App\Controller\Security;
 
 use App\DataTransferObjects\LoginTypeDTO;
 use App\Entity\User;
-use App\Form\LoginType;
+use App\Form\Security\LoginType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;

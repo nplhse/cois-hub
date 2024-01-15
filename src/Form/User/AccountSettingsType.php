@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\User;
 
 use App\DataTransferObjects\AccountSettingsTypeDTO;
 use Symfony\Component\Form\AbstractType;

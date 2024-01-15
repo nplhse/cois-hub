@@ -4,7 +4,7 @@ namespace App\Controller\Admin\User;
 
 use App\DataTransferObjects\UserAdminDTO;
 use App\Entity\User;
-use App\Form\EditUserType;
+use App\Form\User\EditUserType;
 use App\Message\Command\User\EditUser;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

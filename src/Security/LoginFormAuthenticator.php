@@ -3,7 +3,7 @@
 namespace App\Security;
 
 use App\DataTransferObjects\LoginTypeDTO;
-use App\Form\LoginType;
+use App\Form\Security\LoginType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;

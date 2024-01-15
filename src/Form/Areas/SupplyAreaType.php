@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Areas;
 
 use App\Entity\DispatchArea;
 use App\Entity\SupplyArea;

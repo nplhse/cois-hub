@@ -3,7 +3,7 @@
 namespace App\Controller\Settings;
 
 use App\Entity\User;
-use App\Form\UpdateUserPasswordType;
+use App\Form\User\UpdateUserPasswordType;
 use App\Message\Command\User\UpdateUserPassword;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
