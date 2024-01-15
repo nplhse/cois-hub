@@ -22,7 +22,7 @@ class AreaControllerTest extends WebTestCase
         SupplyAreaFactory::createMany(1);
         DispatchAreaFactory::createMany(15);
         DispatchAreaFactory::createMany(5, [
-            'supplyArea' => SupplyAreaFactory::random()
+            'supplyArea' => SupplyAreaFactory::random(),
         ]);
 
         $randomState = StateFactory::random();
