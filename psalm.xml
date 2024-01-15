@@ -70,6 +70,11 @@
                 <directory name="src/Faker/Provider" />
             </errorLevel>
         </MixedInferredReturnType>
+        <MixedMethodCall>
+            <errorLevel type="suppress">
+                <directory name="src/EventListener/" />
+            </errorLevel>
+        </MixedMethodCall>
         <MixedPropertyTypeCoercion>
             <errorLevel type="suppress">
                 <directory name="src" />
@@ -126,6 +131,7 @@
         <UnusedClass>
             <errorLevel type="suppress">
                 <directory name="src/Entity" />
+                <directory name="src/Enum" />
             </errorLevel>
         </UnusedClass>
         <UnusedProperty>
