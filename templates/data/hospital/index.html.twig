@@ -8,21 +8,6 @@
     {% embed "embeds/header.html.twig" %}
         {% block header_after %}
             {% include 'data/_subnav.html.twig' %}
-
-            <div class="container-xl">
-                <div class="row align-items-center mw-100">
-                    <div class="col">
-                        <div class="mb-3">
-                            <ol class="breadcrumb" aria-label="breadcrumbs">
-                                {% block admin_breadcrumb %}
-                                    <li class="breadcrumb-item">{{ "label.data"|trans }}</li>
-                                    <li class="breadcrumb-item active">{{ "label.hospitals"|trans }}</li>
-                                {% endblock %}
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
         {% endblock %}
     {% endembed %}
 {% endblock %}

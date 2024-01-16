@@ -8,22 +8,6 @@
     {% embed "embeds/header.html.twig" %}
         {% block header_after %}
             {% include 'data/_subnav.html.twig' %}
-
-            <div class="container-xl">
-                <div class="row align-items-center mw-100">
-                    <div class="col">
-                        <div class="mb-3">
-                            <ol class="breadcrumb" aria-label="breadcrumbs">
-                                {% block data_breadcrumb %}
-                                    <li class="breadcrumb-item">{{ "label.data"|trans }}</li>
-                                    <li class="breadcrumb-item"><a href="{{ path('app_data_hospital_index') }}">{{ "label.hospitals"|trans }}</a></li>
-                                    <li class="breadcrumb-item active">{{ "label.hospital_show"|trans }}</li>
-                                {% endblock %}
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
         {% endblock %}
     {% endembed %}
 {% endblock %}
@@ -62,6 +46,19 @@
                             </svg>
                             <a href="{{ path('app_user_profile', {id: hospital.owner.id}) }}" class="text-reset">{{ hospital.owner }}</a>
                         </div>
+                    </div>
+                </div>
+                <div class="col-auto ms-auto">
+                    <div class="btn-list">
+                        <span class="d-none d-sm-inline">
+                            <a class="btn btn-outline-secondary" href="{{ path('app_data_hospital_index') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M15 6l-6 6l6 6" />
+                                </svg>
+                                {{ "label.back_to_list"|trans }}
+                            </a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -139,11 +136,11 @@
                                     </div>
                                     <div class="mb-2">
                                         <!-- Download SVG icon from http://tabler-icons.io/i/book -->
-                                        <p>
+                                        <em>
                                             {{ hospital.address.street }}<br />
                                             {{ hospital.address.postalCode }}, {{ hospital.address.city }}<br />
                                             {{ hospital.address.state }}, {{ hospital.address.country }}
-                                        </p>
+                                        </em>
                                     </div>
                                 </div>
                             </div>

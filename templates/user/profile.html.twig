@@ -19,12 +19,52 @@
                 </div>
                 <div class="col">
                     <h1 class="fw-bold">{{ user.username }}</h1>
-                    <div class="my-2">
-                        {% if 'ROLE_ADMIN' in user.roles %}
-                            <span class="badge bg-purple-lt">{{ "label.user_is_admin"|trans }}</span>
-                        {% elseif 'ROLE_USER' in user.roles %}
-                            <span class="badge bg-gray-lt">{{ "label.user_is_user"|trans }}</span>
+                    <div class="list-inline list-inline-dots text-muted">
+                        <div class="list-inline-item">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/map -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                <path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z" />
+                            </svg>
+                            {% if "ROLE_ADMIN" in user.roles %}
+                                <span class="badge bg-orange-lt text-white">
+                                    {{ "label.role_admin"|trans }}
+                                </span>
+                            {% elseif "ROLE_PARTICIPANT" in user.roles %}
+                                <span class="badge bg-blue-lt text-white">
+                                    {{ "label.role_participant"|trans }}
+                                </span>
+                            {% else %}
+                                <span class="badge bg-azure-lt text-white">
+                                    {{ "label.role_user"|trans }}
+                                </span>
+                            {% endif %}
+                        </div>
+                        {% if is_granted('ROLE_USER') %}
+                            <div class="list-inline-item">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/cake -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+                                    <path d="M3 7l9 6l9 -6" />
+                                </svg>
+                                <a href="mailto:{{ user.email }}" class="text-reset">{{ user.email }}</a>
+                            </div>
                         {% endif %}
+                    </div>
+                </div>
+                <div class="col-auto ms-auto">
+                    <div class="btn-list">
+                        <span class="d-none d-sm-inline">
+                            <a class="btn btn-outline-secondary" href="{{ path('app_user') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M15 6l-6 6l6 6" />
+                                </svg>
+                                {{ "label.back_to_list"|trans }}
+                            </a>
+                        </span>
                     </div>
                 </div>
             </div>
