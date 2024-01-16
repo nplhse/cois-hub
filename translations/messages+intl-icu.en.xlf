@@ -770,6 +770,62 @@
         <source>title.data</source>
         <target>Data</target>
       </trans-unit>
+      <trans-unit id="pM4OAYQ" resname="label.pagination_results">
+        <source>label.pagination_results</source>
+        <target>Showing {numResults} results, with {pageSize} per page.</target>
+      </trans-unit>
+      <trans-unit id="OgHZJ9i" resname="label.hospitals">
+        <source>label.hospitals</source>
+        <target>Hospitals</target>
+      </trans-unit>
+      <trans-unit id=".12uZnZ" resname="title.list_hospitals">
+        <source>title.list_hospitals</source>
+        <target>List Hospitals</target>
+      </trans-unit>
+      <trans-unit id="FSQauKU" resname="label.dispatchArea">
+        <source>label.dispatchArea</source>
+        <target>Dispatch Area</target>
+      </trans-unit>
+      <trans-unit id="0lHfqwc" resname="label.hospital_show">
+        <source>label.hospital_show</source>
+        <target>Hospital Details</target>
+      </trans-unit>
+      <trans-unit id="a9eYCPJ" resname="title.hospital_show">
+        <source>title.hospital_show</source>
+        <target>Hospital Details</target>
+      </trans-unit>
+      <trans-unit id="J0K0Tb7" resname="label.created_by">
+        <source>label.created_by</source>
+        <target>Created by</target>
+      </trans-unit>
+      <trans-unit id="nbuM8rl" resname="label.updated_by">
+        <source>label.updated_by</source>
+        <target>Updated by</target>
+      </trans-unit>
+      <trans-unit id="c9W5AO4" resname="label.address">
+        <source>label.address</source>
+        <target>Address</target>
+      </trans-unit>
+      <trans-unit id="SbPp8GV" resname="label.properties">
+        <source>label.properties</source>
+        <target>Properties</target>
+      </trans-unit>
+      <trans-unit id="YDeFZdW" resname="label.hospital_size">
+        <source>label.hospital_size</source>
+        <target>Size</target>
+      </trans-unit>
+      <trans-unit id="AWSl7JY" resname="label.hospital_beds">
+        <source>label.hospital_beds</source>
+        <target>Beds</target>
+      </trans-unit>
+      <trans-unit id="MEFXCNM" resname="label.hospital_location">
+        <source>label.hospital_location</source>
+        <target>Location</target>
+      </trans-unit>
+      <trans-unit id="TdXUwzS" resname="label.hospital_tier">
+        <source>label.hospital_tier</source>
+        <target>Tier</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -1,34 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% macro sortArrow(sortName, sortBy, orderBy) %}
-    {% if sortBy == sortName %}
-        {% if orderBy == 'asc' %}
-            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M6 15l6 -6l6 6"></path>
-            </svg>
-        {% else %}
-            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M6 9l6 6l6 -6"></path>
-            </svg>
-        {% endif %}
-    {% else %}
-        <!-- up and down arrow svg -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 text-slate-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M8 9l4 -4l4 4"></path>
-            <path d="M16 15l-4 4l-4 -4"></path>
-        </svg>
-    {% endif %}
-{% endmacro %}
+{% import 'macros/pagination.html.twig' as pagination %}
 
 {% block title %}{{ "title.list_areas"|trans }} - {{ "title.data"|trans }} {{ parent() }}{% endblock %}
 
 {% block header %}
-    {% embed "embeds/header.html.twig" %}{% endembed %}
+    {% embed "embeds/header.html.twig" %}
+        {% block header_after %}
+            {% include 'data/_subnav.html.twig' %}
 
-    {% include 'data/_subnav.html.twig' %}
+            <div class="container-xl">
+                <div class="row align-items-center mw-100">
+                    <div class="col">
+                        <div class="mb-3">
+                            <ol class="breadcrumb" aria-label="breadcrumbs">
+                                {% block admin_breadcrumb %}
+                                    <li class="breadcrumb-item">{{ "label.data"|trans }}</li>
+                                    <li class="breadcrumb-item active">{{ "label.areas"|trans }}</li>
+                                {% endblock %}
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
 
 {% block body %}
@@ -40,57 +36,57 @@
                         <thead>
                             <tr>
                                 <th class="col-1">
-                                    <a href="{{ path('app_data_area', {
+                                    <a href="{{ path('app_data_area_index', {
                                         ...app.request.query.all(),
                                         sortBy: 'id',
                                         orderBy: sortBy == 'id' and orderBy == 'asc' ? 'desc' : 'asc',
                                     }) }}">
-                                        {{ "label.id"|trans }} {{ _self.sortArrow('id', sortBy, orderBy) }}
+                                        {{ "label.id"|trans }} {{ pagination.sortArrow('id', sortBy, orderBy) }}
                                     </a>
                                 </th>
                                 <th class="col-3">
-                                    <a href="{{ path('app_data_area', {
+                                    <a href="{{ path('app_data_area_index', {
                                         ...app.request.query.all(),
                                         sortBy: 'name',
                                         orderBy: sortBy == 'name' and orderBy == 'asc' ? 'desc' : 'asc',
                                     }) }}">
-                                        {{ "label.name"|trans }} {{ _self.sortArrow('name', sortBy, orderBy) }}
+                                        {{ "label.name"|trans }} {{ pagination.sortArrow('name', sortBy, orderBy) }}
                                     </a>
                                 </th>
                                 <th class="col-2">
-                                    <a href="{{ path('app_data_area', {
+                                    <a href="{{ path('app_data_area_index', {
                                         ...app.request.query.all(),
                                         sortBy: 'state',
                                         orderBy: sortBy == 'state' and orderBy == 'asc' ? 'desc' : 'asc',
                                     }) }}">
-                                        {{ "label.state"|trans }} {{ _self.sortArrow('state', sortBy, orderBy) }}
+                                        {{ "label.state"|trans }} {{ pagination.sortArrow('state', sortBy, orderBy) }}
                                     </a>
                                 </th>
                                 <th class="col-2">
-                                    <a href="{{ path('app_data_area', {
+                                    <a href="{{ path('app_data_area_index', {
                                         ...app.request.query.all(),
                                         sortBy: 'supplyArea',
                                         orderBy: sortBy == 'supplyArea' and orderBy == 'asc' ? 'desc' : 'asc',
                                     }) }}">
-                                        {{ "label.supply_area"|trans }} {{ _self.sortArrow('state', sortBy, orderBy) }}
+                                        {{ "label.supply_area"|trans }} {{ pagination.sortArrow('state', sortBy, orderBy) }}
                                     </a>
                                 </th>
                                 <th class="col-2">
-                                    <a href="{{ path('app_data_area', {
+                                    <a href="{{ path('app_data_area_index', {
                                         ...app.request.query.all(),
                                         sortBy: 'createdAt',
                                         orderBy: sortBy == 'createdAt' and orderBy == 'asc' ? 'desc' : 'asc',
                                     }) }}">
-                                        {{ "label.created_at"|trans }} {{ _self.sortArrow('createdAt', sortBy, orderBy) }}
+                                        {{ "label.created_at"|trans }} {{ pagination.sortArrow('createdAt', sortBy, orderBy) }}
                                     </a>
                                 </th>
                                 <th class="col-2">
-                                    <a href="{{ path('app_data_area', {
+                                    <a href="{{ path('app_data_area_index', {
                                         ...app.request.query.all(),
                                         sortBy: 'updatedAt',
                                         orderBy: sortBy == 'updatedAt' and orderBy == 'asc' ? 'desc' : 'asc',
                                     }) }}">
-                                        {{ "label.updated_at"|trans }} {{ _self.sortArrow('updatedAt', sortBy, orderBy) }}
+                                        {{ "label.updated_at"|trans }} {{ pagination.sortArrow('updatedAt', sortBy, orderBy) }}
                                     </a>
                                 </th>
                             </tr>
@@ -102,13 +98,13 @@
                                     {{ dispatch_area.id }}
                                 </td>
                                 <td>
-                                    <a href="#">{{ dispatch_area.name }}</a>
+                                    {{ dispatch_area.name }}
                                 </td>
                                 <td>
-                                    <a href="#">{{ dispatch_area.state }}</a>
+                                    {{ dispatch_area.state }}
                                 </td>
                                 <td>
-                                    <a href="#">{{ dispatch_area.supplyArea }}</a>
+                                    {{ dispatch_area.supplyArea }}
                                 </td>
                                 <td>
                                     {{ dispatch_area.createdAt ? dispatch_area.createdAt|date('d.m.Y H:i') : '' }}
@@ -143,43 +139,9 @@
                 </div>
             </div>
             <div class="card-footer d-flex align-items-center">
-                <p class="m-0 text-muted">Showing <span>{{ areas.numResults }}</span> results, with <span>{{ areas.pageSize }}</span> per page.</p>
-                {% if areas.hasToPaginate %}
-                    <ul class="pagination m-0 ms-auto">
-                        {% if areas.hasPreviousPage %}
-                            <li class="page-item">
-                                <a class="page-link" href="{{ path('app_data_area', {page: areas.previousPage}) }}" tabindex="-1" aria-disabled="true">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
-                                    {{ "label.previous"|trans }}
-                                </a>
-                            </li>
-                        {% else %}
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
-                                    {{ "label.previous"|trans }}
-                                </a>
-                            </li>
-                        {% endif %}
-                        {% if areas.hasNextPage %}
-                            <li class="page-item">
-                                <a class="page-link" href="{{ path('app_data_area', {page: areas.nextPage}) }}">
-                                    {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
-                                </a>
-                            </li>
-                        {% else %}
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                    {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
-                                </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                {% endif %}
+                {{ pagination.results(areas.numResults, areas.pageSize) }}
+
+                {{ pagination.navbar(areas, 'app_data_area_index') }}
             </div>
         </div>
     </div>
