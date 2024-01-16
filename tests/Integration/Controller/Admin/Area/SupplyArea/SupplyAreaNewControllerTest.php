@@ -4,6 +4,7 @@ namespace App\Tests\Integration\Controller\Admin\Area\SupplyArea;
 
 use App\Factory\DispatchAreaFactory;
 use App\Factory\StateFactory;
+use App\Factory\SupplyAreaFactory;
 use App\Factory\UserFactory;
 use App\Tests\AppWebTestCase;
 use Zenstruck\Foundry\Test\Factories;
@@ -19,6 +20,7 @@ class SupplyAreaNewControllerTest extends AppWebTestCase
         UserFactory::new(['username' => 'admin'])->asAdmin()->create();
 
         StateFactory::createOne();
+        SupplyAreaFactory::createOne();
         DispatchAreaFactory::createOne();
 
         $this->browser()
