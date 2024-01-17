@@ -68,7 +68,7 @@
                     <ul class="pagination m-0 ms-auto">
                         {% if audit_logs.hasPreviousPage %}
                             <li class="page-item">
-                                <a class="page-link" href="{{ path('app_admin_auditlog_index', {page: audit_logs.previousPage}) }}" tabindex="-1" aria-disabled="true">
+                                <a class="page-link" href="{{ path('app_admin_system_auditlog', {page: audit_logs.previousPage}) }}" tabindex="-1" aria-disabled="true">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
                                     {{ "label.previous"|trans }}
@@ -85,14 +85,14 @@
                         {% endif %}
                         {% if audit_logs.hasNextPage %}
                             <li class="page-item">
-                                <a class="page-link" href="{{ path('app_admin_auditlog_index', {page: audit_logs.nextPage}) }}">
+                                <a class="page-link" href="{{ path('app_admin_system_auditlog', {page: audit_logs.nextPage}) }}">
                                     {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
                                 </a>
                             </li>
                         {% else %}
                             <li class="page-item disabled">
-                                <a class="page-link" href="{{ path('app_admin_auditlog_index', {page: audit_logs.nextPage}) }}">
+                                <a class="page-link" href="{{ path('app_admin_system_auditlog', {page: audit_logs.nextPage}) }}">
                                     {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
                                 </a>
