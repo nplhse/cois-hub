@@ -6,6 +6,7 @@ use App\Entity\Hospital;
 use App\Enum\HospitalLocation;
 use App\Enum\HospitalSize;
 use App\Enum\HospitalTier;
+use App\Faker\Provider\Area;
 use App\Repository\HospitalRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -56,6 +57,8 @@ final class HospitalFactory extends ModelFactory
     public function __construct()
     {
         parent::__construct();
+
+        self::faker()->addProvider(new \App\Faker\Provider\Hospital(self::faker()));
     }
 
     /**
@@ -72,7 +75,7 @@ final class HospitalFactory extends ModelFactory
             'createdBy' => UserFactory::random(),
             'dispatchArea' => DispatchAreaFactory::random(),
             'location' => self::faker()->randomElement(HospitalLocation::cases()),
-            'name' => self::faker()->company(),
+            'name' => self::faker()->hospital(),
             'owner' => UserFactory::random(),
             'size' => self::faker()->randomElement(HospitalSize::cases()),
             'state' => StateFactory::random(),

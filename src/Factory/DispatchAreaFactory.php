@@ -3,7 +3,7 @@
 namespace App\Factory;
 
 use App\Entity\DispatchArea;
-use App\Faker\Provider\Areas;
+use App\Faker\Provider\Area;
 use App\Repository\DispatchAreaRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -54,6 +54,8 @@ final class DispatchAreaFactory extends ModelFactory
     public function __construct()
     {
         parent::__construct();
+
+        self::faker()->addProvider(new Area(self::faker()));
     }
 
     /**
@@ -65,7 +67,7 @@ final class DispatchAreaFactory extends ModelFactory
     {
         return [
             'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTimeThisMonth()),
-            'name' => Areas::district(),
+            'name' => self::faker()->dispatchArea(),
             'state' => StateFactory::random(),
             'supplyArea' => self::faker()->boolean(10) ? SupplyAreaFactory::random() : null,
         ];

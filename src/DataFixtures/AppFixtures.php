@@ -21,7 +21,7 @@ class AppFixtures extends Fixture
         SupplyAreaFactory::createMany(5);
         DispatchAreaFactory::createMany(35);
 
-        HospitalFactory::createMany(5);
+        HospitalFactory::createMany(10);
 
         $manager->flush();
     }
