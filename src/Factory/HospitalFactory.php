@@ -6,7 +6,6 @@ use App\Entity\Hospital;
 use App\Enum\HospitalLocation;
 use App\Enum\HospitalSize;
 use App\Enum\HospitalTier;
-use App\Faker\Provider\Area;
 use App\Repository\HospitalRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
