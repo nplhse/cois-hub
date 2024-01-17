@@ -1,0 +1,80 @@
+{% extends 'admin/_base.html.twig' %}
+
+{% block title %}{{ "title.hospital_edit"|trans }}: {{ hospital.name }} - {{ parent() }}{% endblock %}
+
+{% block admin_breadcrumb %}
+    {{ parent() }}
+    <li class="breadcrumb-item"><a href="{{ path('app_admin_hospital_index') }}">{{ "label.hospitals"|trans }}</a></li>
+    <li class="breadcrumb-item active">{{ "label.edit"|trans }}: {{ hospital.name }}</li>
+{% endblock %}
+
+{% block admin_title %}
+    <!-- Page pre-title -->
+    <div class="page-pretitle">
+        {{ "title.hospital_edit"|trans }}
+    </div>
+    <h2 class="page-title">
+        {{ "title.hospitals"|trans }}
+    </h2>
+{% endblock %}
+
+{% block admin_title_actions %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="row row-cards">
+        {{ form_start(form) }}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        {{ form_row(form.name) }}
+
+                        {{ form_row(form.owner) }}
+
+                        {{ form_row(form.size) }}
+
+                        {{ form_row(form.beds) }}
+
+                        {{ form_row(form.location) }}
+
+                        {{ form_row(form.tier) }}
+
+                        {{ form_row(form.state) }}
+
+                        {{ form_row(form.dispatchArea) }}
+
+                        {{ form_row(form.supplyArea) }}
+
+                        {{ form_row(form.address) }}
+                    </div>
+                    <div class="card-footer">
+                        <div class="float-start">
+                            <a class="btn btn-outline-secondary" href="{{ path('app_admin_hospital_index') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M15 6l-6 6l6 6" />
+                                </svg>
+                                {{ "label.back_to_list"|trans }}
+                            </a>
+                        </div>
+                        <div class="btn-list justify-content-end">
+                            <a href="{{ path('app_admin_hospital_show', {id: hospital.id}) }}" class="btn">
+                                {{ "label.cancel"|trans }}
+                            </a>
+                            <button class="btn btn-primary" type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+                                    <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                                    <path d="M14 4l0 4l-6 0l0 -4" />
+                                </svg>
+                                {{ "label.save_changes"|trans }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
