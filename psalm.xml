@@ -15,6 +15,7 @@
             <directory name="src/DependencyInjection" />
             <directory name="src/EventSubscriber" />
             <directory name="src/Factory" />
+            <directory name="src/Faker/Provider" />
             <directory name="src/Form/DataMapper" />
             <directory name="src/Twig/Extension" />
             <directory name="src/Twig/Runtime" />
