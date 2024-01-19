@@ -15,6 +15,7 @@
             <directory name="src/DependencyInjection" />
             <directory name="src/EventSubscriber" />
             <directory name="src/Factory" />
+            <directory name="src/Faker/Provider" />
             <directory name="src/Form/DataMapper" />
             <directory name="src/Twig/Extension" />
             <directory name="src/Twig/Runtime" />
@@ -70,6 +71,11 @@
                 <directory name="src/Faker/Provider" />
             </errorLevel>
         </MixedInferredReturnType>
+        <MixedMethodCall>
+            <errorLevel type="suppress">
+                <directory name="src/EventListener/" />
+            </errorLevel>
+        </MixedMethodCall>
         <MixedPropertyTypeCoercion>
             <errorLevel type="suppress">
                 <directory name="src" />
@@ -93,7 +99,7 @@
         </PossiblyInvalidArgument>
         <PossiblyNullArgument>
             <errorLevel type="suppress">
-                <directory name="src/MessageHandler/Command/Area" />
+                <directory name="src/MessageHandler/Command/" />
                 <file name="src/Service/CookieConsent.php" />
             </errorLevel>
         </PossiblyNullArgument>
@@ -103,6 +109,7 @@
                 <directory name="src/Entity" />
                 <directory name="src/Enum" />
                 <directory name="src/Event" />
+                <directory name="src/Message/Event" />
                 <directory name="src/Pagination" />
                 <directory name="src/Query" />
                 <directory name="src/Repository" />
@@ -126,6 +133,7 @@
         <UnusedClass>
             <errorLevel type="suppress">
                 <directory name="src/Entity" />
+                <directory name="src/Enum" />
             </errorLevel>
         </UnusedClass>
         <UnusedProperty>

@@ -1,0 +1,204 @@
+{% extends 'base.html.twig' %}
+
+{% import 'macros/pagination.html.twig' as pagination %}
+
+{% block title %}{{ "title.hospital_show"|trans }}: {{ hospital.name }} - {{ "title.data"|trans }} - {{ parent() }}{% endblock %}
+
+{% block header %}
+    {% embed "embeds/header.html.twig" %}
+        {% block header_after %}
+            {% include 'data/_subnav.html.twig' %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <span class="avatar avatar-lg rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-hospital" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M3 21l18 0" />
+                            <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" />
+                            <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
+                            <path d="M10 9l4 0" />
+                            <path d="M12 7l0 4" />
+                        </svg>
+                    </span>
+                </div>
+                <div class="col">
+                    <h1 class="fw-bold">{{ hospital.name }}</h1>
+                    <div class="list-inline list-inline-dots text-muted">
+                        <div class="list-inline-item">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/map -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7l6 -3l6 3l6 -3l0 13l-6 3l-6 -3l-6 3l0 -13"></path><path d="M9 4l0 13"></path><path d="M15 7l0 13"></path></svg>
+                            {{ hospital.dispatchArea }}, {{ hospital.state }}
+                        </div>
+                        <div class="list-inline-item">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/cake -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-square" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M9 10a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                                <path d="M6 21v-1a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v1" />
+                                <path d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z" />
+                            </svg>
+                            <a href="{{ path('app_user_profile', {id: hospital.owner.id}) }}" class="text-reset">{{ hospital.owner }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto ms-auto">
+                    <div class="btn-list">
+                        <span class="d-none d-sm-inline">
+                            <a class="btn btn-outline-secondary" href="{{ path('app_data_hospital_index') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M15 6l-6 6l6 6" />
+                                </svg>
+                                {{ "label.back_to_list"|trans }}
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page body -->
+    <div class="page-body">
+        <div class="container-xl">
+            <div class="row g-3">
+                <div class="col">
+                    <ul class="timeline">
+
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row row-cards">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="card-title">{{ "label.basic_info"|trans }}</div>
+                                    <div class="mb-2">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/book -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+                                            <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                                            <path d="M15 3v4" />
+                                            <path d="M7 3v4" />
+                                            <path d="M3 11h16" />
+                                            <path d="M18 16.496v1.504l1 1" />
+                                        </svg>
+                                        {{ "label.created_at"|trans }} <strong>{{ hospital.createdAt|date('d.m.Y H:i') }}</strong>
+                                    </div>
+                                    <div class="mb-2">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/book -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                        </svg>
+                                        {{ "label.created_by"|trans }} <strong><a href="{{ path('app_user_profile', {id: hospital.createdBy.id}) }}">{{ hospital.createdBy }}</a></strong>
+                                    </div>
+                                    {% if hospital.updatedBy and hospital.updatedAt %}
+                                        <div class="mt-1 mb-2">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/book -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <path d="M10.5 21h-4.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v3" />
+                                                <path d="M16 3v4" />
+                                                <path d="M8 3v4" />
+                                                <path d="M4 11h10" />
+                                                <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                                                <path d="M18 16.5v1.5l.5 .5" />
+                                            </svg>
+                                            {{ "label.updated_at"|trans }} <strong>{{ hospital.updatedAt|date('d.m.Y H:i') }}</strong>
+                                        </div>
+                                        <div class="mb-2">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/book -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                            </svg>
+                                            {{ "label.updated_by"|trans }} <strong><a href="{{ path('app_user_profile', {id: hospital.updatedBy.id}) }}">{{ hospital.updatedBy }}</a></strong>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="card-title">
+                                        {{ "label.address"|trans }}
+                                    </div>
+                                    <div class="mb-2">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/book -->
+                                        <em>
+                                            {{ hospital.address.street }}<br />
+                                            {{ hospital.address.postalCode }}, {{ hospital.address.city }}<br />
+                                            {{ hospital.address.state }}, {{ hospital.address.country }}
+                                        </em>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="card-title">
+                                        {{ "label.properties"|trans }}
+                                    </div>
+                                    <div class="mb-2">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/book -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-aspect-ratio" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+                                            <path d="M7 12v-3h3" />
+                                            <path d="M17 12v3h-3" />
+                                        </svg>
+                                        {{ "label.hospital_size"|trans }} <strong>{{ hospital.size.value }}</strong>
+                                    </div>
+                                    <div class="mb-2">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/book -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bed" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M7 9m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                                            <path d="M22 17v-3h-20" />
+                                            <path d="M2 8v9" />
+                                            <path d="M12 14h10v-2a3 3 0 0 0 -3 -3h-7v5z" />
+                                        </svg>
+                                        {{ "label.hospital_beds"|trans }} <strong>{{ hospital.beds }}</strong>
+                                    </div>
+                                    <div class="mb-2">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/book -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                                            <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                                        </svg>
+                                        {{ "label.hospital_location"|trans }} <strong>{{ hospital.location.value }}</strong>
+                                    </div>
+                                    <div class="mb-2">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/book -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hierarchy-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M10 3h4v4h-4z" />
+                                            <path d="M3 17h4v4h-4z" />
+                                            <path d="M17 17h4v4h-4z" />
+                                            <path d="M7 17l5 -4l5 4" />
+                                            <path d="M12 7l0 6" />
+                                        </svg>
+                                        {{ "label.hospital_tier"|trans }} <strong>{{ hospital.tier.value }}</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

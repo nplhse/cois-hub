@@ -154,21 +154,19 @@
                                         {{ user.email }}
                                     </td>
                                     <td>
-                                        {% for role in user.roles %}
-                                            {% if role == "ROLE_ADMIN" %}
-                                                <span class="badge bg-orange-lt text-white">
-                                                    {{ role|replace({'ROLE_': ''})|lower|capitalize }}
-                                                </span>
-                                            {% elseif role == "ROLE_PARTICIPANT" %}
-                                                <span class="badge bg-blue-lt text-white">
-                                                    {{ role|replace({'ROLE_': ''})|lower|capitalize }}
-                                                </span>
-                                            {% else %}
-                                                <span class="badge bg-azure-lt text-white">
-                                                    {{ role|replace({'ROLE_': ''})|lower|capitalize }}
-                                                </span>
-                                            {% endif %}
-                                        {% endfor %}
+                                        {% if "ROLE_ADMIN" in user.roles %}
+                                            <span class="badge bg-orange-lt text-white">
+                                                {{ "label.role_admin"|trans }}
+                                            </span>
+                                        {% elseif "ROLE_PARTICIPANT" in user.roles %}
+                                            <span class="badge bg-blue-lt text-white">
+                                                {{ "label.role_participant"|trans }}
+                                            </span>
+                                        {% else %}
+                                            <span class="badge bg-azure-lt text-white">
+                                                {{ "label.role_user"|trans }}
+                                            </span>
+                                        {% endif %}
                                     </td>
                                     <td>
                                         {{ user.createdAt ? user.createdAt|date('d.m.Y H:i') : '' }}

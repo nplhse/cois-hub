@@ -35,107 +35,148 @@
 {% endblock %}
 
 {% block body %}
-    <div class="card">
-        <div class="card-header bg-body-secondary">
-            <h3 class="card-title">{{ "label.basic_info"|trans }}</h3>
-        </div>
-        <div class="card-body">
-            <div class="datagrid">
-                <div class="datagrid-item">
-                    <div class="datagrid-title">{{ "label.id"|trans }}</div>
-                    <div class="datagrid-content">{{ user.id }}</div>
+    <div class="row row-cards">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-body-secondary">
+                    <h3 class="card-title">{{ "label.basic_info"|trans }}</h3>
                 </div>
-                <div class="datagrid-item">
-                    <div class="datagrid-title">{{ "label.username"|trans }}</div>
-                    <div class="datagrid-content">{{ user.username }}</div>
-                </div>
-                <div class="datagrid-item">
-                    <div class="datagrid-title">{{ "label.created_at"|trans }}</div>
-                    <div class="datagrid-content">{{ user.createdAt ? user.createdAt|date('d.m.Y H:i') : '' }}</div>
-                </div>
-                <div class="datagrid-item">
-                    <div class="datagrid-title">{{ "label.updated_at"|trans }}</div>
-                    <div class="datagrid-content">{{ user.updatedAt ? user.createdAt|date('d.m.Y H:i') : '-' }}</div>
-                </div>
-                <div class="datagrid-item">
-                    <div class="datagrid-title">{{ "label.email"|trans }}</div>
-                    <div class="datagrid-content">{{ user.email }}</div>
-                </div>
-                <div class="datagrid-item">
-                    <div class="datagrid-title">{{ "label.roles"|trans }}</div>
-                    <div class="datagrid-content">
-                        {% for role in user.roles %}
-                            {% if role == "ROLE_ADMIN" %}
-                                <span class="badge bg-orange-lt text-white">
-                                    {{ role|replace({'ROLE_': ''})|lower|capitalize }}
-                                </span>
-                            {% elseif role == "ROLE_PARTICIPANT" %}
-                                <span class="badge bg-blue-lt text-white">
-                                    {{ role|replace({'ROLE_': ''})|lower|capitalize }}
-                                </span>
-                            {% else %}
-                                <span class="badge bg-azure-lt text-white">
-                                    {{ role|replace({'ROLE_': ''})|lower|capitalize }}
-                                </span>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-                <div class="datagrid-item">
-                    <div class="datagrid-title">{{ "label.user_verified"|trans }}</div>
-                    <div class="datagrid-content">
-                        {% if user.verified %}
-                            <span class="status status-green">
-                                {{ "label.yes"|trans }}
-                            </span>
-                        {% else %}
-                            <span class="status status-red">
-                                {{ "label.no"|trans }}
-                            </span>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="datagrid-item">
-                    <div class="datagrid-title">{{ "label.credentials_expired"|trans }}</div>
-                    <div class="datagrid-content">
-                        {% if user.hasCredentialsExpired %}
-                            <span class="status status-red">
-                                {{ "label.yes"|trans }}
-                            </span>
-                        {% else %}
-                            <span class="status status-green">
-                                {{ "label.no"|trans }}
-                            </span>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="datagrid-item">
-                    <div class="datagrid-title">{{ "label.is_public"|trans }}</div>
-                    <div class="datagrid-content">
-                        {% if user.public %}
-                            <span class="status status-green">
-                                {{ "label.yes"|trans }}
-                            </span>
-                        {% else %}
-                            <span class="status status-red">
-                                {{ "label.no"|trans }}
-                            </span>
-                        {% endif %}
+                <div class="card-body">
+                    <div class="datagrid">
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">{{ "label.id"|trans }}</div>
+                            <div class="datagrid-content">{{ user.id }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">{{ "label.username"|trans }}</div>
+                            <div class="datagrid-content">{{ user.username }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">{{ "label.created_at"|trans }}</div>
+                            <div class="datagrid-content">{{ user.createdAt ? user.createdAt|date('d.m.Y H:i') : '' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">{{ "label.updated_at"|trans }}</div>
+                            <div class="datagrid-content">{{ user.updatedAt ? user.createdAt|date('d.m.Y H:i') : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">{{ "label.email"|trans }}</div>
+                            <div class="datagrid-content">{{ user.email }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">{{ "label.roles"|trans }}</div>
+                            <div class="datagrid-content">
+                                {% if "ROLE_ADMIN" in user.roles %}
+                                    <span class="badge bg-orange-lt text-white">
+                                        {{ "label.role_admin"|trans }}
+                                    </span>
+                                {% elseif "ROLE_PARTICIPANT" in user.roles %}
+                                    <span class="badge bg-blue-lt text-white">
+                                        {{ "label.role_participant"|trans }}
+                                    </span>
+                                {% else %}
+                                    <span class="badge bg-azure-lt text-white">
+                                        {{ "label.role_user"|trans }}
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">{{ "label.user_verified"|trans }}</div>
+                            <div class="datagrid-content">
+                                {% if user.verified %}
+                                    <span class="status status-green">
+                                        {{ "label.yes"|trans }}
+                                    </span>
+                                {% else %}
+                                    <span class="status status-red">
+                                        {{ "label.no"|trans }}
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">{{ "label.credentials_expired"|trans }}</div>
+                            <div class="datagrid-content">
+                                {% if user.hasCredentialsExpired %}
+                                    <span class="status status-red">
+                                        {{ "label.yes"|trans }}
+                                    </span>
+                                {% else %}
+                                    <span class="status status-green">
+                                        {{ "label.no"|trans }}
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">{{ "label.is_public"|trans }}</div>
+                            <div class="datagrid-content">
+                                {% if user.public %}
+                                    <span class="status status-green">
+                                        {{ "label.yes"|trans }}
+                                    </span>
+                                {% else %}
+                                    <span class="status status-red">
+                                        {{ "label.no"|trans }}
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="card-footer mt-auto">
-            <div class="btn-list">
-                <span class="d-none d-sm-inline">
-                    <a class="btn btn-outline-secondary" href="{{ path('app_admin_user_index') }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M15 6l-6 6l6 6" />
-                        </svg>
-                        {{ "label.back_to_list"|trans }}
-                    </a>
-                </span>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-body-secondary">
+                    <h3 class="card-title">{{ "label.hospitals"|trans }}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush list-group-hoverable">
+                        {% for hospital in user.hospitals %}
+                            <div class="list-group-item">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <a href="{{ path('app_admin_hospital_show', {id: hospital.id}) }}" class="text-reset d-block">{{ hospital.name }}</a>
+                                        <div class="list-inline list-inline-dots text-muted">
+                                            <div class="list-inline-item">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7l6 -3l6 3l6 -3l0 13l-6 3l-6 -3l-6 3l0 -13"></path><path d="M9 4l0 13"></path><path d="M15 7l0 13"></path></svg>
+                                                {{ hospital.dispatchArea }}, {{ hospital.state }}
+                                            </div>
+                                            <div class="list-inline-item">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-square" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path d="M9 10a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"  />
+                                                    <path d="M6 21v-1a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v1" />
+                                                    <path d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z" />
+                                                </svg>
+                                                {% if hospital.owner == user %}
+                                                    <span class="text-primary">{{ "help.hospital_user_is_owner"|trans }}</span>
+                                                {% else %}
+                                                    <a href="{{ path('app_user_profile', {id: hospital.owner.id}) }}" class="text-reset">{{ hospital.owner }}</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card-footer mt-auto">
+                    <div class="btn-list">
+                    <span class="d-none d-sm-inline">
+                        <a class="btn btn-outline-secondary" href="{{ path('app_admin_user_index') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M15 6l-6 6l6 6" />
+                            </svg>
+                            {{ "label.back_to_list"|trans }}
+                        </a>
+                    </span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

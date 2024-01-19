@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% import 'macros/pagination.html.twig' as pagination %}
+
+{% block title %}{{ "title.list_hospitals"|trans }} - {{ "title.data"|trans }} - {{ parent() }}{% endblock %}
+
+{% block header %}
+    {% embed "embeds/header.html.twig" %}
+        {% block header_after %}
+            {% include 'data/_subnav.html.twig' %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block body %}
+    <div class="container-xl">
+        <div class="card">
+            <div class="card-body">
+                <div class="tab-content">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th class="col-1">
+                                <a href="{{ path('app_data_hospital_index', {
+                                    ...app.request.query.all(),
+                                    sortBy: 'id',
+                                    orderBy: sortBy == 'id' and orderBy == 'asc' ? 'desc' : 'asc',
+                                }) }}">
+                                    {{ "label.id"|trans }} {{ pagination.sortArrow('id', sortBy, orderBy) }}
+                                </a>
+                            </th>
+                            <th>
+                                <a href="{{ path('app_data_hospital_index', {
+                                    ...app.request.query.all(),
+                                    sortBy: 'name',
+                                    orderBy: sortBy == 'name' and orderBy == 'asc' ? 'desc' : 'asc',
+                                }) }}">
+                                    {{ "label.name"|trans }} {{ pagination.sortArrow('name', sortBy, orderBy) }}
+                                </a>
+                            </th>
+                            <th>
+                                {{ "label.state"|trans }}
+                            </th>
+                            <th>
+                                {{ "label.dispatchArea"|trans }}
+                            </th>
+                            <th class="col-2">
+                                <a href="{{ path('app_data_hospital_index', {
+                                    ...app.request.query.all(),
+                                    sortBy: 'createdAt',
+                                    orderBy: sortBy == 'createdAt' and orderBy == 'asc' ? 'desc' : 'asc',
+                                }) }}">
+                                    {{ "label.created_at"|trans }} {{ pagination.sortArrow('createdAt', sortBy, orderBy) }}
+                                </a>
+                            </th>
+                            <th class="col-2">
+                                <a href="{{ path('app_data_hospital_index', {
+                                    ...app.request.query.all(),
+                                    sortBy: 'updatedAt',
+                                    orderBy: sortBy == 'updatedAt' and orderBy == 'asc' ? 'desc' : 'asc',
+                                }) }}">
+                                    {{ "label.updated_at"|trans }} {{ pagination.sortArrow('updatedAt', sortBy, orderBy) }}
+                                </a>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for hospital in hospitals.results %}
+                            <tr>
+                                <td>
+                                    {{ hospital.id }}
+                                </td>
+                                <td>
+                                    <a href="{{ path('app_data_hospital_show', {id: hospital.id}) }}">{{ hospital.name }}</a>
+                                </td>
+                                <td>
+                                    {{ hospital.state }}
+                                </td>
+                                <td>
+                                    {{ hospital.dispatchArea }}
+                                </td>
+                                <td>
+                                    {{ hospital.createdAt ? hospital.createdAt|date('d.m.Y H:i') : '' }}
+                                </td>
+                                <td>
+                                    {{ hospital.updatedAt ? hospital.updatedAt|date('d.m.Y H:i') : '' }}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">
+                                    <div class="empty">
+                                        <div class="empty-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <circle cx="12" cy="12" r="9" />
+                                                <line x1="9" y1="10" x2="9.01" y2="10" />
+                                                <line x1="15" y1="10" x2="15.01" y2="10" />
+                                                <path d="M9.5 15.25a3.5 3.5 0 0 1 5 0" />
+                                            </svg>
+                                        </div>
+                                        <p class="empty-title">{{ "label.search_no_results"|trans }}</p>
+                                        <p class="empty-subtitle text-secondary">
+                                            {{ "help.search_no_results"|trans }}
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer d-flex align-items-center">
+                {{ pagination.results(hospitals.numResults, hospitals.pageSize) }}
+
+                {{ pagination.navbar(hospitals, 'app_data_hospital_index') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

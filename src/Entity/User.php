@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -48,11 +51,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \String
     #[ORM\Column]
     private bool $hasCredentialsExpired = false;
 
-    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::BOOLEAN)]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $isVerified = false;
 
     #[ORM\Column]
     private bool $isPublic = false;
+
+    /**
+     * @var Collection<int, Hospital>
+     */
+    #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Hospital::class)]
+    private Collection $hospitals;
+
+    /**
+     * @var Collection<int, Hospital>
+     */
+    #[ORM\ManyToMany(mappedBy: 'associatedUsers', targetEntity: Hospital::class)]
+    private Collection $associatedHospitals;
+
+    public function __construct()
+    {
+        $this->hospitals = new ArrayCollection();
+        $this->associatedHospitals = new ArrayCollection();
+    }
 
     public function getId(): int
     {
@@ -197,5 +218,60 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \String
     public function __toString(): string
     {
         return $this->getUsername();
+    }
+
+    /**
+     * @return Collection<int, Hospital>
+     */
+    public function getHospitals(): Collection
+    {
+        return $this->hospitals;
+    }
+
+    public function addHospital(Hospital $hospital): static
+    {
+        if (!$this->hospitals->contains($hospital)) {
+            $this->hospitals->add($hospital);
+            $hospital->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHospital(Hospital $hospital): static
+    {
+        $this->hospitals->removeElement($hospital);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Hospital>
+     */
+    public function getAssociatedHospitals(): Collection
+    {
+        return $this->associatedHospitals;
+    }
+
+    public function addAssociatedHospital(Hospital $hospital): static
+    {
+        if (!$this->associatedHospitals->contains($hospital)) {
+            $this->associatedHospitals->add($hospital);
+            $hospital->addAssociatedUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssociatedHospital(Hospital $hospital): static
+    {
+        if ($this->associatedHospitals->removeElement($hospital)) {
+            // set the owning side to null (unless already changed)
+            if ($this->associatedHospitals->contains($hospital)) {
+                $hospital->removeAssociatedUser($this);
+            }
+        }
+
+        return $this;
     }
 }
