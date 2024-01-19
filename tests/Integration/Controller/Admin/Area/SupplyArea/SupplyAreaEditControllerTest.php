@@ -20,6 +20,7 @@ class SupplyAreaEditControllerTest extends AppWebTestCase
         UserFactory::new(['username' => 'admin'])->asAdmin()->create();
 
         StateFactory::createOne();
+        SupplyAreaFactory::createOne();
         DispatchAreaFactory::createOne();
 
         $supplyArea = SupplyAreaFactory::createOne();
