@@ -17,16 +17,16 @@ class DispatchAreaEditControllerTest extends AppWebTestCase
 
     public function testAdminsCanEditADispatchArea(): void
     {
-        UserFactory::new(['username' => 'admin'])->asAdmin()->create();
-
+        // Arrange
         StateFactory::createOne();
         SupplyAreaFactory::createOne();
         DispatchAreaFactory::createOne();
 
         $dispatchArea = DispatchAreaFactory::random();
 
+        // Act& Assert
         $this->browser()
-            ->loginAs('admin', 'password')
+            ->actingAs(UserFactory::new()->asAdmin()->create()->object())
             ->visit('/admin/area/dispatch/'.$dispatchArea->getId().'/edit')
             ->assertSuccessful()
             ->assertSeeIn('title', 'Edit Dispatch Area')

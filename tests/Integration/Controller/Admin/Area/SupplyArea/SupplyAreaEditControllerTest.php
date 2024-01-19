@@ -17,16 +17,16 @@ class SupplyAreaEditControllerTest extends AppWebTestCase
 
     public function testAdminsCanEditASupplyArea(): void
     {
-        UserFactory::new(['username' => 'admin'])->asAdmin()->create();
-
+        // Arrange
         StateFactory::createOne();
         SupplyAreaFactory::createOne();
         DispatchAreaFactory::createOne();
 
         $supplyArea = SupplyAreaFactory::createOne();
 
+        // Act& Assert
         $this->browser()
-            ->loginAs('admin', 'password')
+            ->actingAs(UserFactory::new()->asAdmin()->create()->object())
             ->visit('/admin/area/supply/'.$supplyArea->getId().'/edit')
             ->assertSuccessful()
             ->assertSeeIn('title', 'Edit Supply Area')

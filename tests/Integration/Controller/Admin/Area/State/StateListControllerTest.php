@@ -15,14 +15,14 @@ class StateListControllerTest extends AppWebTestCase
 
     public function testAdminsCanSeeAListOfAllStates(): void
     {
-        UserFactory::new(['username' => 'admin'])->asAdmin()->create();
-
+        // Arrange
         StateFactory::createMany(5);
 
         $randomState = StateFactory::random();
 
+        // Act& Assert
         $this->browser()
-            ->loginAs('admin', 'password')
+            ->actingAs(UserFactory::new()->asAdmin()->create()->object())
             ->visit('/admin/area/state')
             ->assertSuccessful()
             ->assertSeeIn('h2', 'State')

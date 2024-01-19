@@ -17,14 +17,16 @@ class DispatchAreaNewControllerTest extends AppWebTestCase
 
     public function testAdminsCanCreateANewDispatchArea(): void
     {
-        UserFactory::new(['username' => 'admin'])->asAdmin()->create();
-
-        $state = StateFactory::createOne();
+        // Arrange
+        StateFactory::createOne();
         SupplyAreaFactory::createOne();
         DispatchAreaFactory::createOne();
 
+        $state = StateFactory::random();
+
+        // Act& Assert
         $this->browser()
-            ->loginAs('admin', 'password')
+            ->actingAs(UserFactory::new()->asAdmin()->create()->object())
             ->visit('/admin/area/dispatch/new')
             ->assertSuccessful()
             ->assertSeeIn('title', 'New Dispatch Area')

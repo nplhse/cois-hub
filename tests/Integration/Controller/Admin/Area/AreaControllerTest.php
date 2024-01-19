@@ -14,11 +14,9 @@ class AreaControllerTest extends AppWebTestCase
 
     public function testAdminsGetRedirected(): void
     {
-        UserFactory::new(['username' => 'admin'])->asAdmin()->create();
-
+        // Act& Assert
         $this->browser()
-            ->loginAs('admin', 'password')
-            ->assertLoggedIn()
+            ->actingAs(UserFactory::new()->asAdmin()->create()->object())
             ->interceptRedirects()
             ->visit('/admin/area/')
             ->assertRedirectedTo('/admin/area/dispatch')

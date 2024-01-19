@@ -17,16 +17,16 @@ class SupplyAreaListControllerTest extends AppWebTestCase
 
     public function testAdminsCanSeeAListOfAllSupplyAreas(): void
     {
-        UserFactory::new(['username' => 'admin'])->asAdmin()->create();
-
+        // Arrange
         StateFactory::createOne();
         SupplyAreaFactory::createMany(5);
         DispatchAreaFactory::createOne();
 
         $randomSupplyArea = SupplyAreaFactory::random();
 
+        // Act& Assert
         $this->browser()
-            ->loginAs('admin', 'password')
+            ->actingAs(UserFactory::new()->asAdmin()->create()->object())
             ->visit('/admin/area/supply')
             ->assertSuccessful()
             ->assertSeeIn('h2', 'Supply Area')

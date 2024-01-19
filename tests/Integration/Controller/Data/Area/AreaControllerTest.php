@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Integration\Controller\Data;
+namespace App\Tests\Integration\Controller\Data\Area;
 
 use App\Factory\DispatchAreaFactory;
 use App\Factory\StateFactory;
@@ -18,8 +18,9 @@ class AreaControllerTest extends WebTestCase
 
     public function testYouCanSeeAllAreas(): void
     {
-        StateFactory::createMany(1);
-        SupplyAreaFactory::createMany(1);
+        // Arrange
+        StateFactory::createOne();
+        SupplyAreaFactory::createOne();
         DispatchAreaFactory::createMany(15);
         DispatchAreaFactory::createMany(5, [
             'supplyArea' => SupplyAreaFactory::random(),
@@ -29,6 +30,7 @@ class AreaControllerTest extends WebTestCase
         $randomDispatchArea = DispatchAreaFactory::random();
         $randomSupplyArea = SupplyAreaFactory::random();
 
+        // Act& Assert
         $this->browser()
             ->visit('/data/areas')
             ->assertSuccessful()
