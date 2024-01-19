@@ -8,25 +8,22 @@ use Doctrine\ORM\Event\PrePersistEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Events;
 use Symfony\Bundle\SecurityBundle\Security;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 #[AsDoctrineListener(event: Events::prePersist, priority: 500, connection: 'default')]
 #[AsDoctrineListener(event: Events::preUpdate, priority: 500, connection: 'default')]
-final class BlameableListener
+final readonly class BlameableListener
 {
-    private ?UserInterface $user = null;
-
     public function __construct(
-        private readonly Security $security,
+        private Security $security,
     ) {
-        $this->user = $this->security->getUser();
     }
 
     public function prePersist(PrePersistEventArgs $args): void
     {
         $entity = $args->getObject();
+        $currentUser = $this->security->getUser();
 
-        if (null === $this->user) {
+        if (null === $currentUser) {
             return;
         }
 
@@ -34,18 +31,19 @@ final class BlameableListener
             return;
         }
 
-        if (null !== $entity->getCreatedBy) {
+        if (isset($entity->getCreatedBy)) {
             return;
         }
 
-        $entity->setCreatedBy($this->user);
+        $entity->setCreatedBy($currentUser);
     }
 
     public function preUpdate(PreUpdateEventArgs $args): void
     {
         $entity = $args->getObject();
+        $currentUser = $this->security->getUser();
 
-        if (null === $this->user) {
+        if (null === $currentUser) {
             return;
         }
 
@@ -53,6 +51,6 @@ final class BlameableListener
             return;
         }
 
-        $entity->setUpdatedBy($this->user);
+        $entity->setUpdatedBy($currentUser);
     }
 }

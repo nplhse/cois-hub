@@ -1,0 +1,109 @@
+{% extends 'admin/_base.html.twig' %}
+
+{% block title %}{{ "title.hospital_new"|trans }} - {{ parent() }}{% endblock %}
+
+{% block admin_breadcrumb %}
+    {{ parent() }}
+    <li class="breadcrumb-item"><a href="{{ path('app_admin_hospital_index') }}">{{ "label.hospitals"|trans }}</a></li>
+    <li class="breadcrumb-item active">{{ "label.hospital_new"|trans }}</li>
+{% endblock %}
+
+{% block admin_title %}
+    <!-- Page pre-title -->
+    <div class="page-pretitle">
+        {{ "title.hospital_new"|trans }}
+    </div>
+    <h2 class="page-title">
+        {{ "title.hospitals"|trans }}
+    </h2>
+{% endblock %}
+
+{% block admin_title_actions %}
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        {{ form_start(form) }}
+        <div class="card-body">
+            <h3 class="card-title">{{ "label.basic_info"|trans }}</h3>
+
+            {{ form_row(form.name) }}
+
+            {{ form_row(form.owner) }}
+
+            <h3 class="card-title">{{ "label.properties"|trans }}</h3>
+
+            <div class="row row-cards">
+                <div class="col-sm-4 col-md-4">
+                    {{ form_row(form.beds) }}
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    {{ form_row(form.location) }}
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    {{ form_row(form.tier) }}
+                </div>
+            </div>
+
+            <h3 class="card-title">{{ "label.hospital_location"|trans }}</h3>
+
+            <div class="row row-cards">
+                <div class="col-sm-12 col-md-5">
+                    {{ form_row(form.dispatchArea) }}
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    {{ form_row(form.state) }}
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    {{ form_row(form.supplyArea) }}
+                </div>
+            </div>
+
+            <h3 class="card-title">{{ "label.address"|trans }}</h3>
+
+            <div class="row row-cards">
+                <div class="col-md-5">
+                    {{ form_row(form.address.street) }}
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    {{ form_row(form.address.postalCode) }}
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    {{ form_row(form.address.city) }}
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    {{ form_row(form.address.state) }}
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    {{ form_row(form.address.country) }}
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="float-start">
+                <a class="btn btn-outline-secondary" href="{{ path('app_admin_hospital_index') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M15 6l-6 6l6 6" />
+                    </svg>
+                    {{ "label.back_to_list"|trans }}
+                </a>
+            </div>
+            <div class="btn-list justify-content-end">
+                <a href="{{ path('app_admin_hospital_index') }}" class="btn">
+                    {{ "label.cancel"|trans }}
+                </a>
+                <button class="btn btn-primary" type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                        <path d="M9 12h6" />
+                        <path d="M12 9v6" />
+                    </svg>
+                    {{ "label.create_hospital"|trans }}
+                </button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

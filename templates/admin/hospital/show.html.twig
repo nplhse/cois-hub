@@ -20,6 +20,8 @@
 
 {% block admin_title_actions %}
     <div class="btn-list">
+        {{ include('admin/hospital/_delete_form.html.twig') }}
+
         <a href="{{ path('app_admin_hospital_edit', {'id': hospital.id}) }}" class="btn btn-primary">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

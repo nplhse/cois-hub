@@ -209,7 +209,19 @@ class Hospital implements \Stringable
 
     public function setBeds(int $beds): static
     {
+        if ($beds <= 0) {
+            throw new \InvalidArgumentException(sprintf('Beds must be positive integer, not %d', $beds));
+        }
+
         $this->beds = $beds;
+
+        if ($beds <= self::SMALL_HOSPITAL) {
+            $this->size = HospitalSize::SMALL;
+        } elseif ($beds < self::LARGE_HOSPITAL) {
+            $this->size = HospitalSize::MEDIUM;
+        } else {
+            $this->size = HospitalSize::LARGE;
+        }
 
         return $this;
     }

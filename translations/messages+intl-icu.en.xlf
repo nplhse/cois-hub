@@ -854,6 +854,70 @@
         <source>label.hospital_new</source>
         <target>Create new Hospital</target>
       </trans-unit>
+      <trans-unit id="_hnyli3" resname="flash.hospital_deleted">
+        <source>flash.hospital_deleted</source>
+        <target>Success! The Hospital has been deleted.</target>
+      </trans-unit>
+      <trans-unit id="t6gLQnc" resname="flash.hospital_deletion_failed">
+        <source>flash.hospital_deletion_failed</source>
+        <target>Sorry! Could not delete the Hospital, something went wrong.</target>
+      </trans-unit>
+      <trans-unit id="ZvNxseb" resname="flash.hospital_created">
+        <source>flash.hospital_created</source>
+        <target>Success! The Hospital has been created.</target>
+      </trans-unit>
+      <trans-unit id="0p_uUrt" resname="flash.hospital_creation_failed">
+        <source>flash.hospital_creation_failed</source>
+        <target>Sorry! Could not create the Hospital, something went wrong.</target>
+      </trans-unit>
+      <trans-unit id="ite6tqm" resname="flash.hospital_updated">
+        <source>flash.hospital_updated</source>
+        <target>Sucess! The Hospital has been updated.</target>
+      </trans-unit>
+      <trans-unit id="tGYEf7B" resname="flash.hospital_update_failed">
+        <source>flash.hospital_update_failed</source>
+        <target>Sorry! Could not update the Hospital, something went wrong.</target>
+      </trans-unit>
+      <trans-unit id=".WR319b" resname="help.hospital_user_is_owner">
+        <source>help.hospital_user_is_owner</source>
+        <target>User is owner</target>
+      </trans-unit>
+      <trans-unit id="_61uUF_" resname="title.hospital_edit">
+        <source>title.hospital_edit</source>
+        <target>Edit Hospital</target>
+      </trans-unit>
+      <trans-unit id="NQAEmvY" resname="title.hospital_new">
+        <source>title.hospital_new</source>
+        <target>Create new Hospital</target>
+      </trans-unit>
+      <trans-unit id="HH8lV7." resname="label.create_hospital">
+        <source>label.create_hospital</source>
+        <target>Create new Hospital</target>
+      </trans-unit>
+      <trans-unit id="qPNO_u_" resname="label.hospital_owner">
+        <source>label.hospital_owner</source>
+        <target>Owner</target>
+      </trans-unit>
+      <trans-unit id="KGe3bkJ" resname="label.address_street">
+        <source>label.address_street</source>
+        <target>Street</target>
+      </trans-unit>
+      <trans-unit id="tqBu.uX" resname="label.address_postalcode">
+        <source>label.address_postalcode</source>
+        <target>Postal code</target>
+      </trans-unit>
+      <trans-unit id="bZl7IAz" resname="label.address_city">
+        <source>label.address_city</source>
+        <target>City</target>
+      </trans-unit>
+      <trans-unit id="p7tlGHw" resname="label.address_state">
+        <source>label.address_state</source>
+        <target>State</target>
+      </trans-unit>
+      <trans-unit id="_1g0hUD" resname="label.address_country">
+        <source>label.address_country</source>
+        <target>Country</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

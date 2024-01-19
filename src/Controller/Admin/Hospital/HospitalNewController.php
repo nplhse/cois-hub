@@ -4,18 +4,19 @@ namespace App\Controller\Admin\Hospital;
 
 use App\Entity\Hospital;
 use App\Form\Hospital\HospitalType;
-use App\Message\Command\Hospital\UpdateHospital;
+use App\Message\Command\Hospital\CreateHospital;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Messenger\Stamp\HandledStamp;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[IsGranted('ROLE_ADMIN')]
-class HospitalEditController extends AbstractController
+class HospitalNewController extends AbstractController
 {
     public function __construct(
         private readonly MessageBusInterface $messageBus,
@@ -23,15 +24,15 @@ class HospitalEditController extends AbstractController
     ) {
     }
 
-    #[Route('/admin/hospital/{id}/edit', name: 'app_admin_hospital_edit', methods: ['GET', 'POST'])]
-    public function __invoke(Request $request, Hospital $hospital): Response
+    #[Route('/admin/hospital/new', name: 'app_admin_hospital_new', methods: ['GET', 'POST'], priority: 100)]
+    public function __invoke(Request $request): Response
     {
+        $hospital = new Hospital();
         $form = $this->createForm(HospitalType::class, $hospital);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $command = new UpdateHospital(
-                $hospital->getId(),
+            $command = new CreateHospital(
                 $hospital->getName(),
                 $hospital->getOwner(),
                 $hospital->getBeds(),
@@ -44,19 +45,22 @@ class HospitalEditController extends AbstractController
             );
 
             try {
-                $this->messageBus->dispatch($command);
+                $envelope = $this->messageBus->dispatch($command);
+                $handledStamp = $envelope->last(HandledStamp::class);
 
-                $this->addFlash('success', $this->translator->trans('flash.hospital_updated'));
+                $hospitalId = $handledStamp->getResult();
 
-                return $this->redirectToRoute('app_admin_hospital_show', ['id' => $hospital->getId()], Response::HTTP_SEE_OTHER);
+                $this->addFlash('success', $this->translator->trans('flash.hospital_created'));
+
+                return $this->redirectToRoute('app_admin_hospital_show', ['id' => $hospitalId], Response::HTTP_SEE_OTHER);
             } catch (HandlerFailedException) {
-                $this->addFlash('danger', $this->translator->trans('flash.hospital_update_failed'));
+                $this->addFlash('danger', $this->translator->trans('flash.hospital_creation_failed'));
             }
 
             return $this->redirectToRoute('app_admin_hospital_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/hospital/edit.html.twig', [
+        return $this->render('admin/hospital/new.html.twig', [
             'hospital' => $hospital,
             'form' => $form,
         ]);

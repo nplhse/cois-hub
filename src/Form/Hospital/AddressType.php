@@ -3,12 +3,7 @@
 namespace App\Form\Hospital;
 
 use App\Entity\Address;
-use App\Entity\State;
-use Doctrine\ORM\QueryBuilder;
-use Doctrine\ORM\EntityRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,7 +19,7 @@ class AddressType extends AbstractType
             ->add('city', TextType::class)
             ->add('state', TextType::class)
             ->add('country', TextType::class, [
-                'disabled' => true,
+                'disabled' => false,
                 'empty_data' => 'Deutschland',
             ])
         ;
