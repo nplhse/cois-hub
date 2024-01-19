@@ -147,3 +147,11 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPORTER_ID }}
         with:
           coverageLocations: ${{github.workspace}}/var/coverage/logs/clover.xml:clover
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          directory: ${{github.workspace}}/var/coverage/logs/
+          verbose: true
