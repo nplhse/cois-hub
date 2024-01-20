@@ -872,7 +872,7 @@
       </trans-unit>
       <trans-unit id="ite6tqm" resname="flash.hospital_updated">
         <source>flash.hospital_updated</source>
-        <target>Sucess! The Hospital has been updated.</target>
+        <target>Success! The Hospital has been updated.</target>
       </trans-unit>
       <trans-unit id="tGYEf7B" resname="flash.hospital_update_failed">
         <source>flash.hospital_update_failed</source>
