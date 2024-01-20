@@ -23,8 +23,6 @@ class HospitalRepository extends ServiceEntityRepository
 
     public function add(Hospital $hospital): void
     {
-        dump($hospital);
-
         $this->getEntityManager()->persist($hospital);
         $this->getEntityManager()->flush();
     }
