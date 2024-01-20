@@ -15,12 +15,12 @@ class StateShowControllerTest extends AppWebTestCase
 
     public function testAdminsCanViewStates(): void
     {
-        UserFactory::new(['username' => 'admin'])->asAdmin()->create();
-
+        // Arrange
         $state = StateFactory::createOne();
 
+        // Act& Assert
         $this->browser()
-            ->loginAs('admin', 'password')
+            ->actingAs(UserFactory::new()->asAdmin()->create()->object())
             ->visit('/admin/area/state/'.$state->getId())
             ->assertSuccessful()
             ->assertSeeIn('h2', 'State')

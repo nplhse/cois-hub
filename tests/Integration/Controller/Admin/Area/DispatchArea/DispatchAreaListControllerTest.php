@@ -17,8 +17,7 @@ class DispatchAreaListControllerTest extends AppWebTestCase
 
     public function testAdminsCanSeeAListOfAllDispatchAreas(): void
     {
-        UserFactory::new(['username' => 'admin'])->asAdmin()->create();
-
+        // Arrange
         StateFactory::createOne();
         SupplyAreaFactory::createOne();
         DispatchAreaFactory::createMany(5);
@@ -26,8 +25,9 @@ class DispatchAreaListControllerTest extends AppWebTestCase
         $randomState = StateFactory::random();
         $randomDispatchArea = DispatchAreaFactory::random();
 
+        // Act& Assert
         $this->browser()
-            ->loginAs('admin', 'password')
+            ->actingAs(UserFactory::new()->asAdmin()->create()->object())
             ->visit('/admin/area/dispatch')
             ->assertSuccessful()
             ->assertSeeIn('h2', 'Dispatch Area')

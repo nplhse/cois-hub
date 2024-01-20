@@ -14,10 +14,13 @@ class StateNewControllerTest extends AppWebTestCase
 
     public function testAdminsCanCreateANewState(): void
     {
-        UserFactory::new(['username' => 'admin'])->asAdmin()->create();
+        /*
+         * Nothing to Arrange
+         */
 
+        // Act& Assert
         $this->browser()
-            ->loginAs('admin', 'password')
+            ->actingAs(UserFactory::new()->asAdmin()->create()->object())
             ->visit('/admin/area/state/new')
             ->assertSuccessful()
             ->assertSeeIn('title', 'Create new State')

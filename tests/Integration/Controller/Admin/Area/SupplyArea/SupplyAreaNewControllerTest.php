@@ -17,14 +17,14 @@ class SupplyAreaNewControllerTest extends AppWebTestCase
 
     public function testAdminsCanCreateANewSupplyArea(): void
     {
-        UserFactory::new(['username' => 'admin'])->asAdmin()->create();
-
+        // Arrange
         StateFactory::createOne();
         SupplyAreaFactory::createOne();
         DispatchAreaFactory::createOne();
 
+        // Act& Assert
         $this->browser()
-            ->loginAs('admin', 'password')
+            ->actingAs(UserFactory::new()->asAdmin()->create()->object())
             ->visit('/admin/area/supply/new')
             ->assertSuccessful()
             ->assertSeeIn('title', 'New Supply Area')
