@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Integration\Controller\Data\Area;
+namespace App\Tests\Integration\Controller\Data\Hospital;
 
 use App\Factory\DispatchAreaFactory;
 use App\Factory\StateFactory;
@@ -10,7 +10,7 @@ use Zenstruck\Browser\Test\HasBrowser;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
 
-class AreaControllerTest extends WebTestCase
+class HospitalListControllerTest extends WebTestCase
 {
     use HasBrowser;
     use ResetDatabase;

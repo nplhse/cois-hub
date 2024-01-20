@@ -162,10 +162,10 @@ rector: ## Run Rector
 
 ## —— Tests ✅ —————————————————————————————————————————————————————————————————
 test: ## Run tests
-	@$(PHPUNIT) --stop-on-failure
+	@$(PHPUNIT) --stop-on-failure -d memory_limit=-1
 
 testdox: ## Run tests with testdox
-	@$(PHPUNIT) --testdox
+	@$(PHPUNIT) --testdox -d memory_limit=-1
 
 testcov:
-	@XDEBUG_MODE=coverage $(PHPUNIT)
+	@XDEBUG_MODE=coverage $(PHPUNIT) -d memory_limit=-1

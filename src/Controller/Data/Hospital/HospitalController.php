@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Data;
+namespace App\Controller\Data\Hospital;
 
 use App\Query\ListHospitalsQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,7 +15,7 @@ class HospitalController extends AbstractController
     ) {
     }
 
-    #[Route('/data/hospitals', name: 'app_data_hospital_index')]
+    #[Route('/data/hospital/', name: 'app_data_hospital_index')]
     public function index(
         #[MapQueryParameter]
         int $page = 1,
