@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Data;
+namespace App\Controller\Data\Area;
 
 use App\Query\ListAreasQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,7 +18,7 @@ class AreaController extends AbstractController
     ) {
     }
 
-    #[Route('/data/areas', name: 'app_data_area_index')]
+    #[Route('/data/area/', name: 'app_data_area_index')]
     public function __invoke(
         #[MapQueryParameter]
         int $page = 1,
