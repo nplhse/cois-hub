@@ -26,10 +26,10 @@ class HospitalController extends AbstractController
         #[MapQueryParameter]
         string $orderBy = 'asc',
     ): Response {
-        $areas = $this->query->getResults($page, 20, $sortBy, $orderBy, $search);
+        $hospitals = $this->query->getResults($page, 20, $sortBy, $orderBy, $search);
 
         return $this->render('data/hospital/index.html.twig', [
-            'hospitals' => $areas,
+            'hospitals' => $hospitals,
             'sortBy' => $sortBy,
             'orderBy' => $orderBy,
         ]);
