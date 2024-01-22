@@ -54,6 +54,7 @@
         <MissingTemplateParam>
             <errorLevel type="suppress">
                 <directory name="src/Form" />
+                <directory name="src/Security/Voter" />
             </errorLevel>
         </MissingTemplateParam>
         <MixedArgument>

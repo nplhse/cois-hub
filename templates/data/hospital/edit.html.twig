@@ -2,7 +2,7 @@
 
 {% import 'macros/pagination.html.twig' as pagination %}
 
-{% block title %}{{ "title.hospital_new"|trans }} - {{ "title.data"|trans }} - {{ parent() }}{% endblock %}
+{% block title %}{{ "title.hospital_edit"|trans }}: {{ hospital.name }} - {{ "title.data"|trans }} - {{ parent() }}{% endblock %}
 
 {% block header %}
     {% embed "embeds/header.html.twig" %}
@@ -69,12 +69,6 @@
                                 {{ form_row(form.supplyArea) }}
                             </div>
                         </div>
-
-                        <ul class="steps steps-green steps-counter my-4">
-                            <li class="step-item active"></li>
-                            <li class="step-item"></li>
-                            <li class="step-item"></li>
-                        </ul>
                     </div>
                     <div class="tab-pane" id="tabs-properties-2" role="tabpanel">
                         <h4>{{ "label.properties"|trans }}</h4>
@@ -90,12 +84,6 @@
                                 {{ form_row(form.tier) }}
                             </div>
                         </div>
-
-                        <ul class="steps steps-green steps-counter my-4">
-                            <li class="step-item"></li>
-                            <li class="step-item active"></li>
-                            <li class="step-item"></li>
-                        </ul>
                     </div>
                     <div class="tab-pane" id="tabs-address-3" role="tabpanel">
                         <h4>{{ "label.address"|trans }}</h4>
@@ -117,12 +105,6 @@
                                 {{ form_row(form.address.country) }}
                             </div>
                         </div>
-
-                        <ul class="steps steps-green steps-counter my-4">
-                            <li class="step-item"></li>
-                            <li class="step-item"></li>
-                            <li class="step-item active"></li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -147,7 +129,7 @@
                             <path d="M9 12h6" />
                             <path d="M12 9v6" />
                         </svg>
-                        {{ "label.create_hospital"|trans }}
+                        {{ "label.save_changes"|trans }}
                     </button>
                 </div>
             </div>
