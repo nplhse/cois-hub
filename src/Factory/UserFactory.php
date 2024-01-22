@@ -91,6 +91,13 @@ final class UserFactory extends ModelFactory
         ]);
     }
 
+    public function asParticipant(): self
+    {
+        return $this->addState([
+            'roles' => ['ROLE_USER', 'ROLE_PARTICIPANT'],
+        ]);
+    }
+
     protected static function getClass(): string
     {
         return User::class;
