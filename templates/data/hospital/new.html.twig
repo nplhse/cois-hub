@@ -1,0 +1,157 @@
+{% extends 'base.html.twig' %}
+
+{% import 'macros/pagination.html.twig' as pagination %}
+
+{% block title %}{{ "title.hospital_new"|trans }} - {{ "title.data"|trans }} - {{ parent() }}{% endblock %}
+
+{% block header %}
+    {% embed "embeds/header.html.twig" %}
+        {% block header_after %}
+            {% include 'data/_subnav.html.twig' %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block body %}
+    <div class="container-xl">
+        {{ form_start(form) }}
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a href="#tabs-basic-1" class="nav-link active" data-bs-toggle="tab" aria-selected="true" role="tab">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-number-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                <path d="M10 10l2 -2v8" />
+                            </svg>
+                            &nbsp;{{ "label.basic_info"|trans }}
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#tabs-properties-2" class="nav-link" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-number-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                <path d="M10 8h3a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 0 -1 1v2a1 1 0 0 0 1 1h3" />
+                            </svg>
+                            &nbsp;{{ "label.properties"|trans }}
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#tabs-address-3" class="nav-link" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-number-3" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                <path d="M10 9a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1" />
+                            </svg>
+                            &nbsp;{{ "label.address"|trans }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane active show" id="tabs-basic-1" role="tabpanel">
+                        <h4>{{ "label.basic_info"|trans }}</h4>
+                        {{ form_row(form.name) }}
+
+                        {{ form_row(form.owner) }}
+
+                        <div class="row row-cards">
+                            <div class="col-sm-12 col-md-5">
+                                {{ form_row(form.dispatchArea) }}
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                {{ form_row(form.state) }}
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                {{ form_row(form.supplyArea) }}
+                            </div>
+                        </div>
+
+                        <ul class="steps steps-green steps-counter my-4">
+                            <li class="step-item active"></li>
+                            <li class="step-item"></li>
+                            <li class="step-item"></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="tabs-properties-2" role="tabpanel">
+                        <h4>{{ "label.properties"|trans }}</h4>
+
+                        <div class="row row-cards">
+                            <div class="col-sm-4 col-md-4">
+                                {{ form_row(form.beds) }}
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ form_row(form.location) }}
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ form_row(form.tier) }}
+                            </div>
+                        </div>
+
+                        <ul class="steps steps-green steps-counter my-4">
+                            <li class="step-item"></li>
+                            <li class="step-item active"></li>
+                            <li class="step-item"></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="tabs-address-3" role="tabpanel">
+                        <h4>{{ "label.address"|trans }}</h4>
+
+                        <div class="row row-cards">
+                            <div class="col-md-5">
+                                {{ form_row(form.address.street) }}
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                {{ form_row(form.address.postalCode) }}
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                {{ form_row(form.address.city) }}
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                {{ form_row(form.address.state) }}
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                {{ form_row(form.address.country) }}
+                            </div>
+                        </div>
+
+                        <ul class="steps steps-green steps-counter my-4">
+                            <li class="step-item"></li>
+                            <li class="step-item"></li>
+                            <li class="step-item active"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="float-start">
+                    <a class="btn btn-outline-secondary" href="{{ path('app_data_hospital_index') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M15 6l-6 6l6 6" />
+                        </svg>
+                        {{ "label.back_to_list"|trans }}
+                    </a>
+                </div>
+                <div class="btn-list justify-content-end">
+                    <a href="{{ path('app_data_hospital_index') }}" class="btn">
+                        {{ "label.cancel"|trans }}
+                    </a>
+                    <button class="btn btn-primary" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                            <path d="M9 12h6" />
+                            <path d="M12 9v6" />
+                        </svg>
+                        {{ "label.create_hospital"|trans }}
+                    </button>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
