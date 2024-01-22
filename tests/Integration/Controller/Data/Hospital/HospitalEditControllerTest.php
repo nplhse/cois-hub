@@ -28,7 +28,7 @@ class HospitalEditControllerTest extends AppWebTestCase
 
         $user = UserFactory::new()->asParticipant()->create();
         $hospital = HospitalFactory::createOne([
-            'owner' => $user
+            'owner' => $user,
         ]);
 
         // Act& Assert
