@@ -9,7 +9,7 @@
             {{ importmap('app') }}
         {% endblock %}
     </head>
-    <body data-turbo="false">
+    <body data-turbo="false" data-bs-theme="light" data-controller="theme-switcher">
         <div class="page">
             {% block sidebar %}
                 {% include "admin/_sidebar.html.twig" %}
