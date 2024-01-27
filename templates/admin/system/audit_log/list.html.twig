@@ -1,5 +1,7 @@
 {% extends 'admin/_base.html.twig' %}
 
+{% import 'macros/pagination.html.twig' as pagination %}
+
 {% block title %}{{ "title.audit_log"|trans }} - {{ parent() }}{% endblock %}
 
 {% block admin_breadcrumb %}
@@ -21,86 +23,91 @@
 {% endblock %}
 
 {% block body %}
-    <div class="row justify-content-center">
-        <div class="card">
-            <div class="card-body">
-                <div class="divide-y">
-                    {% for auditlog in audit_logs.getResults %}
-                        <div>
-                            <div class="row">
-                                <div class="col-auto">
-                                    <span class="avatar small"><a href="{{ path('app_admin_system_auditlog_detail', {id: auditlog.id}) }}">#{{ auditlog.id }}</a></span>
-                                </div>
-                                <div class="col">
-                                    <div class="text-truncate">
-                                        {% if auditlog.user is null %}
-                                            <strong>{{ auditlog.entityType }} ({{ auditlog.entityId }})</strong> was <strong>{{ auditlog.action }}</strong>.
-                                        {% else %}{{ auditlog.user }}
-                                            <strong>{{ auditlog.entityType }} ({{ auditlog.entityId }})</strong> was <strong>{{ auditlog.action }}</strong> by {{ auditlog.user }}.
-                                        {% endif %}
-                                    </div>
-                                    <div class="text-muted">{{ auditlog.createdAt|date('d.m.Y H:i') }}</div>
-                                </div>
-                            </div>
-                        </div>
+<turbo-frame id="user-list" data-turbo-action="advance" target="_top">
+    <div class="card">
+        <div class="card-body">
+            <div id="table-default" class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="col-1">
+                            {{ "label.id"|trans }}
+                        </th>
+                        <th class="col-2">
+                            {{ "label.user"|trans }}
+                        </th>
+                        <th class="col-2">
+                            {{ "label.action"|trans }}
+                        </th>
+                        <th class="col-2">
+                            {{ "label.entity"|trans }}
+                        </th>
+                        <th>
+                            {{ "label.created_at"|trans }}
+                        </th>
+                        <th class="col-2">
+                            {{ "label.actions"|trans }}
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for auditlog in paginator.results %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('app_admin_system_auditlog_detail', {id: auditlog.id}) }}">#{{ auditlog.id }}</a>
+                            </td>
+                            <td>
+                                {{ auditlog.user ?? '<code>none</code>' }}
+                            </td>
+                            <td>
+                                {{ auditlog.action }}
+                            </td>
+                            <td>
+                                {{ auditlog.entityType }} ({{ auditlog.entityId }})
+                            </td>
+                            <td>
+                                {{ auditlog.createdAt|date('d.m.Y H:i') }}
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" href="{{ path('app_admin_system_auditlog_detail', {id: auditlog.id}) }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-filled" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M12 4c4.29 0 7.863 2.429 10.665 7.154l.22 .379l.045 .1l.03 .083l.014 .055l.014 .082l.011 .1v.11l-.014 .111a.992 .992 0 0 1 -.026 .11l-.039 .108l-.036 .075l-.016 .03c-2.764 4.836 -6.3 7.38 -10.555 7.499l-.313 .004c-4.396 0 -8.037 -2.549 -10.868 -7.504a1 1 0 0 1 0 -.992c2.831 -4.955 6.472 -7.504 10.868 -7.504zm0 5a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" stroke-width="0" fill="currentColor" />
+                                    </svg>
+                                    &nbsp;{{ "label.show"|trans }}
+                                </a>
+                            </td>
+                        </tr>
                     {% else %}
-                        <div class="empty">
-                            <div class="empty-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <circle cx="12" cy="12" r="9" />
-                                    <line x1="9" y1="10" x2="9.01" y2="10" />
-                                    <line x1="15" y1="10" x2="15.01" y2="10" />
-                                    <path d="M9.5 15.25a3.5 3.5 0 0 1 5 0" />
-                                </svg>
-                            </div>
-                            <p class="empty-title">{{ "label.search_no_results"|trans }}</p>
-                            <p class="empty-subtitle text-secondary">
-                                {{ "help.search_no_results"|trans }}
-                            </p>
-                        </div>
+                        <tr>
+                            <td colspan="6">
+                                <div class="empty">
+                                    <div class="empty-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <circle cx="12" cy="12" r="9" />
+                                            <line x1="9" y1="10" x2="9.01" y2="10" />
+                                            <line x1="15" y1="10" x2="15.01" y2="10" />
+                                            <path d="M9.5 15.25a3.5 3.5 0 0 1 5 0" />
+                                        </svg>
+                                    </div>
+                                    <p class="empty-title">{{ "label.search_no_results"|trans }}</p>
+                                    <p class="empty-subtitle text-secondary">
+                                        {{ "help.search_no_results"|trans }}
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
                     {% endfor %}
-                </div>
-            </div>
-            <div class="card-footer d-flex align-items-center">
-                <p class="m-0 text-muted">Showing <span>{{ audit_logs.numResults }}</span> results, with <span>{{ audit_logs.pageSize }}</span> per page.</p>
-                {% if audit_logs.hasToPaginate %}
-                    <ul class="pagination m-0 ms-auto">
-                        {% if audit_logs.hasPreviousPage %}
-                            <li class="page-item">
-                                <a class="page-link" href="{{ path('app_admin_system_auditlog', {page: audit_logs.previousPage}) }}" tabindex="-1" aria-disabled="true">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
-                                    {{ "label.previous"|trans }}
-                                </a>
-                            </li>
-                        {% else %}
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
-                                    {{ "label.previous"|trans }}
-                                </a>
-                            </li>
-                        {% endif %}
-                        {% if audit_logs.hasNextPage %}
-                            <li class="page-item">
-                                <a class="page-link" href="{{ path('app_admin_system_auditlog', {page: audit_logs.nextPage}) }}">
-                                    {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
-                                </a>
-                            </li>
-                        {% else %}
-                            <li class="page-item disabled">
-                                <a class="page-link" href="{{ path('app_admin_system_auditlog', {page: audit_logs.nextPage}) }}">
-                                    {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
-                                </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                {% endif %}
+                    </tbody>
+                </table>
             </div>
         </div>
+        <div class="card-footer d-flex align-items-center">
+            {{ pagination.results(paginator.numResults, paginator.pageSize) }}
+
+            {{ pagination.navbar(paginator, 'app_admin_system_auditlog') }}
+        </div>
     </div>
+</turbo-frame>
 {% endblock %}

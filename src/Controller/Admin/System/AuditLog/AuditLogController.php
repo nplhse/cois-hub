@@ -21,13 +21,21 @@ class AuditLogController extends AbstractController
     #[Route('/admin/system/audit_log', name: 'app_admin_system_auditlog')]
     public function index(
         #[MapQueryParameter]
-        int $page = 1
+        int $page = 1,
+        #[MapQueryParameter]
+        string $search = '',
+        #[MapQueryParameter]
+        string $sortBy = 'id',
+        #[MapQueryParameter]
+        string $orderBy = 'asc',
     ): Response {
-        /** @var Paginator $auditLogs */
-        $auditLogs = $this->query->execute($page);
+        /** @var Paginator $paginator */
+        $paginator = $this->query->execute($page, 10);
 
         return $this->render('admin/system/audit_log/list.html.twig', [
-            'audit_logs' => $auditLogs,
+            'paginator' => $paginator,
+            'sortBy' => $sortBy,
+            'orderBy' => $orderBy,
         ]);
     }
 }
