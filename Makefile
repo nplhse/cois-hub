@@ -105,6 +105,12 @@ cc: sf
 consume: ## Consume messages from symfony messenger
 	@$(CONSOLE) messenger:consume async -vvv
 
+compile: ## Execute some tasks before deployment
+	rm -rf public/assets/*
+	@$(CONSOLE) asset-map:compile
+	@$(CONSOLE) cache:clear
+	@$(CONSOLE) cache:warmup
+
 deploy: ## Execute some tasks before deployment
 	rm -rf public/assets/*
 	@$(CONSOLE) asset-map:compile
@@ -123,6 +129,9 @@ lint: lint-container lint-yaml lint-doctrine lint-xliff lint-twig
 
 eslint: ## Run ESLint
 	@$(YARN) run eslint assets
+
+eslint-fix: ## Run ESLint with fixes
+	@$(YARN) run eslint assets --fix
 
 fix-php: ## Fix files with php-cs-fixer
 	@$(PHP_CS_FIXER) fix --allow-risky=yes --config=php-cs-fixer.php
