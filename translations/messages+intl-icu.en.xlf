@@ -918,6 +918,22 @@
         <source>label.address_country</source>
         <target>Country</target>
       </trans-unit>
+      <trans-unit id="31bttpo" resname="label.action">
+        <source>label.action</source>
+        <target>Action</target>
+      </trans-unit>
+      <trans-unit id="ta0nsje" resname="label.action_insert">
+        <source>label.action_insert</source>
+        <target>Insert</target>
+      </trans-unit>
+      <trans-unit id="jVZSJ3h" resname="label.action_update">
+        <source>label.action_update</source>
+        <target>Update</target>
+      </trans-unit>
+      <trans-unit id="Tclr32r" resname="label.action_remove">
+        <source>label.action_remove</source>
+        <target>Remove</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

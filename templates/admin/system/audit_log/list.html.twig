@@ -57,13 +57,41 @@
                                 <a href="{{ path('app_admin_system_auditlog_detail', {id: auditlog.id}) }}">#{{ auditlog.id }}</a>
                             </td>
                             <td>
-                                {{ auditlog.user ?? '<code>none</code>' }}
+                                {% if auditlog.user %}
+                                    <a href="{{ path('app_admin_user_show', {id: auditlog.user.id}) }}">{{ auditlog.user }}</a>
+                                {% else %}
+                                    <code>none</code>
+                                {% endif %}
                             </td>
                             <td>
-                                {{ auditlog.action }}
+                                {% if auditlog.action == 'insert' %}
+                                    <span class="badge bg-green text-white">{{ 'label.action_insert'|trans }}</span>
+                                {% elseif auditlog.action == 'update' %}
+                                    <span class="badge bg-cyan text-white">{{ 'label.action_update'|trans }}</span>
+                                {% elseif auditlog.action == 'remove' %}
+                                    <span class="badge bg-red text-white">{{ 'label.action_remove'|trans }}</span>
+                                {% else %}
+                                    <span class="badge bg-secondary text-white">{{ auditlog.action }}</span>
+                                {% endif %}
                             </td>
                             <td>
-                                {{ auditlog.entityType }} ({{ auditlog.entityId }})
+                                {% if auditlog.action != 'remove' %}
+                                    {% if auditlog.entityType == 'User' %}
+                                        <a href="{{ path('app_admin_user_show', {id: auditlog.entityId}) }}">{{ auditlog.entityType }} ({{ auditlog.entityId }})</a>
+                                    {% elseif auditlog.entityType == 'DispatchArea' %}
+                                        <a href="{{ path('app_admin_area_dispatch_show', {id: auditlog.entityId}) }}">{{ auditlog.entityType }} ({{ auditlog.entityId }})</a>
+                                    {% elseif auditlog.entityType == 'State' %}
+                                        <a href="{{ path('app_admin_area_state_show', {id: auditlog.entityId}) }}">{{ auditlog.entityType }} ({{ auditlog.entityId }})</a>
+                                    {% elseif auditlog.entityType == 'SupplyArea' %}
+                                        <a href="{{ path('app_admin_area_supply_show', {id: auditlog.entityId}) }}">{{ auditlog.entityType }} ({{ auditlog.entityId }})</a>
+                                    {% elseif auditlog.entityType == 'Hospital' %}
+                                        <a href="{{ path('app_admin_hospital_show', {id: auditlog.entityId}) }}">{{ auditlog.entityType }} ({{ auditlog.entityId }})</a>
+                                    {% else %}
+                                        {{ auditlog.entityType }} ({{ auditlog.entityId }})
+                                    {% endif %}
+                                {% else %}
+                                    <del class="text-muted">{{ auditlog.entityType }} ({{ auditlog.entityId }})</del>
+                                {% endif %}
                             </td>
                             <td>
                                 {{ auditlog.createdAt|date('d.m.Y H:i') }}
