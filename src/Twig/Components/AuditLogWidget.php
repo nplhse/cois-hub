@@ -16,6 +16,6 @@ final readonly class AuditLogWidget
 
     public function getLatestLogs(): Paginator
     {
-        return $this->query->execute(1, 5);
+        return $this->query->execute(1, 10);
     }
 }

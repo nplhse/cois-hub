@@ -6,17 +6,65 @@
                     <div>
                         <div class="row">
                             <div class="col-auto">
-                                <span class="avatar"></span>
+                                <span class="avatar">
+                                    <a class="text-muted" href="{{ path('app_admin_system_auditlog_detail', {id: auditlog.id}) }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+                                            <path d="M21 21l-6 -6" />
+                                        </svg>
+                                    </a>
+                                </span>
                             </div>
                             <div class="col">
-                                <div class="text-truncate">
-                                    {% if auditlog.user is null %}
-                                        <strong>{{ auditlog.entityType }} ({{ auditlog.entityId }})</strong> was <strong>{{ auditlog.action }}</strong>.
-                                    {% else %}{{ auditlog.user }}
-                                        <strong>{{ auditlog.entityType }} ({{ auditlog.entityId }})</strong> was <strong>{{ auditlog.action }}</strong> by {{ auditlog.user }}.
+                                {% if auditlog.action == 'insert' %}
+                                    <span class="badge bg-green text-white">{{ 'label.action_insert'|trans }}</span>
+                                {% elseif auditlog.action == 'update' %}
+                                    <span class="badge bg-cyan text-white">{{ 'label.action_update'|trans }}</span>
+                                {% elseif auditlog.action == 'remove' %}
+                                    <span class="badge bg-red text-white">{{ 'label.action_remove'|trans }}</span>
+                                {% else %}
+                                    <span class="badge bg-secondary text-white">{{ auditlog.action }}</span>
+                                {% endif %}
+
+                                {% if auditlog.action != 'remove' %}
+                                    {% if auditlog.entityType == 'User' %}
+                                        <a href="{{ path('app_admin_user_show', {id: auditlog.entityId}) }}">{{ auditlog.entityType }} ({{ auditlog.entityId }})</a>
+                                    {% elseif auditlog.entityType == 'DispatchArea' %}
+                                        <a href="{{ path('app_admin_area_dispatch_show', {id: auditlog.entityId}) }}">{{ auditlog.entityType }} ({{ auditlog.entityId }})</a>
+                                    {% elseif auditlog.entityType == 'State' %}
+                                        <a href="{{ path('app_admin_area_state_show', {id: auditlog.entityId}) }}">{{ auditlog.entityType }} ({{ auditlog.entityId }})</a>
+                                    {% elseif auditlog.entityType == 'SupplyArea' %}
+                                        <a href="{{ path('app_admin_area_supply_show', {id: auditlog.entityId}) }}">{{ auditlog.entityType }} ({{ auditlog.entityId }})</a>
+                                    {% elseif auditlog.entityType == 'Hospital' %}
+                                        <a href="{{ path('app_admin_hospital_show', {id: auditlog.entityId}) }}">{{ auditlog.entityType }} ({{ auditlog.entityId }})</a>
+                                    {% else %}
+                                        {{ auditlog.entityType }} ({{ auditlog.entityId }})
+                                    {% endif %}
+                                {% else %}
+                                    <del class="text-muted">{{ auditlog.entityType }} ({{ auditlog.entityId }})</del>
+                                {% endif %}
+                                <div class="list-inline list-inline-dots text-muted mt-1">
+                                    <div class="list-inline-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                                            <path d="M12 7v5l3 3" />
+                                        </svg>
+                                        {{ auditlog.createdAt|date('d.m.Y H:i') }}
+                                    </div>
+                                    {% if auditlog.user is not null %}
+                                        <div class="list-inline-item">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-square" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <path d="M9 10a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                                                <path d="M6 21v-1a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v1" />
+                                                <path d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z" />
+                                            </svg>
+                                            <a href="{{ path('app_admin_user_show', {id: auditlog.user.id}) }}">{{ auditlog.user }}</a>
+                                        </div>
                                     {% endif %}
                                 </div>
-                                <div class="text-muted">{{ auditlog.createdAt|date('d.m.Y H:i') }}</div>
                             </div>
                         </div>
                     </div>
