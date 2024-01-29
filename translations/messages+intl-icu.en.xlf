@@ -61,12 +61,12 @@
         <source>email.welcome_thanks</source>
         <target>Thanks for registering and your willingness to participate in this project. To verify your email address, please click on below button.</target>
       </trans-unit>
-      <trans-unit id="Qz8mHCu" resname="email.welcome_confim_address">
-        <source>email.welcome_confim_address</source>
+      <trans-unit id="77U0mWV" resname="email.welcome_confirm_address">
+        <source>email.welcome_confirm_address</source>
         <target>Please confirm your email address by clicking the following link:</target>
       </trans-unit>
-      <trans-unit id="mBF1.Ep" resname="label.confim_email">
-        <source>label.confim_email</source>
+      <trans-unit id="9ptkG4L" resname="label.confirm_email">
+        <source>label.confirm_email</source>
         <target>Confirm your email address</target>
       </trans-unit>
       <trans-unit id="Jb9GXNZ" resname="email.link_expiration">
@@ -933,6 +933,52 @@
       <trans-unit id="Tclr32r" resname="label.action_remove">
         <source>label.action_remove</source>
         <target>Remove</target>
+      </trans-unit>
+      <trans-unit id="K.k2yqw" resname="help.username_set_new">
+        <source>help.username_set_new</source>
+        <target>Want to change your Username? We're sorry that can currently only be done by an admin.</target>
+      </trans-unit>
+      <trans-unit id="3fCOTCZ" resname="help.email_set_new">
+        <source>help.email_set_new</source>
+        <target>You can set a new email address for your account by clicking on the button below.
+            Note that you will have to verify your new address before you can access security related features like
+            resetting your password.</target>
+      </trans-unit>
+      <trans-unit id="TAFjGwl" resname="label.is_verified">
+        <source>label.is_verified</source>
+        <target>Address is verified</target>
+      </trans-unit>
+      <trans-unit id="x2yBN0K" resname="label.is_not_verified">
+        <source>label.is_not_verified</source>
+        <target>Address is not verified</target>
+      </trans-unit>
+      <trans-unit id="jZOkIv_" resname="btn.email_set_new">
+        <source>btn.email_set_new</source>
+        <target>Set new E-Mail address</target>
+      </trans-unit>
+      <trans-unit id="RYpy4AN" resname="flash.email_updated">
+        <source>flash.email_updated</source>
+        <target>Success! Your E-Mail address has been updated!</target>
+      </trans-unit>
+      <trans-unit id="tiRbZQZ" resname="title.email_update">
+        <source>title.email_update</source>
+        <target>Set a new E-Mail address</target>
+      </trans-unit>
+      <trans-unit id="5aokplR" resname="label.change_email">
+        <source>label.change_email</source>
+        <target>Change E-Mail Address</target>
+      </trans-unit>
+      <trans-unit id="fFQfQn7" resname="email.changed_confirm_address">
+        <source>email.changed_confirm_address</source>
+        <target>Your E-Mail address has been changed. Please confirm your email address by clicking the following link:</target>
+      </trans-unit>
+      <trans-unit id="z4sCttl" resname="btn.email_resend_verification">
+        <source>btn.email_resend_verification</source>
+        <target>Send new verification E-Mail</target>
+      </trans-unit>
+      <trans-unit id="_FG1xzN" resname="flash.email_verification_sent">
+        <source>flash.email_verification_sent</source>
+        <target>A new verification E-Mail has been sent to your address, please view your inbox and your spam folder.</target>
       </trans-unit>
     </body>
   </file>

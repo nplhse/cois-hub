@@ -23,8 +23,14 @@
         {{ include('admin/area/dispatch_area/_delete_form.html.twig') }}
 
         <a href="{{ path('app_admin_area_dispatch_edit', {id: dispatch_area.id}) }}" class="btn btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-edit"
+                width="24" height="24" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                fill="none"
+            >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
                 <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
                 <path d="M16 5l3 3" />
@@ -39,13 +45,19 @@
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs nav-fill">
                 <li class="nav-item">
-                    <a href="{{ path('app_admin_area_state_index') }}" class="nav-link">{{ "label.area_state"|trans }}</a>
+                    <a href="{{ path('app_admin_area_state_index') }}" class="nav-link">
+                        {{ "label.area_state"|trans }}
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ path('app_admin_area_dispatch_index') }}" class="nav-link active">{{ "label.area_dispatch"|trans }}</a>
+                    <a href="{{ path('app_admin_area_dispatch_index') }}" class="nav-link active">
+                        {{ "label.area_dispatch"|trans }}
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ path('app_admin_area_supply_index') }}" class="nav-link">{{ "label.area_supply"|trans }}</a>
+                    <a href="{{ path('app_admin_area_supply_index') }}" class="nav-link">
+                        {{ "label.area_supply"|trans }}
+                    </a>
                 </li>
             </ul>
         </div>
@@ -60,23 +72,35 @@
                             <tbody>
                                 <tr>
                                     <th class="col-4">{{ "label.id"|trans }}</th>
-                                    <td class="col-8">{{ dispatch_area.id }}</td>
+                                    <td class="col-8">
+                                        {{ dispatch_area.id }}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>{{ "label.state"|trans }}</th>
-                                    <td><a href="{{ path('app_admin_area_state_show', {id: dispatch_area.state.id}) }}">{{ dispatch_area.state }}</a></td>
+                                    <td>
+                                        <a href="{{ path('app_admin_area_state_show', {id: dispatch_area.state.id}) }}">
+                                            {{ dispatch_area.state }}
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>{{ "label.supply_area"|trans }}</th>
-                                    <td>{{ dispatch_area.supplyArea ? dispatch_area.supplyArea : 'label.no_supply_area'|trans }}</td>
+                                    <td>
+                                        {{ dispatch_area.supplyArea ? dispatch_area.supplyArea : 'label.no_supply_area'|trans }}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>{{ "label.created_at"|trans }}</th>
-                                    <td>{{ dispatch_area.createdAt ? dispatch_area.createdAt|date('d.m.Y H:i') : '' }}</td>
+                                    <td>
+                                        {{ dispatch_area.createdAt ? dispatch_area.createdAt|date('d.m.Y H:i') : '' }}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>{{ "label.updated_at"|trans }}</th>
-                                    <td>{{ dispatch_area.updatedAt ? dispatch_area.updatedAt|date('d.m.Y H:i') : '' }}</td>
+                                    <td>
+                                        {{ dispatch_area.updatedAt ? dispatch_area.updatedAt|date('d.m.Y H:i') : '' }}
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -84,8 +108,14 @@
                     <div class="card-footer mt-auto">
                         <div class="btn-list">
                             <a class="btn btn-outline-secondary" href="{{ path('app_admin_area_dispatch_index') }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="icon icon-tabler icon-tabler-chevron-left"
+                                    width="24" height="24" viewBox="0 0 24 24"
+                                    stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    fill="none"
+                                >
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                     <path d="M15 6l-6 6l6 6" />
                                 </svg>
                                 {{ "label.back_to_list"|trans }}
