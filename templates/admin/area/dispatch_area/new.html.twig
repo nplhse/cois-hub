@@ -26,13 +26,19 @@
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs nav-fill">
                 <li class="nav-item">
-                    <a href="{{ path('app_admin_area_state_index') }}" class="nav-link">{{ "label.area_state"|trans }}</a>
+                    <a href="{{ path('app_admin_area_state_index') }}" class="nav-link">
+                        {{ "label.area_state"|trans }}
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ path('app_admin_area_dispatch_index') }}" class="nav-link active">{{ "label.area_dispatch"|trans }}</a>
+                    <a href="{{ path('app_admin_area_dispatch_index') }}" class="nav-link active">
+                        {{ "label.area_dispatch"|trans }}
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ path('app_admin_area_supply_index') }}" class="nav-link">{{ "label.area_supply"|trans }}</a>
+                    <a href="{{ path('app_admin_area_supply_index') }}" class="nav-link">
+                        {{ "label.area_supply"|trans }}
+                    </a>
                 </li>
             </ul>
         </div>
@@ -50,8 +56,14 @@
                         <div class="card-footer">
                             <div class="float-start">
                                 <a class="btn btn-outline-secondary" href="{{ path('app_admin_area_dispatch_index') }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-chevron-left"
+                                        width="24" height="24" viewBox="0 0 24 24"
+                                        stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        fill="none"
+                                    >
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <path d="M15 6l-6 6l6 6" />
                                     </svg>
                                     {{ "label.back_to_list"|trans }}
@@ -62,8 +74,14 @@
                                     {{ "label.cancel"|trans }}
                                 </a>
                                 <button class="btn btn-primary" type="submit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-circle-plus"
+                                        width="24" height="24" viewBox="0 0 24 24"
+                                        stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        fill="none"
+                                    >
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
                                         <path d="M9 12h6" />
                                         <path d="M12 9v6" />

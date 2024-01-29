@@ -1,0 +1,30 @@
+{% extends 'settings/_base.html.twig' %}
+
+{% block title %}{{ "title.email_update"|trans }} - {{ parent() }}{% endblock %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item" aria-current="page">{{ "title.my_account"|trans }}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{ "title.email_update"|trans }}</li>
+{% endblock %}
+
+{% block card %}
+    {{ form_start(form) }}
+        <div class="card-body">
+            <h2 class="mb-4">{{ "title.email_update"|trans }}</h2>
+            <h3 class="card-title mt-4">{{ "label.email"|trans }}</h3>
+            <p class="card-subtitle">{{ "help.email_set_new"|trans }}</p>
+
+            {{ form_row(form.email) }}
+        </div>
+        <div class="card-footer bg-transparent mt-auto">
+            <div class="btn-list justify-content-end">
+                <a href="{{ path('app_settings_account') }}" class="btn">
+                    {{ "label.cancel"|trans }}
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    {{ "label.change_email"|trans }}
+                </button>
+            </div>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

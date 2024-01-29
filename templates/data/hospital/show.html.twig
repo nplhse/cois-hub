@@ -79,18 +79,16 @@
         <div class="container-xl">
             <div class="row g-3">
                 <div class="col">
-                    <ul class="timeline">
-
-                    </ul>
                 </div>
                 <div class="col-lg-4">
                     <div class="row row-cards">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="card-title">{{ "label.basic_info"|trans }}</div>
+                                    <div class="card-title">
+                                        {{ "label.basic_info"|trans }}
+                                    </div>
                                     <div class="mb-2">
-                                        <!-- Download SVG icon from http://tabler-icons.io/i/book -->
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                             <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
@@ -103,7 +101,6 @@
                                         {{ "label.created_at"|trans }} <strong>{{ hospital.createdAt|date('d.m.Y H:i') }}</strong>
                                     </div>
                                     <div class="mb-2">
-                                        <!-- Download SVG icon from http://tabler-icons.io/i/book -->
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                             <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
@@ -113,7 +110,6 @@
                                     </div>
                                     {% if hospital.updatedBy and hospital.updatedAt %}
                                         <div class="mt-1 mb-2">
-                                            <!-- Download SVG icon from http://tabler-icons.io/i/book -->
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                 <path d="M10.5 21h-4.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v3" />

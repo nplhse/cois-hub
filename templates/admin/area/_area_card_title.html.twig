@@ -1,0 +1,17 @@
+<ul class="nav nav-tabs card-header-tabs nav-fill">
+    <li class="nav-item">
+        <a href="{{ path('app_admin_area_state_index') }}" class="nav-link {{ route starts with 'app_admin_area_state' ? 'active' : '' }}">
+            {{ "label.area_state"|trans }}
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ path('app_admin_area_dispatch_index') }}" class="nav-link {{ route starts with 'app_admin_area_dispatch' ? 'active' : '' }}">
+            {{ "label.area_dispatch"|trans }}
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ path('app_admin_area_supply_index') }}" class="nav-link {{ route starts with 'app_admin_area_supply' ? 'active' : '' }}">
+            {{ "label.area_supply"|trans }}
+        </a>
+    </li>
+</ul>
