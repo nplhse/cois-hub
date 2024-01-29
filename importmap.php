@@ -39,7 +39,7 @@ return [
         'type' => 'css',
     ],
     '@hotwired/turbo' => [
-        'version' => '8.0.0-beta.2',
+        'version' => '7.3.0',
     ],
     'debounce' => [
         'version' => '2.0.0',

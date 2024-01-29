@@ -25,9 +25,14 @@ class UpdateUserPasswordType extends AbstractType
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'label' => 'New Password',
-                'attr' => ['autocomplete' => 'new-password'],
+                'attr' => [
+                    'autocomplete' => 'new-password',
+                ],
                 'invalid_message' => 'The password fields must match.',
-                'options' => ['attr' => ['class' => 'password-field']],
+                'options' => [
+                    'attr' => ['class' => 'password-field'],
+                    'toggle' => true,
+                ],
                 'required' => true,
                 'first_options' => ['label' => 'New Password'],
                 'second_options' => ['label' => 'Repeat new Password'],
