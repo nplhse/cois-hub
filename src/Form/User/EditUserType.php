@@ -22,6 +22,7 @@ class EditUserType extends AbstractType
             ->add('username', TextType::class)
             ->add('password', PasswordType::class, [
                 'required' => false,
+                'toggle' => true,
             ])
             ->add('email', EmailType::class)
             ->add('roles', ChoiceType::class, [

@@ -15,7 +15,9 @@ class LoginType extends AbstractType
     {
         $builder
             ->add('username', TextType::class)
-            ->add('password', PasswordType::class)
+            ->add('password', PasswordType::class, [
+                'toggle' => true,
+            ])
         ;
     }
 
