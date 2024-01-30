@@ -3,7 +3,7 @@
 namespace App\Controller\Data\Hospital;
 
 use App\Entity\Hospital;
-use App\Form\Hospital\HospitalBasicsType;
+use App\Form\Hospital\AddressType;
 use App\Message\Command\Hospital\UpdateHospital;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +15,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[IsGranted('ROLE_USER')]
-class HospitalEditController extends AbstractController
+class HospitalEditAddressController extends AbstractController
 {
     public function __construct(
         private readonly MessageBusInterface $messageBus,
@@ -23,10 +23,12 @@ class HospitalEditController extends AbstractController
     ) {
     }
 
-    #[Route('/data/hospital/{id}/edit', name: 'app_data_hospital_edit', methods: ['GET', 'POST'], priority: 100)]
+    #[Route('/data/hospital/{id}/edit/address', name: 'app_data_hospital_edit_address', methods: ['GET', 'POST'], priority: 100)]
     public function __invoke(Request $request, Hospital $hospital): Response
     {
-        $form = $this->createForm(HospitalBasicsType::class, $hospital);
+        $address = $hospital->getAddress();
+
+        $form = $this->createForm(AddressType::class, $address);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -56,7 +58,7 @@ class HospitalEditController extends AbstractController
             return $this->redirectToRoute('app_data_hospital_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('data/hospital/edit_basics.html.twig', [
+        return $this->render('data/hospital/edit_address.html.twig', [
             'hospital' => $hospital,
             'form' => $form,
         ]);

@@ -1,0 +1,53 @@
+{% extends 'data/hospital/_edit_base.html.twig' %}
+
+{% block title %}{{ "title.hospital_edit"|trans }}: {{ hospital.name }} - {{ "title.data"|trans }} - {{ parent() }}{% endblock %}
+
+{% block header %}
+    {% embed "embeds/header.html.twig" %}
+        {% block header_after %}
+            {% include 'data/_subnav.html.twig' %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block card %}
+    {{ form_start(form) }}
+        <div class="card-body">
+            <h4>{{ "label.address"|trans }}</h4>
+
+            <div class="row row-cards">
+                <div class="col-md-5">
+                    {{ form_row(form.street) }}
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    {{ form_row(form.postalCode) }}
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    {{ form_row(form.city) }}
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    {{ form_row(form.state) }}
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    {{ form_row(form.country) }}
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="btn-list justify-content-end">
+                <a href="{{ path('app_data_hospital_show', {id: hospital.id}) }}" class="btn">
+                    {{ "label.cancel"|trans }}
+                </a>
+                <button class="btn btn-primary" type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                        <path d="M9 12h6" />
+                        <path d="M12 9v6" />
+                    </svg>
+                    {{ "label.save_changes"|trans }}
+                </button>
+            </div>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}
