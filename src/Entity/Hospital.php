@@ -37,7 +37,7 @@ class Hospital implements \Stringable
     /**
      * @var Collection<int, User>
      */
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'associatedHospitals')]
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'associatedHospitals', cascade: ['persist'])]
     private Collection $associatedUsers;
 
     #[ORM\Embedded(class: Address::class)]

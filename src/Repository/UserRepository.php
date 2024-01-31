@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -56,5 +57,15 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         $this->getEntityManager()->remove($user);
         $this->getEntityManager()->flush();
+    }
+
+    public function findByUsernames(array $usernames): array
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->andWhere('u.username IN (:usernames)')
+            ->setParameter('usernames', $usernames)
+            ->addOrderBy('u.name', Criteria::ASC);
+
+        return $qb->getQuery()->getResult();
     }
 }

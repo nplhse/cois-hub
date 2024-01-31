@@ -55,6 +55,12 @@
                                 >
                                     &nbsp;{{ "label.address"|trans }}
                                 </a>
+                                <a
+                                    href="{{ path('app_data_hospital_edit_users', {id: hospital.id}) }}"
+                                    class="list-group-item list-group-item-action d-flex align-items-center {{ _route ends with 'users' ? 'active' : '' }}"
+                                >
+                                    &nbsp;{{ "label.users_linked"|trans }}
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -66,7 +66,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \String
     /**
      * @var Collection<int, Hospital>
      */
-    #[ORM\ManyToMany(mappedBy: 'associatedUsers', targetEntity: Hospital::class)]
+    #[ORM\ManyToMany(targetEntity: Hospital::class, mappedBy: 'associatedUsers')]
     private Collection $associatedHospitals;
 
     public function __construct()
