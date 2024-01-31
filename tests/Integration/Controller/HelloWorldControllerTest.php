@@ -4,7 +4,7 @@ namespace App\Tests\Integration\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class HelloWorldTest extends WebTestCase
+class HelloWorldControllerTest extends WebTestCase
 {
     public function testSomething(): void
     {
