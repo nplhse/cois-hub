@@ -1,13 +1,13 @@
-{% extends 'admin/_base.html.twig' %}
+{% extends '_layout_sidebar.html.twig' %}
 
 {% block title %}{{ "title.cookie_consent_admin"|trans }} - {{ parent() }}{% endblock %}
 
 {% block admin_breadcrumb %}
-    {{ parent() }}
+    <li class="breadcrumb-item"><a href="{{ path('app_admin_dashboard') }}">{{ "label.backend"|trans }}</a></li>
     <li class="breadcrumb-item active">{{ "label.cookie_consent"|trans }}</li>
 {% endblock %}
 
-{% block admin_title %}
+{% block header_title %}
     <!-- Page pre-title -->
     <div class="page-pretitle">
         {{ "title.list_cookie_consent"|trans }}
@@ -17,7 +17,11 @@
     </h2>
 {% endblock %}
 
-{% block admin_title_actions %}
+{% block header_actions %}
+{% endblock %}
+
+{% block sidebar_menu %}
+    {% include 'includes/sidebar_admin.html.twig' %}
 {% endblock %}
 
 {% block body %}

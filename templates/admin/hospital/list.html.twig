@@ -1,15 +1,15 @@
-{% extends 'admin/_base.html.twig' %}
+{% extends '_layout_sidebar.html.twig' %}
 
 {% import 'macros/pagination.html.twig' as pagination %}
 
 {% block title %}{{ "title.hospital_list"|trans }} - {{ parent() }}{% endblock %}
 
-{% block admin_breadcrumb %}
-    {{ parent() }}
+{% block header_breadcrumb %}
+    <li class="breadcrumb-item"><a href="{{ path('app_admin_dashboard') }}">{{ "label.backend"|trans }}</a></li>
     <li class="breadcrumb-item active">{{ "label.hospitals"|trans }}</li>
 {% endblock %}
 
-{% block admin_title %}
+{% block header_title %}
     <!-- Page pre-title -->
     <div class="page-pretitle">
         {{ "title.hospital_list"|trans }}
@@ -19,7 +19,7 @@
     </h2>
 {% endblock %}
 
-{% block admin_title_actions %}
+{% block header_actions %}
     <div class="btn-list">
         <form
             method="GET"
@@ -60,6 +60,10 @@
             </a>
         </span>
     </div>
+{% endblock %}
+
+{% block sidebar_menu %}
+    {% include 'includes/sidebar_admin.html.twig' %}
 {% endblock %}
 
 {% block body %}

@@ -1,14 +1,14 @@
-{% extends 'admin/_base.html.twig' %}
+{% extends '_layout_sidebar.html.twig' %}
 
 {% block title %}{{ "title.hospital_edit"|trans }}: {{ hospital.name }} - {{ parent() }}{% endblock %}
 
-{% block admin_breadcrumb %}
-    {{ parent() }}
+{% block header_breadcrumb %}
+    <li class="breadcrumb-item"><a href="{{ path('app_admin_dashboard') }}">{{ "label.backend"|trans }}</a></li>
     <li class="breadcrumb-item"><a href="{{ path('app_admin_hospital_index') }}">{{ "label.hospitals"|trans }}</a></li>
     <li class="breadcrumb-item active">{{ "label.edit"|trans }}: {{ hospital.name }}</li>
 {% endblock %}
 
-{% block admin_title %}
+{% block header_title %}
     <!-- Page pre-title -->
     <div class="page-pretitle">
         {{ "title.hospital_edit"|trans }}
@@ -18,10 +18,14 @@
     </h2>
 {% endblock %}
 
-{% block admin_title_actions %}
+{% block header_actions %}
     <div class="btn-list">
         {{ include('admin/hospital/_delete_form.html.twig') }}
     </div>
+{% endblock %}
+
+{% block sidebar_menu %}
+    {% include 'includes/sidebar_admin.html.twig' %}
 {% endblock %}
 
 {% block body %}

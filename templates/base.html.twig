@@ -10,22 +10,24 @@
         {% endblock %}
     </head>
     <body data-turbo="false" data-bs-theme="light">
-        <div class="page">
-            {% block header %}
-                {% embed "embeds/header.html.twig" %}{% endembed %}
-            {% endblock %}
+        {% block page %}
+            <div class="page">
+                {% block header %}
+                    {% embed "embeds/header.html.twig" %}{% endembed %}
+                {% endblock %}
 
-            {% include "includes/flash_messages.html.twig" %}
+                {% include "includes/flash_messages.html.twig" %}
 
-            <div class="page-wrapper">
-                {% block body %}{% endblock %}
+                <div class="page-wrapper">
+                    {% block body %}{% endblock %}
+                </div>
+
+                {% include "includes/footer.html.twig" %}
             </div>
+        {% endblock %}
 
-            {% include "includes/footer.html.twig" %}
-
-            {% if not has_cookie_consent(app.request) %}
-                {{ cookie_consent_render() }}
-            {% endif %}
-        </div>
+        {% if not has_cookie_consent(app.request) %}
+            {{ cookie_consent_render() }}
+        {% endif %}
     </body>
 </html>

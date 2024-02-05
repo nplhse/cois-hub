@@ -1,32 +1,22 @@
 {% set route = app.request.attributes.get('_route') %}
 
-<aside class="navbar navbar-vertical navbar-expand-lg">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-            <a href="{{ path('app_hello_world') }}">
-                {{ app_title }}
-            </a>
-        </h1>
-        <div class="collapse navbar-collapse" id="sidebar-menu">
-            <ul class="navbar-nav pt-lg-3">
-                <li class="nav-item mb-2">
-                    <a class="nav-link" href="{{ path("app_hello_world") }}" >
+{% block sidebar_menu %}
+    <ul class="navbar-nav pt-lg-3">
+        <li class="nav-item mb-2">
+            <a class="nav-link" href="{{ path("app_hello_world") }}" >
                         <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" />
                             </svg>
                         </span>
-                        <span class="nav-link-title">
+                <span class="nav-link-title">
                             {{ "label.back_to_site"|trans }}
                         </span>
-                    </a>
-                </li>
-                <li class="nav-item {{ route starts with 'app_admin_dashboard' ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ path("app_admin_dashboard") }}" >
+            </a>
+        </li>
+        <li class="nav-item {{ route starts with 'app_admin_dashboard' ? 'active' : '' }}">
+            <a class="nav-link" href="{{ path("app_admin_dashboard") }}" >
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dashboard" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -35,13 +25,13 @@
                                 <path d="M6.4 20a9 9 0 1 1 11.2 0z" />
                             </svg>
                         </span>
-                        <span class="nav-link-title">
+                <span class="nav-link-title">
                             {{ "label.dashboard"|trans }}
                         </span>
-                    </a>
-                </li>
-                <li class="nav-item {{ route starts with 'app_admin_user' ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ path("app_admin_user_index") }}" >
+            </a>
+        </li>
+        <li class="nav-item {{ route starts with 'app_admin_user' ? 'active' : '' }}">
+            <a class="nav-link" href="{{ path("app_admin_user_index") }}" >
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -51,13 +41,13 @@
                                 <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
                             </svg>
                         </span>
-                        <span class="nav-link-title">
+                <span class="nav-link-title">
                             {{ "label.users"|trans }}
                         </span>
-                    </a>
-                </li>
-                <li class="nav-item {{ route starts with 'app_admin_hospital' ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ path("app_admin_hospital_index") }}" >
+            </a>
+        </li>
+        <li class="nav-item {{ route starts with 'app_admin_hospital' ? 'active' : '' }}">
+            <a class="nav-link" href="{{ path("app_admin_hospital_index") }}" >
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-hospital" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -68,13 +58,13 @@
                                 <path d="M12 7l0 4" />
                             </svg>
                         </span>
-                        <span class="nav-link-title">
+                <span class="nav-link-title">
                             {{ "label.hospitals"|trans }}
                         </span>
-                    </a>
-                </li>
-                <li class="nav-item {{ route starts with 'app_admin_area' ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ path("app_admin_area") }}" >
+            </a>
+        </li>
+        <li class="nav-item {{ route starts with 'app_admin_area' ? 'active' : '' }}">
+            <a class="nav-link" href="{{ path("app_admin_area") }}" >
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -83,13 +73,13 @@
                                 <path d="M15 7v13" />
                             </svg>
                         </span>
-                        <span class="nav-link-title">
+                <span class="nav-link-title">
                             {{ "label.areas"|trans }}
                         </span>
-                    </a>
-                </li>
-                <li class="nav-item mt-2 dropdown {{ route starts with 'app_admin_system' ? 'active' : '' }}">
-                    <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true" >
+            </a>
+        </li>
+        <li class="nav-item mt-2 dropdown {{ route starts with 'app_admin_system' ? 'active' : '' }}">
+            <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true" >
                         <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -99,32 +89,30 @@
                                 <path d="M14 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
                             </svg>
                         </span>
-                        <span class="nav-link-title">
+                <span class="nav-link-title">
                             {{ "label.system"|trans }}
                         </span>
-                    </a>
-                    <div class="dropdown-menu show">
-                        <div class="dropdown-menu-columns">
-                            <div class="dropdown-menu-column">
-                                <a class="dropdown-item {{ route starts with 'app_admin_system_audit' ? 'active' : '' }}"
-                                   href="{{ path("app_admin_system_auditlog") }}"
-                                >
+            </a>
+            <div class="dropdown-menu show">
+                <div class="dropdown-menu-columns">
+                    <div class="dropdown-menu-column">
+                        <a class="dropdown-item {{ route starts with 'app_admin_system_audit' ? 'active' : '' }}"
+                           href="{{ path("app_admin_system_auditlog") }}"
+                        >
                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
                                         {{ "label.audit_log"|trans }}
                                     </span>
-                                </a>
-                                <a class="dropdown-item {{ route starts with 'app_admin_system_cookie' ? 'active' : '' }}"
-                                   href="{{ path("app_admin_system_cookie_consent") }}"
-                                >
+                        </a>
+                        <a class="dropdown-item {{ route starts with 'app_admin_system_cookie' ? 'active' : '' }}"
+                           href="{{ path("app_admin_system_cookie_consent") }}"
+                        >
                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
                                         {{ "label.cookie_consent"|trans }}
                                     </span>
-                                </a>
-                            </div>
-                        </div>
+                        </a>
                     </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</aside>
+                </div>
+            </div>
+        </li>
+    </ul>
+{% endblock %}

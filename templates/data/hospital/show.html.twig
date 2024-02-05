@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '_layout_vertical.html.twig' %}
 
 {% import 'macros/pagination.html.twig' as pagination %}
 
@@ -7,7 +7,7 @@
 {% block header %}
     {% embed "embeds/header.html.twig" %}
         {% block header_after %}
-            {% include 'data/_subnav.html.twig' %}
+            {% include 'includes/subnav_data.html.twig' %}
         {% endblock %}
     {% endembed %}
 {% endblock %}

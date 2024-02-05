@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '_layout_vertical.html.twig' %}
 
 {% block title %}{{ "title.password_reset_sent"|trans }} - {{ parent() }}{% endblock %}
 
@@ -9,7 +9,9 @@
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4">{{ "title.password_reset_sent"|trans }}</h2>
                     <p class="text-muted text-center mb-2">{{ "help.password_reset_sent"|trans }}</p>
-                    <p class="text-muted text-center mb-2">{{ "help.link_expires_in"|trans }} {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+                    <p class="text-muted text-center mb-2">
+                        {{ "help.link_expires_in"|trans }} {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+                    </p>
                 </div>
             </div>
             <div class="">
