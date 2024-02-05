@@ -1,27 +1,6 @@
 {% extends '_layout_sidebar.html.twig' %}
 
-{% macro sortArrow(sortName, sortBy, orderBy) %}
-    {% if sortBy == sortName %}
-        {% if orderBy == 'asc' %}
-            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M6 15l6 -6l6 6"></path>
-            </svg>
-        {% else %}
-            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M6 9l6 6l6 -6"></path>
-            </svg>
-        {% endif %}
-    {% else %}
-        <!-- up and down arrow svg -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 text-slate-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M8 9l4 -4l4 4"></path>
-            <path d="M16 15l-4 4l-4 -4"></path>
-        </svg>
-    {% endif %}
-{% endmacro %}
+{% import 'macros/pagination.html.twig' as pagination %}
 
 {% block title %}{{ "title.area_supply"|trans }} - {{ parent() }}{% endblock %}
 
@@ -114,7 +93,7 @@
                                 sortBy: 'id',
                                 orderBy: sortBy == 'id' and orderBy == 'asc' ? 'desc' : 'asc',
                             }) }}">
-                                {{ "label.id"|trans }} {{ _self.sortArrow('id', sortBy, orderBy) }}
+                                {{ "label.id"|trans }} {{ pagination.sortArrow('id', sortBy, orderBy) }}
                             </a>
                         </th>
                         <th class="col-3">
@@ -123,7 +102,7 @@
                                 sortBy: 'name',
                                 orderBy: sortBy == 'name' and orderBy == 'asc' ? 'desc' : 'asc',
                             }) }}">
-                                {{ "label.name"|trans }} {{ _self.sortArrow('name', sortBy, orderBy) }}
+                                {{ "label.name"|trans }} {{ pagination.sortArrow('name', sortBy, orderBy) }}
                             </a>
                         </th>
                         <th class="col-2">
@@ -135,7 +114,7 @@
                                 sortBy: 'createdAt',
                                 orderBy: sortBy == 'createdAt' and orderBy == 'asc' ? 'desc' : 'asc',
                             }) }}">
-                                {{ "label.created_at"|trans }} {{ _self.sortArrow('createdAt', sortBy, orderBy) }}
+                                {{ "label.created_at"|trans }} {{ pagination.sortArrow('createdAt', sortBy, orderBy) }}
                             </a>
                         </th>
                         <th class="col-2">
@@ -144,7 +123,7 @@
                                 sortBy: 'updatedAt',
                                 orderBy: sortBy == 'updatedAt' and orderBy == 'asc' ? 'desc' : 'asc',
                             }) }}">
-                                {{ "label.updated_at"|trans }} {{ _self.sortArrow('updatedAt', sortBy, orderBy) }}
+                                {{ "label.updated_at"|trans }} {{ pagination.sortArrow('updatedAt', sortBy, orderBy) }}
                             </a>
                         </th>
                         <th class="col-2">{{ "label.actions"|trans }}</th>
@@ -207,43 +186,9 @@
             </div>
         </div>
         <div class="card-footer d-flex align-items-center">
-            <p class="m-0 text-muted">Showing <span>{{ supply_areas.numResults }}</span> results, with <span>{{ supply_areas.pageSize }}</span> per page.</p>
-            {% if supply_areas.hasToPaginate %}
-                <ul class="pagination m-0 ms-auto">
-                    {% if supply_areas.hasPreviousPage %}
-                        <li class="page-item">
-                            <a class="page-link" href="{{ path('app_admin_area_supply_index', {page: supply_areas.previousPage}) }}" tabindex="-1" aria-disabled="true">
-                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
-                                {{ "label.previous"|trans }}
-                            </a>
-                        </li>
-                    {% else %}
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
-                                {{ "label.previous"|trans }}
-                            </a>
-                        </li>
-                    {% endif %}
-                    {% if supply_areas.hasNextPage %}
-                        <li class="page-item">
-                            <a class="page-link" href="{{ path('app_admin_area_supply_index', {page: supply_areas.nextPage}) }}">
-                                {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
-                            </a>
-                        </li>
-                    {% else %}
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
-                            </a>
-                        </li>
-                    {% endif %}
-                </ul>
-            {% endif %}
+            {{ pagination.results(supply_areas.numResults, supply_areas.pageSize) }}
+
+            {{ pagination.navbar(supply_areas, 'app_admin_area_supply_index') }}
         </div>
     </div>
 {% endblock %}
