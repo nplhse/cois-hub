@@ -1,4 +1,4 @@
-{% extends '_layout_vertical.html.twig' %}
+{% extends '_layout_vertical_turbo.html.twig' %}
 
 {% import 'macros/pagination.html.twig' as pagination %}
 
@@ -134,7 +134,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            {% for hospital in hospitals.results %}
+                            {% for hospital in paginator.results %}
                                 <tr>
                                     <td>
                                         {{ hospital.id }}
@@ -180,9 +180,9 @@
                         </table>
                     </div>
                     <div class="card-footer d-flex align-items-center">
-                        {{ pagination.results(hospitals.numResults, hospitals.pageSize) }}
+                        {{ pagination.results(paginator.numResults, paginator.pageSize) }}
 
-                        {{ pagination.navbar(hospitals, 'app_data_hospital_index') }}
+                        {{ pagination.navbar(paginator, 'app_data_hospital_index') }}
                     </div>
                 </div>
             </turbo-frame>

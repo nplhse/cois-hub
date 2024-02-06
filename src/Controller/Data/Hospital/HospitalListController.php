@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HospitalController extends AbstractController
+class HospitalListController extends AbstractController
 {
     public function __construct(
         private readonly ListHospitalsQuery $query,
@@ -26,10 +26,10 @@ class HospitalController extends AbstractController
         #[MapQueryParameter]
         string $orderBy = 'asc',
     ): Response {
-        $hospitals = $this->query->getResults($page, 20, $sortBy, $orderBy, $search);
+        $paginator = $this->query->getResults($page, 20, $sortBy, $orderBy, $search);
 
-        return $this->render('data/hospital/index.html.twig', [
-            'hospitals' => $hospitals,
+        return $this->render('data/hospital/list.html.twig', [
+            'paginator' => $paginator,
             'sortBy' => $sortBy,
             'orderBy' => $orderBy,
         ]);

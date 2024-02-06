@@ -23,12 +23,12 @@ class ListUsersController extends AbstractController
         string $search = '',
     ): Response {
         if ($this->isGranted('ROLE_USER')) {
-            $users = $this->query->getResults($page, 16, 'username', 'asc', $search);
+            $paginator = $this->query->getResults($page, 16, 'username', 'asc', $search);
             $userCount = $this->query->countResults('username', $search);
         }
 
-        if (!isset($users)) {
-            $users = $this->query->onlyPublicUsers()->getResults($page, 16, 'username', 'asc', $search);
+        if (!isset($paginator)) {
+            $paginator = $this->query->onlyPublicUsers()->getResults($page, 16, 'username', 'asc', $search);
         }
 
         if (!isset($userCount)) {
@@ -37,7 +37,7 @@ class ListUsersController extends AbstractController
 
         return $this->render('user/list.html.twig', [
             'user_count' => $userCount,
-            'users' => $users,
+            'paginator' => $paginator,
         ]);
     }
 }

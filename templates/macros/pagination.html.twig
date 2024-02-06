@@ -47,6 +47,47 @@
                     </a>
                 </li>
             {% endif %}
+            {% if 3 >= paginator.lastPage %}
+                {% for i in 1..paginator.lastPage %}
+                    {% if i == paginator.currentPage %}
+                        <li class="page-item active">
+                            <span class="page-link">{{ i }}</span>
+                        </li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="{{ path(targetPath, {page: i}) }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                {% if 1 > paginator.currentPage - 1 and paginator.currentPage < paginator.lastPage %}
+                    {% set min = 1 %}
+                    {% set max = paginator.currentPage + 2 %}
+                {% elseif 1 <= paginator.currentPage - 1 and paginator.currentPage < paginator.lastPage %}
+                    {% set min = paginator.currentPage - 1 %}
+                    {% set max = paginator.currentPage + 1 %}
+                {% elseif 1 <= paginator.currentPage - 1 and paginator.currentPage >= paginator.lastPage %}
+                    {% set min = paginator.currentPage - 2 %}
+                    {% set max = paginator.currentPage %}
+                {% endif %}
+                {% if paginator.currentPage > 3 %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ path(targetPath, {page: 1}) }}">1 ...</a>
+                    </li>
+                {% endif %}
+                {% for i in min..max %}
+                    {% if i == paginator.currentPage %}
+                        <li class="page-item active">
+                            <span class="page-link" >{{ i }}</span>
+                        </li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="{{ path(targetPath, {page: i}) }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if paginator.lastPage - paginator.currentPage >= 3 %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ path(targetPath, {page: paginator.lastPage}) }}">... {{ paginator.lastPage }}</a>
+                    </li>
+                {% endif %}
+            {% endif %}
             {% if paginator.hasNextPage %}
                 <li class="page-item">
                     <a class="page-link" href="{{ path(targetPath, {page: paginator.nextPage}) }}">

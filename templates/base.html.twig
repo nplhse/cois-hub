@@ -9,7 +9,7 @@
             {{ importmap('app') }}
         {% endblock %}
     </head>
-    <body data-turbo="false" data-bs-theme="light">
+    <body {% block turbo_drive 'data-turbo=false' %} {% block bs_theme 'data-bs-theme="light"' %}>
         {% block page %}
             <div class="page">
                 {% block header %}

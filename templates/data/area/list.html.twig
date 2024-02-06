@@ -1,4 +1,4 @@
-{% extends '_layout_vertical.html.twig' %}
+{% extends '_layout_vertical_turbo.html.twig' %}
 
 {% block title %}{{ "title.list_areas"|trans }} - {{ "title.data"|trans }} {{ parent() }}{% endblock %}
 
@@ -12,7 +12,7 @@
 
 {% block body %}
     <div class="container-xl">
-        {% embed "embeds/page.html.twig" with { page_title: "title.list_areas"|trans } %}
+        {% embed "embeds/page.html.twig" with {page_title: "title.list_areas"|trans} %}
             {% block page_pretitle %}{% endblock %}
             {% block page_title_actions %}
                 {% if is_granted('ROLE_ADMIN') %}
