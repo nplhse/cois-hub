@@ -7,12 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Messenger\HandleTrait;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
-class AreaController extends AbstractController
+class AreaListController extends AbstractController
 {
-    use HandleTrait;
-
     public function __construct(
         private readonly ListAreasQuery $query,
     ) {
@@ -29,10 +27,10 @@ class AreaController extends AbstractController
         #[MapQueryParameter]
         string $orderBy = 'asc',
     ): Response {
-        $areas = $this->query->getResults($page, 20, $sortBy, $orderBy, $search);
+        $paginator = $this->query->getResults($page, 20, $sortBy, $orderBy, $search);
 
-        return $this->render('data/area/index.html.twig', [
-            'areas' => $areas,
+        return $this->render('data/area/list.html.twig', [
+            'paginator' => $paginator,
             'sortBy' => $sortBy,
             'orderBy' => $orderBy,
         ]);

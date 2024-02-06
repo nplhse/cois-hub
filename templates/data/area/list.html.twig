@@ -1,7 +1,5 @@
 {% extends '_layout_vertical.html.twig' %}
 
-{% import 'macros/pagination.html.twig' as pagination %}
-
 {% block title %}{{ "title.list_areas"|trans }} - {{ "title.data"|trans }} {{ parent() }}{% endblock %}
 
 {% block header %}
@@ -13,15 +11,10 @@
 {% endblock %}
 
 {% block body %}
-    <div class="page-header d-print-none">
-        <div class="container-xl">
-            <div class="row g-2 align-items-center">
-                <div class="col">
-                    <h2 class="page-title">
-                        {{ "title.list_areas"|trans }}
-                    </h2>
-                </div>
-                <!-- Page title actions -->
+    <div class="container-xl">
+        {% embed "embeds/page.html.twig" with { page_title: "title.list_areas"|trans } %}
+            {% block page_pretitle %}{% endblock %}
+            {% block page_title_actions %}
                 {% if is_granted('ROLE_ADMIN') %}
                     <!-- Page title actions -->
                     <div class="col-auto ms-auto d-print-none">
@@ -44,7 +37,14 @@
                                         autofocus
                                     >
                                     <span class="input-icon-addon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="icon"
+                                            width="24" height="24" viewBox="0 0 24 24"
+                                            stroke-width="2" stroke="currentColor"
+                                            fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                        >
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <circle cx="10" cy="10" r="7" />
                                             <line x1="21" y1="21" x2="15" y2="15" />
@@ -55,7 +55,15 @@
 
                             <span class="d-none d-sm-inline">
                                 <a href="{{ path('app_admin_area') }}" class="btn btn-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-settings"
+                                        width="24" height="24"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="2" stroke="currentColor"
+                                        fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                    >
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
                                         <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
@@ -65,18 +73,15 @@
                         </div>
                     </div>
                 {% endif %}
-            </div>
-        </div>
-    </div>
-    <!-- Page body -->
-    <div class="page-body">
-        <div class="container-xl">
-            <turbo-frame id="hospital-list" data-turbo-action="advance" target="_top">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="tab-content">
-                            <table class="table">
-                                <thead>
+            {% endblock %}
+            {% block content %}
+                {% import 'macros/pagination.html.twig' as pagination %}
+                <turbo-frame id="hospital-list" data-turbo-action="advance" target="_top">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <table class="table">
+                                    <thead>
                                     <tr>
                                         <th class="col-1">
                                             <a href="{{ path('app_data_area_index', {
@@ -133,61 +138,62 @@
                                             </a>
                                         </th>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                {% for dispatch_area in areas.results %}
-                                    <tr>
-                                        <td>
-                                            {{ dispatch_area.id }}
-                                        </td>
-                                        <td>
-                                            {{ dispatch_area.name }}
-                                        </td>
-                                        <td>
-                                            {{ dispatch_area.state }}
-                                        </td>
-                                        <td>
-                                            {{ dispatch_area.supplyArea }}
-                                        </td>
-                                        <td>
-                                            {{ dispatch_area.createdAt ? dispatch_area.createdAt|date('d.m.Y H:i') : '' }}
-                                        </td>
-                                        <td>
-                                            {{ dispatch_area.updatedAt ? dispatch_area.updatedAt|date('d.m.Y H:i') : '' }}
-                                        </td>
-                                    </tr>
-                                {% else %}
-                                    <tr>
-                                        <td colspan="6">
-                                            <div class="empty">
-                                                <div class="empty-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <circle cx="12" cy="12" r="9" />
-                                                        <line x1="9" y1="10" x2="9.01" y2="10" />
-                                                        <line x1="15" y1="10" x2="15.01" y2="10" />
-                                                        <path d="M9.5 15.25a3.5 3.5 0 0 1 5 0" />
-                                                    </svg>
+                                    </thead>
+                                    <tbody>
+                                    {% for dispatch_area in paginator.results %}
+                                        <tr>
+                                            <td>
+                                                {{ dispatch_area.id }}
+                                            </td>
+                                            <td>
+                                                {{ dispatch_area.name }}
+                                            </td>
+                                            <td>
+                                                {{ dispatch_area.state }}
+                                            </td>
+                                            <td>
+                                                {{ dispatch_area.supplyArea }}
+                                            </td>
+                                            <td>
+                                                {{ dispatch_area.createdAt ? dispatch_area.createdAt|date('d.m.Y H:i') : '' }}
+                                            </td>
+                                            <td>
+                                                {{ dispatch_area.updatedAt ? dispatch_area.updatedAt|date('d.m.Y H:i') : '' }}
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="6">
+                                                <div class="empty">
+                                                    <div class="empty-icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <circle cx="12" cy="12" r="9" />
+                                                            <line x1="9" y1="10" x2="9.01" y2="10" />
+                                                            <line x1="15" y1="10" x2="15.01" y2="10" />
+                                                            <path d="M9.5 15.25a3.5 3.5 0 0 1 5 0" />
+                                                        </svg>
+                                                    </div>
+                                                    <p class="empty-title">{{ "label.search_no_results"|trans }}</p>
+                                                    <p class="empty-subtitle text-secondary">
+                                                        {{ "help.search_no_results"|trans }}
+                                                    </p>
                                                 </div>
-                                                <p class="empty-title">{{ "label.search_no_results"|trans }}</p>
-                                                <p class="empty-subtitle text-secondary">
-                                                    {{ "help.search_no_results"|trans }}
-                                                </p>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex align-items-center">
+                            {{ pagination.results(paginator.numResults, paginator.pageSize) }}
+
+                            {{ pagination.navbar(paginator, 'app_data_area_index') }}
                         </div>
                     </div>
-                    <div class="card-footer d-flex align-items-center">
-                        {{ pagination.results(areas.numResults, areas.pageSize) }}
-
-                        {{ pagination.navbar(areas, 'app_data_area_index') }}
-                    </div>
-                </div>
-            </turbo-frame>
-        </div>
+                </turbo-frame>
+            {% endblock %}
+        {% endembed %}
     </div>
 {% endblock %}
