@@ -102,8 +102,16 @@
                     {% endfor %}
                 </div>
 
-                <div class="row mt-3 float-end">
-                    {{ pagination.navbar(paginator, 'app_user') }}
+                <div class="row mt-3 d-flex align-items-center">
+                    <div class="col">
+                        <span class="float-start">
+                            {{ pagination.results(paginator.numResults, paginator.pageSize) }}
+                        </span>
+
+                        <div class="float-end">
+                            {{ pagination.navbar(paginator, 'app_user') }}
+                        </div>
+                    </div>
                 </div>
 
                 <turbo-stream action="replace" target="user-count">

@@ -47,7 +47,7 @@
                     </a>
                 </li>
             {% endif %}
-            {% if 3 >= paginator.lastPage %}
+            {% if 2 >= paginator.lastPage %}
                 {% for i in 1..paginator.lastPage %}
                     {% if i == paginator.currentPage %}
                         <li class="page-item active">
@@ -82,7 +82,7 @@
                         <li class="page-item"><a class="page-link" href="{{ path(targetPath, {page: i}) }}">{{ i }}</a></li>
                     {% endif %}
                 {% endfor %}
-                {% if paginator.lastPage - paginator.currentPage >= 3 %}
+                {% if paginator.lastPage - paginator.currentPage >= 2 %}
                     <li class="page-item">
                         <a class="page-link" href="{{ path(targetPath, {page: paginator.lastPage}) }}">... {{ paginator.lastPage }}</a>
                     </li>
