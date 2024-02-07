@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Factory\DispatchAreaFactory;
 use App\Factory\HospitalFactory;
+use App\Factory\ImportFactory;
 use App\Factory\StateFactory;
 use App\Factory\SupplyAreaFactory;
 use App\Factory\UserFactory;
@@ -22,6 +23,8 @@ class AppFixtures extends Fixture
         DispatchAreaFactory::createMany(35);
 
         HospitalFactory::createMany(10);
+
+        ImportFactory::createMany(5);
 
         $manager->flush();
     }
