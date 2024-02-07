@@ -6,7 +6,6 @@ use App\Query\ListAreasQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
-use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Routing\Attribute\Route;
 
 class AreaListController extends AbstractController
