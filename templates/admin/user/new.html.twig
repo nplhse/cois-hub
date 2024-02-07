@@ -1,14 +1,14 @@
-{% extends 'admin/_base.html.twig' %}
+{% extends '_layout_sidebar.html.twig' %}
 
 {% block title %}{{ "title.user_create"|trans }} - {{ "title.users"|trans }} - {{ parent() }}{% endblock %}
 
-{% block admin_breadcrumb %}
+{% block header_breadcrumb %}
     {{ parent() }}
     <li class="breadcrumb-item"><a href="{{ path('app_admin_user_index') }}">{{ "label.users"|trans }}</a></li>
     <li class="breadcrumb-item active"><a>{{ "label.user_create"|trans }}</a></li>
 {% endblock %}
 
-{% block admin_title %}
+{% block header_title %}
     <!-- Page pre-title -->
     <div class="page-pretitle">
         {{ "title.user_create"|trans }}
@@ -18,7 +18,11 @@
     </h2>
 {% endblock %}
 
-{% block admin_title_actions %}
+{% block header_title_actions %}
+{% endblock %}
+
+{% block sidebar_menu %}
+    {% include 'includes/sidebar_admin.html.twig' %}
 {% endblock %}
 
 {% block body %}

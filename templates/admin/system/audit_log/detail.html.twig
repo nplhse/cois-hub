@@ -1,14 +1,14 @@
-{% extends 'admin/_base.html.twig' %}
+{% extends '_layout_sidebar.html.twig' %}
 
 {% block title %}{{ "title.audit_log"|trans }} - {{ parent() }}{% endblock %}
 
-{% block admin_breadcrumb %}
-    {{ parent() }}
+{% block header_breadcrumb %}
+    <li class="breadcrumb-item"><a href="{{ path('app_admin_dashboard') }}">{{ "label.backend"|trans }}</a></li>
     <li class="breadcrumb-item"><a href="{{ path('app_admin_system_auditlog') }}">{{ "label.audit_log"|trans }}</a></li>
     <li class="breadcrumb-item active">{{ "label.audit_log_detail"|trans }}</li>
 {% endblock %}
 
-{% block admin_title %}
+{% block header_title %}
     <!-- Page pre-title -->
     <div class="page-pretitle">
         {{ "title.audit_log_detail"|trans }}
@@ -18,7 +18,7 @@
     </h2>
 {% endblock %}
 
-{% block admin_title_actions %}
+{% block header_actions %}
     <div class="btn-list">
         <div class="btn-list">
             <span class="d-none d-sm-inline">
@@ -32,6 +32,10 @@
             </span>
         </div>
     </div>
+{% endblock %}
+
+{% block sidebar_menu %}
+    {% include 'includes/sidebar_admin.html.twig' %}
 {% endblock %}
 
 {% block body %}

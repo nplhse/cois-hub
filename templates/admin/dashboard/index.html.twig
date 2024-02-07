@@ -1,23 +1,19 @@
-{% extends 'admin/_base.html.twig' %}
+{% extends '_layout_sidebar.html.twig' %}
 
 {% block title %}{{ "title.dashboard"|trans }} - {{ parent() }}{% endblock %}
 
-{% block admin_title %}
-    <!-- Page pre-title -->
-    <div class="page-pretitle">
-
-    </div>
+{% block header_title %}
     <h2 class="page-title">
         {{ "title.dashboard"|trans }}
     </h2>
 {% endblock %}
 
-{% block admin_breadcrumb %}
+{% block header_breadcrumb %}
     <li class="breadcrumb-item active"><a href="{{ path('app_admin_dashboard') }}">{{ "label.backend"|trans }}</a></li>
 {% endblock %}
 
-{% block admin_title_actions %}
-
+{% block sidebar_menu %}
+    {% include 'includes/sidebar_admin.html.twig' %}
 {% endblock %}
 
 {% block body %}

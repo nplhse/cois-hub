@@ -1,4 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends '_layout_vertical_turbo.html.twig' %}
+
+{% import 'macros/pagination.html.twig' as pagination %}
 
 {% block title %}{{ "title.users"|trans }} - {{ parent() }}{% endblock %}
 
@@ -56,7 +58,7 @@
         <div class="container-xl">
             <turbo-frame id="user-list" data-turbo-action="advance">
                 <div class="row row-cards">
-                    {% for row in users.getResults|batch(4, null) %}
+                    {% for row in paginator.getResults|batch(4, null) %}
                         {% for user in row %}
                             <div class="col-md-6 col-lg-3">
                                 <div class="card">
@@ -98,6 +100,18 @@
                             </p>
                         </div>
                     {% endfor %}
+                </div>
+
+                <div class="row mt-3 d-flex align-items-center">
+                    <div class="col">
+                        <span class="float-start">
+                            {{ pagination.results(paginator.numResults, paginator.pageSize) }}
+                        </span>
+
+                        <div class="float-end">
+                            {{ pagination.navbar(paginator, 'app_user') }}
+                        </div>
+                    </div>
                 </div>
 
                 <turbo-stream action="replace" target="user-count">

@@ -1,47 +1,46 @@
-{% extends 'base.html.twig' %}
+{% extends '_layout_vertical.html.twig' %}
 
 {% block title %}{{ "title.login"|trans }} - {{ parent() }}{% endblock %}
 
 {% block body %}
     <div class="page page-center">
         <div class="container container-tight py-4">
-            <div class="card card-md">
-                <div class="card-body">
-                    <h2 class="text-center mb-4">{{ "title.login"|trans }}</h2>
+            {{ form_start(form) }}
+                <div class="card card-md">
+                    <div class="card-body">
+                        <h2 class="text-center mb-4">{{ "title.login"|trans }}</h2>
 
-                    {% if error %}
-                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                    {% endif %}
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
 
-                    {{ form_start(form) }}
+                        {{ form_row(form.username) }}
 
-                    {{ form_row(form.username) }}
+                        {{ form_row(form.password) }}
 
-                    {{ form_row(form.password) }}
+                        <span class="form-label-description">
+                            <a href="{{ path('app_forgot_password_request') }}">{{ "label.forgot_password"|trans }}</a>
+                        </span>
 
-                    <span class="form-label-description">
-                        <a href="{{ path('app_forgot_password_request') }}">{{ "label.forgot_password"|trans }}</a>
-                    </span>
+                        <div class="mb-2">
+                            <label class="form-check">
+                                <input type="checkbox" class="form-check-input"/>
+                                <span class="form-check-label">{{ "label.remember_me"|trans }}</span>
+                            </label>
+                        </div>
 
-                    <div class="mb-2">
-                        <label class="form-check">
-                            <input type="checkbox" class="form-check-input"/>
-                            <span class="form-check-label">{{ "label.remember_me"|trans }}</span>
-                        </label>
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-primary w-100">{{ "label.signin"|trans }}</button>
+                        </div>
                     </div>
-
-                    <input type="hidden"
-                           name="_csrf_token"
-                           value="{{ csrf_token('authenticate') }}" />
-
-                    <div class="form-footer">
-                        <button type="submit" class="btn btn-primary w-100">{{ "label.signin"|trans }}</button>
-                    </div>
-                    {{ form_end(form) }}
                 </div>
-            </div>
+            {{ form_end(form) }}
+
             <div class="text-center text-muted mt-3">
                 {{ "label.no_account_yet"|trans }} <a href="{{ path("app_register") }}" tabindex="-1">{{ "label.click_to_register"|trans }}</a>
             </div>
         </div>
+    </div>
 {% endblock %}

@@ -1,14 +1,14 @@
-{% extends 'admin/_base.html.twig' %}
+{% extends '_layout_sidebar.html.twig' %}
 
 {% block title %}{{ "title.area_dispatch_show"|trans }}: {{ dispatch_area.name }}  - {{ parent() }}{% endblock %}
 
-{% block admin_breadcrumb %}
-    {{ parent() }}
+{% block header_breadcrumb %}
+    <li class="breadcrumb-item"><a href="{{ path('app_admin_dashboard') }}">{{ "label.backend"|trans }}</a></li>
     <li class="breadcrumb-item"><a href="{{ path('app_admin_area') }}">{{ "label.areas"|trans }}</a></li>
     <li class="breadcrumb-item active">{{ "label.area_dispatch"|trans }}</li>
 {% endblock %}
 
-{% block admin_title %}
+{% block header_title %}
     <!-- Page pre-title -->
     <div class="page-pretitle">
         {{ "title.list_areas"|trans }}
@@ -18,7 +18,11 @@
     </h2>
 {% endblock %}
 
-{% block admin_title_actions %}
+{% block sidebar_menu %}
+    {% include 'includes/sidebar_admin.html.twig' %}
+{% endblock %}
+
+{% block header_actions %}
     <div class="btn-list justify-content-end">
         {{ include('admin/area/dispatch_area/_delete_form.html.twig') }}
 

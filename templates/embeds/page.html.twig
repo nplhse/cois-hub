@@ -1,0 +1,38 @@
+{% block page %}
+    <div class="page-wrapper">
+        {% block page_header %}
+            <!-- Page header -->
+            <div class="page-header d-print-none">
+                <div class="row g-2 align-items-center">
+                    {% block page_header_title %}
+                        <div class="col">
+                            {% block page_pretitle %}
+                                <!-- Page pre-title -->
+                                <div class="page-pretitle">
+                                    {{ page_pretitle }}
+                                </div>
+                            {% endblock %}
+                            {% block page_title %}
+                                <h2 class="page-title">
+                                    {{ page_title }}
+                                </h2>
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                    {% block page_title_actions %}
+                        <!-- Page title actions -->
+                        <div class="col-auto ms-auto d-print-none">
+
+                        </div>
+                    {% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+        {% block page_body %}
+            <!-- Page body -->
+            <div class="page-body">
+                {% block content %}{% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

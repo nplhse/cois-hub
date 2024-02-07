@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block page %}
+    <div class="page">
+        {% block sidebar %}
+            <aside class="navbar navbar-vertical navbar-expand-lg">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+                        <a href="{{ path('app_hello_world') }}">
+                            {{ app_title }}
+                        </a>
+                    </h1>
+                    <div class="collapse navbar-collapse" id="sidebar-menu">
+                        {% block sidebar_menu %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </aside>
+        {% endblock %}
+
+        <div class="page-wrapper">
+            <!-- Page header -->
+            <div class="page-header d-print-none">
+                <div class="container-xl">
+                    <div class="row align-items-center mw-100">
+                        <div class="col">
+                            <div class="mb-1">
+                                <ol class="breadcrumb" aria-label="breadcrumbs">
+                                    {% block header_breadcrumb %}
+                                        <li class="breadcrumb-item"><a href="{{ path('app_admin_dashboard') }}">{{ "label.backend"|trans }}</a></li>
+                                    {% endblock %}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-2 align-items-center">
+                        <div class="col">
+                            {% block header_title %}{% endblock %}
+                        </div>
+                        <!-- Page title actions -->
+                        <div class="col-auto ms-auto d-print-none">
+                            {% block header_actions %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page body -->
+            <div class="page-body">
+                {% include "includes/flash_messages.html.twig" %}
+
+                <div class="container-xl">
+                    {% block body %}{% endblock %}
+                </div>
+
+                {% include "includes/footer.html.twig" %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

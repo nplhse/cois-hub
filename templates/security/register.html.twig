@@ -1,35 +1,35 @@
-{% extends 'base.html.twig' %}
+{% extends '_layout_vertical.html.twig' %}
 
 {% block title %}{{ "title.register"|trans }} - {{ parent() }}{% endblock %}
 
 {% block body %}
-<div class="page page-center">
-    <div class="container container-tight py-4">
-        <div class="card card-md">
-            <div class="card-body">
-                <h2 class="text-center mb-4">{{ "title.register"|trans }}</h2>
+    <div class="page page-center">
+        <div class="container container-tight py-4">
+            {{ form_start(registrationForm) }}
+                <div class="card card-md">
+                    <div class="card-body">
+                        <h2 class="text-center mb-4">{{ "title.register"|trans }}</h2>
 
-                {{ form_errors(registrationForm) }}
+                        {{ form_errors(registrationForm) }}
 
-                {{ form_start(registrationForm) }}
+                        {{ form_row(registrationForm.username) }}
 
-                {{ form_row(registrationForm.username) }}
+                        {{ form_row(registrationForm.email) }}
 
-                {{ form_row(registrationForm.email) }}
+                        {{ form_row(registrationForm.password) }}
 
-                {{ form_row(registrationForm.password) }}
+                        {{ form_row(registrationForm.agreeTerms) }}
 
-                {{ form_row(registrationForm.agreeTerms) }}
-
-                <div class="form-footer">
-                    <button type="submit" class="btn btn-primary w-100">{{ "label.create_account"|trans }}</button>
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-primary w-100">{{ "label.create_account"|trans }}</button>
+                        </div>
+                    </div>
                 </div>
+            {{ form_end(registrationForm) }}
 
-                {{ form_end(registrationForm) }}
+            <div class="text-center text-muted mt-3">
+                {{ "label.already_registered"|trans }} <a href="{{ path('app_login') }}" tabindex="-1">{{ "label.signin"|trans }}</a>
             </div>
-        </div>
-        <div class="text-center text-muted mt-3">
-            {{ "label.already_registered"|trans }} <a href="{{ path('app_login') }}" tabindex="-1">{{ "label.signin"|trans }}</a>
         </div>
     </div>
 {% endblock %}

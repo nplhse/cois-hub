@@ -1,13 +1,15 @@
-{% extends 'admin/_base.html.twig' %}
+{% extends '_layout_sidebar.html.twig' %}
+
+{% import 'macros/pagination.html.twig' as pagination %}
 
 {% block title %}{{ "title.cookie_consent_admin"|trans }} - {{ parent() }}{% endblock %}
 
 {% block admin_breadcrumb %}
-    {{ parent() }}
+    <li class="breadcrumb-item"><a href="{{ path('app_admin_dashboard') }}">{{ "label.backend"|trans }}</a></li>
     <li class="breadcrumb-item active">{{ "label.cookie_consent"|trans }}</li>
 {% endblock %}
 
-{% block admin_title %}
+{% block header_title %}
     <!-- Page pre-title -->
     <div class="page-pretitle">
         {{ "title.list_cookie_consent"|trans }}
@@ -17,7 +19,11 @@
     </h2>
 {% endblock %}
 
-{% block admin_title_actions %}
+{% block header_actions %}
+{% endblock %}
+
+{% block sidebar_menu %}
+    {% include 'includes/sidebar_admin.html.twig' %}
 {% endblock %}
 
 {% block body %}
@@ -86,55 +92,9 @@
                 </div>
             </div>
             <div class="card-footer d-flex align-items-center">
-                <p class="m-0 text-muted">Showing <span>{{ cookieConsents.numResults }}</span> results, with <span>{{ cookieConsents.pageSize }}</span> per page.</p>
-                {% if cookieConsents.hasToPaginate %}
-                    <ul class="pagination m-0 ms-auto">
-                        {% if cookieConsents.hasPreviousPage %}
-                            <li class="page-item">
-                                <a class="page-link" href="{{ path('app_admin_system_cookie_consent', {page: cookieConsents.previousPage}) }}" tabindex="-1" aria-disabled="true">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M15 6l-6 6l6 6" />
-                                    </svg>
-                                    {{ "label.previous"|trans }}
-                                </a>
-                            </li>
-                        {% else %}
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M15 6l-6 6l6 6" />
-                                    </svg>
-                                    {{ "label.previous"|trans }}
-                                </a>
-                            </li>
-                        {% endif %}
-                        {% if cookieConsents.hasNextPage %}
-                            <li class="page-item">
-                                <a class="page-link" href="{{ path('app_admin_system_cookie_consent', {page: cookieConsents.nextPage}) }}">
-                                    {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M9 6l6 6l-6 6" />
-                                    </svg>
-                                </a>
-                            </li>
-                        {% else %}
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#">
-                                    {{ "label.next"|trans }} <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M9 6l6 6l-6 6" />
-                                    </svg>
-                                </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                {% endif %}
+                {{ pagination.results(cookieConsents.numResults, cookieConsents.pageSize) }}
+
+                {{ pagination.navbar(cookieConsents, 'app_admin_area_dispatch_index') }}
             </div>
         </div>
     </turbo-frame>
