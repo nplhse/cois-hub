@@ -12,7 +12,7 @@ class UserFixtures extends Fixture
     {
         UserFactory::new(['username' => 'admin'])->asAdmin()->create();
 
-        UserFactory::new(['username' => 'foo'])->create();
+        UserFactory::new(['username' => 'foo'])->asParticipant()->create();
 
         $manager->flush();
     }

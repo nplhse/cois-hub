@@ -9,10 +9,11 @@ use App\Factory\StateFactory;
 use App\Factory\SupplyAreaFactory;
 use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class AppFixtures extends Fixture
+class AppFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -24,6 +25,10 @@ class AppFixtures extends Fixture
 
         HospitalFactory::createMany(10);
 
+        HospitalFactory::createOne([
+            'owner' => UserFactory::findOrCreate(['username' => 'foo']),
+        ]);
+
         ImportFactory::createMany(5);
 
         $manager->flush();
@@ -34,6 +39,8 @@ class AppFixtures extends Fixture
      */
     public function getDependencies(): array
     {
-        return [UserFixtures::class];
+        return [
+            UserFixtures::class,
+        ];
     }
 }
