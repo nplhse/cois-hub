@@ -5,6 +5,7 @@ namespace App\Query;
 use App\Entity\DispatchArea;
 use App\Entity\Hospital;
 use App\Entity\State;
+use App\Entity\User;
 use App\Pagination\Paginator;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -23,8 +24,14 @@ class ListHospitalsQuery
     public function getResults(int $page = 1, int $perPage = 20, string $sortBy = 'name', string $orderBy = 'asc', string $search = ''): Paginator
     {
         $qb = $this->entityManager->createQueryBuilder();
-        $qb->select('h.id, h.name, h.createdAt, h.updatedAt, s.id as state_id, s.name as state, da.id as dispatchArea_id, da.name as dispatchArea')
+        $qb->select('h.id, h.name, u.id as user_id, h.createdAt, h.updatedAt, s.id as state_id, s.name as state, da.id as dispatchArea_id, da.name as dispatchArea')
             ->from(Hospital::class, 'h')
+            ->leftJoin(
+                User::class,
+                'u',
+                \Doctrine\ORM\Query\Expr\Join::WITH,
+                'h.owner = u.id'
+            )
             ->leftJoin(
                 State::class,
                 's',
