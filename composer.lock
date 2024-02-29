@@ -3678,16 +3678,16 @@
         },
         {
             "name": "symfony/form",
-            "version": "v7.0.1",
+            "version": "v7.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/form.git",
-                "reference": "c5d23da3425eadf23c3335a0ed6f2ef3a135e8c9"
+                "reference": "76bfa17bf31d86bb00938725f276a84e697491b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/form/zipball/c5d23da3425eadf23c3335a0ed6f2ef3a135e8c9",
-                "reference": "c5d23da3425eadf23c3335a0ed6f2ef3a135e8c9",
+                "url": "https://api.github.com/repos/symfony/form/zipball/76bfa17bf31d86bb00938725f276a84e697491b9",
+                "reference": "76bfa17bf31d86bb00938725f276a84e697491b9",
                 "shasum": ""
             },
             "require": {
@@ -3707,7 +3707,7 @@
                 "symfony/error-handler": "<6.4",
                 "symfony/framework-bundle": "<6.4",
                 "symfony/http-kernel": "<6.4",
-                "symfony/translation": "<6.4",
+                "symfony/translation": "<6.4.3|>=7.0,<7.0.3",
                 "symfony/translation-contracts": "<2.5",
                 "symfony/twig-bridge": "<6.4"
             },
@@ -3723,7 +3723,7 @@
                 "symfony/intl": "^6.4|^7.0",
                 "symfony/security-core": "^6.4|^7.0",
                 "symfony/security-csrf": "^6.4|^7.0",
-                "symfony/translation": "^6.4|^7.0",
+                "symfony/translation": "^6.4.3|^7.0.3",
                 "symfony/uid": "^6.4|^7.0",
                 "symfony/validator": "^6.4|^7.0",
                 "symfony/var-dumper": "^6.4|^7.0"
@@ -3754,7 +3754,7 @@
             "description": "Allows to easily create, process and reuse HTML forms",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/form/tree/v7.0.1"
+                "source": "https://github.com/symfony/form/tree/v7.0.3"
             },
             "funding": [
                 {
@@ -3770,7 +3770,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-30T11:38:21+00:00"
+            "time": "2024-01-23T15:02:46+00:00"
         },
         {
             "name": "symfony/framework-bundle",
@@ -5064,16 +5064,16 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "v1.28.0",
+            "version": "v1.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-icu.git",
-                "reference": "e46b4da57951a16053cd751f63f4a24292788157"
+                "reference": "07094a28851a49107f3ab4f9120ca2975a64b6e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/e46b4da57951a16053cd751f63f4a24292788157",
-                "reference": "e46b4da57951a16053cd751f63f4a24292788157",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/07094a28851a49107f3ab4f9120ca2975a64b6e1",
+                "reference": "07094a28851a49107f3ab4f9120ca2975a64b6e1",
                 "shasum": ""
             },
             "require": {
@@ -5084,9 +5084,6 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.28-dev"
-                },
                 "thanks": {
                     "name": "symfony/polyfill",
                     "url": "https://github.com/symfony/polyfill"
@@ -5131,7 +5128,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-icu/tree/v1.28.0"
+                "source": "https://github.com/symfony/polyfill-intl-icu/tree/v1.29.0"
             },
             "funding": [
                 {
@@ -5147,7 +5144,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-21T17:27:24+00:00"
+            "time": "2024-01-29T20:12:16+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
@@ -6963,16 +6960,16 @@
         },
         {
             "name": "symfony/ux-toggle-password",
-            "version": "v2.13.2",
+            "version": "v2.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-toggle-password.git",
-                "reference": "133a5ddd204fbfe648b2bcea4e9db93499aa36ce"
+                "reference": "dc96508e2970fbf73304f6577abcd7efd63d4152"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-toggle-password/zipball/133a5ddd204fbfe648b2bcea4e9db93499aa36ce",
-                "reference": "133a5ddd204fbfe648b2bcea4e9db93499aa36ce",
+                "url": "https://api.github.com/repos/symfony/ux-toggle-password/zipball/dc96508e2970fbf73304f6577abcd7efd63d4152",
+                "reference": "dc96508e2970fbf73304f6577abcd7efd63d4152",
                 "shasum": ""
             },
             "require": {
@@ -7023,7 +7020,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-toggle-password/tree/v2.13.2"
+                "source": "https://github.com/symfony/ux-toggle-password/tree/v2.15.0"
             },
             "funding": [
                 {
@@ -7039,7 +7036,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-11T01:20:31+00:00"
+            "time": "2023-11-14T10:21:35+00:00"
         },
         {
             "name": "symfony/ux-turbo",
