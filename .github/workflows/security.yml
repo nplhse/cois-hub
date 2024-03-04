@@ -31,7 +31,7 @@ jobs:
           php-version: ${{ matrix.php-versions }}
 
       - name: Composer Dependencies
-        uses: "ramsey/composer-install@v2"
+        uses: "ramsey/composer-install@v3"
 
       - name: Psalm Security Scan
         uses: psalm/psalm-github-security-scan@9ec1b5e2b854b3f048fa32e8c4aaa9ae05d77345

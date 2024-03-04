@@ -44,7 +44,7 @@ jobs:
         run: composer audit
 
       - name: Composer Dependencies
-        uses: "ramsey/composer-install@v2"
+        uses: "ramsey/composer-install@v3"
 
       - name: Lint YAML files
         if: always() && steps.install.outcome == 'success'
@@ -125,7 +125,7 @@ jobs:
           php-version: ${{ matrix.php-versions }}
 
       - name: Composer Dependencies
-        uses: "ramsey/composer-install@v2"
+        uses: "ramsey/composer-install@v3"
 
       - name: Run Migration
         run: php bin/console doctrine:schema:create || echo "No schema found or schema failed"
