@@ -7471,16 +7471,16 @@
         },
         {
             "name": "symfony/web-link",
-            "version": "v7.0.0",
+            "version": "v7.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/web-link.git",
-                "reference": "378bcc80b48c51e32bf121bee684183ff879a62f"
+                "reference": "855a347feb2ecfc1d1a379c739aff956d4cbec00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/web-link/zipball/378bcc80b48c51e32bf121bee684183ff879a62f",
-                "reference": "378bcc80b48c51e32bf121bee684183ff879a62f",
+                "url": "https://api.github.com/repos/symfony/web-link/zipball/855a347feb2ecfc1d1a379c739aff956d4cbec00",
+                "reference": "855a347feb2ecfc1d1a379c739aff956d4cbec00",
                 "shasum": ""
             },
             "require": {
@@ -7534,7 +7534,7 @@
                 "push"
             ],
             "support": {
-                "source": "https://github.com/symfony/web-link/tree/v7.0.0"
+                "source": "https://github.com/symfony/web-link/tree/v7.0.3"
             },
             "funding": [
                 {
@@ -7550,7 +7550,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-25T09:50:29+00:00"
+            "time": "2024-01-23T15:02:46+00:00"
         },
         {
             "name": "symfony/yaml",
