@@ -12255,16 +12255,16 @@
         },
         {
             "name": "zenstruck/browser",
-            "version": "v1.7.0",
+            "version": "v1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zenstruck/browser.git",
-                "reference": "cf514edcf66cd889baeb29870c29a0494d32aff4"
+                "reference": "c3a7328df5c2e3750f3aaef3be4805c2021dd6a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zenstruck/browser/zipball/cf514edcf66cd889baeb29870c29a0494d32aff4",
-                "reference": "cf514edcf66cd889baeb29870c29a0494d32aff4",
+                "url": "https://api.github.com/repos/zenstruck/browser/zipball/c3a7328df5c2e3750f3aaef3be4805c2021dd6a7",
+                "reference": "c3a7328df5c2e3750f3aaef3be4805c2021dd6a7",
                 "shasum": ""
             },
             "require": {
@@ -12312,12 +12312,13 @@
             "description": "A fluent interface for your Symfony functional tests.",
             "homepage": "https://github.com/zenstruck/browser",
             "keywords": [
+                "dev",
                 "symfony",
                 "test"
             ],
             "support": {
                 "issues": "https://github.com/zenstruck/browser/issues",
-                "source": "https://github.com/zenstruck/browser/tree/v1.7.0"
+                "source": "https://github.com/zenstruck/browser/tree/v1.8.1"
             },
             "funding": [
                 {
@@ -12325,7 +12326,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-14T21:04:01+00:00"
+            "time": "2024-02-21T15:32:44+00:00"
         },
         {
             "name": "zenstruck/callback",
