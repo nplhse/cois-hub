@@ -7623,16 +7623,16 @@
         },
         {
             "name": "symfonycasts/reset-password-bundle",
-            "version": "v1.20.2",
+            "version": "v1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SymfonyCasts/reset-password-bundle.git",
-                "reference": "b79a28c975d72b5ac7febeebe139de436add26c4"
+                "reference": "598fc74acf0652abf495ac8db1c16234f5d59ded"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SymfonyCasts/reset-password-bundle/zipball/b79a28c975d72b5ac7febeebe139de436add26c4",
-                "reference": "b79a28c975d72b5ac7febeebe139de436add26c4",
+                "url": "https://api.github.com/repos/SymfonyCasts/reset-password-bundle/zipball/598fc74acf0652abf495ac8db1c16234f5d59ded",
+                "reference": "598fc74acf0652abf495ac8db1c16234f5d59ded",
                 "shasum": ""
             },
             "require": {
@@ -7663,9 +7663,9 @@
             "description": "Symfony bundle that adds password reset functionality.",
             "support": {
                 "issues": "https://github.com/SymfonyCasts/reset-password-bundle/issues",
-                "source": "https://github.com/SymfonyCasts/reset-password-bundle/tree/v1.20.2"
+                "source": "https://github.com/SymfonyCasts/reset-password-bundle/tree/v1.21.0"
             },
-            "time": "2024-01-22T12:46:34+00:00"
+            "time": "2024-03-05T20:31:46+00:00"
         },
         {
             "name": "symfonycasts/verify-email-bundle",
