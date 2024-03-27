@@ -42,34 +42,49 @@ When using these fixtures there are always several pre-configured Users by defau
 | foo         | _password_ | Default user                        |
 
 ## Available make commands
-| Command           | Description                                                                                                   |
-|-------------------|---------------------------------------------------------------------------------------------------------------|
-| help              | Outputs help screen                                                                                           |
-| setup             | Setup the whole project                                                                                       |
-| setup-dev         | Setup the project in dev environment                                                                          |
-| install           | Install composer dependencies                                                                                 |
-| setup-database    | Setup the database backend                                                                                    |
-| setup-test-db     | Setup the test database                                                                                       |
-| setup-fixtures    | Install the fixtures                                                                                          |
-| reset-database    | Reset the whole database (caution!)                                                                           |
-| checks            | Run check-styles and static-analysis                                                                          |
-| ci                | Run CI pipeline                                                                                               |
-| reset             | Reset pipeline for the whole project (caution!)                                                               |
-| start             | Build and start the containers                                                                                |
-| build             | Builds the Docker images                                                                                      |
-| up                | Start the docker hub in detached mode (no logs)                                                               |
-| down              | Stop the docker hub                                                                                           |
-| logs              | Show live logs                                                                                                |
-| sh                | Connect to the PHP FPM container                                                                              |
-| composer          | Run composer, pass the parameter "c=" to run a given command, example: make composer c='req symfony/orm-pack' |
-| vendor            | Install vendors according to the current composer.lock file                                                   |
-| sf                | List all Symfony commands or pass the parameter "c=" to run a given command, example: make sf c=about         |
-| cc                | Clear the cache                                                                                               |
-| cs                | Run all coding standards checks                                                                               |
-| static-analysis   | Run the static analysis                                                                                       |
-| lint-php          | Lint files with php-cs-fixer                                                                                  |
-| fix-php           | Fix files with php-cs-fixer                                                                                   |
-| eslint            | Run ESLint                                                                                                    |
-| stan              | Run PHPStan                                                                                                   |
-| psalm             | Run PHPStan                                                                                                   |
-| test              | Run tests                                                                                                     |
+| Command                 | Description                                                 |
+|-------------------------|-------------------------------------------------------------|
+| help                    | Outputs help screen                                         |
+| **Setup** 🚀            |                                                             |
+| setup                   | Setup the whole project                                     |
+| setup-dev               | Setup the project in dev environment                        |
+| warmup-dev              | Warmup the dev environment (e.g. after purge)               |
+| **Pipelines** 🚇        |                                                             |
+| checks                  | Run check-styles and static-analysis                        |
+| ci                      | Run CI pipeline                                             |
+| reset                   | Reset pipeline for the whole project (caution!)             |
+| **Docker** 🐳           |                                                             |
+| start                   | Build and start the containers                              |
+| build                   | Builds the Docker images                                    |
+| up                      | Start the docker hub in detached mode (no logs)             |
+| down                    | Stop the docker hub                                         |
+| logs                    | Show live logs                                              |
+| sh                      | Connect to the PHP FPM container                            |
+| **Composer** 🧙         |                                                             |
+| vendor                  | Install vendors according to the current composer.lock file |
+| **Symfony** 🎵          |                                                             |
+| compile                 | Execute some tasks before deployment                        |
+| consume                 | Consume messages from symfony messenger                     |
+| trans                   | Extract translations from symfony                           |
+| **Coding standards** ✨ |                                                             |
+| cs                      | Run all coding standards checks                             |
+| static-analysis         | Run the static analysis                                     |
+| lint                    | Run the linting tools                                       |
+| eslint                  | Run ESLint                                                  |
+| eslint-fix              | Run ESLint with fixes                                       |
+| fix-php                 | Fix files with php-cs-fixer                                 |
+| fix-twig                | Fix files with php-cs-fixer                                 |
+| lint-composer           | Lint files with composer                                    |
+| lint-php                | Lint files with php-cs-fixer                                |
+| lint-twig               | Lint files with php-cs-fixer                                |
+| phpmd                   | Run PHP Mess detector                                       |
+| phpstan                 | Run PHPStan                                                 |
+| psalm                   | Run Psalm                                                   |
+| rector                  | Run Rector                                                  |
+| **Tests** ✅            |                                                             |
+| test                    | Run tests                                                   |
+| testdox                 | Run tests with testdox                                      |
+| coverage                | Run tests with Coverage reports                             |
+| **Cleanup** 🚮          |                                                             |
+| purge                   | Purge temporary files                                       |
+| clear                   | Cleanup everything (except docker)                          | 
