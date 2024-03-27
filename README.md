@@ -20,12 +20,12 @@ detailed information.
     $ git clone https://github.com/nplhse/cois-hub.git
     ```
 
-2. Install the tool and it`s dependencies by using **make**:
+2. Install the project with all dependencies by using **make**. Please note that if you want to use the development environment you have to use `make setup-dev` instead.
 
     ```
     $ cd ~/webroot/cois-hub
     $ make setup
-    ```
+    ``` 
 
 3. You are ready to go, just open the site with your favorite browser!
 

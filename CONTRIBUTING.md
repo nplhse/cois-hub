@@ -14,24 +14,56 @@ However, you should follow the following simple guidelines for your contribution
 -   Also, you must agree to comply to the [Code of Conduct](CODE_OF_CONDUCT.md) of this project.
 
 ## Setup of your dev environment
+
 This project expects you use its Docker integration or to have local webserver and a locally installed MySQL/MariaDB 
 instance, see installation part of the [README](README.md). It seamlessly integrates with the 
 [Symfony binary cli tool](https://github.com/symfony-cli/symfony-cli).
 
+1. Launch a **terminal** or **console** and navigate to the webroot folder. Clone
+   [this repository from GitHub](https://github.com/nplhse/cois-hub) to a folder in the webroot of your server, e.g.
+   `~/webroot/cois-hub`.
+
+    ```
+    $ cd ~/webroot
+    $ git clone https://github.com/nplhse/cois-hub.git
+    ```
+
+2. Install the project with all dependencies by using **make**. Please note that if you want to use the development environment you have to use `make setup-dev` instead.
+
+    ```
+    $ cd ~/webroot/cois-hub
+    $ make setup-dev
+    ``` 
+
 ### Using Docker
+
 If you'd like there is support for Docker which includes the following parts:
 
 - [FrankenPHP](https://frankenphp.dev) as Webserver
 - [MySQL](https://www.mysql.com) as Database with an [Adminer](https://www.adminer.org/de/) backend
 - [MailCatcher](https://mailcatcher.me)
 
+1. You can build and start the containers via the following make command:
+
+    ```
+    $ cd ~/webroot/cois-hub
+    $ make start
+    ```
+   
+2. To fully use the integration of the symfony binary you should start the integrated webserver and open the url in 
+your favorite browser. In most cases this will likely be: https://127.0.0.1:8000
+
+    ```
+    $ symfony serve -d
+    ```
+
 ### Run Tests
 
-To be able to run the tests properly you need to execute `make test-database`. This command creates the testing database
+To be able to run the tests properly you need to execute `make setup-dev`. This command creates the testing database
 including the schema and all required fixtures.
 
 If you have the need to re-populate the database with some fresh Fixtures you could either directly execute 
-`bin/console doctrine:fixtures:load` or use `make reset-database` instead of `make reset` which resets the whole 
+`bin/console doctrine:fixtures:load` or use `composer load-fixtures` instead of `make reset` which resets the whole 
 project.
 
 When using these fixtures there are always several pre-configured Users by default:
@@ -42,34 +74,49 @@ When using these fixtures there are always several pre-configured Users by defau
 | foo         | _password_ | Default user                        |
 
 ## Available make commands
-| Command           | Description                                                                                                   |
-|-------------------|---------------------------------------------------------------------------------------------------------------|
-| help              | Outputs help screen                                                                                           |
-| setup             | Setup the whole project                                                                                       |
-| setup-dev         | Setup the project in dev environment                                                                          |
-| install           | Install composer dependencies                                                                                 |
-| setup-database    | Setup the database backend                                                                                    |
-| setup-test-db     | Setup the test database                                                                                       |
-| setup-fixtures    | Install the fixtures                                                                                          |
-| reset-database    | Reset the whole database (caution!)                                                                           |
-| checks            | Run check-styles and static-analysis                                                                          |
-| ci                | Run CI pipeline                                                                                               |
-| reset             | Reset pipeline for the whole project (caution!)                                                               |
-| start             | Build and start the containers                                                                                |
-| build             | Builds the Docker images                                                                                      |
-| up                | Start the docker hub in detached mode (no logs)                                                               |
-| down              | Stop the docker hub                                                                                           |
-| logs              | Show live logs                                                                                                |
-| sh                | Connect to the PHP FPM container                                                                              |
-| composer          | Run composer, pass the parameter "c=" to run a given command, example: make composer c='req symfony/orm-pack' |
-| vendor            | Install vendors according to the current composer.lock file                                                   |
-| sf                | List all Symfony commands or pass the parameter "c=" to run a given command, example: make sf c=about         |
-| cc                | Clear the cache                                                                                               |
-| cs                | Run all coding standards checks                                                                               |
-| static-analysis   | Run the static analysis                                                                                       |
-| lint-php          | Lint files with php-cs-fixer                                                                                  |
-| fix-php           | Fix files with php-cs-fixer                                                                                   |
-| eslint            | Run ESLint                                                                                                    |
-| stan              | Run PHPStan                                                                                                   |
-| psalm             | Run PHPStan                                                                                                   |
-| test              | Run tests                                                                                                     |
+| Command                 | Description                                                 |
+|-------------------------|-------------------------------------------------------------|
+| help                    | Outputs help screen                                         |
+| **Setup** 🚀            |                                                             |
+| setup                   | Setup the whole project                                     |
+| setup-dev               | Setup the project in dev environment                        |
+| warmup-dev              | Warmup the dev environment (e.g. after purge)               |
+| **Pipelines** 🚇        |                                                             |
+| checks                  | Run check-styles and static-analysis                        |
+| ci                      | Run CI pipeline                                             |
+| reset                   | Reset pipeline for the whole project (caution!)             |
+| **Docker** 🐳           |                                                             |
+| start                   | Build and start the containers                              |
+| build                   | Builds the Docker images                                    |
+| up                      | Start the docker hub in detached mode (no logs)             |
+| down                    | Stop the docker hub                                         |
+| logs                    | Show live logs                                              |
+| sh                      | Connect to the PHP FPM container                            |
+| **Composer** 🧙         |                                                             |
+| vendor                  | Install vendors according to the current composer.lock file |
+| **Symfony** 🎵          |                                                             |
+| compile                 | Execute some tasks before deployment                        |
+| consume                 | Consume messages from symfony messenger                     |
+| trans                   | Extract translations from symfony                           |
+| **Coding standards** ✨ |                                                             |
+| cs                      | Run all coding standards checks                             |
+| static-analysis         | Run the static analysis                                     |
+| lint                    | Run the linting tools                                       |
+| eslint                  | Run ESLint                                                  |
+| eslint-fix              | Run ESLint with fixes                                       |
+| fix-php                 | Fix files with php-cs-fixer                                 |
+| fix-twig                | Fix files with php-cs-fixer                                 |
+| lint-composer           | Lint files with composer                                    |
+| lint-php                | Lint files with php-cs-fixer                                |
+| lint-twig               | Lint files with php-cs-fixer                                |
+| phpmd                   | Run PHP Mess detector                                       |
+| phpstan                 | Run PHPStan                                                 |
+| psalm                   | Run Psalm                                                   |
+| rector                  | Run Rector                                                  |
+| **Tests** ✅            |                                                             |
+| test                    | Run tests                                                   |
+| testdox                 | Run tests with testdox                                      |
+| coverage                | Run tests with Coverage reports                             |
+| **Cleanup** 🚮          |                                                             |
+| purge                   | Purge temporary files                                       |
+| clear                   | Cleanup everything (except docker)                          | 
