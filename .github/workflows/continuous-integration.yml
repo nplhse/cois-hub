@@ -56,9 +56,13 @@ jobs:
 
       - name: Lint Parameters and Services
         run: ./bin/console lint:container --no-debug
+        env:
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
 
       - name: Lint Doctrine entities
         run: ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
+        env:
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
 
       - name: Lint PHP Code (PHP-CS-Fixer)
         run: vendor/bin/php-cs-fixer fix --allow-risky=yes --dry-run --config=php-cs-fixer.php
