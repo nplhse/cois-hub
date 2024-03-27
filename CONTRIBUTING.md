@@ -14,24 +14,56 @@ However, you should follow the following simple guidelines for your contribution
 -   Also, you must agree to comply to the [Code of Conduct](CODE_OF_CONDUCT.md) of this project.
 
 ## Setup of your dev environment
+
 This project expects you use its Docker integration or to have local webserver and a locally installed MySQL/MariaDB 
 instance, see installation part of the [README](README.md). It seamlessly integrates with the 
 [Symfony binary cli tool](https://github.com/symfony-cli/symfony-cli).
 
+1. Launch a **terminal** or **console** and navigate to the webroot folder. Clone
+   [this repository from GitHub](https://github.com/nplhse/cois-hub) to a folder in the webroot of your server, e.g.
+   `~/webroot/cois-hub`.
+
+    ```
+    $ cd ~/webroot
+    $ git clone https://github.com/nplhse/cois-hub.git
+    ```
+
+2. Install the project with all dependencies by using **make**. Please note that if you want to use the development environment you have to use `make setup-dev` instead.
+
+    ```
+    $ cd ~/webroot/cois-hub
+    $ make setup-dev
+    ``` 
+
 ### Using Docker
+
 If you'd like there is support for Docker which includes the following parts:
 
 - [FrankenPHP](https://frankenphp.dev) as Webserver
 - [MySQL](https://www.mysql.com) as Database with an [Adminer](https://www.adminer.org/de/) backend
 - [MailCatcher](https://mailcatcher.me)
 
+1. You can build and start the containers via the following make command:
+
+    ```
+    $ cd ~/webroot/cois-hub
+    $ make start
+    ```
+   
+2. To fully use the integration of the symfony binary you should start the integrated webserver and open the url in 
+your favorite browser. In most cases this will likely be: https://127.0.0.1:8000
+
+    ```
+    $ symfony serve -d
+    ```
+
 ### Run Tests
 
-To be able to run the tests properly you need to execute `make test-database`. This command creates the testing database
+To be able to run the tests properly you need to execute `make setup-dev`. This command creates the testing database
 including the schema and all required fixtures.
 
 If you have the need to re-populate the database with some fresh Fixtures you could either directly execute 
-`bin/console doctrine:fixtures:load` or use `make reset-database` instead of `make reset` which resets the whole 
+`bin/console doctrine:fixtures:load` or use `composer load-fixtures` instead of `make reset` which resets the whole 
 project.
 
 When using these fixtures there are always several pre-configured Users by default:
