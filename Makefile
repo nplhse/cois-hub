@@ -10,7 +10,7 @@ SYMFONY       = symfony
 YARN          = yarn
 
 # Alias
-CONSOLE       = $(EXEC_PHP) bin/console
+CONSOLE       = $(SYMFONY) console
 
 # Vendor executables
 PHPMD         = ./vendor/bin/phpmd
