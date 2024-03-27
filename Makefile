@@ -120,7 +120,7 @@ phpmd: ## Run PHP Mess detector
 	@$(PHPMD) src/ html phpmd.xml --report-file var/report/phpmd.html --ignore-violations-on-exit
 
 phpstan: ## Run PHPStan
-	@$(PHP_CONT) $(PHPSTAN) analyse --memory-limit 1G
+	@$(PHPSTAN) analyse --memory-limit=-1
 
 psalm: ## Run Psalm
 	@$(PSALM)
