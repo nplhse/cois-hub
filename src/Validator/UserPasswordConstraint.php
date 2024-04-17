@@ -12,7 +12,7 @@ class UserPasswordConstraint extends Constraint
 
     #[HasNamedArguments]
     public function __construct(
-        array $groups = null,
+        ?array $groups = null,
         mixed $payload = null,
     ) {
         parent::__construct([], $groups, $payload);
