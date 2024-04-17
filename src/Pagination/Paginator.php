@@ -40,7 +40,7 @@ final class Paginator
     ) {
     }
 
-    public function paginate(int $page = 1, int $perPage = null): self
+    public function paginate(int $page = 1, ?int $perPage = null): self
     {
         $this->pageSize = ($perPage ?? self::PAGE_SIZE);
 
