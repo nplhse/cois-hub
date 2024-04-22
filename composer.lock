@@ -2315,16 +2315,16 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v7.0.4",
+            "version": "v7.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "fc822951dd360a593224bb2cef90a087d0dff60f"
+                "reference": "2d0d3f92c74c445410d05374908b03e0a1131e2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/fc822951dd360a593224bb2cef90a087d0dff60f",
-                "reference": "fc822951dd360a593224bb2cef90a087d0dff60f",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/2d0d3f92c74c445410d05374908b03e0a1131e2b",
+                "reference": "2d0d3f92c74c445410d05374908b03e0a1131e2b",
                 "shasum": ""
             },
             "require": {
@@ -2391,7 +2391,7 @@
                 "psr6"
             ],
             "support": {
-                "source": "https://github.com/symfony/cache/tree/v7.0.4"
+                "source": "https://github.com/symfony/cache/tree/v7.0.6"
             },
             "funding": [
                 {
@@ -2407,7 +2407,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-22T20:27:20+00:00"
+            "time": "2024-03-27T19:55:25+00:00"
         },
         {
             "name": "symfony/cache-contracts",
@@ -3775,16 +3775,16 @@
         },
         {
             "name": "symfony/framework-bundle",
-            "version": "v7.0.4",
+            "version": "v7.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/framework-bundle.git",
-                "reference": "b58bcb2f9c32405b8fbaa24a1e38c8a10bad7b21"
+                "reference": "5ebf6771f92d135c2bdbda7133998feb74713658"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/framework-bundle/zipball/b58bcb2f9c32405b8fbaa24a1e38c8a10bad7b21",
-                "reference": "b58bcb2f9c32405b8fbaa24a1e38c8a10bad7b21",
+                "url": "https://api.github.com/repos/symfony/framework-bundle/zipball/5ebf6771f92d135c2bdbda7133998feb74713658",
+                "reference": "5ebf6771f92d135c2bdbda7133998feb74713658",
                 "shasum": ""
             },
             "require": {
@@ -3901,7 +3901,7 @@
             "description": "Provides a tight integration between Symfony components and the Symfony full-stack framework",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/framework-bundle/tree/v7.0.4"
+                "source": "https://github.com/symfony/framework-bundle/tree/v7.0.6"
             },
             "funding": [
                 {
@@ -3917,7 +3917,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-26T07:52:39+00:00"
+            "time": "2024-03-27T19:55:25+00:00"
         },
         {
             "name": "symfony/http-client",
@@ -5691,16 +5691,16 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v7.0.5",
+            "version": "v7.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "ba6bf07d43289c6a4b4591ddb75bc3bc5f069c19"
+                "reference": "cded64e5bbf9f31786f1055fcc76718fdd77519c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/ba6bf07d43289c6a4b4591ddb75bc3bc5f069c19",
-                "reference": "ba6bf07d43289c6a4b4591ddb75bc3bc5f069c19",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/cded64e5bbf9f31786f1055fcc76718fdd77519c",
+                "reference": "cded64e5bbf9f31786f1055fcc76718fdd77519c",
                 "shasum": ""
             },
             "require": {
@@ -5752,7 +5752,7 @@
                 "url"
             ],
             "support": {
-                "source": "https://github.com/symfony/routing/tree/v7.0.5"
+                "source": "https://github.com/symfony/routing/tree/v7.0.6"
             },
             "funding": [
                 {
@@ -5768,7 +5768,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-27T12:34:35+00:00"
+            "time": "2024-03-28T21:02:11+00:00"
         },
         {
             "name": "symfony/runtime",
@@ -6767,16 +6767,16 @@
         },
         {
             "name": "symfony/twig-bridge",
-            "version": "v7.0.4",
+            "version": "v7.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/twig-bridge.git",
-                "reference": "d16aa4eb5bdaeb6e7407782431dc70530f3b1df5"
+                "reference": "1d5745dac2e043553177a3b88a76b99c2a2f6c2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/d16aa4eb5bdaeb6e7407782431dc70530f3b1df5",
-                "reference": "d16aa4eb5bdaeb6e7407782431dc70530f3b1df5",
+                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/1d5745dac2e043553177a3b88a76b99c2a2f6c2e",
+                "reference": "1d5745dac2e043553177a3b88a76b99c2a2f6c2e",
                 "shasum": ""
             },
             "require": {
@@ -6855,7 +6855,7 @@
             "description": "Provides integration for Twig with various Symfony components",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/twig-bridge/tree/v7.0.4"
+                "source": "https://github.com/symfony/twig-bridge/tree/v7.0.6"
             },
             "funding": [
                 {
@@ -6871,7 +6871,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-15T11:33:06+00:00"
+            "time": "2024-03-28T21:02:11+00:00"
         },
         {
             "name": "symfony/twig-bundle",
@@ -7836,34 +7836,34 @@
         },
         {
             "name": "twig/extra-bundle",
-            "version": "v3.8.0",
+            "version": "v3.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/twig-extra-bundle.git",
-                "reference": "32807183753de0388c8e59f7ac2d13bb47311140"
+                "reference": "ef6869adf1fdab66f7e495771a7ba01496ffc0d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/twig-extra-bundle/zipball/32807183753de0388c8e59f7ac2d13bb47311140",
-                "reference": "32807183753de0388c8e59f7ac2d13bb47311140",
+                "url": "https://api.github.com/repos/twigphp/twig-extra-bundle/zipball/ef6869adf1fdab66f7e495771a7ba01496ffc0d5",
+                "reference": "ef6869adf1fdab66f7e495771a7ba01496ffc0d5",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
-                "symfony/framework-bundle": "^5.4|^6.0|^7.0",
-                "symfony/twig-bundle": "^5.4|^6.0|^7.0",
+                "symfony/framework-bundle": "^5.4|^6.4|^7.0",
+                "symfony/twig-bundle": "^5.4|^6.4|^7.0",
                 "twig/twig": "^3.0"
             },
             "require-dev": {
                 "league/commonmark": "^1.0|^2.0",
                 "symfony/phpunit-bridge": "^6.4|^7.0",
                 "twig/cache-extra": "^3.0",
-                "twig/cssinliner-extra": "^2.12|^3.0",
-                "twig/html-extra": "^2.12|^3.0",
-                "twig/inky-extra": "^2.12|^3.0",
-                "twig/intl-extra": "^2.12|^3.0",
-                "twig/markdown-extra": "^2.12|^3.0",
-                "twig/string-extra": "^2.12|^3.0"
+                "twig/cssinliner-extra": "^3.0",
+                "twig/html-extra": "^3.0",
+                "twig/inky-extra": "^3.0",
+                "twig/intl-extra": "^3.0",
+                "twig/markdown-extra": "^3.0",
+                "twig/string-extra": "^3.0"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -7894,7 +7894,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/twigphp/twig-extra-bundle/tree/v3.8.0"
+                "source": "https://github.com/twigphp/twig-extra-bundle/tree/v3.9.3"
             },
             "funding": [
                 {
@@ -7906,7 +7906,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-21T14:02:01+00:00"
+            "time": "2024-04-18T09:24:21+00:00"
         },
         {
             "name": "twig/twig",
