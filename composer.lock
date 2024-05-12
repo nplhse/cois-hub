@@ -12787,16 +12787,16 @@
         },
         {
             "name": "vincentlanglet/twig-cs-fixer",
-            "version": "2.6.0",
+            "version": "2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentLanglet/Twig-CS-Fixer.git",
-                "reference": "35a824ec5c93189d983f5e95b85ab9b4f2ee59c8"
+                "reference": "8b843a17bdfd4c6ea77a01a5fea0720d037826c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentLanglet/Twig-CS-Fixer/zipball/35a824ec5c93189d983f5e95b85ab9b4f2ee59c8",
-                "reference": "35a824ec5c93189d983f5e95b85ab9b4f2ee59c8",
+                "url": "https://api.github.com/repos/VincentLanglet/Twig-CS-Fixer/zipball/8b843a17bdfd4c6ea77a01a5fea0720d037826c9",
+                "reference": "8b843a17bdfd4c6ea77a01a5fea0720d037826c9",
                 "shasum": ""
             },
             "require": {
@@ -12855,7 +12855,7 @@
             "homepage": "https://github.com/VincentLanglet/Twig-CS-Fixer",
             "support": {
                 "issues": "https://github.com/VincentLanglet/Twig-CS-Fixer/issues",
-                "source": "https://github.com/VincentLanglet/Twig-CS-Fixer/tree/2.6.0"
+                "source": "https://github.com/VincentLanglet/Twig-CS-Fixer/tree/2.8.1"
             },
             "funding": [
                 {
@@ -12863,7 +12863,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-11T15:46:56+00:00"
+            "time": "2024-04-26T08:59:11+00:00"
         },
         {
             "name": "weirdan/doctrine-psalm-plugin",
