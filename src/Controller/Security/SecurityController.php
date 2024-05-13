@@ -37,7 +37,7 @@ class SecurityController extends AbstractController
 
     private function getUsername(AuthenticationUtils $authenticationUtils): string
     {
-        if (!$this->getUser()) {
+        if (!$this->getUser() instanceof \Symfony\Component\Security\Core\User\UserInterface) {
             return $authenticationUtils->getLastUsername();
         }
 

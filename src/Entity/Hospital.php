@@ -20,6 +20,7 @@ class Hospital implements \Stringable
     use Timestampable;
 
     final public const SMALL_HOSPITAL = 250;
+
     final public const LARGE_HOSPITAL = 750;
 
     #[ORM\Id]
@@ -132,11 +133,9 @@ class Hospital implements \Stringable
 
     public function removeAssociatedUser(User $user): static
     {
-        if ($this->associatedUsers->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($this->associatedUsers->contains($user)) {
-                $user->removeAssociatedHospital($this);
-            }
+        // set the owning side to null (unless already changed)
+        if ($this->associatedUsers->removeElement($user) && $this->associatedUsers->contains($user)) {
+            $user->removeAssociatedHospital($this);
         }
 
         return $this;

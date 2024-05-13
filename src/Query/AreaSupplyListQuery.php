@@ -37,7 +37,7 @@ class AreaSupplyListQuery
 
         $qb->orderBy('sa.'.$sortBy, $orderBy);
 
-        if (!empty($search)) {
+        if ('' !== $search && '0' !== $search) {
             $qb->andWhere($qb->expr()->like('sa.name', ':search'))
                 ->setParameter('search', '%'.$search.'%');
         }
@@ -53,7 +53,7 @@ class AreaSupplyListQuery
 
         $qb->select($qb->expr()->count('sa.id'));
 
-        if (!empty($search)) {
+        if ('' !== $search && '0' !== $search) {
             $qb->andWhere($qb->expr()->like('sa.'.$sortBy, ':search'))
                 ->setParameter('search', '%'.$search.'%');
         }

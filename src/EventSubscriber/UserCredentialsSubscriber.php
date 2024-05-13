@@ -50,7 +50,7 @@ class UserCredentialsSubscriber implements \Symfony\Component\EventDispatcher\Ev
             return;
         }
 
-        if (null === $token) {
+        if (!$token instanceof \Symfony\Component\Security\Core\Authentication\Token\TokenInterface) {
             return;
         }
 

@@ -53,6 +53,7 @@ class AuditUpdateSubscriber extends AuditSubscriber implements EventSubscriberIn
             if (is_object($value[0])) {
                 $entityData[$key][0] = $this->normalizeEntityId($value[0]);
             }
+
             if (is_object($value[1])) {
                 $entityData[$key][1] = $this->normalizeEntityId($value[1]);
             }

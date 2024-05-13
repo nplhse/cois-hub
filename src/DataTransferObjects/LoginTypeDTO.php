@@ -5,6 +5,7 @@ namespace App\DataTransferObjects;
 class LoginTypeDTO
 {
     private string $username;
+
     private string $password;
 
     public function getUsername(): string

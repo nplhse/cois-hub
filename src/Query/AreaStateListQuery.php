@@ -29,7 +29,7 @@ class AreaStateListQuery
 
         $qb->orderBy('s.'.$sortBy, $orderBy);
 
-        if (!empty($search)) {
+        if ('' !== $search && '0' !== $search) {
             $qb->andWhere($qb->expr()->like('s.name', ':search'))
                 ->setParameter('search', '%'.$search.'%');
         }
@@ -45,7 +45,7 @@ class AreaStateListQuery
 
         $qb->select($qb->expr()->count('s.id'));
 
-        if (!empty($search)) {
+        if ('' !== $search && '0' !== $search) {
             $qb->andWhere($qb->expr()->like('s.'.$sortBy, ':search'))
                 ->setParameter('search', '%'.$search.'%');
         }
