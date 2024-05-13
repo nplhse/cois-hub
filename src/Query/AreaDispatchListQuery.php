@@ -36,7 +36,7 @@ class AreaDispatchListQuery
 
         $qb->orderBy('da.'.$sortBy, $orderBy);
 
-        if (!empty($search)) {
+        if ('' !== $search && '0' !== $search) {
             $qb->andWhere($qb->expr()->like('da.name', ':search'))
                 ->setParameter('search', '%'.$search.'%');
         }
@@ -52,7 +52,7 @@ class AreaDispatchListQuery
 
         $qb->select($qb->expr()->count('da.id'));
 
-        if (!empty($search)) {
+        if ('' !== $search && '0' !== $search) {
             $qb->andWhere($qb->expr()->like('da.'.$sortBy, ':search'))
                 ->setParameter('search', '%'.$search.'%');
         }

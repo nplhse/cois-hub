@@ -11,7 +11,9 @@ use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 class HospitalVoter extends Voter
 {
     final public const EDIT = 'HOSPITAL_EDIT';
+
     final public const VIEWSTATS = 'HOSPITAL_VIEWSTATS';
+
     final public const DELETE = 'HOSPITAL_DELETE';
 
     public function __construct(
@@ -57,11 +59,7 @@ class HospitalVoter extends Voter
 
     private function canDelete(): bool
     {
-        if ($this->security->isGranted('ROLE_ADMIN')) {
-            return true;
-        }
-
-        return false;
+        return $this->security->isGranted('ROLE_ADMIN');
     }
 
     private function canViewStats(Hospital $hospital, User $user): bool
@@ -74,10 +72,6 @@ class HospitalVoter extends Voter
             return true;
         }
 
-        if ($hospital->getAssociatedUsers()->contains($user)) {
-            return true;
-        }
-
-        return false;
+        return $hospital->getAssociatedUsers()->contains($user);
     }
 }

@@ -23,7 +23,7 @@ final readonly class BlameableListener
         $entity = $args->getObject();
         $currentUser = $this->security->getUser();
 
-        if (null === $currentUser) {
+        if (!$currentUser instanceof \Symfony\Component\Security\Core\User\UserInterface) {
             return;
         }
 
@@ -43,7 +43,7 @@ final readonly class BlameableListener
         $entity = $args->getObject();
         $currentUser = $this->security->getUser();
 
-        if (null === $currentUser) {
+        if (!$currentUser instanceof \Symfony\Component\Security\Core\User\UserInterface) {
             return;
         }
 

@@ -47,7 +47,7 @@ class AuditLogger
 
     private function getClientIpFromRequest(?Request $request): ?string
     {
-        if (null === $request) {
+        if (!$request instanceof Request) {
             return null;
         }
 
@@ -56,7 +56,7 @@ class AuditLogger
 
     private function getRouteFromRequest(?Request $request): string
     {
-        if (null === $request) {
+        if (!$request instanceof Request) {
             return 'console';
         }
 

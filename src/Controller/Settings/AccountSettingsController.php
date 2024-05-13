@@ -35,13 +35,10 @@ class AccountSettingsController extends AbstractController
         $form = $this->createForm(AccountSettingsType::class, $accountSettingsTypeDto);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            if ($accountSettingsTypeDto->getIsPublic() !== $user->isPublic()) {
-                $command = new ToogleUserIsPublic($user->getId(), $accountSettingsTypeDto->getIsPublic());
-                $this->messageBus->dispatch($command);
-
-                $this->addFlash('success', $this->translator->trans('flash.settings_updated'));
-            }
+        if ($form->isSubmitted() && $form->isValid() && $accountSettingsTypeDto->getIsPublic() !== $user->isPublic()) {
+            $command = new ToogleUserIsPublic($user->getId(), $accountSettingsTypeDto->getIsPublic());
+            $this->messageBus->dispatch($command);
+            $this->addFlash('success', $this->translator->trans('flash.settings_updated'));
         }
 
         return $this->render('settings/account.html.twig', [

@@ -265,11 +265,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \String
 
     public function removeAssociatedHospital(Hospital $hospital): static
     {
-        if ($this->associatedHospitals->removeElement($hospital)) {
-            // set the owning side to null (unless already changed)
-            if ($this->associatedHospitals->contains($hospital)) {
-                $hospital->removeAssociatedUser($this);
-            }
+        // set the owning side to null (unless already changed)
+        if ($this->associatedHospitals->removeElement($hospital) && $this->associatedHospitals->contains($hospital)) {
+            $hospital->removeAssociatedUser($this);
         }
 
         return $this;

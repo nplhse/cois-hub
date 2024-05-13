@@ -76,11 +76,9 @@ class SupplyArea implements \Stringable
 
     public function removeDispatchArea(DispatchArea $dispatchArea): static
     {
-        if ($this->dispatchArea->removeElement($dispatchArea)) {
-            // set the owning side to null (unless already changed)
-            if ($dispatchArea->getSupplyArea() === $this) {
-                $dispatchArea->setSupplyArea(null);
-            }
+        // set the owning side to null (unless already changed)
+        if ($this->dispatchArea->removeElement($dispatchArea) && $dispatchArea->getSupplyArea() === $this) {
+            $dispatchArea->setSupplyArea(null);
         }
 
         return $this;

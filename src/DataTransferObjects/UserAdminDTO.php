@@ -24,6 +24,7 @@ class UserAdminDTO
     private bool $isVerified;
 
     private bool $hasCredentialsExpired;
+
     private bool $isPublic;
 
     public function getId(): int

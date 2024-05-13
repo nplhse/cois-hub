@@ -26,7 +26,7 @@ final class ToogleUserIsPublicHandler
             throw new \LogicException('Cannot find user for given id.');
         }
 
-        if (true === $command->getIsPublic()) {
+        if ($command->getIsPublic()) {
             $user->setIsPublic(true);
         }
 

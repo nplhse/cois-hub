@@ -43,7 +43,7 @@ class ListHospitalsQuery
 
         $qb->orderBy('h.'.$sortBy, $orderBy);
 
-        if (!empty($search)) {
+        if ('' !== $search && '0' !== $search) {
             $qb->andWhere($qb->expr()->like('h.name', ':search'))
                 ->setParameter('search', '%'.$search.'%');
         }
@@ -59,7 +59,7 @@ class ListHospitalsQuery
 
         $qb->select($qb->expr()->count('h.id'));
 
-        if (!empty($search)) {
+        if ('' !== $search && '0' !== $search) {
             $qb->andWhere($qb->expr()->like('h.'.$sortBy, ':search'))
                 ->setParameter('search', '%'.$search.'%');
         }

@@ -24,9 +24,10 @@ use Doctrine\ORM\Tools\Pagination\Paginator as DoctrinePaginator;
  */
 final class Paginator
 {
-    final public const PAGE_SIZE = 10;
+    public const PAGE_SIZE = 10;
 
     private int $currentPage = 1;
+
     private int $numResults = 0;
 
     /**
