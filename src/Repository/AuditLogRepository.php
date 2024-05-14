@@ -24,8 +24,9 @@ class AuditLogRepository extends ServiceEntityRepository
 
     public function add(AuditLog $auditLog): void
     {
-        $this->getEntityManager()->persist($auditLog);
-        $this->getEntityManager()->flush();
+        $em = $this->getEntityManager();
+        $em->persist($auditLog);
+        $em->flush();
     }
 
     public function getPaginatedResults(int $page = 1, int $perPage = 25): Paginator

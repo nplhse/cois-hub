@@ -23,19 +23,22 @@ class StateRepository extends ServiceEntityRepository
 
     public function add(State $state): void
     {
-        $this->getEntityManager()->persist($state);
-        $this->getEntityManager()->flush();
+        $em = $this->getEntityManager();
+        $em->persist($state);
+        $em->flush();
     }
 
     public function saveAndFlush(State $state): void
     {
-        $this->getEntityManager()->persist($state);
-        $this->getEntityManager()->flush();
+        $em = $this->getEntityManager();
+        $em->persist($state);
+        $em->flush();
     }
 
     public function remove(State $state): void
     {
-        $this->getEntityManager()->remove($state);
-        $this->getEntityManager()->flush();
+        $em = $this->getEntityManager();
+        $em->remove($state);
+        $em->flush();
     }
 }
