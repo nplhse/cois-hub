@@ -36,4 +36,21 @@ class SecurityControllerTest extends WebTestCase
             ->assertNotSee('foo')
         ;
     }
+
+    public function testYouCanLoginAgain(): void
+    {
+        // Arrange
+        $user = UserFactory::new(['username' => 'foo'])->create();
+
+        // Act& Assert
+        $this->browser()
+            ->actingAs($user->object())
+            ->visit('/login')
+            ->assertSeeIn('title', 'Login')
+            ->assertSeeIn('h2', 'Login')
+            ->fillField('Password', 'password')
+            ->click('Sign in')
+            ->assertSuccessful()
+        ;
+    }
 }
