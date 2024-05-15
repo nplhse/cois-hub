@@ -24,16 +24,18 @@ class CookieConsentRepository extends ServiceEntityRepository
         parent::__construct($registry, CookieConsent::class);
     }
 
-    public function add(CookieConsent $entity): void
+    public function add(CookieConsent $cookieConsent): void
     {
-        $this->_em->persist($entity);
-        $this->_em->flush();
+        $em = $this->getEntityManager();
+        $em->persist($cookieConsent);
+        $em->flush();
     }
 
-    public function remove(CookieConsent $entity): void
+    public function remove(CookieConsent $cookieConsent): void
     {
-        $this->_em->remove($entity);
-        $this->_em->flush();
+        $em = $this->getEntityManager();
+        $em->remove($cookieConsent);
+        $em->flush();
     }
 
     public function getPaginatedResults(int $page = 1, int $perPage = self::PER_PAGE): Paginator

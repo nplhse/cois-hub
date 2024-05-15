@@ -23,19 +23,22 @@ class DispatchAreaRepository extends ServiceEntityRepository
 
     public function add(DispatchArea $dispatchArea): void
     {
-        $this->getEntityManager()->persist($dispatchArea);
-        $this->getEntityManager()->flush();
+        $em = $this->getEntityManager();
+        $em->persist($dispatchArea);
+        $em->flush();
     }
 
     public function saveAndFlush(DispatchArea $dispatchArea): void
     {
-        $this->getEntityManager()->persist($dispatchArea);
-        $this->getEntityManager()->flush();
+        $em = $this->getEntityManager();
+        $em->persist($dispatchArea);
+        $em->flush();
     }
 
     public function remove(DispatchArea $dispatchArea): void
     {
-        $this->getEntityManager()->remove($dispatchArea);
-        $this->getEntityManager()->flush();
+        $em = $this->getEntityManager();
+        $em->remove($dispatchArea);
+        $em->flush();
     }
 }

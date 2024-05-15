@@ -23,19 +23,22 @@ class SupplyAreaRepository extends ServiceEntityRepository
 
     public function add(SupplyArea $supplyArea): void
     {
-        $this->getEntityManager()->persist($supplyArea);
-        $this->getEntityManager()->flush();
+        $em = $this->getEntityManager();
+        $em->persist($supplyArea);
+        $em->flush();
     }
 
     public function saveAndFlush(SupplyArea $supplyArea): void
     {
-        $this->getEntityManager()->persist($supplyArea);
-        $this->getEntityManager()->flush();
+        $em = $this->getEntityManager();
+        $em->persist($supplyArea);
+        $em->flush();
     }
 
     public function remove(SupplyArea $supplyArea): void
     {
-        $this->getEntityManager()->remove($supplyArea);
-        $this->getEntityManager()->flush();
+        $em = $this->getEntityManager();
+        $em->remove($supplyArea);
+        $em->flush();
     }
 }

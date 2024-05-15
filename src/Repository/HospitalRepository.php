@@ -23,19 +23,22 @@ class HospitalRepository extends ServiceEntityRepository
 
     public function add(Hospital $hospital): void
     {
-        $this->getEntityManager()->persist($hospital);
-        $this->getEntityManager()->flush();
+        $em = $this->getEntityManager();
+        $em->persist($hospital);
+        $em->flush();
     }
 
     public function saveAndFlush(Hospital $hospital): void
     {
-        $this->getEntityManager()->persist($hospital);
-        $this->getEntityManager()->flush();
+        $em = $this->getEntityManager();
+        $em->persist($hospital);
+        $em->flush();
     }
 
     public function remove(Hospital $hospital): void
     {
-        $this->getEntityManager()->remove($hospital);
-        $this->getEntityManager()->flush();
+        $em = $this->getEntityManager();
+        $em->remove($hospital);
+        $em->flush();
     }
 }
