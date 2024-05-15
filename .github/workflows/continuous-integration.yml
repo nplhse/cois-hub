@@ -105,7 +105,7 @@ jobs:
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: false
           MYSQL_ROOT_PASSWORD: symfony
-          MYSQL_DATABASE: symfony
+          MYSQL_DATABASE: symfony_test
         ports:
           - 3306/tcp
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -128,7 +128,7 @@ jobs:
       - name: Run Migration
         run: php bin/console doctrine:schema:create || echo "No schema found or schema failed"
         env:
-          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony_test
 
       - name: "Build Assets"
         run: php bin/console importmap:install
@@ -136,7 +136,7 @@ jobs:
       - name: Execute tests via PHPUnit
         run: vendor/bin/phpunit
         env:
-          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony_test
 
       - name: Upload coverage to Codeclimate
         if: ${{ github.actor != 'dependabot[bot]' }}
