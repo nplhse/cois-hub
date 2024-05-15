@@ -128,7 +128,7 @@ jobs:
       - name: Run Migration
         run: php bin/console doctrine:schema:create || echo "No schema found or schema failed"
         env:
-          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony_test
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
 
       - name: "Build Assets"
         run: php bin/console importmap:install
@@ -136,7 +136,7 @@ jobs:
       - name: Execute tests via PHPUnit
         run: vendor/bin/phpunit
         env:
-          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony_test
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
 
       - name: Upload coverage to Codeclimate
         if: ${{ github.actor != 'dependabot[bot]' }}
