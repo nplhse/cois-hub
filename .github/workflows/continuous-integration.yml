@@ -140,7 +140,7 @@ jobs:
 
       - name: Upload coverage to Codeclimate
         if: ${{ github.actor != 'dependabot[bot]' }}
-        uses: paambaati/codeclimate-action@v6.0.0
+        uses: paambaati/codeclimate-action@v8.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPORTER_ID }}
         with:
